@@ -1,0 +1,104 @@
+- name: Angel Island Act 1 - Big Ring 1
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Angel Island Act 1 - Big Ring 2
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Angel Island Act 1 - Miniboss
+  type: miniboss
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Angel Island Act 1 - Item Box 1
+  type: speed_shoes
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Angel Island Act 1 - Item Box 2
+  type: ring_box
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Angel Island Act 1 - Item Box 3
+  type: ring_box
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Angel Island Act 1 - Item Box 4
+  type: fire_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Angel Island Act 1 - Item Box 5
+  type: invincibility
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Angel Island Act 1 - Item Box 6
+  type: bubble_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Angel Island Act 1 - Item Box 7
+  type: ring_box
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Angel Island Act 1 - Item Box 8
+  type: invincibility
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Angel Island Act 1 - Item Box 9
+  type: ring_box
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Angel Island Act 1 - Item Box 10
+  type: extra_life
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Angel Island Act 1 - Item Box 11
+  type: ring_box
+  requirements:
+    - character: Sonic
+      super_state: hyper
+    - charatcer: Tails
+- name: Angel Island Act 1 - Item Box 12
+  type: invincibility
+  requirements:
+    - character: Tails
+- name: Angel Island Act 1 - Item Box 13
+  type: lightning_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Angel Island Act 1 - Item Box 14
+  type: ring_box
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Angel Island Act 1 - Item Box 15
+  type: fire_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
