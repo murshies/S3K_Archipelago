@@ -1,0 +1,27 @@
+- name: fire_shield
+  is:
+    - item_box
+    - shield
+- name: lightning_shield
+  is:
+    - item_box
+    - shield
+- name: bubble_sheild
+  is:
+    - item_box
+    - shield
+- name: speed_shoes
+  is:
+    - item_box
+- name: invincibility
+  is:
+    - item_box
+- name: extra_life
+  is:
+    - item_box
+- name: ring_box
+  is:
+    - item_box
+- name: miniboss
+  is:
+    - boss
