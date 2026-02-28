@@ -1,0 +1,346 @@
+- name: Carnival Night Act 2 - Big Ring 1
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Big Ring 2
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Big Ring 3
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Big Ring 4
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Big Ring 5
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Carnival Night Act 2 - Boss
+  type: boss
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      # For Knuckles, get into Sonic/Tail's path as described below. Then when
+      # you get to the part where Knuckles would normally hit the switch to
+      # push Sonic/Tails up to the boss, either stop before falling to the
+      # switch area, or climb back up if you fall. Once in the section between
+      # the two pipes, you can time a jump into a glide so that Knuckles will
+      # latch to the wall of the upper pipe. From there you can climb up to the
+      # boss.
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 1
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Carnival Night Act 2 - Item Box 2
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Carnival Night Act 2 - Item Box 3
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Carnival Night Act 2 - Item Box 4
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Carnival Night Act 2 - Item Box 5
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Carnival Night Act 2 - Item Box 6
+  type: water_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Carnival Night Act 2 - Item Box 7
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+# Starting here, these pickups are on the Sonic/Tails path. Knuckles can get
+# here with some careful scaling of the first red and white pipe at the
+# beginning of the stage, jumping to the platform with the spike to the left of
+# item boxes 10-12. Therefore, everything in the Sonic/Tails path will be
+# reachable by Knuckles, but marked as hard difficulty.
+- name: Carnival Night Act 2 - Item Box 8
+  type: invincibility
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 9
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 10
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 11
+  type: water_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 12
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 13
+  type: 1_up
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 14
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 15
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 16
+  type: flame_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 17
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 18
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 19
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 20
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 21
+  type: 1_up
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 22
+  type: water_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 23
+  type: 1_up
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 24
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 25
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 26
+  type: invincibility
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 27
+  type: 1_up
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 28
+  type: 1_up
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 29
+  type: lightning_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 30
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 31
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 32
+  type: invincibility
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 33
+  type: 1_up
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 34
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 35
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 36
+  type: flame_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 37
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 38
+  type: invincibility
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 39
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 40
+  type: lightning_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Carnival Night Act 2 - Item Box 41
+  type: lightning_shield
+  requirements:
+    - character: Knuckles
+- name: Carnival Night Act 2 - Item Box 42
+  type: super_ring
+  requirements:
+    - character: Knuckles
+- name: Carnival Night Act 2 - Item Box 43
+  type: super_ring
+  requirements:
+    - character: Knuckles
+- name: Carnival Night Act 2 - Item Box 44
+  type: super_ring
+  requirements:
+    - character: Knuckles
+- name: Carnival Night Act 2 - Item Box 45
+  type: super_ring
+  requirements:
+    - character: Knuckles
