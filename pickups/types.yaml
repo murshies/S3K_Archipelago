@@ -25,3 +25,6 @@
 - name: miniboss
   is:
     - boss
+- name: eggman_box
+  is:
+    - item_box
