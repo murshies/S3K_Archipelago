@@ -1,4 +1,4 @@
-- name: fire_shield
+- name: flame_shield
   is:
     - item_box
     - shield
@@ -6,25 +6,25 @@
   is:
     - item_box
     - shield
-- name: bubble_sheild
+- name: water_shield
   is:
     - item_box
     - shield
-- name: speed_shoes
+- name: power_sneakers
   is:
     - item_box
 - name: invincibility
   is:
     - item_box
-- name: extra_life
+- name: 1_up
   is:
     - item_box
-- name: ring_box
+- name: super_ring
   is:
     - item_box
 - name: miniboss
   is:
     - boss
-- name: eggman_box
+- name: robotnik
   is:
     - item_box
