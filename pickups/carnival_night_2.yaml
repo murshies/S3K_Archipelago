@@ -324,6 +324,7 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+# These items are on the Knuckles path.
 - name: Carnival Night Act 2 - Item Box 41
   type: lightning_shield
   requirements:
