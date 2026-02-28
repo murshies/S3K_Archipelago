@@ -17,24 +17,24 @@
     - character: Tails
     - character: Knuckles
 - name: Angel Island Act 1 - Item Box 1
-  type: speed_shoes
+  type: power_sneakers
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Angel Island Act 1 - Item Box 2
-  type: ring_box
+  type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Angel Island Act 1 - Item Box 3
-  type: ring_box
+  type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
 - name: Angel Island Act 1 - Item Box 4
-  type: fire_shield
+  type: flame_shield
   requirements:
     - character: Sonic
     - character: Tails
@@ -46,13 +46,13 @@
     - character: Tails
     - character: Knuckles
 - name: Angel Island Act 1 - Item Box 6
-  type: bubble_shield
+  type: water_shield
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Angel Island Act 1 - Item Box 7
-  type: ring_box
+  type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
@@ -64,19 +64,19 @@
     - character: Tails
     - character: Knuckles
 - name: Angel Island Act 1 - Item Box 9
-  type: ring_box
+  type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Angel Island Act 1 - Item Box 10
-  type: extra_life
+  type: 1_up
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Angel Island Act 1 - Item Box 11
-  type: ring_box
+  type: super_ring
   requirements:
     - character: Sonic
       super_state: hyper
@@ -92,13 +92,13 @@
     - character: Tails
     - character: Knuckles
 - name: Angel Island Act 1 - Item Box 14
-  type: ring_box
+  type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Angel Island Act 1 - Item Box 15
-  type: fire_shield
+  type: flame_shield
   requirements:
     - character: Sonic
     - character: Tails
