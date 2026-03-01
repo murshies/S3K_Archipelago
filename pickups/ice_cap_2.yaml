@@ -1,0 +1,88 @@
+- name: Ice Cap Act 2 - Big Ring 1
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Ice Cap Act 2 - Big Ring 2
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Ice Cap Act 2 - Big Ring 3
+  type: big_ring
+  requirements:
+    - character: Knuckles
+- name: Ice Cap Act 2 - Boss
+  type: boss
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Ice Cap Act 2 - Item Box 1
+  type: lightning_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      # For this pickup and all pickups on the Sonic/Tails only path, there is
+      # a ramp before the water section with the floating platforms where big
+      # ring is located. As Super or Hyper Knuckles, you can build enough speed
+      # with the two loops before the ramp to fling Knuckles up into the bouncy
+      # sping. You can then backtrack all of the way to the Sonic/Tail spawn
+      # point to get the pickups.
+      super_state: super
+      difficulty: hard
+- name: Ice Cap Act 2 - Item Box 2
+  type: invincibility
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      super_state: super
+      difficulty: hard
+- name: Ice Cap Act 2 - Item Box 3
+  type: 1_up
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      super_state: super
+      difficulty: hard
+- name: Ice Cap Act 2 - Item Box 4
+  type: 1_up
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Ice Cap Act 2 - Item Box 5
+  type: robotnik
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Ice Cap Act 2 - Item Box 6
+  type: robotnik
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Ice Cap Act 2 - Item Box 7
+  type: lightning_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Ice Cap Act 2 - Item Box 8
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Ice Cap Act 2 - Item Box 9
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
