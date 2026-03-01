@@ -1,0 +1,46 @@
+- name: Ice Cap Act 1 - Big Ring 1
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Ice Cap Act 1 - Big Ring 2
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Ice Cap Act 1 - Miniboss
+  type: miniboss
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Ice Cap Act 1 - Item Box 1
+  type: lightning_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Ice Cap Act 1 - Item Box 2
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Ice Cap Act 1 - Item Box 3
+  type: invincibility
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+      # Take the swinging platforms up to the pillar that prevents Knuckles
+      # from entering the Sonic/Tails miniboss area. Glide to the wall
+      # underneath the pillar, and scale down to the bottom of it. Jump and
+      # glide into the ice slope below it, and keep jumping and gliding until
+      # you reach the ground with this item box.
+      difficulty: hard
+- name: Ice Cap Act 1 - Item Box 4
+  type: lightning_shield
+  requirements:
+    - character: Knuckles
