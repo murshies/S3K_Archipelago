@@ -1,0 +1,168 @@
+- name: Launch Base Act 2 - Big Ring 1
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Big Ring 2
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Big Ring 3
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Big Ring 4
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Big Ring 5
+  type: big_ring
+  requirements:
+    - character: Knuckles
+- name: Launch Base Act 2 - Boss
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Launch Base Act 2 - Item Box 1
+  type: flame_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 2
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 3
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 4
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 5
+  type: flame_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 6
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 7
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 8
+  type: water_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 9
+  type: invincibility
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 10
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 11
+  type: 1_up
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 12
+  type: water_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 13
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 14
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 15
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 16
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 17
+  type: flame_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 18
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 19
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 20
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 21
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 22
+  type: invincibility
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 23
+  type: water_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Launch Base Act 2 - Item Box 24
+  type: flame_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 25
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Launch Base Act 2 - Item Box 26
+  type: flame_shield
+  requirements:
+    - character: Knuckles
+- name: Launch Base Act 2 - Item Box 27
+  type: super_ring
+  requirements:
+    - character: Knuckles
+- name: Launch Base Act 2 - Item Box 28
+  type: water_shield
+  requirements:
+    - character: Knuckles
