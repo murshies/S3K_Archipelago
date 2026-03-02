@@ -1,0 +1,265 @@
+- name: Sandopolis Act 1 - Big Ring 1
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Big Ring 2
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Big Ring 3
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Big Ring 4
+  type: big_ring
+  requirements:
+    - character: Sonic
+      super_state: hyper
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Big Ring 5
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Big Ring 6
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Big Ring 7
+  type: big_ring
+  requirements:
+    - character: Knuckles
+- name: Sandopolis Act 1 - Miniboss
+  type: miniboss
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 1
+  type: invincibility
+  requirements:
+    - character: Sonic
+      super_state: hyper
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 2
+  type: super_ring
+  requirements:
+    - character: Sonic
+      super_state: hyper
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 3
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 4
+  type: invincibility
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 5
+  type: super_ring
+  requirements:
+    - character: Sonic
+      super_state: hyper
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 6
+  type: flame_shield
+  requirements:
+    - character: Sonic
+      super_state: hyper
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 7
+  type: 1_up
+  requirements:
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 8
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 9
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 10
+  type: 1_up
+  requirements:
+    - character: Sonic
+      super_state: hyper
+    - character: Tails
+    - character: Knuckles
+      # There is a spike platform blocking Knuckles from climbing from the area
+      # above item boxes 5 and 6 to this one, as well as item boxes 11 and
+      # 12. To get this, Knuckles must go through the area containing item box
+      # 7, go across to the platform above big ring 2, and then backtrack to
+      # these pickups. Knuckles can repeatedly glide up the sand slide to get
+      # into the area with these 10, 11, and 12.
+      difficulty: hard
+- name: Sandopolis Act 1 - Item Box 11
+  type: super_ring
+  requirements:
+    - character: Sonic
+      super_state: hyper
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Sandopolis Act 1 - Item Box 12
+  type: lightning_shield
+  requirements:
+    - character: Sonic
+      super_state: hyper
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Sandopolis Act 1 - Item Box 13
+  type: flame_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 14
+  type: invincibility
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 15
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 16
+  type: invincibility
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 17
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 18
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 19
+  type: invincibility
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 20
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 21
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 22
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 23
+  type: lightning_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 24
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 25
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 26
+  type: water_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 27
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 28
+  type: super_ring
+  requirements:
+    - character: Sonic
+      super_state: hyper
+    - character: Tails
+    - character: Knuckles
+      # Similar to item boxes 10-12, Knuckles must scale up the sand slide to
+      # the right of this and item box 29 to get both of them.
+      difficulty: hard
+- name: Sandopolis Act 1 - Item Box 29
+  type: super_ring
+  requirements:
+    - character: Sonic
+      super_state: hyper
+    - character: Tails
+    - character: Knuckles
+      difficulty: hard
+- name: Sandopolis Act 1 - Item Box 30
+  type: super_ring
+  requirements:
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 31
+  type: super_ring
+  requirements:
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 32
+  type: flame_shield
+  requirements:
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 33
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Sandopolis Act 1 - Item Box 34
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
