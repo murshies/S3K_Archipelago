@@ -1,0 +1,115 @@
+- name: Lava Reef Act 2 - Big Ring 1
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Lava Reef Act 2 - Big Ring 2
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Lava Reef Act 2 - Big Ring 3
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Lava Reef Act 2 - Big Ring 4
+  type: big_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Lava Reef Act 2 - Big Ring 5
+  type: big_ring
+  requirements:
+    - character: Knuckles
+- name: Lava Reef Act 2 - Item Box 1
+  type: flame_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Lava Reef Act 2 - Item Box 2
+  type: robotnik
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Lava Reef Act 2 - Item Box 3
+  type: robotnik
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Lava Reef Act 2 - Item Box 4
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Lava Reef Act 2 - Item Box 5
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Lava Reef Act 2 - Item Box 6
+  type: invincibility
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Lava Reef Act 2 - Item Box 7
+  type: water_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Lava Reef Act 2 - Item Box 8
+  type: flame_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Lava Reef Act 2 - Item Box 9
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Lava Reef Act 2 - Item Box 10
+  type: flame_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Lava Reef Act 2 - Item Box 11
+  type: lightning_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Lava Reef Act 2 - Item Box 12
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Lava Reef Act 2 - Item Box 13
+  type: 1_up
+  requirements:
+    # To get 13-15 as normal Sonic, get a lightning shield and jump down from
+    # above. The lightning shield's double jump can reach these.
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Lava Reef Act 2 - Item Box 14
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Lava Reef Act 2 - Item Box 15
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Lava Reef Act 2 - Item Box 16
+  type: flame_shield
+  requirements:
+    - character: Knuckles
+- name: Lava Reef Act 2 - Item Box 17
+  type: flame_shield
+  requirements:
+    - character: Knuckles
