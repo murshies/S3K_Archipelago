@@ -1,3 +1,6 @@
+# Note: There are three item boxes in the wall on the first "treadmill"
+# platform that rises up. There are spikes on the wall blocking the path into
+# the area with these pickups, making them impossible.
 - name: Death Egg Act 1 - Item Box 1
   type: water_shield
   requirements:
@@ -16,6 +19,8 @@
 - name: Death Egg Act 1 - Item Box 4
   type: lightning_shield
   requirements:
+    # Sonic can use the lightning shield from item box 3 to double jump into
+    # the wall to get to this one.
     - character: Sonic
     - character: Tails
 - name: Death Egg Act 1 - Item Box 5
