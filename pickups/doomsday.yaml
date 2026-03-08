@@ -1,0 +1,5 @@
+- name: Doomsday - Boss
+  type: boss
+  requirements:
+    - character: Sonic
+      super_state: super
