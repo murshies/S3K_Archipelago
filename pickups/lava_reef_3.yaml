@@ -1,0 +1,15 @@
+- name: Lava Reef Act 3 - Boss
+  type: boss
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Lava Reef Act 3 - Item Box 1
+  type: lightning_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
+- name: Lava Reef Act 3 - Item Box 2
+  type: flame_shield
+  requirements:
+    - character: Sonic
+    - character: Tails
