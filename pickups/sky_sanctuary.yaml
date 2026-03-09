@@ -1,5 +1,5 @@
 - name: Sky Sanctuary - Boss
-  type: Boss
+  type: boss
   requirements:
     - character: Sonic
     - character: Tails

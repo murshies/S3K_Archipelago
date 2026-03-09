@@ -1,14 +1,18 @@
-- name: flame_shield
+- name: big_ring
+  is: []
+- name: item_box
+  is: []
+- name: shield
   is:
     - item_box
+- name: flame_shield
+  is:
     - shield
 - name: lightning_shield
   is:
-    - item_box
     - shield
 - name: water_shield
   is:
-    - item_box
     - shield
 - name: power_sneakers
   is:
@@ -22,6 +26,8 @@
 - name: super_ring
   is:
     - item_box
+- name: boss
+  is: []
 - name: miniboss
   is:
     - boss
