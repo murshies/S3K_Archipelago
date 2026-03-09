@@ -80,7 +80,7 @@
   requirements:
     - character: Sonic
       super_state: hyper
-    - charatcer: Tails
+    - character: Tails
 - name: Angel Island Act 1 - Item Box 12
   type: invincibility
   requirements:
