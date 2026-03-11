@@ -1,40 +1,50 @@
-- name: Hidden Palace - Item Box 1
+- name: Item Box 1
+  zone: Hidden Palace
   type: power_sneakers
   requirements:
     - character: Tails
-- name: Hidden Palace - Item Box 2
+- name: Item Box 2
+  zone: Hidden Palace
   type: invincibility
   requirements:
     - character: Tails
-- name: Hidden Palace - Item Box 3
+- name: Item Box 3
+  zone: Hidden Palace
   type: water_shield
   requirements:
     - character: Tails
-- name: Hidden Palace - Item Box 4
+- name: Item Box 4
+  zone: Hidden Palace
   type: lightning_shield
   requirements:
     - character: Tails
-- name: Hidden Palace - Item Box 5
+- name: Item Box 5
+  zone: Hidden Palace
   type: flame_shield
   requirements:
     - character: Tails
-- name: Hidden Palace - Item Box 6
+- name: Item Box 6
+  zone: Hidden Palace
   type: super_ring
   requirements:
     - character: Tails
-- name: Hidden Palace - Item Box 7
+- name: Item Box 7
+  zone: Hidden Palace
   type: super_ring
   requirements:
     - character: Tails
-- name: Hidden Palace - Item Box 8
+- name: Item Box 8
+  zone: Hidden Palace
   type: super_ring
   requirements:
     - character: Tails
-- name: Hidden Palace - Item Box 9
+- name: Item Box 9
+  zone: Hidden Palace
   type: 1_up
   requirements:
     - character: Tails
-- name: Hidden Palace - Item Box 10
+- name: Item Box 10
+  zone: Hidden Palace
   type: super_ring
   requirements:
     - character: Sonic

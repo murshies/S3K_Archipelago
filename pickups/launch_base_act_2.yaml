@@ -1,168 +1,236 @@
-- name: Launch Base Act 2 - Big Ring 1
+- name: Big Ring 1
+  zone: Launch Base
+  act: 2
   type: big_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Big Ring 2
+- name: Big Ring 2
+  zone: Launch Base
+  act: 2
   type: big_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Big Ring 3
+- name: Big Ring 3
+  zone: Launch Base
+  act: 2
   type: big_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Big Ring 4
+- name: Big Ring 4
+  zone: Launch Base
+  act: 2
   type: big_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Big Ring 5
+- name: Big Ring 5
+  zone: Launch Base
+  act: 2
   type: big_ring
   requirements:
     - character: Knuckles
-- name: Launch Base Act 2 - Boss
+- name: Boss
+  zone: Launch Base
+  act: 2
   type: big_ring
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Launch Base Act 2 - Item Box 1
+- name: Item Box 1
+  zone: Launch Base
+  act: 2
   type: flame_shield
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 2
+- name: Item Box 2
+  zone: Launch Base
+  act: 2
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 3
+- name: Item Box 3
+  zone: Launch Base
+  act: 2
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 4
+- name: Item Box 4
+  zone: Launch Base
+  act: 2
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 5
+- name: Item Box 5
+  zone: Launch Base
+  act: 2
   type: flame_shield
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 6
+- name: Item Box 6
+  zone: Launch Base
+  act: 2
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 7
+- name: Item Box 7
+  zone: Launch Base
+  act: 2
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 8
+- name: Item Box 8
+  zone: Launch Base
+  act: 2
   type: water_shield
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 9
+- name: Item Box 9
+  zone: Launch Base
+  act: 2
   type: invincibility
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 10
+- name: Item Box 10
+  zone: Launch Base
+  act: 2
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 11
+- name: Item Box 11
+  zone: Launch Base
+  act: 2
   type: 1_up
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 12
+- name: Item Box 12
+  zone: Launch Base
+  act: 2
   type: water_shield
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 13
+- name: Item Box 13
+  zone: Launch Base
+  act: 2
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 14
+- name: Item Box 14
+  zone: Launch Base
+  act: 2
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 15
+- name: Item Box 15
+  zone: Launch Base
+  act: 2
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 16
+- name: Item Box 16
+  zone: Launch Base
+  act: 2
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 17
+- name: Item Box 17
+  zone: Launch Base
+  act: 2
   type: flame_shield
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 18
+- name: Item Box 18
+  zone: Launch Base
+  act: 2
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 19
+- name: Item Box 19
+  zone: Launch Base
+  act: 2
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 20
+- name: Item Box 20
+  zone: Launch Base
+  act: 2
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 21
+- name: Item Box 21
+  zone: Launch Base
+  act: 2
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 22
+- name: Item Box 22
+  zone: Launch Base
+  act: 2
   type: invincibility
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 23
+- name: Item Box 23
+  zone: Launch Base
+  act: 2
   type: water_shield
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Launch Base Act 2 - Item Box 24
+- name: Item Box 24
+  zone: Launch Base
+  act: 2
   type: flame_shield
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 25
+- name: Item Box 25
+  zone: Launch Base
+  act: 2
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Launch Base Act 2 - Item Box 26
+- name: Item Box 26
+  zone: Launch Base
+  act: 2
   type: flame_shield
   requirements:
     - character: Knuckles
-- name: Launch Base Act 2 - Item Box 27
+- name: Item Box 27
+  zone: Launch Base
+  act: 2
   type: super_ring
   requirements:
     - character: Knuckles
-- name: Launch Base Act 2 - Item Box 28
+- name: Item Box 28
+  zone: Launch Base
+  act: 2
   type: water_shield
   requirements:
     - character: Knuckles

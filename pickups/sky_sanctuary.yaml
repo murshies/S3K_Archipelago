@@ -1,87 +1,104 @@
-- name: Sky Sanctuary - Boss
+- name: Boss
+  zone: Sky Sanctuary
   type: boss
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Sky Sanctuary - Item Box 1
+- name: Item Box 1
+  zone: Sky Sanctuary
   type: lightning_shield
   requirements:
     - character: Sonic
     - character: Tails
-- name: Sky Sanctuary - Item Box 2
+- name: Item Box 2
+  zone: Sky Sanctuary
   type: super_ring
   requirements:
     # Use the lightning shield from item box 1 to double jump to the cloud,
     # which will boost Sonic over to this item and item box 3.
     - character: Sonic
     - character: Tails
-- name: Sky Sanctuary - Item Box 3
+- name: Item Box 3
+  zone: Sky Sanctuary
   type: 1_up
   requirements:
     - character: Sonic
     - character: Tails
-- name: Sky Sanctuary - Item Box 4
+- name: Item Box 4
+  zone: Sky Sanctuary
   type: invincibility
   requirements:
     - character: Sonic
     - character: Tails
-- name: Sky Sanctuary - Item Box 5
+- name: Item Box 5
+  zone: Sky Sanctuary
   type: water_shield
   requirements:
     - character: Sonic
     - character: Tails
-- name: Sky Sanctuary - Item Box 6
+- name: Item Box 6
+  zone: Sky Sanctuary
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Sky Sanctuary - Item Box 7
+- name: Item Box 7
+  zone: Sky Sanctuary
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Sky Sanctuary - Item Box 8
+- name: Item Box 8
+  zone: Sky Sanctuary
   type: flame_shield
   requirements:
     - character: Sonic
     - character: Tails
-- name: Sky Sanctuary - Item Box 9
+- name: Item Box 9
+  zone: Sky Sanctuary
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Sky Sanctuary - Item Box 10
+- name: Item Box 10
+  zone: Sky Sanctuary
   type: invincibility
   requirements:
     - character: Sonic
     - character: Tails
-- name: Sky Sanctuary - Item Box 11
+- name: Item Box 11
+  zone: Sky Sanctuary
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Sky Sanctuary - Item Box 12
+- name: Item Box 12
+  zone: Sky Sanctuary
   type: 1_up
   requirements:
     - character: Sonic
     - character: Tails
-- name: Sky Sanctuary - Item Box 13
+- name: Item Box 13
+  zone: Sky Sanctuary
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Sky Sanctuary - Item Box 14
+- name: Item Box 14
+  zone: Sky Sanctuary
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Sky Sanctuary - Item Box 15
+- name: Item Box 15
+  zone: Sky Sanctuary
   type: 1_up
   requirements:
     - character: Sonic
     - character: Tails
-- name: Sky Sanctuary - Item Box 16
+- name: Item Box 16
+  zone: Sky Sanctuary
   type: super_ring
   requirements:
     - character: Sonic
