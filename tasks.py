@@ -25,6 +25,7 @@ ZONE_ORDER = (
     'Special Stage'
 )
 
+
 class InvalidPickupType(Exception):
     type_name: str
     valid_types: set[str]
