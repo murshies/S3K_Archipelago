@@ -1,26 +1,36 @@
-- name: Ice Cap Act 2 - Big Ring 1
+- name: Big Ring 1
+  zone: Ice Cap
+  act: 2
   type: big_ring
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Ice Cap Act 2 - Big Ring 2
+- name: Big Ring 2
+  zone: Ice Cap
+  act: 2
   type: big_ring
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Ice Cap Act 2 - Big Ring 3
+- name: Big Ring 3
+  zone: Ice Cap
+  act: 2
   type: big_ring
   requirements:
     - character: Knuckles
-- name: Ice Cap Act 2 - Boss
+- name: Boss
+  zone: Ice Cap
+  act: 2
   type: boss
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Ice Cap Act 2 - Item Box 1
+- name: Item Box 1
+  zone: Ice Cap
+  act: 2
   type: lightning_shield
   requirements:
     - character: Sonic
@@ -34,7 +44,9 @@
       # point to get the pickups.
       super_state: super
       difficulty: hard
-- name: Ice Cap Act 2 - Item Box 2
+- name: Item Box 2
+  zone: Ice Cap
+  act: 2
   type: invincibility
   requirements:
     - character: Sonic
@@ -42,7 +54,9 @@
     - character: Knuckles
       super_state: super
       difficulty: hard
-- name: Ice Cap Act 2 - Item Box 3
+- name: Item Box 3
+  zone: Ice Cap
+  act: 2
   type: 1_up
   requirements:
     - character: Sonic
@@ -50,37 +64,49 @@
     - character: Knuckles
       super_state: super
       difficulty: hard
-- name: Ice Cap Act 2 - Item Box 4
+- name: Item Box 4
+  zone: Ice Cap
+  act: 2
   type: 1_up
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Ice Cap Act 2 - Item Box 5
+- name: Item Box 5
+  zone: Ice Cap
+  act: 2
   type: robotnik
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Ice Cap Act 2 - Item Box 6
+- name: Item Box 6
+  zone: Ice Cap
+  act: 2
   type: robotnik
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Ice Cap Act 2 - Item Box 7
+- name: Item Box 7
+  zone: Ice Cap
+  act: 2
   type: lightning_shield
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Ice Cap Act 2 - Item Box 8
+- name: Item Box 8
+  zone: Ice Cap
+  act: 2
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Ice Cap Act 2 - Item Box 9
+- name: Item Box 9
+  zone: Ice Cap
+  act: 2
   type: super_ring
   requirements:
     - character: Sonic

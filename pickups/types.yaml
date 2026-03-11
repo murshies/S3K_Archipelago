@@ -34,3 +34,11 @@
 - name: robotnik
   is:
     - item_box
+- name: emerald
+  is:
+    - special_stage
+- name: special_stage_perfect
+  is:
+    - special_stage
+- name: special_stage
+  is: []

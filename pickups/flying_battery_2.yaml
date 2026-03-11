@@ -1,58 +1,78 @@
-- name: Flying Battery Act 2 - Big Ring 1
+- name: Big Ring 1
+  zone: Flying Battery
+  act: 2
   type: big_ring
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Flying Battery Act 2 - Big Ring 2
+- name: Big Ring 2
+  zone: Flying Battery
+  act: 2
   type: big_ring
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Flying Battery Act 2 - Boss
+- name: Boss
+  zone: Flying Battery
+  act: 2
   type: boss
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Flying Battery Act 2 - Item Box 1
+- name: Item Box 1
+  zone: Flying Battery
+  act: 2
   type: lightning_shield
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Flying Battery Act 2 - Item Box 2
+- name: Item Box 2
+  zone: Flying Battery
+  act: 2
   type: 1_up
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Flying Battery Act 2 - Item Box 3
+- name: Item Box 3
+  zone: Flying Battery
+  act: 2
   type: flame_shield
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Flying Battery Act 2 - Item Box 4
+- name: Item Box 4
+  zone: Flying Battery
+  act: 2
   type: lightning_shield
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Flying Battery Act 2 - Item Box 5
+- name: Item Box 5
+  zone: Flying Battery
+  act: 2
   type: invincibility
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Flying Battery Act 2 - Item Box 6
+- name: Item Box 6
+  zone: Flying Battery
+  act: 2
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Flying Battery Act 2 - Item Box 7
+- name: Item Box 7
+  zone: Flying Battery
+  act: 2
   type: super_ring
   requirements:
     - character: Sonic

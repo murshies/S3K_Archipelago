@@ -1,103 +1,139 @@
-- name: Angel Island Act 1 - Big Ring 1
+- name: Big Ring 1
+  zone: Angel Island
+  act: 1
   type: big_ring
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Angel Island Act 1 - Big Ring 2
+- name: Big Ring 2
+  zone: Angel Island
+  act: 1
   type: big_ring
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Angel Island Act 1 - Miniboss
+- name: Miniboss
+  zone: Angel Island
+  act: 1
   type: miniboss
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Angel Island Act 1 - Item Box 1
+- name: Item Box 1
+  zone: Angel Island
+  act: 1
   type: power_sneakers
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Angel Island Act 1 - Item Box 2
+- name: Item Box 2
+  zone: Angel Island
+  act: 1
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Angel Island Act 1 - Item Box 3
+- name: Item Box 3
+  zone: Angel Island
+  act: 1
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Angel Island Act 1 - Item Box 4
+- name: Item Box 4
+  zone: Angel Island
+  act: 1
   type: flame_shield
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Angel Island Act 1 - Item Box 5
+- name: Item Box 5
+  zone: Angel Island
+  act: 1
   type: invincibility
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Angel Island Act 1 - Item Box 6
+- name: Item Box 6
+  zone: Angel Island
+  act: 1
   type: water_shield
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Angel Island Act 1 - Item Box 7
+- name: Item Box 7
+  zone: Angel Island
+  act: 1
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Angel Island Act 1 - Item Box 8
+- name: Item Box 8
+  zone: Angel Island
+  act: 1
   type: invincibility
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Angel Island Act 1 - Item Box 9
+- name: Item Box 9
+  zone: Angel Island
+  act: 1
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Angel Island Act 1 - Item Box 10
+- name: Item Box 10
+  zone: Angel Island
+  act: 1
   type: 1_up
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Angel Island Act 1 - Item Box 11
+- name: Item Box 11
+  zone: Angel Island
+  act: 1
   type: super_ring
   requirements:
     - character: Sonic
       super_state: hyper
     - character: Tails
-- name: Angel Island Act 1 - Item Box 12
+- name: Item Box 12
+  zone: Angel Island
+  act: 1
   type: invincibility
   requirements:
     - character: Tails
-- name: Angel Island Act 1 - Item Box 13
+- name: Item Box 13
+  zone: Angel Island
+  act: 1
   type: lightning_shield
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Angel Island Act 1 - Item Box 14
+- name: Item Box 14
+  zone: Angel Island
+  act: 1
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Angel Island Act 1 - Item Box 15
+- name: Item Box 15
+  zone: Angel Island
+  act: 1
   type: flame_shield
   requirements:
     - character: Sonic

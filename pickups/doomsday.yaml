@@ -1,4 +1,5 @@
-- name: Doomsday - Boss
+- name: Boss
+  zone: Doomsday
   type: boss
   requirements:
     - character: Sonic

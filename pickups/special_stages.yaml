@@ -1,220 +1,224 @@
-- name: Big Ring 1
-  zone: Mushroom Hill
-  act: 2
-  type: big_ring
+- name: Emerald
+  zone: Special Stage
+  act: 1
+  type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Big Ring 2
-  zone: Mushroom Hill
-  act: 2
-  type: big_ring
+- name: Perfect
+  zone: Special Stage
+  act: 1
+  type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Big Ring 3
-  zone: Mushroom Hill
+- name: Emerald
+  zone: Special Stage
   act: 2
-  type: big_ring
+  type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Big Ring 4
-  zone: Mushroom Hill
+- name: Perfect
+  zone: Special Stage
   act: 2
-  type: big_ring
+  type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Big Ring 5
-  zone: Mushroom Hill
-  act: 2
-  type: big_ring
-  requirements:
-    - character: Knuckles
-- name: Big Ring 6
-  zone: Mushroom Hill
-  act: 2
-  type: big_ring
-  requirements:
-    - character: Knuckles
-- name: Boss
-  zone: Mushroom Hill
-  act: 2
-  type: boss
+- name: Emerald
+  zone: Special Stage
+  act: 3
+  type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 1
-  zone: Mushroom Hill
-  act: 2
-  type: invincibility
+- name: Perfect
+  zone: Special Stage
+  act: 3
+  type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 2
-  zone: Mushroom Hill
-  act: 2
-  type: water_shield
+- name: Emerald
+  zone: Special Stage
+  act: 4
+  type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 3
-  zone: Mushroom Hill
-  act: 2
-  type: super_ring
+- name: Perfect
+  zone: Special Stage
+  act: 4
+  type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 4
-  zone: Mushroom Hill
-  act: 2
-  type: super_ring
+- name: Emerald
+  zone: Special Stage
+  act: 5
+  type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 5
-  zone: Mushroom Hill
-  act: 2
-  type: super_ring
+- name: Perfect
+  zone: Special Stage
+  act: 5
+  type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 6
-  zone: Mushroom Hill
-  act: 2
-  type: super_ring
+- name: Emerald
+  zone: Special Stage
+  act: 6
+  type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 7
-  zone: Mushroom Hill
-  act: 2
-  type: super_ring
+- name: Perfect
+  zone: Special Stage
+  act: 6
+  type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 8
-  zone: Mushroom Hill
-  act: 2
-  type: super_ring
+- name: Emerald
+  zone: Special Stage
+  act: 7
+  type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 9
-  zone: Mushroom Hill
-  act: 2
-  type: super_ring
+- name: Perfect
+  zone: Special Stage
+  act: 7
+  type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 10
-  zone: Mushroom Hill
-  act: 2
-  type: power_sneakers
+- name: Emerald
+  zone: Special Stage
+  act: 8
+  type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 11
-  zone: Mushroom Hill
-  act: 2
-  type: super_ring
+- name: Perfect
+  zone: Special Stage
+  act: 8
+  type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 12
-  zone: Mushroom Hill
-  act: 2
-  type: flame_shield
+- name: Emerald
+  zone: Special Stage
+  act: 9
+  type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 13
-  zone: Mushroom Hill
-  act: 2
-  type: 1_up
+- name: Perfect
+  zone: Special Stage
+  act: 9
+  type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 14
-  zone: Mushroom Hill
-  act: 2
-  type: water_shield
+- name: Emerald
+  zone: Special Stage
+  act: 10
+  type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 15
-  zone: Mushroom Hill
-  act: 2
-  type: lightning_shield
+- name: Perfect
+  zone: Special Stage
+  act: 10
+  type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 16
-  zone: Mushroom Hill
-  act: 2
-  type: flame_shield
+- name: Emerald
+  zone: Special Stage
+  act: 11
+  type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 17
-  zone: Mushroom Hill
-  act: 2
-  type: lightning_shield
+- name: Perfect
+  zone: Special Stage
+  act: 11
+  type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 18
-  zone: Mushroom Hill
-  act: 2
-  type: flame_shield
+- name: Emerald
+  zone: Special Stage
+  act: 12
+  type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 19
-  zone: Mushroom Hill
-  act: 2
-  type: invincibility
+- name: Perfect
+  zone: Special Stage
+  act: 12
+  type: special_stage_perfect
   requirements:
+    - character: Sonic
+    - character: Tails
     - character: Knuckles
-- name: Item Box 20
-  zone: Mushroom Hill
-  act: 2
-  type: super_ring
+- name: Emerald
+  zone: Special Stage
+  act: 13
+  type: emerald
   requirements:
+    - character: Sonic
+    - character: Tails
     - character: Knuckles
-- name: Item Box 21
-  zone: Mushroom Hill
-  act: 2
-  type: invincibility
+- name: Perfect
+  zone: Special Stage
+  act: 13
+  type: special_stage_perfect
   requirements:
+    - character: Sonic
+    - character: Tails
     - character: Knuckles
-- name: Item Box 22
-  zone: Mushroom Hill
-  act: 2
-  type: super_ring
+- name: Emerald
+  zone: Special Stage
+  act: 14
+  type: emerald
   requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Perfect
+  zone: Special Stage
+  act: 14
+  type: special_stage_perfect
+  requirements:
+    - character: Sonic
+    - character: Tails
     - character: Knuckles

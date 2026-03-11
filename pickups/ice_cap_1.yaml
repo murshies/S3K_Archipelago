@@ -1,34 +1,46 @@
-- name: Ice Cap Act 1 - Big Ring 1
+- name: Big Ring 1
+  zone: Ice Cap
+  act: 1
   type: big_ring
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Ice Cap Act 1 - Big Ring 2
+- name: Big Ring 2
+  zone: Ice Cap
+  act: 1
   type: big_ring
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Ice Cap Act 1 - Miniboss
+- name: Miniboss
+  zone: Ice Cap
+  act: 1
   type: miniboss
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Ice Cap Act 1 - Item Box 1
+- name: Item Box 1
+  zone: Ice Cap
+  act: 1
   type: lightning_shield
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Ice Cap Act 1 - Item Box 2
+- name: Item Box 2
+  zone: Ice Cap
+  act: 1
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Ice Cap Act 1 - Item Box 3
+- name: Item Box 3
+  zone: Ice Cap
+  act: 1
   type: invincibility
   requirements:
     - character: Sonic
@@ -40,7 +52,9 @@
       # glide into the ice slope below it, and keep jumping and gliding until
       # you reach the ground with this item box.
       difficulty: hard
-- name: Ice Cap Act 1 - Item Box 4
+- name: Item Box 4
+  zone: Ice Cap
+  act: 1
   type: lightning_shield
   requirements:
     - character: Knuckles

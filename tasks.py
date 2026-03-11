@@ -1,10 +1,29 @@
 from dataclasses import dataclass
 from invoke import task
 import jsonschema
+import io
 import os
 import typing
 import yaml
 
+
+ZONE_ORDER = (
+    'Angel Island',
+    'Hydrocity',
+    'Marble Garden',
+    'Carnival Night',
+    'Ice Cap',
+    'Launch Base',
+    'Mushroom Hill',
+    'Flying Battery',
+    'Sandopolis',
+    'Lava Reef',
+    'Hidden Palace',
+    'Sky Sanctuary',
+    'Death Egg',
+    'Doomsday',
+    'Special Stage'
+)
 
 class InvalidPickupType(Exception):
     type_name: str
@@ -79,8 +98,20 @@ class PickupRequirement:
 @dataclass
 class Pickup:
     name: str
+    zone: str
+    act: typing.Optional[int]
     pickup_type: str
     requirements: list[PickupRequirement]
+
+    @property
+    def display_name(self) -> str:
+        if not self.act:
+            act_str = ''
+        elif self.zone == 'Special Stage':
+            act_str = f' {self.act}'
+        else:
+            act_str = f' Act {self.act}'
+        return f'{self.zone}{act_str} - {self.name}'
 
 
 class PickupSet:
@@ -102,6 +133,14 @@ class PickupSet:
                 'type': 'object',
                 'properties': {
                     'name': {'type': 'string'},
+                    'zone': {
+                        'type': 'string',
+                        'enum': list(ZONE_ORDER)
+                    },
+                    'act': {
+                        'type': ['integer', 'null'],
+                        'default': None
+                    },
                     'type': {
                         'type': 'string',
                         'enum': list(types.all_type_names)
@@ -128,7 +167,7 @@ class PickupSet:
                         }
                     }
                 },
-                'required': ['name', 'type', 'requirements'],
+                'required': ['name', 'zone', 'type', 'requirements'],
                 'additionalProperties': False
             }
         }
@@ -140,6 +179,8 @@ class PickupSet:
             for entry in data:
                 pickups.append(Pickup(
                     name=entry['name'],
+                    zone=entry['zone'],
+                    act=entry.get('act'),
                     pickup_type=entry['type'],
                     requirements=[
                         PickupRequirement(
@@ -170,4 +211,8 @@ def item_summary(c):
     import pprint
     pprint.pprint(pickup_def_files)
     pickup_set = PickupSet.from_files(pickup_def_files, types)
+    for pickup in pickup_set._pickups:
+        print(pickup.display_name)
     print(len(pickup_set._pickups))
+    doc = io.StringIO()
+    doc.write('# Items Per Zone')

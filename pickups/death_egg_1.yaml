@@ -1,84 +1,116 @@
 # Note: There are three item boxes in the wall on the first "treadmill"
 # platform that rises up. There are spikes on the wall blocking the path into
 # the area with these pickups, making them impossible.
-- name: Death Egg Act 1 - Item Box 1
+- name: Item Box 1
+  zone: Death Egg
+  act: 1
   type: water_shield
   requirements:
     - character: Sonic
     - character: Tails
-- name: Death Egg Act 1 - Item Box 2
+- name: Item Box 2
+  zone: Death Egg
+  act: 1
   type: lightning_shield
   requirements:
     - character: Sonic
     - character: Tails
-- name: Death Egg Act 1 - Item Box 3
+- name: Item Box 3
+  zone: Death Egg
+  act: 1
   type: lightning_shield
   requirements:
     - character: Sonic
     - character: Tails
-- name: Death Egg Act 1 - Item Box 4
+- name: Item Box 4
+  zone: Death Egg
+  act: 1
   type: lightning_shield
   requirements:
     # Sonic can use the lightning shield from item box 3 to double jump into
     # the wall to get to this one.
     - character: Sonic
     - character: Tails
-- name: Death Egg Act 1 - Item Box 5
+- name: Item Box 5
+  zone: Death Egg
+  act: 1
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Death Egg Act 1 - Item Box 6
+- name: Item Box 6
+  zone: Death Egg
+  act: 1
   type: flame_shield
   requirements:
     - character: Sonic
     - character: Tails
-- name: Death Egg Act 1 - Item Box 7
+- name: Item Box 7
+  zone: Death Egg
+  act: 1
   type: lightning_shield
   requirements:
     - character: Sonic
     - character: Tails
-- name: Death Egg Act 1 - Item Box 8
+- name: Item Box 8
+  zone: Death Egg
+  act: 1
   type: water_shield
   requirements:
     - character: Sonic
     - character: Tails
-- name: Death Egg Act 1 - Item Box 9
+- name: Item Box 9
+  zone: Death Egg
+  act: 1
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Death Egg Act 1 - Item Box 10
+- name: Item Box 10
+  zone: Death Egg
+  act: 1
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Death Egg Act 1 - Item Box 11
+- name: Item Box 11
+  zone: Death Egg
+  act: 1
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Death Egg Act 1 - Item Box 12
+- name: Item Box 12
+  zone: Death Egg
+  act: 1
   type: lightning_shield
   requirements:
     - character: Sonic
     - character: Tails
-- name: Death Egg Act 1 - Item Box 13
+- name: Item Box 13
+  zone: Death Egg
+  act: 1
   type: invincibility
   requirements:
     - character: Sonic
     - character: Tails
-- name: Death Egg Act 1 - Item Box 14
+- name: Item Box 14
+  zone: Death Egg
+  act: 1
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Death Egg Act 1 - Item Box 15
+- name: Item Box 15
+  zone: Death Egg
+  act: 1
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
-- name: Death Egg Act 1 - Item Box 16
+- name: Item Box 16
+  zone: Death Egg
+  act: 1
   type: super_ring
   requirements:
     - character: Sonic
