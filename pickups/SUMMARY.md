@@ -150,6 +150,8 @@
 |Death Egg|Total|39|
 |Doomsday|Boss|1|
 |Doomsday|Total|1|
+|Special Stage|Special Stage Emerald|14|
+|Special Stage|Special Stage Perfect|14|
 |Special Stage|Total|28|
 # Total Item Counts
 | Pickup Type | Count |
@@ -166,4 +168,6 @@
 |Robotnik Item Box|7|
 |Power Sneakers|10|
 |Total Item Boxes|496|
+|Special Stage Emerald|14|
+|Special Stage Perfect|14|
 |Total|624|
