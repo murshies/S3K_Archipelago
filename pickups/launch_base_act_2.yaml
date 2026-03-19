@@ -35,7 +35,7 @@
 - name: Boss
   zone: Launch Base
   act: 2
-  type: big_ring
+  type: boss
   requirements:
     - character: Sonic
     - character: Tails

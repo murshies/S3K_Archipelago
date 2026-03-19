@@ -1,8 +1,8 @@
 # Total Item Counts
 | Pickup Type | Count |
 |-|-|
-|Big Ring|78|
-|Boss|22|
+|Big Ring|77|
+|Boss|23|
 |1 UP|47|
 |Super Ring (10 rings)|245|
 |Lightning Shield|58|
@@ -76,8 +76,8 @@
 |Ice Cap|Robotnik Item Box|2|
 |Ice Cap|Total Item Boxes|13|
 |Ice Cap|Total|20|
-|Launch Base|Big Ring|9|
-|Launch Base|Boss|1|
+|Launch Base|Big Ring|8|
+|Launch Base|Boss|2|
 |Launch Base|1 UP|1|
 |Launch Base|Super Ring (10 rings)|29|
 |Launch Base|Lightning Shield|2|
