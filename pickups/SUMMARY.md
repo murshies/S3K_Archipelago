@@ -15,7 +15,8 @@
 |Total Item Boxes|496|
 |Special Stage Emerald|14|
 |Special Stage Perfect|14|
-|Total|624|# Items Per Zone
+|Total|624|
+# Items Per Zone
 | Zone | Pickup Type | Count |
 |-|-|-|
 |Angel Island|Big Ring|4|
