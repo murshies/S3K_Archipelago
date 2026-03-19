@@ -194,11 +194,15 @@ class PickupSet:
                 ))
         return PickupSet(pickups, types)
 
-    def all_with_type(self, type_name: str) -> list[Pickup]:
+    @property
+    def all_pickups(self) -> list[Pickup]:
+        return self._pickups
+
+    def filter_items(self, *filters: list[typing.Callable]) -> list[Pickup]:
         return [
             pickup
             for pickup in self._pickups
-            if type_name in self._types.types_for(pickup.pickup_type)
+            if all(filt(pickup, self._types) for filt in filters)
         ]
 
 
@@ -209,11 +213,52 @@ def item_summary(c):
         os.path.join('pickups', f) for f in os.listdir('pickups')
         if f.endswith('.yaml') and f != 'types.yaml'
     ]
-    import pprint
-    pprint.pprint(pickup_def_files)
     pickup_set = PickupSet.from_files(pickup_def_files, types)
-    for pickup in pickup_set._pickups:
-        print(pickup.display_name)
-    print(len(pickup_set._pickups))
+    zone_pickup_order = (
+        ('big_ring', 'Big Ring'),
+        ('boss', 'Boss'),
+        ('1_up', '1 UP'),
+        ('super_ring', 'Super Ring (10 rings)'),
+        ('lightning_shield', 'Lightning Shield'),
+        ('flame_shield', 'Flame Shield'),
+        ('water_shield', 'Water Shield'),
+        ('shield', 'All Shields'),
+        ('invincibility', 'Invincibility'),
+        ('robotnik', 'Robotnik Item Box'),
+        ('power_sneakers', 'Power Sneakers'),
+        ('item_box', 'Total Item Boxes'),
+        ('emerald', 'Special Stage Emerald'),
+        ('special_stage_perfect', 'Special Stage Perfect')
+    )
     doc = io.StringIO()
-    doc.write('# Items Per Zone')
+
+    doc.write('# Total Item Counts\n')
+    doc.write('| Pickup Type | Count |\n')
+    doc.write('|-|-|\n')
+    for pickup_type, pickup_display in zone_pickup_order:
+        matching = pickup_set.filter_items(
+            lambda p, ts: pickup_type in ts.types_for(p.pickup_type)
+        )
+        doc.write(f'|{pickup_display}|{len(matching)}|\n')
+    doc.write(f'|Total|{len(pickup_set.all_pickups)}|\n')
+
+    doc.write('# Items Per Zone\n')
+    doc.write('| Zone | Pickup Type | Count |\n')
+    doc.write('|-|-|-|\n')
+    for zone in ZONE_ORDER:
+        for pickup_type, pickup_display in zone_pickup_order:
+            matching = pickup_set.filter_items(
+                lambda p, ts: pickup_type in ts.types_for(p.pickup_type),
+                lambda p, ts: zone == p.zone
+            )
+            if len(matching) > 0:
+                doc.write(f'|{zone}|{pickup_display}|{len(matching)}|\n')
+        # Then get the total number of pickups for the zone
+        zone_matching = pickup_set.filter_items(
+            lambda p, ts: zone == p.zone
+        )
+        doc.write(f'|{zone}|Total|{len(zone_matching)}|\n')
+
+    with open('pickups/SUMMARY.md', 'w') as f:
+        doc.seek(0)
+        f.write(doc.read())
