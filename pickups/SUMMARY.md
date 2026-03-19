@@ -151,3 +151,19 @@
 |Doomsday|Boss|1|
 |Doomsday|Total|1|
 |Special Stage|Total|28|
+# Total Item Counts
+| Pickup Type | Count |
+|-|-|
+|Big Ring|78|
+|Boss|22|
+|1 UP|47|
+|Super Ring (10 rings)|245|
+|Lightning Shield|58|
+|Flame Shield|47|
+|Water Shield|37|
+|All Shields|142|
+|Invincibility|45|
+|Robotnik Item Box|7|
+|Power Sneakers|10|
+|Total Item Boxes|496|
+|Total|624|
