@@ -1,6 +1,6 @@
 # Items Per Zone
 | Zone | Pickup Type | Count |
-|-|-|
+|-|-|-|
 |Angel Island|Big Ring|4|
 |Angel Island|Boss|2|
 |Angel Island|1 UP|5|
