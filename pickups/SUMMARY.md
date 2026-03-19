@@ -2,7 +2,7 @@
 | Pickup Type | Count |
 |-|-|
 |Big Ring|77|
-|Boss|23|
+|Boss|24|
 |1 UP|47|
 |Super Ring (10 rings)|245|
 |Lightning Shield|58|
@@ -15,7 +15,7 @@
 |Total Item Boxes|496|
 |Special Stage Emerald|14|
 |Special Stage Perfect|14|
-|Total|624|
+|Total|625|
 # Items Per Zone
 | Zone | Pickup Type | Count |
 |-|-|-|
@@ -155,7 +155,7 @@
 |Sky Sanctuary|Invincibility|2|
 |Sky Sanctuary|Total Item Boxes|16|
 |Sky Sanctuary|Total|17|
-|Death Egg|Boss|1|
+|Death Egg|Boss|2|
 |Death Egg|1 UP|2|
 |Death Egg|Super Ring (10 rings)|20|
 |Death Egg|Lightning Shield|8|
@@ -165,7 +165,7 @@
 |Death Egg|Invincibility|1|
 |Death Egg|Robotnik Item Box|1|
 |Death Egg|Total Item Boxes|38|
-|Death Egg|Total|39|
+|Death Egg|Total|40|
 |Doomsday|Boss|1|
 |Doomsday|Total|1|
 |Special Stage|Special Stage Emerald|14|
