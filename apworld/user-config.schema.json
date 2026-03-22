@@ -1,0 +1,157 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://github.com/murshies/S3K_Archipelago/apworld/user-config.schema.json",
+    "title": "Schema for Sonic 3 & Knuckles Archipelago user configuration files",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "The user's name for the game. This must match the filename."
+        },
+        "game": {
+            "type": "string",
+            "description": "The name of the game. Must be 'Sonic 3 & Knuckles' for this game.",
+            "enum": ["Sonic 3 & Knuckles"]
+        },
+        "description": {
+            "type": "string",
+            "description": "Description of this configuration"
+        },
+        "Sonic 3 & Knuckles": {"$ref": "#/definitions/game_config"}
+    },
+    "definitions": {
+        "game_config": {
+            "type": "object",
+            "description": "Game settings",
+            "additionalProperties": false,
+            "properties": {
+                "goal": {"$ref": "#/definitions/goal"},
+                "death_link": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "logic_difficulty": {
+                    "type": "string",
+                    "description": "The logic difficulty",
+                    "default": "standard",
+                    "enum": [
+                        "standard",
+                        "hard"
+                    ]
+                },
+                "zone_unlocks": {
+                    "type": "string",
+                    "description": "Determines if/how zones and characters are unlocked.",
+                    "default": "all_unlocked",
+                    "enum": [
+                        "all_unlocked",
+                        "per_zone",
+                        "per_character"
+                    ]
+                },
+                "enabled_checks": {"$ref": "#/definitions/enabled_checks"}
+            }
+        },
+        "goal": {
+            "type": "object",
+            "description": "Goal definition",
+            "additionalProperties": false,
+            "properties": {
+                "big_rings": {"$ref": "#/definitions/goal_target"},
+                "chaos_emeralds": {"$ref": "#/definitions/goal_target"},
+                "super_emeralds": {"$ref": "#/definitions/goal_target"}
+            }
+        },
+        "big_ring_goal": {
+            "type": ["object", "null"],
+            "description": "Definition for big ring goal",
+            "additionalProperties": false,
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether or not this goal is enabled. Not specifying this goal at all also disables it.",
+                    "default": true
+                },
+                "checks_to_complete": {
+                    "type": "integer",
+                    "description": "The number of big ring checks to complete this goal",
+                    "minimum": 1,
+                    "maximum": 77
+                },
+                "target": {"$ref": "#/definitions/goal_target"}
+            }
+        },
+        "goal_target": {
+            "type": ["string", "null"],
+            "description": "The sub goal for the pickup type. For example, setting 'chaos_emeralds' to 'doomsday' means that getting all seven chaos emeralds unlocks. Not specifying this goal at all disables it.",
+            "additionalProperties": false,
+            "enum": [
+                "doomsday",
+                "knuckles_sky_sanctuary",
+                "death_egg"
+            ]
+        },
+        "enabled_checks": {
+            "type": "object",
+            "description": "The list of checks which are enabled/disabled",
+            "additionalProperties": false,
+            "properties": {
+                "bosses": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Toggle minibosses and bosses as a check"
+                },
+                "big_rings": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Toggle big rings as a check"
+                },
+                "special_stage_emeralds": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Toggle special stage emeralds (completion of stage) as a check"
+                },
+                "special_stage_perfects": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Toggle getting a perfect in each special stage as a check"
+                },
+                "lightning_shields": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Toggle lightning shield item boxes as a check"
+                },
+                "flame_shields": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Toggle flame shield item boxes as a check"
+                },
+                "water_shields": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Toggle water shield item boxes as a check"
+                },
+                "power_sneakers": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Toggle power sneaker item boxes as a check"
+                },
+                "1_ups": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Toggle 1 up item boxes as a check"
+                },
+                "super_rings": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Toggle super ring item boxes (10 rings) as a check"
+                },
+                "robotnik_item_boxes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Toggle robotnik item boxes as a check"
+                }
+            }
+        }
+    }
+}
