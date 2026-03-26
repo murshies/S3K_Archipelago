@@ -15,10 +15,12 @@
         },
         "description": {
             "type": "string",
-            "description": "Description of this configuration"
+            "description": "Description of this configuration",
+            "default": "Sonic 3 & Knuckles Archipelago user configuration"
         },
         "Sonic 3 & Knuckles": {"$ref": "#/definitions/game_config"}
     },
+    "required": ["name", "game", "Sonic 3 & Knuckles"],
     "definitions": {
         "game_config": {
             "type": "object",
@@ -50,22 +52,29 @@
                     ]
                 },
                 "enabled_checks": {"$ref": "#/definitions/enabled_checks"}
-            }
+            },
+            "required": ["goal"]
         },
         "goal": {
             "type": "object",
             "description": "Goal definition",
             "additionalProperties": false,
             "properties": {
-                "big_rings": {"$ref": "#/definitions/goal_target"},
+                "big_rings": {"$ref": "#/definitions/big_ring_goal"},
                 "chaos_emeralds": {"$ref": "#/definitions/goal_target"},
                 "super_emeralds": {"$ref": "#/definitions/goal_target"}
-            }
+            },
+            "anyOf": [
+                {"required": ["big_rings"]},
+                {"required": ["chaos_emeralds"]},
+                {"required": ["super_emeralds"]}
+            ]
         },
         "big_ring_goal": {
             "type": ["object", "null"],
             "description": "Definition for big ring goal",
             "additionalProperties": false,
+            "default": null,
             "properties": {
                 "enabled": {
                     "type": "boolean",
@@ -79,12 +88,14 @@
                     "maximum": 77
                 },
                 "target": {"$ref": "#/definitions/goal_target"}
-            }
+            },
+            "required": ["checks_to_complete", "target"]
         },
         "goal_target": {
             "type": ["string", "null"],
             "description": "The sub goal for the pickup type. For example, setting 'chaos_emeralds' to 'doomsday' means that getting all seven chaos emeralds unlocks. Not specifying this goal at all disables it.",
             "additionalProperties": false,
+            "default": null,
             "enum": [
                 "doomsday",
                 "knuckles_sky_sanctuary",
