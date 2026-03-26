@@ -11,7 +11,7 @@ Sonic 3 & Knuckles:
     super_emeralds: doomsday
   death_link: true
   logic_difficulty: standard
-  zone_unlocks: all_characters
+  zone_unlocks: all_unlocked
   enabled_checks:
     bosses: true
     big_rings: true
