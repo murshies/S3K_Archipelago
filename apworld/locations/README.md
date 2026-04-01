@@ -1,0 +1,5 @@
+This directory contain information about all of the locations that are considered as part of this Archipelago. Each act of each zone has its own YAML file containing the list of locations. Additionally, the file `types.yaml` contains type hierarchy information for each location type. This will allow the apworld to group locations into broader categories. For example, the lightning, flame, and water shields have a super type "shield", which in turn has the super type "item_box". The apworld could use this information to allow options such as "enable shield boxes as locations" or more broadly "enable item boxes as locations".
+
+There are also maps of each act, which is annotated with numbers to illustrate where each location is in the act. These maps were originally pulled from https://info.sonicretro.org/Sonic_the_Hedgehog_3_%26_Knuckles/Maps and can be found in the `location_maps` directory of this repo.
+
+The file `LOCATION_SUMMARY.md` at the root of this repo contains a tabulated summary of the number of each location type, both for game totals and per zone.

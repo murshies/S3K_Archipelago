@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from invoke import task
+import json
 import jsonschema
 import io
 import os
@@ -26,7 +27,7 @@ ZONE_ORDER = (
 )
 
 
-class InvalidPickupType(Exception):
+class InvalidLocationType(Exception):
     type_name: str
     valid_types: set[str]
 
@@ -38,18 +39,18 @@ class InvalidPickupType(Exception):
         return f'"{self.type_name}" is not valid. Valid types are: {self.valid_types}'
 
 
-class PickupTypeSet:
-    _pickup_types: dict[str, list[str]]
+class LocationTypeSet:
+    _location_types: dict[str, list[str]]
 
-    def __init__(self, pickup_types: dict[str, list[str]]) -> typing.Self:
-        self._pickup_types = pickup_types
+    def __init__(self, location_types: dict[str, list[str]]) -> typing.Self:
+        self._location_types = location_types
 
     @staticmethod
     def from_file(filename: str) -> typing.Self:
         file_schema = {
             '$schema': 'https://json-schema.org/draft/2020-12/schema',
             '$id': 'https://github.com/murshies/S3K_Archipelago/types.schema.json',
-            'title': 'Schema for the pickups type definitions in pickups/types.yaml',
+            'title': 'Schema for the location type definitions in apworld/locations/types.yaml',
             'type': 'array',
             'items': {
                 'type': 'object',
@@ -69,40 +70,40 @@ class PickupTypeSet:
         with open(filename) as f:
             data = yaml.safe_load(f)
             jsonschema.validate(data, file_schema)
-        pickup_types = {}
+        location_types = {}
         for entry in data:
-            pickup_types[entry['name']] = entry['is']
+            location_types[entry['name']] = entry['is']
 
-        return PickupTypeSet(pickup_types)
+        return LocationTypeSet(location_types)
 
     @property
     def all_type_names(self) -> set[str]:
-        return set(self._pickup_types.keys())
+        return set(self._location_types.keys())
 
     def types_for(self, type_name: str) -> set[str]:
-        if type_name not in self._pickup_types:
-            raise InvalidPickupType(type_name, self.all_type_names)
+        if type_name not in self._location_types:
+            raise InvalidLocationType(type_name, self.all_type_names)
         types = {type_name}
-        for subtype_name in self._pickup_types[type_name]:
+        for subtype_name in self._location_types[type_name]:
             types.add(subtype_name)
             types |= self.types_for(subtype_name)
         return types
 
 
 @dataclass
-class PickupRequirement:
+class LocationRequirement:
     character: str
     super_state: str
     difficulty: str
 
 
 @dataclass
-class Pickup:
+class Location:
     name: str
     zone: str
     act: typing.Optional[int]
-    pickup_type: str
-    requirements: list[PickupRequirement]
+    location_type: str
+    requirements: list[LocationRequirement]
 
     @property
     def display_name(self) -> str:
@@ -115,20 +116,20 @@ class Pickup:
         return f'{self.zone}{act_str} - {self.name}'
 
 
-class PickupSet:
-    _pickups: list[Pickup]
-    _types: PickupTypeSet
+class LocationSet:
+    _locations: list[Location]
+    _types: LocationTypeSet
 
-    def __init__(self, pickups: list[Pickup], types: PickupTypeSet) -> typing.Self:
-        self._pickups = pickups
+    def __init__(self, locations: list[Location], types: LocationTypeSet) -> typing.Self:
+        self._locations = locations
         self._types = types
 
     @staticmethod
-    def from_files(filenames: list[str], types: PickupTypeSet) -> typing.Self:
+    def from_files(filenames: list[str], types: LocationTypeSet) -> typing.Self:
         file_schema = {
             '$schema': 'https://json-schema.org/draft/2020-12/schema',
-            '$id': 'https://github.com/murshies/S3K_Archipelago/pickups.schema.json',
-            'title': 'Schema for the pickups yaml file for a single act',
+            '$id': 'https://github.com/murshies/S3K_Archipelago/locations.schema.json',
+            'title': 'Schema for the locations yaml file for a single act',
             'type': 'array',
             'items': {
                 'type': 'object',
@@ -172,19 +173,19 @@ class PickupSet:
                 'additionalProperties': False
             }
         }
-        pickups = []
+        locations = []
         for filename in filenames:
             with open(filename) as f:
                 data = yaml.safe_load(f)
                 jsonschema.validate(data, file_schema)
             for entry in data:
-                pickups.append(Pickup(
+                locations.append(Location(
                     name=entry['name'],
                     zone=entry['zone'],
                     act=entry.get('act'),
-                    pickup_type=entry['type'],
+                    location_type=entry['type'],
                     requirements=[
-                        PickupRequirement(
+                        LocationRequirement(
                             character=req.get('character'),
                             super_state=req.get('super_state'),
                             difficulty=req.get('difficulty', 'normal'),
@@ -192,29 +193,30 @@ class PickupSet:
                         for req in entry['requirements']
                     ]
                 ))
-        return PickupSet(pickups, types)
+        return LocationSet(locations, types)
 
     @property
-    def all_pickups(self) -> list[Pickup]:
-        return self._pickups
+    def all_locations(self) -> list[Location]:
+        return self._locations
 
-    def filter_items(self, *filters: list[typing.Callable]) -> list[Pickup]:
+    def filter_items(self, *filters: list[typing.Callable]) -> list[Location]:
         return [
-            pickup
-            for pickup in self._pickups
-            if all(filt(pickup, self._types) for filt in filters)
+            location
+            for location in self._locations
+            if all(filt(location, self._types) for filt in filters)
         ]
 
 
 @task
-def item_summary(c):
-    types = PickupTypeSet.from_file(os.path.join('pickups', 'types.yaml'))
-    pickup_def_files = [
-        os.path.join('pickups', f) for f in os.listdir('pickups')
+def location_summary(c):
+    types = LocationTypeSet.from_file(os.path.join('apworld', 'locations', 'types.yaml'))
+    base_dir = os.path.join('apworld', 'locations')
+    location_def_files = [
+        os.path.join(base_dir, f) for f in os.listdir(base_dir)
         if f.endswith('.yaml') and f != 'types.yaml'
     ]
-    pickup_set = PickupSet.from_files(pickup_def_files, types)
-    zone_pickup_order = (
+    location_set = LocationSet.from_files(location_def_files, types)
+    zone_location_order = (
         ('big_ring', 'Big Ring'),
         ('boss', 'Boss'),
         ('1_up', '1 UP'),
@@ -233,32 +235,43 @@ def item_summary(c):
     doc = io.StringIO()
 
     doc.write('# Total Item Counts\n')
-    doc.write('| Pickup Type | Count |\n')
+    doc.write('| Location Type | Count |\n')
     doc.write('|-|-|\n')
-    for pickup_type, pickup_display in zone_pickup_order:
-        matching = pickup_set.filter_items(
-            lambda p, ts: pickup_type in ts.types_for(p.pickup_type)
+    for location_type, location_display in zone_location_order:
+        matching = location_set.filter_items(
+            lambda p, ts: location_type in ts.types_for(p.location_type)
         )
-        doc.write(f'|{pickup_display}|{len(matching)}|\n')
-    doc.write(f'|Total|{len(pickup_set.all_pickups)}|\n')
+        doc.write(f'|{location_display}|{len(matching)}|\n')
+    doc.write(f'|Total|{len(location_set.all_locations)}|\n')
 
     doc.write('# Items Per Zone\n')
-    doc.write('| Zone | Pickup Type | Count |\n')
+    doc.write('| Zone | Location Type | Count |\n')
     doc.write('|-|-|-|\n')
     for zone in ZONE_ORDER:
-        for pickup_type, pickup_display in zone_pickup_order:
-            matching = pickup_set.filter_items(
-                lambda p, ts: pickup_type in ts.types_for(p.pickup_type),
+        for location_type, location_display in zone_location_order:
+            matching = location_set.filter_items(
+                lambda p, ts: location_type in ts.types_for(p.location_type),
                 lambda p, ts: zone == p.zone
             )
             if len(matching) > 0:
-                doc.write(f'|{zone}|{pickup_display}|{len(matching)}|\n')
-        # Then get the total number of pickups for the zone
-        zone_matching = pickup_set.filter_items(
+                doc.write(f'|{zone}|{location_display}|{len(matching)}|\n')
+        # Then get the total number of locations for the zone
+        zone_matching = location_set.filter_items(
             lambda p, ts: zone == p.zone
         )
         doc.write(f'|{zone}|Total|{len(zone_matching)}|\n')
 
-    with open('pickups/SUMMARY.md', 'w') as f:
+    with open('LOCATION_SUMMARY.md', 'w') as f:
         doc.seek(0)
         f.write(doc.read())
+
+
+@task
+def validate_user_config(c):
+    with open('apworld/example.yaml', 'r') as f:
+        cfg = yaml.safe_load(f)
+    with open('apworld/user-config.schema.json', 'r') as f:
+        schema = json.load(f)
+    jsonschema.validate(cfg, schema)
+    import pprint
+    pprint.pprint(cfg)

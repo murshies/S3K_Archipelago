@@ -1,6 +1,6 @@
 # Note: There are three item boxes in the wall on the first "treadmill"
 # platform that rises up. There are spikes on the wall blocking the path into
-# the area with these pickups, making them impossible.
+# the area with these locations, making them impossible.
 - name: Miniboss
   zone: Death Egg
   act: 1

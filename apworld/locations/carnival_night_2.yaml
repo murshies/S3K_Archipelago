@@ -114,7 +114,7 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
-# Starting here, these pickups are on the Sonic/Tails path. Knuckles can get
+# Starting here, these locations are on the Sonic/Tails path. Knuckles can get
 # here with some careful scaling of the first red and white pipe at the
 # beginning of the stage, jumping to the platform with the spike to the left of
 # item boxes 10-12. Therefore, everything in the Sonic/Tails path will be

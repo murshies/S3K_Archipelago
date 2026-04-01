@@ -5,14 +5,14 @@ Sonic 3 & Knuckles:
   goal:
     big_rings:
       enabled: true
-      checks_to_complete: 50
+      locations_to_complete: 50
       target: death_egg
     chaos_emeralds: knuckles_sky_sanctuary
     super_emeralds: doomsday
   death_link: true
   logic_difficulty: standard
   zone_unlocks: all_unlocked
-  enabled_checks:
+  enabled_locations:
     bosses: true
     big_rings: true
     special_stage_emeralds: true
