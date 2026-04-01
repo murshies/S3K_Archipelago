@@ -148,7 +148,7 @@
       # above item boxes 5 and 6 to this one, as well as item boxes 11 and
       # 12. To get this, Knuckles must go through the area containing item box
       # 7, go across to the platform above big ring 2, and then backtrack to
-      # these pickups. Knuckles can repeatedly glide up the sand slide to get
+      # these locations. Knuckles can repeatedly glide up the sand slide to get
       # into the area with these 10, 11, and 12.
       difficulty: hard
 - name: Item Box 11

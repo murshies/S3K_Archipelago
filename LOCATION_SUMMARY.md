@@ -1,5 +1,5 @@
 # Total Item Counts
-| Pickup Type | Count |
+| Location Type | Count |
 |-|-|
 |Big Ring|77|
 |Boss|24|
@@ -17,7 +17,7 @@
 |Special Stage Perfect|14|
 |Total|625|
 # Items Per Zone
-| Zone | Pickup Type | Count |
+| Zone | Location Type | Count |
 |-|-|-|
 |Angel Island|Big Ring|4|
 |Angel Island|Boss|2|
