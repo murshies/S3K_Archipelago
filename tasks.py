@@ -13,10 +13,10 @@ import locations
 @task
 def location_summary(c):
     types = locations.LocationTypeSet.from_file(
-        os.path.join('apworld', 'locations', 'types.yaml'))
-    base_dir = os.path.join('apworld', 'locations')
+        pathlib.Path('.') / 'apworld' / 'locations' / 'types.yaml')
+    base_dir = pathlib.Path('.') / 'apworld' / 'locations'
     location_def_files = [
-        os.path.join(base_dir, f) for f in os.listdir(base_dir)
+        base_dir / f for f in os.listdir(base_dir)
         if f.endswith('.yaml') and f != 'types.yaml'
     ]
     location_set = locations.LocationSet.from_files(location_def_files, types)
@@ -74,7 +74,8 @@ def location_summary(c):
 def item_summary(c):
     item_yaml_filename = pathlib.Path('.') / 'apworld' / 'items.yaml'
     item_set = items.ItemSet.from_file(item_yaml_filename)
-    print(item_set.all_items)
+    import pprint
+    pprint.pprint(item_set.all_items)
 
 
 @task
