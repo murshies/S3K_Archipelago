@@ -1,0 +1,335 @@
+- name: White Chaos Emerald
+  progressive_name: Progressive White Chaos Emerald
+  groups:
+    - chaos_emerald
+  progression: true
+- name: Red Chaos Emerald
+  progressive_name: Progressive Red Chaos Emerald
+  groups:
+    - chaos_emerald
+- name: Cyan Chaos Emerald
+  progressive_name: Progressive Cyan Chaos Emerald
+  groups:
+    - chaos_emerald
+- name: Purple Chaos Emerald
+  progressive_name: Progressive Purple Chaos Emerald
+  groups:
+    - chaos_emerald
+- name: Green Chaos Emerald
+  progressive_name: Progressive Green Chaos Emerald
+  groups:
+    - chaos_emerald
+- name: Yellow Chaos Emerald
+  progressive_name: Progressive Yellow Chaos Emerald
+  groups:
+    - chaos_emerald
+- name: Blue Chaos Emerald
+  progressive_name: Progressive Blue Chaos Emerald
+  groups:
+    - chaos_emerald
+- name: Master Emerald
+  progressive_name: Master Emerald Shard
+  groups:
+    - goal
+- name: Sonic
+  groups:
+    - character
+  progression: true
+- name: Tails
+  groups:
+    - character
+  progression: true
+- name: Knuckles
+  groups:
+    - character
+  progression: true
+- name: Angel Island Zone
+  groups:
+    - level
+  progression: true
+- name: Hydrocity Zone
+  groups:
+    - level
+  progression: true
+- name: Marble Garden Zone
+  groups:
+    - level
+  progression: true
+- name: Carnival Night Zone
+  groups:
+    - level
+  progression: true
+- name: Ice Cap Zone
+  groups:
+    - level
+  progression: true
+- name: Launch Base Zone
+  groups:
+    - level
+  progression: true
+- name: Mushroom Hill Zone
+  groups:
+    - level
+  progression: true
+- name: Flying Battery Zone
+  groups:
+    - level
+  progression: true
+- name: Sandopolis Zone
+  groups:
+    - level
+  progression: true
+- name: Lava Reef Zone
+  groups:
+    - level
+  progression: true
+- name: Hidden Palace Zone
+  groups:
+    - level
+  progression: true
+- name: Sky Sanctuary Zone
+  groups:
+    - level
+  progression: true
+- name: Death Egg Zone
+  groups:
+    - level
+  progression: true
+- name: Doomsday Zone
+  groups:
+    - level
+  progression: true
+- name: Angel Island Zone - Sonic
+  groups:
+    - level
+    - character
+  progression: true
+- name: Hydrocity Zone - Sonic
+  groups:
+    - level
+    - character
+  progression: true
+- name: Marble Garden Zone - Sonic
+  groups:
+    - level
+    - character
+  progression: true
+- name: Carnival Night Zone - Sonic
+  groups:
+    - level
+    - character
+  progression: true
+- name: Ice Cap Zone - Sonic
+  groups:
+    - level
+    - character
+  progression: true
+- name: Launch Base Zone - Sonic
+  groups:
+    - level
+    - character
+  progression: true
+- name: Mushroom Hill Zone - Sonic
+  groups:
+    - level
+    - character
+  progression: true
+- name: Flying Battery Zone - Sonic
+  groups:
+    - level
+    - character
+  progression: true
+- name: Sandopolis Zone - Sonic
+  groups:
+    - level
+    - character
+  progression: true
+- name: Lava Reef Zone - Sonic
+  groups:
+    - level
+    - character
+  progression: true
+- name: Hidden Palace Zone - Sonic
+  groups:
+    - level
+    - character
+  progression: true
+- name: Sky Sanctuary Zone - Sonic
+  groups:
+    - level
+    - character
+  progression: true
+- name: Death Egg Zone - Sonic
+  groups:
+    - level
+    - character
+  progression: true
+- name: Doomsday Zone - Sonic
+  groups:
+    - level
+    - character
+  progression: true
+- name: Angel Island Zone - Tails
+  groups:
+    - level
+    - character
+  progression: true
+- name: Hydrocity Zone - Tails
+  groups:
+    - level
+    - character
+  progression: true
+- name: Marble Garden Zone - Tails
+  groups:
+    - level
+    - character
+  progression: true
+- name: Carnival Night Zone - Tails
+  groups:
+    - level
+    - character
+  progression: true
+- name: Ice Cap Zone - Tails
+  groups:
+    - level
+    - character
+  progression: true
+- name: Launch Base Zone - Tails
+  groups:
+    - level
+    - character
+  progression: true
+- name: Mushroom Hill Zone - Tails
+  groups:
+    - level
+    - character
+  progression: true
+- name: Flying Battery Zone - Tails
+  groups:
+    - level
+    - character
+  progression: true
+- name: Sandopolis Zone - Tails
+  groups:
+    - level
+    - character
+  progression: true
+- name: Lava Reef Zone - Tails
+  groups:
+    - level
+    - character
+  progression: true
+- name: Hidden Palace Zone - Tails
+  groups:
+    - level
+    - character
+  progression: true
+- name: Sky Sanctuary Zone - Tails
+  groups:
+    - level
+    - character
+  progression: true
+- name: Death Egg Zone - Tails
+  groups:
+    - level
+    - character
+  progression: true
+- name: Doomsday Zone - Tails
+  groups:
+    - level
+    - character
+  progression: true
+- name: Angel Island Zone - Knuckles
+  groups:
+    - level
+    - character
+  progression: true
+- name: Hydrocity Zone - Knuckles
+  groups:
+    - level
+    - character
+  progression: true
+- name: Marble Garden Zone - Knuckles
+  groups:
+    - level
+    - character
+  progression: true
+- name: Carnival Night Zone - Knuckles
+  groups:
+    - level
+    - character
+  progression: true
+- name: Ice Cap Zone - Knuckles
+  groups:
+    - level
+    - character
+  progression: true
+- name: Launch Base Zone - Knuckles
+  groups:
+    - level
+    - character
+  progression: true
+- name: Mushroom Hill Zone - Knuckles
+  groups:
+    - level
+    - character
+  progression: true
+- name: Flying Battery Zone - Knuckles
+  groups:
+    - level
+    - character
+  progression: true
+- name: Sandopolis Zone - Knuckles
+  groups:
+    - level
+    - character
+  progression: true
+- name: Lava Reef Zone - Knuckles
+  groups:
+    - level
+    - character
+  progression: true
+- name: Hidden Palace Zone - Knuckles
+  groups:
+    - level
+    - character
+  progression: true
+- name: Sky Sanctuary Zone - Knuckles
+  groups:
+    - level
+    - character
+  progression: true
+- name: Death Egg Zone - Knuckles
+  groups:
+    - level
+    - character
+  progression: true
+- name: Doomsday Zone - Knuckles
+  groups:
+    - level
+    - character
+  progression: true
+- name: Lightning Shield
+  groups:
+    - item_box
+  filler: true
+- name: Flame Shield
+  groups:
+    - item_box
+  filler: true
+- name: Bubble Shield
+  groups:
+    - item_box
+  filler: true
+- name: Invincibility
+  groups:
+    - item_box
+  filler: true
+- name: Power Sneakers
+  groups:
+    - item_box
+  filler: true
+- name: Robotnik Trap
+  groups:
+    - item_box
+  trap: true

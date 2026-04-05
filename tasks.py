@@ -3,8 +3,10 @@ import json
 import jsonschema
 import io
 import os
+import pathlib
 import yaml
 
+import items
 import locations
 
 
@@ -40,7 +42,7 @@ def location_summary(c):
     doc.write('| Location Type | Count |\n')
     doc.write('|-|-|\n')
     for location_type, location_display in zone_location_order:
-        matching = location_set.filter_items(
+        matching = location_set.filter_locations(
             lambda p, ts: location_type in ts.types_for(p.location_type)
         )
         doc.write(f'|{location_display}|{len(matching)}|\n')
@@ -51,14 +53,14 @@ def location_summary(c):
     doc.write('|-|-|-|\n')
     for zone in locations.ZONE_ORDER:
         for location_type, location_display in zone_location_order:
-            matching = location_set.filter_items(
+            matching = location_set.filter_locations(
                 lambda p, ts: location_type in ts.types_for(p.location_type),
                 lambda p, ts: zone == p.zone
             )
             if len(matching) > 0:
                 doc.write(f'|{zone}|{location_display}|{len(matching)}|\n')
         # Then get the total number of locations for the zone
-        zone_matching = location_set.filter_items(
+        zone_matching = location_set.filter_locations(
             lambda p, ts: zone == p.zone
         )
         doc.write(f'|{zone}|Total|{len(zone_matching)}|\n')
@@ -66,6 +68,13 @@ def location_summary(c):
     with open('LOCATION_SUMMARY.md', 'w') as f:
         doc.seek(0)
         f.write(doc.read())
+
+
+@task
+def item_summary(c):
+    item_yaml_filename = pathlib.Path('.') / 'apworld' / 'items.yaml'
+    item_set = items.ItemSet.from_file(item_yaml_filename)
+    print(item_set.all_items)
 
 
 @task
