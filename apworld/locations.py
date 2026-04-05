@@ -47,7 +47,7 @@ class LocationTypeSet:
     def from_file(filename: str) -> typing.Self:
         file_schema = {
             '$schema': 'https://json-schema.org/draft/2020-12/schema',
-            '$id': 'https://github.com/murshies/S3K_Archipelago/types.schema.json',
+            '$id': 'https://github.com/murshies/S3K_Archipelago/apworld/types.schema.json',
             'title': 'Schema for the location type definitions in apworld/locations/types.yaml',
             'type': 'array',
             'items': {
@@ -65,13 +65,12 @@ class LocationTypeSet:
                 'additionalProperties': False
             }
         }
-        with open(filename) as f:
+        with open(filename, 'r') as f:
             data = yaml.safe_load(f)
             jsonschema.validate(data, file_schema)
         location_types = {}
         for entry in data:
             location_types[entry['name']] = entry['is']
-
         return LocationTypeSet(location_types)
 
     @property
@@ -197,7 +196,7 @@ class LocationSet:
     def all_locations(self) -> list[Location]:
         return self._locations
 
-    def filter_items(self, *filters: list[typing.Callable]) -> list[Location]:
+    def filter_locations(self, *filters: list[typing.Callable]) -> list[Location]:
         return [
             location
             for location in self._locations
