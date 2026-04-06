@@ -74,8 +74,26 @@ def location_summary(c):
 def item_summary(c):
     item_yaml_filename = pathlib.Path('.') / 'apworld' / 'items.yaml'
     item_set = items.ItemSet.from_file(item_yaml_filename)
-    import pprint
-    pprint.pprint(item_set.all_items)
+
+    doc = io.StringIO()
+    doc.write('# Progression Items\n')
+    doc.write('| Name | Progressive Name |\n')
+    doc.write('|-|-|\n')
+    prog_items = item_set.filter_items(
+        lambda item: item.progression
+    )
+    for prog_item in prog_items:
+        name = prog_item.name
+        prog_name = (
+            prog_item.progressive_name
+            if prog_item.progressive_name
+            else ''
+        )
+        doc.write(f'|{name}|{prog_name}|\n')
+
+    with open('ITEM_SUMMARY.md', 'w') as f:
+        doc.seek(0)
+        f.write(doc.read())
 
 
 @task
