@@ -4,6 +4,7 @@ import jsonschema
 import io
 import os
 import pathlib
+import textwrap
 import yaml
 
 import items
@@ -78,32 +79,33 @@ def item_summary(c):
     doc = io.StringIO()
 
     doc.write('# Chaos Emeralds\n')
-    doc.write('''
+    doc.write(textwrap.dedent('''
     The Chaos Emeralds are added as items into the item pool when either the
     `chaos_emeralds` or `super_emeralds` goal is specified in the game
     configuration. Using a `chaos_emeralds` goal without a `super_emeralds`
     goal adds the following item names to the item pool:
-    ''')
+    '''))
     emerald_items = item_set.filter_items(
         lambda item: 'chaos_emerald' in item.groups
     )
     doc.write('\n')
     for item in emerald_items:
         doc.write(f'- {item.name}\n')
-    doc.write('''
+    doc.write('\n')
+    doc.write(textwrap.dedent('''
     With a `super_emeralds` goal, the chaos emeralds are added to the item pool
     as progressive items with the following names:
-    ''')
+    '''))
     doc.write('\n')
     for item in emerald_items:
         doc.write(f'- {item.progressive_name}\n')
-    doc.write('''
+    doc.write(textwrap.dedent('''
     For example the first "Progressive White Chaos Emerald" will give the white
     chaos emerald, while the second will give the white super emerald. This
     ensures that the chaos emerald is always found before the super emerald,
     and that the progression of finding each emerald is independent of the
     others.
-    ''')
+    '''))
     doc.write('\n')
 
     with open('ITEM_SUMMARY.md', 'w') as f:
