@@ -108,6 +108,22 @@ def item_summary(c):
     '''))
     doc.write('\n')
 
+    doc.write('# Level and Character Items\n')
+    doc.write(textwrap.dedent('''
+    Depending on the value of the `zone_unlocks` game configuration, characters
+    and levels can be added to the item pool. There are four options:
+
+    1. `all_unlocked` adds no zone or character items to the pool. All stages
+       and characters are unlocked from the start.
+    2. `zones_and_characters` adds an zone unlock *per character*. For example,
+       there will be three separate items in the pool for unlocking Angel
+       Island Zone: one for Sonic, one for Tails, and one for Knuckles.
+    3. `zones_only` adds one unlock per zone. Once that zone is unlocked, it is
+       available to all characters.
+    4. `characters_only` adds one unlock per character. Once a character is
+       unlocked, all zones are available to that character.
+    '''))
+
     with open('ITEM_SUMMARY.md', 'w') as f:
         doc.seek(0)
         f.write(doc.read())
