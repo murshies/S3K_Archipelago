@@ -47,8 +47,9 @@
                     "default": "all_unlocked",
                     "enum": [
                         "all_unlocked",
-                        "per_zone",
-                        "per_character"
+                        "zones_and_characters",
+                        "zones_only",
+                        "characters_only"
                     ]
                 },
                 "enabled_locations": {"$ref": "#/definitions/enabled_locations"}
