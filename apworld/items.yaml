@@ -1,35 +1,35 @@
 - name: White Chaos Emerald
-  progressive_name: White Super Emerald
+  progressive_name: Progressive White Chaos Emerald
   groups:
     - chaos_emerald
   progression: true
 - name: Red Chaos Emerald
-  progressive_name: Red Super Emerald
+  progressive_name: Progressive Red Chaos Emerald
   groups:
     - chaos_emerald
   progression: true
 - name: Cyan Chaos Emerald
-  progressive_name: Cyan Super Emerald
+  progressive_name: Progressive Cyan Chaos Emerald
   groups:
     - chaos_emerald
   progression: true
 - name: Purple Chaos Emerald
-  progressive_name: Purple Super Emerald
+  progressive_name: Progressive Purple Chaos Emerald
   groups:
     - chaos_emerald
   progression: true
 - name: Green Chaos Emerald
-  progressive_name: Green Super Emerald
+  progressive_name: Progressive Green Chaos Emerald
   groups:
     - chaos_emerald
   progression: true
 - name: Yellow Chaos Emerald
-  progressive_name: Yellow Super Emerald
+  progressive_name: Progressive Yellow Chaos Emerald
   groups:
     - chaos_emerald
   progression: true
 - name: Blue Chaos Emerald
-  progressive_name: Blue Super Emerald
+  progressive_name: Progressive Blue Chaos Emerald
   groups:
     - chaos_emerald
   progression: true
