@@ -1,7 +1,14 @@
 # Progression Items
 | Name | Progressive Name |
 |-|-|
-|White Chaos Emerald|Progressive White Chaos Emerald|
+|White Chaos Emerald|White Super Emerald|
+|Red Chaos Emerald|Red Super Emerald|
+|Cyan Chaos Emerald|Cyan Super Emerald|
+|Purple Chaos Emerald|Purple Super Emerald|
+|Green Chaos Emerald|Green Super Emerald|
+|Yellow Chaos Emerald|Yellow Super Emerald|
+|Blue Chaos Emerald|Blue Super Emerald|
+|Master Emerald|Master Emerald Shard|
 |Sonic||
 |Tails||
 |Knuckles||
