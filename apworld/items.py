@@ -18,6 +18,7 @@ ITEM_GROUPS = (
 @dataclass
 class Item:
     name: str
+    progressive_name: typing.Optional[str]
     groups: list[str]
     progression: bool
     filler: bool
@@ -72,6 +73,7 @@ class ItemSet:
         for entry in data:
             items.append(Item(
                 name=entry['name'],
+                progressive_name=entry.get('progressive_name'),
                 groups=entry['groups'],
                 progression=entry.get('progression', False),
                 filler=entry.get('filler', False),
