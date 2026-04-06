@@ -83,23 +83,21 @@ def item_summary(c):
     `chaos_emeralds` or `super_emeralds` goal is specified in the game
     configuration. Using a `chaos_emeralds` goal without a `super_emeralds`
     goal adds the following item names to the item pool:
-
     ''')
     emerald_items = item_set.filter_items(
         lambda item: 'chaos_emerald' in item.groups
     )
+    doc.write('\n')
     for item in emerald_items:
         doc.write(f'- {item.name}\n')
     doc.write('''
-
     With a `super_emeralds` goal, the chaos emeralds are added to the item pool
     as progressive items with the following names:
-
     ''')
+    doc.write('\n')
     for item in emerald_items:
         doc.write(f'- {item.progressive_name}\n')
     doc.write('''
-
     For example the first "Progressive White Chaos Emerald" will give the white
     chaos emerald, while the second will give the white super emerald. This
     ensures that the chaos emerald is always found before the super emerald,
