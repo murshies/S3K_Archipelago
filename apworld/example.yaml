@@ -1,26 +1,22 @@
-name: user
+name: player
 game: Sonic 3 & Knuckles
 description: Example user YAML file for Sonic 3 & Knuckles Archipelago
 Sonic 3 & Knuckles:
-  goal:
-    big_rings:
-      enabled: true
-      locations_to_complete: 50
-      target: death_egg
-    chaos_emeralds: knuckles_sky_sanctuary
-    super_emeralds: doomsday
+  big_rings_goal: death_egg
+  big_rings_to_check: 50
+  chaos_emeralds_goal: knuckles_sky_sanctuary
+  super_emeralds_goal: doomsday
   death_link: true
   logic_difficulty: standard
   zone_unlocks: all_unlocked
-  enabled_locations:
-    bosses: true
-    big_rings: true
-    special_stage_emeralds: true
-    special_stage_perfects: true
-    lightning_shields: false
-    flame_shields: false
-    water_shields: false
-    power_sneakers: false
-    1_ups: true
-    super_rings: false
-    robotnik_item_boxes: false
+  enable_bosses: true
+  enable_big_rings: true
+  enable_special_stage_emeralds: true
+  enable_special_stage_perfects: true
+  enable_lightning_shields: false
+  enable_flame_shields: false
+  enable_water_shields: false
+  enable_power_sneakers: false
+  enable_1_ups: true
+  enable_super_rings: false
+  enable_robotnik_item_boxes: false
