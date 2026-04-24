@@ -101,6 +101,7 @@ class Location:
     act: typing.Optional[int]
     location_type: str
     requirements: list[LocationRequirement]
+    id: int
 
     @property
     def display_name(self) -> str:
@@ -171,6 +172,7 @@ class LocationSet:
             }
         }
         locations = []
+        id_counter = 1
         for filename in filenames:
             with open(filename) as f:
                 data = yaml.safe_load(f)
@@ -188,8 +190,10 @@ class LocationSet:
                             difficulty=req.get('difficulty', 'normal'),
                         )
                         for req in entry['requirements']
-                    ]
+                    ],
+                    id=id_counter
                 ))
+                id_counter += 1
         return LocationSet(locations, types)
 
     @property
