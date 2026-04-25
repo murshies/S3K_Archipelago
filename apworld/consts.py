@@ -1,6 +1,6 @@
-CHARACTER_SONIC = 'sonic'
-CHARACTER_TAILS = 'tails'
-CHARACTER_KNUCKLES = 'knuckles'
+CHARACTER_SONIC: str = 'sonic'
+CHARACTER_TAILS: str = 'tails'
+CHARACTER_KNUCKLES: str = 'knuckles'
 
 GAME: str = 'Sonic 3 & Knuckles'
 
