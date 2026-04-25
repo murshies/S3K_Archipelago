@@ -101,7 +101,7 @@ class Location:
     act: typing.Optional[int]
     location_type: str
     requirements: list[LocationRequirement]
-    id: int
+    location_id: int
 
     @property
     def display_name(self) -> str:
@@ -191,7 +191,7 @@ class LocationSet:
                         )
                         for req in entry['requirements']
                     ],
-                    id=id_counter
+                    location_id=id_counter
                 ))
                 id_counter += 1
         return LocationSet(locations, types)
