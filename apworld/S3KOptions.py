@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 
+from . import consts
+
 from Options import (
     Choice,
     DeathLink,
@@ -14,10 +16,10 @@ class Goal(Choice):
     """
     Base class for all of the goal options.
     """
-    option_none = 0
-    option_doomsday = 1
-    option_knuckles_sky_sanctuary = 2
-    option_death_egg = 3
+    option_none = consts.GOAL_NONE
+    option_doomsday = consts.GOAL_DOOMSDAY
+    option_knuckles_sky_sanctuary = consts.GOAL_KNUCKLES_SKY_SANCTUARY
+    option_death_egg = consts.GOAL_DEATH_EGG
 
 
 class BigRingsGoal(Goal):
