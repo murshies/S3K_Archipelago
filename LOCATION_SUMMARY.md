@@ -2,7 +2,7 @@
 | Location Type | Count |
 |-|-|
 |Big Ring|77|
-|Boss|24|
+|Boss|25|
 |1 UP|47|
 |Super Ring (10 rings)|245|
 |Lightning Shield|58|
@@ -15,7 +15,7 @@
 |Total Item Boxes|496|
 |Special Stage Emerald|14|
 |Special Stage Perfect|14|
-|Total|625|
+|Total|626|
 # Items Per Zone
 | Zone | Location Type | Count |
 |-|-|-|
@@ -145,7 +145,7 @@
 |Hidden Palace|Power Sneakers|1|
 |Hidden Palace|Total Item Boxes|10|
 |Hidden Palace|Total|10|
-|Sky Sanctuary|Boss|1|
+|Sky Sanctuary|Boss|2|
 |Sky Sanctuary|1 UP|3|
 |Sky Sanctuary|Super Ring (10 rings)|8|
 |Sky Sanctuary|Lightning Shield|1|
@@ -154,7 +154,7 @@
 |Sky Sanctuary|All Shields|3|
 |Sky Sanctuary|Invincibility|2|
 |Sky Sanctuary|Total Item Boxes|16|
-|Sky Sanctuary|Total|17|
+|Sky Sanctuary|Total|18|
 |Death Egg|Boss|2|
 |Death Egg|1 UP|2|
 |Death Egg|Super Ring (10 rings)|20|
