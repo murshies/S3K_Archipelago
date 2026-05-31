@@ -1,12 +1,12 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://github.com/murshies/S3K_Archipelago/apworld/user-config.schema.json",
-    "title": "Schema for Sonic 3 & Knuckles Archipelago user configuration files",
+    "$id": "https://github.com/murshies/S3K_Archipelago/apworld/player-config.schema.json",
+    "title": "Schema for Sonic 3 & Knuckles Archipelago player configuration files",
     "type": "object",
     "properties": {
         "name": {
             "type": "string",
-            "description": "The user's name for the game. This must match the filename."
+            "description": "The player's name for the game. This must match the filename."
         },
         "game": {
             "type": "string",
@@ -16,7 +16,7 @@
         "description": {
             "type": "string",
             "description": "Description of this configuration",
-            "default": "Sonic 3 & Knuckles Archipelago user configuration"
+            "default": "Sonic 3 & Knuckles Archipelago player configuration"
         },
         "Sonic 3 & Knuckles": {"$ref": "#/definitions/game_config"}
     },
