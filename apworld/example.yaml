@@ -1,6 +1,6 @@
 name: player
 game: Sonic 3 & Knuckles
-description: Example user YAML file for Sonic 3 & Knuckles Archipelago
+description: Example player YAML file for Sonic 3 & Knuckles Archipelago
 Sonic 3 & Knuckles:
   big_rings_goal: death_egg
   big_rings_to_check: 50
