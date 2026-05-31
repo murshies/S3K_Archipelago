@@ -2,34 +2,10 @@
 
 The Chaos Emeralds are added as items into the item pool when either the
 `chaos_emeralds` or `super_emeralds` goal is specified in the game
-configuration. Using a `chaos_emeralds` goal without a `super_emeralds`
-goal adds the following item names to the item pool:
-
-- White Chaos Emerald
-- Red Chaos Emerald
-- Cyan Chaos Emerald
-- Purple Chaos Emerald
-- Green Chaos Emerald
-- Yellow Chaos Emerald
-- Blue Chaos Emerald
-
-
-With a `super_emeralds` goal, the chaos emeralds are added to the item pool
-as progressive items with the following names:
-
-- Progressive White Chaos Emerald
-- Progressive Red Chaos Emerald
-- Progressive Cyan Chaos Emerald
-- Progressive Purple Chaos Emerald
-- Progressive Green Chaos Emerald
-- Progressive Yellow Chaos Emerald
-- Progressive Blue Chaos Emerald
-
-For example the first "Progressive White Chaos Emerald" will give the white
-chaos emerald, while the second will give the white super emerald. This
-ensures that the chaos emerald is always found before the super emerald,
-and that the progression of finding each emerald is independent of the
-others.
+configuration. There are not individual chaos emerald/super emerald items
+per color. Instead, a number of generic "Chaos Emerald" items are added to
+the item pool, depending on player's settings. Finding the required number
+of emeralds per goal will unlock
 
 # Level and Character Items
 
@@ -45,3 +21,24 @@ and levels can be added to the item pool. There are four options:
    available to all characters.
 4. `characters_only` adds one unlock per character. Once a character is
    unlocked, all zones are available to that character.
+
+# Junk/Filler Items
+
+There are also several junk/filler items which will be dispersed throughout
+each game in the generated world:
+
+- Lightning Shield
+- Flame Shield
+- Bubble Shield
+- Invincibility
+- Power Sneakers
+
+# Traps
+
+There are a currently couple of traps defined in this apworld. There will
+likely be more added after a playable version of the game is complete:
+
+| Name | Description |
+|-|-|
+| Robotnik Trap | Causes the player to lose all of their rings
+| Poison Trap | Causes the player to lose rings over a period of time

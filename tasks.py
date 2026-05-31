@@ -82,29 +82,10 @@ def item_summary(c):
     doc.write(textwrap.dedent('''
     The Chaos Emeralds are added as items into the item pool when either the
     `chaos_emeralds` or `super_emeralds` goal is specified in the game
-    configuration. Using a `chaos_emeralds` goal without a `super_emeralds`
-    goal adds the following item names to the item pool:
-    '''))
-    emerald_items = item_set.filter_items(
-        lambda item: 'chaos_emerald' in item.groups
-    )
-    doc.write('\n')
-    for item in emerald_items:
-        doc.write(f'- {item.name}\n')
-    doc.write('\n')
-    doc.write(textwrap.dedent('''
-    With a `super_emeralds` goal, the chaos emeralds are added to the item pool
-    as progressive items with the following names:
-    '''))
-    doc.write('\n')
-    for item in emerald_items:
-        doc.write(f'- {item.progressive_name}\n')
-    doc.write(textwrap.dedent('''
-    For example the first "Progressive White Chaos Emerald" will give the white
-    chaos emerald, while the second will give the white super emerald. This
-    ensures that the chaos emerald is always found before the super emerald,
-    and that the progression of finding each emerald is independent of the
-    others.
+    configuration. There are not individual chaos emerald/super emerald items
+    per color. Instead, a number of generic "Chaos Emerald" items are added to
+    the item pool, depending on player's settings. Finding the required number
+    of emeralds per goal will unlock
     '''))
     doc.write('\n')
 
@@ -123,6 +104,34 @@ def item_summary(c):
     4. `characters_only` adds one unlock per character. Once a character is
        unlocked, all zones are available to that character.
     '''))
+    doc.write('\n')
+
+    doc.write('# Junk/Filler Items\n')
+    doc.write(textwrap.dedent('''
+    There are also several junk/filler items which will be dispersed throughout
+    each game in the generated world:
+    '''))
+    doc.write('\n')
+    junk_items = item_set.filter_items(
+        lambda item: item.filler
+    )
+    for item in junk_items:
+        doc.write(f'- {item.name}\n')
+    doc.write('\n')
+
+    doc.write('# Traps\n')
+    doc.write(textwrap.dedent('''
+    There are a currently couple of traps defined in this apworld. There will
+    likely be more added after a playable version of the game is complete:
+    '''))
+    doc.write('\n')
+    trap_items = item_set.filter_items(
+        lambda item: item.trap
+    )
+    doc.write('| Name | Description |\n')
+    doc.write('|-|-|\n')
+    for item in trap_items:
+        doc.write(f'| {item.name} | {item.description if item.description else ""}\n')
 
     with open('ITEM_SUMMARY.md', 'w') as f:
         doc.seek(0)

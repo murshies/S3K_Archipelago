@@ -18,6 +18,7 @@ ITEM_GROUPS = (
 @dataclass
 class Item:
     name: str
+    description: typing.Optional[str]
     progressive_name: typing.Optional[str]
     groups: list[str]
     progression: bool
@@ -41,6 +42,10 @@ class ItemSet:
                 'type': 'object',
                 'properties': {
                     'name': {'type': 'string'},
+                    'description': {
+                        'type': ['string', 'null'],
+                        'default': None,
+                    },
                     'progressive_name': {'type': 'string'},
                     'groups': {
                         'type': 'array',
@@ -73,6 +78,7 @@ class ItemSet:
         for entry in data:
             items.append(Item(
                 name=entry['name'],
+                description=entry.get('description'),
                 progressive_name=entry.get('progressive_name'),
                 groups=entry['groups'],
                 progression=entry.get('progression', False),
