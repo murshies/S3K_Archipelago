@@ -139,7 +139,7 @@ def item_summary(c):
 
 
 @task
-def validate_user_config(c):
+def validate_player_config(c):
     with open('apworld/example.yaml', 'r') as f:
         cfg = yaml.safe_load(f)
     with open('apworld/player-config.schema.json', 'r') as f:
