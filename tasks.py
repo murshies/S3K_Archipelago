@@ -142,7 +142,7 @@ def item_summary(c):
 def validate_user_config(c):
     with open('apworld/example.yaml', 'r') as f:
         cfg = yaml.safe_load(f)
-    with open('apworld/user-config.schema.json', 'r') as f:
+    with open('apworld/player-config.schema.json', 'r') as f:
         schema = json.load(f)
     jsonschema.validate(cfg, schema)
     import pprint
