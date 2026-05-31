@@ -22,12 +22,28 @@
     },
     "required": ["name", "game", "Sonic 3 & Knuckles"],
     "definitions": {
+        "goal": {
+            "type": ["string", "null"],
+            "enum": [
+                "death_egg",
+                "knuckles_sky_sanctuary",
+                "doomsday"
+            ]
+        },
         "game_config": {
             "type": "object",
             "description": "Game settings",
             "additionalProperties": false,
             "properties": {
-                "goal": {"$ref": "#/definitions/goal"},
+                "big_rings_goal": {"$ref": "#/definitions/goal"},
+                "big_rings_to_check": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 77,
+                    "default": 0
+                },
+                "chaos_emeralds_goal": {"$ref": "#/definitions/goal"},
+                "super_emeralds_goal": {"$ref": "#/definitions/goal"},
                 "death_link": {
                     "type": "boolean",
                     "default": false
@@ -52,113 +68,57 @@
                         "characters_only"
                     ]
                 },
-                "enabled_locations": {"$ref": "#/definitions/enabled_locations"}
-            },
-            "required": ["goal"]
-        },
-        "goal": {
-            "type": "object",
-            "description": "Goal definition",
-            "additionalProperties": false,
-            "properties": {
-                "big_rings": {"$ref": "#/definitions/big_ring_goal"},
-                "chaos_emeralds": {"$ref": "#/definitions/goal_target"},
-                "super_emeralds": {"$ref": "#/definitions/goal_target"}
-            },
-            "anyOf": [
-                {"required": ["big_rings"]},
-                {"required": ["chaos_emeralds"]},
-                {"required": ["super_emeralds"]}
-            ]
-        },
-        "big_ring_goal": {
-            "type": ["object", "null"],
-            "description": "Definition for big ring goal",
-            "additionalProperties": false,
-            "default": null,
-            "properties": {
-                "enabled": {
-                    "type": "boolean",
-                    "description": "Whether or not this goal is enabled. Not specifying this goal at all also disables it.",
-                    "default": true
-                },
-                "locations_to_complete": {
-                    "type": "integer",
-                    "description": "The number of big ring locations to complete this goal",
-                    "minimum": 1,
-                    "maximum": 77
-                },
-                "target": {"$ref": "#/definitions/goal_target"}
-            },
-            "required": ["locations_to_complete", "target"]
-        },
-        "goal_target": {
-            "type": ["string", "null"],
-            "description": "The sub goal for the location type. For example, setting 'chaos_emeralds' to 'doomsday' means that getting all seven chaos emeralds unlocks. Not specifying this goal at all disables it.",
-            "additionalProperties": false,
-            "default": null,
-            "enum": [
-                "doomsday",
-                "knuckles_sky_sanctuary",
-                "death_egg"
-            ]
-        },
-        "enabled_locations": {
-            "type": "object",
-            "description": "The list of locations which are enabled/disabled",
-            "additionalProperties": false,
-            "properties": {
-                "bosses": {
+                "enable_bosses": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle minibosses and bosses as a location"
                 },
-                "big_rings": {
+                "enable_big_rings": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle big rings as a location"
                 },
-                "special_stage_emeralds": {
+                "enable_special_stage_emeralds": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle special stage emeralds (completion of stage) as a location"
                 },
-                "special_stage_perfects": {
+                "enable_special_stage_perfects": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle getting a perfect in each special stage as a location"
                 },
-                "lightning_shields": {
+                "enable_lightning_shields": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle lightning shield item boxes as a location"
                 },
-                "flame_shields": {
+                "enable_flame_shields": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle flame shield item boxes as a location"
                 },
-                "water_shields": {
+                "enable_water_shields": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle water shield item boxes as a location"
                 },
-                "power_sneakers": {
+                "enable_power_sneakers": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle power sneaker item boxes as a location"
                 },
-                "1_ups": {
+                "enable_1_ups": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle 1 up item boxes as a location"
                 },
-                "super_rings": {
+                "enable_super_rings": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle super ring item boxes (10 rings) as a location"
                 },
-                "robotnik_item_boxes": {
+                "enable_robotnik_item_boxes": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle robotnik item boxes as a location"
