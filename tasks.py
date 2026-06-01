@@ -12,6 +12,13 @@ import locations
 
 
 @task
+def all(c):
+    location_summary(c)
+    item_summary(c)
+    validate_player_config(c)
+
+
+@task
 def location_summary(c):
     types = locations.LocationTypeSet.from_file(
         pathlib.Path('.') / 'apworld' / 'locations' / 'types.yaml')
