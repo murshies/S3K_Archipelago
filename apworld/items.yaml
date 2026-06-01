@@ -267,11 +267,6 @@
     - level
     - character
   progression: true
-- name: Doomsday Zone - Tails
-  groups:
-    - level
-    - character
-  progression: true
 - name: Angel Island Zone - Knuckles
   groups:
     - level
@@ -328,16 +323,6 @@
     - character
   progression: true
 - name: Sky Sanctuary Zone - Knuckles
-  groups:
-    - level
-    - character
-  progression: true
-- name: Death Egg Zone - Knuckles
-  groups:
-    - level
-    - character
-  progression: true
-- name: Doomsday Zone - Knuckles
   groups:
     - level
     - character
