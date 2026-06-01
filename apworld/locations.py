@@ -21,7 +21,20 @@ ZONE_ORDER = (
     'Sky Sanctuary',
     'Death Egg',
     'Doomsday',
-    'Special Stage'
+    'Special Stage 1',
+    'Special Stage 2',
+    'Special Stage 3',
+    'Special Stage 4',
+    'Special Stage 5',
+    'Special Stage 6',
+    'Special Stage 7',
+    'Special Stage 8',
+    'Special Stage 9',
+    'Special Stage 10',
+    'Special Stage 11',
+    'Special Stage 12',
+    'Special Stage 13',
+    'Special Stage 14',
 )
 
 
@@ -107,8 +120,6 @@ class Location:
     def display_name(self) -> str:
         if not self.act:
             act_str = ''
-        elif self.zone == 'Special Stage':
-            act_str = f' {self.act}'
         else:
             act_str = f' Act {self.act}'
         return f'{self.zone}{act_str} - {self.name}'

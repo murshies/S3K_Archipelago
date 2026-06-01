@@ -168,6 +168,45 @@
 |Death Egg|Total|40|
 |Doomsday|Boss|1|
 |Doomsday|Total|1|
-|Special Stage|Special Stage Emerald|14|
-|Special Stage|Special Stage Perfect|14|
-|Special Stage|Total|28|
+|Special Stage 1|Special Stage Emerald|1|
+|Special Stage 1|Special Stage Perfect|1|
+|Special Stage 1|Total|2|
+|Special Stage 2|Special Stage Emerald|1|
+|Special Stage 2|Special Stage Perfect|1|
+|Special Stage 2|Total|2|
+|Special Stage 3|Special Stage Emerald|1|
+|Special Stage 3|Special Stage Perfect|1|
+|Special Stage 3|Total|2|
+|Special Stage 4|Special Stage Emerald|1|
+|Special Stage 4|Special Stage Perfect|1|
+|Special Stage 4|Total|2|
+|Special Stage 5|Special Stage Emerald|1|
+|Special Stage 5|Special Stage Perfect|1|
+|Special Stage 5|Total|2|
+|Special Stage 6|Special Stage Emerald|1|
+|Special Stage 6|Special Stage Perfect|1|
+|Special Stage 6|Total|2|
+|Special Stage 7|Special Stage Emerald|1|
+|Special Stage 7|Special Stage Perfect|1|
+|Special Stage 7|Total|2|
+|Special Stage 8|Special Stage Emerald|1|
+|Special Stage 8|Special Stage Perfect|1|
+|Special Stage 8|Total|2|
+|Special Stage 9|Special Stage Emerald|1|
+|Special Stage 9|Special Stage Perfect|1|
+|Special Stage 9|Total|2|
+|Special Stage 10|Special Stage Emerald|1|
+|Special Stage 10|Special Stage Perfect|1|
+|Special Stage 10|Total|2|
+|Special Stage 11|Special Stage Emerald|1|
+|Special Stage 11|Special Stage Perfect|1|
+|Special Stage 11|Total|2|
+|Special Stage 12|Special Stage Emerald|1|
+|Special Stage 12|Special Stage Perfect|1|
+|Special Stage 12|Total|2|
+|Special Stage 13|Special Stage Emerald|1|
+|Special Stage 13|Special Stage Perfect|1|
+|Special Stage 13|Total|2|
+|Special Stage 14|Special Stage Emerald|1|
+|Special Stage 14|Special Stage Perfect|1|
+|Special Stage 14|Total|2|

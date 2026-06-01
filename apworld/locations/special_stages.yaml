@@ -1,222 +1,194 @@
 - name: Emerald
-  zone: Special Stage
-  act: 1
+  zone: Special Stage 1
   type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Perfect
-  zone: Special Stage
-  act: 1
+  zone: Special Stage 1
   type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Emerald
-  zone: Special Stage
-  act: 2
+  zone: Special Stage 2
   type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Perfect
-  zone: Special Stage
-  act: 2
+  zone: Special Stage 2
   type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Emerald
-  zone: Special Stage
-  act: 3
+  zone: Special Stage 3
   type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Perfect
-  zone: Special Stage
-  act: 3
+  zone: Special Stage 3
   type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Emerald
-  zone: Special Stage
-  act: 4
+  zone: Special Stage 4
   type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Perfect
-  zone: Special Stage
-  act: 4
+  zone: Special Stage 4
   type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Emerald
-  zone: Special Stage
-  act: 5
+  zone: Special Stage 5
   type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Perfect
-  zone: Special Stage
-  act: 5
+  zone: Special Stage 5
   type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Emerald
-  zone: Special Stage
-  act: 6
+  zone: Special Stage 6
   type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Perfect
-  zone: Special Stage
-  act: 6
+  zone: Special Stage 6
   type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Emerald
-  zone: Special Stage
-  act: 7
+  zone: Special Stage 7
   type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Perfect
-  zone: Special Stage
-  act: 7
+  zone: Special Stage 7
   type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Emerald
-  zone: Special Stage
-  act: 8
+  zone: Special Stage 8
   type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Perfect
-  zone: Special Stage
-  act: 8
+  zone: Special Stage 8
   type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Emerald
-  zone: Special Stage
-  act: 9
+  zone: Special Stage 9
   type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Perfect
-  zone: Special Stage
-  act: 9
+  zone: Special Stage 9
   type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Emerald
-  zone: Special Stage
-  act: 10
+  zone: Special Stage 10
   type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Perfect
-  zone: Special Stage
-  act: 10
+  zone: Special Stage 10
   type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Emerald
-  zone: Special Stage
-  act: 11
+  zone: Special Stage 11
   type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Perfect
-  zone: Special Stage
-  act: 11
+  zone: Special Stage 11
   type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Emerald
-  zone: Special Stage
-  act: 12
+  zone: Special Stage 12
   type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Perfect
-  zone: Special Stage
-  act: 12
+  zone: Special Stage 12
   type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Emerald
-  zone: Special Stage
-  act: 13
+  zone: Special Stage 13
   type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Perfect
-  zone: Special Stage
-  act: 13
+  zone: Special Stage 13
   type: special_stage_perfect
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Emerald
-  zone: Special Stage
-  act: 14
+  zone: Special Stage 14
   type: emerald
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Perfect
-  zone: Special Stage
-  act: 14
+  zone: Special Stage 14
   type: special_stage_perfect
   requirements:
     - character: Sonic
