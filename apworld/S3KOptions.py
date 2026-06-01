@@ -108,6 +108,12 @@ class ZoneUnlocks(Choice):
     default = 0
 
 
+class TrapsEnabled(Toggle):
+    """
+    Enables or disables traps.
+    """
+    display_name = "Traps Enabled"
+
 class BossLocations(Toggle):
     """
     Determines whether or not defeating bosses, including minibosses, grants an
@@ -199,6 +205,7 @@ s3k_option_groups = [
         DeathLink,
         LogicDifficulty,
         ZoneUnlocks,
+        TrapsEnabled,
     ]),
     OptionGroup('Location Options', [
         BossLocations,
@@ -226,6 +233,7 @@ class S3KOptions(PerGameCommonOptions):
     death_link: DeathLink
     logic_difficulty: LogicDifficulty
     zone_unlocks: ZoneUnlocks
+    traps_enabled: TrapsEnabled
 
     enable_bosses: BossLocations
     enable_big_rings: BigRingLocations

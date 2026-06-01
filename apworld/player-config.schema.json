@@ -68,6 +68,11 @@
                         "characters_only"
                     ]
                 },
+                "traps_enabled": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Enables or disables traps"
+                },
                 "enable_bosses": {
                     "type": "boolean",
                     "default": false,

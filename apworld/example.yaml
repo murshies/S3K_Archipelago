@@ -9,6 +9,7 @@ Sonic 3 & Knuckles:
   death_link: true
   logic_difficulty: standard
   zone_unlocks: all_unlocked
+  traps_enabled: true
   enable_bosses: true
   enable_big_rings: true
   enable_special_stage_emeralds: true
