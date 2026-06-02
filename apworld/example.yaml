@@ -10,15 +10,15 @@ Sonic 3 & Knuckles:
   logic_difficulty: standard
   zone_unlocks: all_unlocked
   traps_enabled: true
-  enable_bosses: true
-  enable_big_rings: true
-  enable_special_stage_emeralds: true
-  enable_special_stage_perfects: true
-  enable_lightning_shields: false
-  enable_flame_shields: false
-  enable_water_shields: false
-  enable_invincibility_item_boxes: false
-  enable_power_sneakers: false
-  enable_1_ups: true
-  enable_super_rings: false
-  enable_robotnik_item_boxes: false
+  enable_boss_locations: true
+  enable_big_ring_locations: true
+  enable_special_stage_emerald_locations: true
+  enable_special_stage_perfect_locations: true
+  enable_lightning_shield_locations: false
+  enable_flame_shield_locations: false
+  enable_water_shield_locations: false
+  enable_invincibility_locations: false
+  enable_power_sneaker_locations: false
+  enable_1_up_locations: true
+  enable_super_ring_locations: false
+  enable_robotnik_locations: false

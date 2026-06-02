@@ -51,51 +51,51 @@ def filter_locations(world: World, location_set: LocationSet) -> LocationSet:
         add_goal_location(world.options.super_emeralds_goal)
 
     # Item box locations
-    if world.options.enable_bosses:
+    if world.options.enable_boss_locations:
         locs = location_set.filter_locations(
             lambda loc, ts: consts.LOCTYPE_BOSS in ts.types_for(loc.location_type))
         loc_id_set.update(loc.location_id for loc in locs)
-    if world.options.enable_big_rings:
+    if world.options.enable_big_ring_locations:
         locs = location_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_BIG_RING)
         loc_id_set.update(loc.location_id for loc in locs)
-    if world.options.enable_special_stage_emeralds:
+    if world.options.enable_special_stage_emerald_locations:
         locs = location_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_EMERALD)
         loc_id_set.update(loc.location_id for loc in locs)
-    if world.options.enable_special_stage_perfects:
+    if world.options.enable_special_stage_perfect_locations:
         locs = location_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_SPECIAL_STAGE_PERFECT)
         loc_id_set.update(loc.location_id for loc in locs)
-    if world.options.enable_lightning_shields:
+    if world.options.enable_lightning_shield_locations:
         locs = location_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_LIGHTNING_SHIELD)
         loc_id_set.update(loc.location_id for loc in locs)
-    if world.options.enable_flame_shields:
+    if world.options.enable_flame_shield_locations:
         locs = location_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_FLAME_SHIELD)
         loc_id_set.update(loc.location_id for loc in locs)
-    if world.options.enable_water_shields:
+    if world.options.enable_water_shield_locations:
         locs = location_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_WATER_SHIELD)
         loc_id_set.update(loc.location_id for loc in locs)
-    if world.options.enable_invincibility_item_boxes:
+    if world.options.enable_invincibility_locations:
         locs = location_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_INVINCIBILITY)
         loc_id_set.update(loc.location_id for loc in locs)
-    if world.options.enable_power_sneakers:
+    if world.options.enable_power_sneaker_locations:
         locs = location_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_POWER_SNEAKERS)
         loc_id_set.update(loc.location_id for loc in locs)
-    if world.options.enable_1_ups:
+    if world.options.enable_1_up_locations:
         locs = location_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_ONE_UP)
         loc_id_set.update(loc.location_id for loc in locs)
-    if world.options.enable_super_rings:
+    if world.options.enable_super_ring_locations:
         locs = location_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_SUPER_RING)
         loc_id_set.update(loc.location_id for loc in locs)
-    if world.options.enable_robotnik_item_boxes:
+    if world.options.enable_robotnik_locations:
         locs = location_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_ROBOTNIK)
         loc_id_set.update(loc.location_id for loc in locs)

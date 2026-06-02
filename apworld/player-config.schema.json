@@ -73,62 +73,62 @@
                     "default": false,
                     "description": "Enables or disables traps"
                 },
-                "enable_bosses": {
+                "enable_boss_locations": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle minibosses and bosses as a location"
                 },
-                "enable_big_rings": {
+                "enable_big_ring_locations": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle big rings as a location"
                 },
-                "enable_special_stage_emeralds": {
+                "enable_special_stage_emerald_locations": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle special stage emeralds (completion of stage) as a location"
                 },
-                "enable_special_stage_perfects": {
+                "enable_special_stage_perfect_locations": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle getting a perfect in each special stage as a location"
                 },
-                "enable_lightning_shields": {
+                "enable_lightning_shield_locations": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle lightning shield item boxes as a location"
                 },
-                "enable_flame_shields": {
+                "enable_flame_shield_locations": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle flame shield item boxes as a location"
                 },
-                "enable_water_shields": {
+                "enable_water_shield_locations": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle water shield item boxes as a location"
                 },
-                "enable_invincibility_item_boxes": {
+                "enable_invincibility_locations": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle invicibility item boxes as a location"
                 },
-                "enable_power_sneakers": {
+                "enable_power_sneaker_locations": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle power sneaker item boxes as a location"
                 },
-                "enable_1_ups": {
+                "enable_1_up_locations": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle 1 up item boxes as a location"
                 },
-                "enable_super_rings": {
+                "enable_super_ring_locations": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle super ring item boxes (10 rings) as a location"
                 },
-                "enable_robotnik_item_boxes": {
+                "enable_robotnik_locations": {
                     "type": "boolean",
                     "default": false,
                     "description": "Toggle robotnik item boxes as a location"

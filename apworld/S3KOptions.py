@@ -243,15 +243,15 @@ class S3KOptions(PerGameCommonOptions):
     zone_unlocks: ZoneUnlocks
     traps_enabled: TrapsEnabled
 
-    enable_bosses: BossLocations
-    enable_big_rings: BigRingLocations
-    enable_special_stage_emeralds: SpecialStageEmeraldLocations
-    enable_special_stage_perfects: SpecialStagePerfectLocations
-    enable_lightning_shields: LightningShieldLocations
-    enable_flame_shields: FlameShieldLocations
-    enable_water_shields: WaterShieldLocations
-    enable_invincibility_item_boxes: InvincibilityLocations
-    enable_power_sneakers: PowerSneakerLocations
-    enable_1_ups: OneUpLocations
-    enable_super_rings: SuperRingLocations
-    enable_robotnik_item_boxes: RobotnikLocations
+    enable_boss_locations: BossLocations
+    enable_big_ring_locations: BigRingLocations
+    enable_special_stage_emerald_locations: SpecialStageEmeraldLocations
+    enable_special_stage_perfect_locations: SpecialStagePerfectLocations
+    enable_lightning_shield_locations: LightningShieldLocations
+    enable_flame_shield_locations: FlameShieldLocations
+    enable_water_shield_locations: WaterShieldLocations
+    enable_invincibility_locations: InvincibilityLocations
+    enable_power_sneaker_locations: PowerSneakerLocations
+    enable_1_up_locations: OneUpLocations
+    enable_super_ring_locations: SuperRingLocations
+    enable_robotnik_locations: RobotnikLocations
