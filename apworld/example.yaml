@@ -17,6 +17,7 @@ Sonic 3 & Knuckles:
   enable_lightning_shields: false
   enable_flame_shields: false
   enable_water_shields: false
+  enable_invincibility_item_boxes: false
   enable_power_sneakers: false
   enable_1_ups: true
   enable_super_rings: false

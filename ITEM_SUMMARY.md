@@ -29,7 +29,7 @@ each game in the generated world:
 
 - Lightning Shield
 - Flame Shield
-- Bubble Shield
+- Water Shield
 - Invincibility
 - Power Sneakers
 

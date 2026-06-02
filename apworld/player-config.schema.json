@@ -108,6 +108,11 @@
                     "default": false,
                     "description": "Toggle water shield item boxes as a location"
                 },
+                "enable_invincibility_item_boxes": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Toggle invicibility item boxes as a location"
+                },
                 "enable_power_sneakers": {
                     "type": "boolean",
                     "default": false,

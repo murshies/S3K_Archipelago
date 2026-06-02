@@ -9,8 +9,16 @@ class S3KLocation(Location):
     game: str = consts.GAME
 
 
-def setup_locations(world: World, location_set: LocationSet) -> dict[str, int]:
-    locations: dict[str, str] = {}
+def filter_locations(world: World, location_set: LocationSet) -> LocationSet:
+    """
+    Given the entire set of possible locations, create a filtered location set
+    which only includes the locations enable by the player's settings.
+    """
+    # Build a set of location ids to include in the filtered set returned by
+    # this function. This avoids adding duplicates to the filtered set, for
+    # example if two different parts of this function try to include the same
+    # location.
+    loc_id_set: set[int] = set()
 
     def add_goal_location(goal_zone: str) -> None:
         if goal_zone == consts.GOAL_DOOMSDAY:
@@ -29,7 +37,7 @@ def setup_locations(world: World, location_set: LocationSet) -> dict[str, int]:
         else:
             raise Exception(f'Invalid goal zone "{goal_zone}"')
         assert len(locs) == 1
-        locations[locs[0].display_name] = locs[0].location_id
+        loc_id_set.update(locs[0].location_id)
 
     # Goal based checks
     # Each zone goal adds a "master emerald" item, and the player wins the game
@@ -46,46 +54,57 @@ def setup_locations(world: World, location_set: LocationSet) -> dict[str, int]:
     if world.options.enable_bosses:
         locs = location_set.filter_locations(
             lambda loc, ts: consts.LOCTYPE_BOSS in ts.types_for(loc.location_type))
-        locations.update({loc.display_name: loc.location_id for loc in locs})
+        loc_id_set.update(loc.location_id for loc in locs)
     if world.options.enable_big_rings:
         locs = location_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_BIG_RING)
-        locations.update({loc.display_name: loc.location_id for loc in locs})
+        loc_id_set.update(loc.location_id for loc in locs)
     if world.options.enable_special_stage_emeralds:
         locs = location_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_EMERALD)
-        locations.update({loc.display_name: loc.location_id for loc in locs})
+        loc_id_set.update(loc.location_id for loc in locs)
     if world.options.enable_special_stage_perfects:
         locs = location_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_SPECIAL_STAGE_PERFECT)
-        locations.update({loc.display_name: loc.location_id for loc in locs})
+        loc_id_set.update(loc.location_id for loc in locs)
     if world.options.enable_lightning_shields:
         locs = location_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_LIGHTNING_SHIELD)
-        locations.update({loc.display_name: loc.location_id for loc in locs})
+        loc_id_set.update(loc.location_id for loc in locs)
     if world.options.enable_flame_shields:
         locs = location_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_FLAME_SHIELD)
-        locations.update({loc.display_name: loc.location_id for loc in locs})
+        loc_id_set.update(loc.location_id for loc in locs)
     if world.options.enable_water_shields:
         locs = location_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_WATER_SHIELD)
-        locations.update({loc.display_name: loc.location_id for loc in locs})
+        loc_id_set.update(loc.location_id for loc in locs)
+    if world.options.enable_invincibility_item_boxes:
+        locs = location_set.filter_locations(
+            lambda loc, ts: loc.location_type == consts.LOCTYPE_INVINCIBILITY)
+        loc_id_set.update(loc.location_id for loc in locs)
     if world.options.enable_power_sneakers:
         locs = location_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_POWER_SNEAKERS)
-        locations.update({loc.display_name: loc.location_id for loc in locs})
+        loc_id_set.update(loc.location_id for loc in locs)
     if world.options.enable_1_ups:
         locs = location_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_ONE_UP)
-        locations.update({loc.display_name: loc.location_id for loc in locs})
+        loc_id_set.update(loc.location_id for loc in locs)
     if world.options.enable_super_rings:
         locs = location_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_SUPER_RING)
-        locations.update({loc.display_name: loc.location_id for loc in locs})
+        loc_id_set.update(loc.location_id for loc in locs)
     if world.options.enable_robotnik_item_boxes:
         locs = location_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_ROBOTNIK)
-        locations.update({loc.display_name: loc.location_id for loc in locs})
+        loc_id_set.update(loc.location_id for loc in locs)
 
-    return locations
+    return LocationSet(
+        locations=[
+            loc
+            for loc in location_set.all_locations
+            if loc.location_id in loc_id_set
+        ],
+        types=location_set.types,
+    )

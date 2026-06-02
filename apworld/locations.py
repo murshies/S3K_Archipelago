@@ -166,8 +166,9 @@ class LocationSet:
                                     'enum': ['Sonic', 'Tails', 'Knuckles']
                                 },
                                 'super_state': {
-                                    'type': 'string',
-                                    'enum': ['super', 'hyper']
+                                    'type': ['string', 'null'],
+                                    'enum': ['super', 'hyper'],
+                                    'default': None,
                                 },
                                 'difficulty': {
                                     'type': 'string',
@@ -210,6 +211,10 @@ class LocationSet:
     @property
     def all_locations(self) -> list[Location]:
         return self._locations
+
+    @property
+    def types(self) -> LocationTypeSet:
+        return self._types
 
     def filter_locations(self, *filters: list[typing.Callable]) -> list[Location]:
         return [

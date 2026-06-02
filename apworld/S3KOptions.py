@@ -166,6 +166,13 @@ class WaterShieldLocations(Toggle):
     display_name = 'Water Shields'
 
 
+class InvincibilityLocations(Toggle):
+    """
+    Determines whether or not each invincibility monitor grants an item.
+    """
+    display_name = 'Invincibility Item Boxes'
+
+
 class PowerSneakerLocations(Toggle):
     """
     Determines whether or not each power sneaker monitor grants an item.
@@ -215,6 +222,7 @@ s3k_option_groups = [
         LightningShieldLocations,
         FlameShieldLocations,
         WaterShieldLocations,
+        InvincibilityLocations,
         PowerSneakerLocations,
         OneUpLocations,
         SuperRingLocations,
@@ -242,6 +250,7 @@ class S3KOptions(PerGameCommonOptions):
     enable_lightning_shields: LightningShieldLocations
     enable_flame_shields: FlameShieldLocations
     enable_water_shields: WaterShieldLocations
+    enable_invincibility_item_boxes: InvincibilityLocations
     enable_power_sneakers: PowerSneakerLocations
     enable_1_ups: OneUpLocations
     enable_super_rings: SuperRingLocations

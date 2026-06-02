@@ -335,7 +335,7 @@
   groups:
     - item_box
   filler: true
-- name: Bubble Shield
+- name: Water Shield
   groups:
     - item_box
   filler: true
