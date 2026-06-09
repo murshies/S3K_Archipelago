@@ -112,7 +112,18 @@ class TrapsEnabled(Toggle):
     """
     Enables or disables traps.
     """
-    display_name = "Traps Enabled"
+    display_name = 'Traps Enabled'
+
+
+class TrapWeightPercentage(Range):
+    """
+    When traps are enabled, this is the percentage of junk items that will be
+    traps.
+    """
+    display_name = 'Trap Weight Percentage'
+    range_start = 0
+    range_end = 100
+
 
 class BossLocations(Toggle):
     """
@@ -242,6 +253,7 @@ class S3KOptions(PerGameCommonOptions):
     logic_difficulty: LogicDifficulty
     zone_unlocks: ZoneUnlocks
     traps_enabled: TrapsEnabled
+    trap_weight_percentage: TrapWeightPercentage
 
     enable_boss_locations: BossLocations
     enable_big_ring_locations: BigRingLocations

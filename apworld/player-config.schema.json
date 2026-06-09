@@ -73,6 +73,13 @@
                     "default": false,
                     "description": "Enables or disables traps"
                 },
+                "trap_weight_percentage": {
+                    "type": "integer",
+                    "default": 0,
+                    "description": "When traps are enabled, this is the percentage of junk items that will be traps.",
+                    "minimum": 0,
+                    "maximum": 100
+                },
                 "enable_boss_locations": {
                     "type": "boolean",
                     "default": false,

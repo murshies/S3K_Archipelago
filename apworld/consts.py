@@ -9,6 +9,10 @@ GOAL_DOOMSDAY: int = 1
 GOAL_KNUCKLES_SKY_SANCTUARY: int = 2
 GOAL_DEATH_EGG: int = 3
 
+ITEM_CHAOS_EMERALD: str = 'Chaos Emerald'
+EMERALDS_FOR_CHAOS_HUNT: int = 7
+EMERALDS_FOR_SUPER_HUNT: int = 7
+
 LOCTYPE_BIG_RING: str = 'big ring'
 LOCTYPE_BOSS: str = 'boss'
 LOCTYPE_EMERALD: str = 'emerald'

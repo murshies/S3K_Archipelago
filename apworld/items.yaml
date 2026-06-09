@@ -1,12 +1,15 @@
 - name: Chaos Emerald
-  progressive_name: Super Emerald
   groups:
     - chaos_emerald
   progression: true
 - name: Master Emerald
-  progressive_name: Master Emerald Shard
   groups:
     - goal
+  progression: true
+- name: Master Emerald Shard
+  groups:
+    - goal
+    - multigoal
   progression: true
 - name: Sonic
   groups:

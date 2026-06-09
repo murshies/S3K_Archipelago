@@ -52,7 +52,8 @@ def loc_requirement_to_rule(
             # Hyper Tails does not exist, so there *should* not be a
             # requirement with this definition, but if there is, treat it like
             # Hyper Sonic/Knuckles & Super Tails.
-            reqs.append(lambda state: state.has('Chaos Emerald', player, 14))
+            emerald_count = 14
+            reqs.append(lambda state: state.has('Chaos Emerald', player, emerald_count))
 
     return lambda state: all(req(state) for req in reqs)
 
@@ -83,7 +84,7 @@ def set_rules(
         multiworld: MultiWorld,
         world: World,
         player: int,
-        location_set: locations.LocationSet,
+        loc_set: locations.LocationSet,
 ) -> None:
     """
     Add all of the rules for this game to the multiworld.
@@ -92,6 +93,6 @@ def set_rules(
     locations that are enabled by the player's settings, so there is not need
     to do those sorts of checks here.
     """
-    for loc in location_set.all_locations:
+    for loc in loc_set.all_locations:
         add_rule(multiworld.get_location(loc.display_name, player),
                  loc_requirements_to_rule(world, player, loc))

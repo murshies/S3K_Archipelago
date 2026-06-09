@@ -10,6 +10,7 @@ Sonic 3 & Knuckles:
   logic_difficulty: standard
   zone_unlocks: all_unlocked
   traps_enabled: true
+  trap_weight_percentage: 10
   enable_boss_locations: true
   enable_big_ring_locations: true
   enable_special_stage_emerald_locations: true

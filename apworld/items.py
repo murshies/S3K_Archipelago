@@ -6,20 +6,28 @@ import jsonschema
 import typing
 import yaml
 
+ITEM_GROUP_CHAOS_EMERALD = 'chaos_emerald'
+ITEM_GROUP_CHARACTER = 'character'
+ITEM_GROUP_GOAL = 'goal'
+ITEM_GROUP_ITEM_BOX = 'item_box'
+ITEM_GROUP_LEVEL = 'level'
+ITEM_GROUP_MULTIGOAL = 'multigoal'
+
 ITEM_GROUPS = (
-    'chaos_emerald',
-    'character',
-    'goal',
-    'item_box',
-    'level',
+    ITEM_GROUP_CHAOS_EMERALD,
+    ITEM_GROUP_CHARACTER,
+    ITEM_GROUP_GOAL,
+    ITEM_GROUP_ITEM_BOX,
+    ITEM_GROUP_LEVEL,
+    ITEM_GROUP_MULTIGOAL,
 )
 
 
 @dataclass
 class Item:
     name: str
+    code: int
     description: typing.Optional[str]
-    progressive_name: typing.Optional[str]
     groups: list[str]
     progression: bool
     filler: bool
@@ -27,9 +35,9 @@ class Item:
 
 
 class ItemSet:
-    _items: list[Item]
+    _items: dict[str, Item]
 
-    def __init__(self, items: list[Item]) -> typing.Self:
+    def __init__(self, items: dict[str, Item]) -> typing.Self:
         self._items = items
 
     @staticmethod
@@ -46,7 +54,6 @@ class ItemSet:
                         'type': ['string', 'null'],
                         'default': None,
                     },
-                    'progressive_name': {'type': 'string'},
                     'groups': {
                         'type': 'array',
                         'items': {
@@ -74,26 +81,31 @@ class ItemSet:
         with open(filename, 'r') as f:
             data = yaml.safe_load(f)
             jsonschema.validate(data, file_schema)
-        items = []
+        items = {}
+        code = 1
         for entry in data:
-            items.append(Item(
+            items[entry['name']] = Item(
                 name=entry['name'],
+                code=code,
                 description=entry.get('description'),
-                progressive_name=entry.get('progressive_name'),
                 groups=entry['groups'],
                 progression=entry.get('progression', False),
                 filler=entry.get('filler', False),
                 trap=entry.get('trap', False)
-            ))
+            )
+            code += 1
         return ItemSet(items)
 
     @property
     def all_items(self) -> list[Item]:
-        return self._items
+        return list(self._items.values())
 
     def filter_items(self, *filters: list[typing.Callable]) -> list[Item]:
         return [
             item
-            for item in self._items
+            for item in self._items.values()
             if all(filt(item) for filt in filters)
         ]
+
+    def item_with_name(self, item_name: str) -> Item:
+        return self._items[item_name]
