@@ -37,8 +37,10 @@ class Item:
 class ItemSet:
     _items: dict[str, Item]
 
-    def __init__(self, items: dict[str, Item]) -> typing.Self:
-        self._items = items
+    def __init__(self, items: typing.Iterable[Item]) -> typing.Self:
+        self._items = {}
+        for item in items:
+            self._items[item.name] = item
 
     @staticmethod
     def from_file(filename: str) -> typing.Self:
@@ -81,10 +83,10 @@ class ItemSet:
         with open(filename, 'r') as f:
             data = yaml.safe_load(f)
             jsonschema.validate(data, file_schema)
-        items = {}
+        items: typing.Iterable[Item] = []
         code = 1
         for entry in data:
-            items[entry['name']] = Item(
+            items.append(Item(
                 name=entry['name'],
                 code=code,
                 description=entry.get('description'),
@@ -92,7 +94,7 @@ class ItemSet:
                 progression=entry.get('progression', False),
                 filler=entry.get('filler', False),
                 trap=entry.get('trap', False)
-            )
+            ))
             code += 1
         return ItemSet(items)
 

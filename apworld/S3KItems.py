@@ -6,6 +6,7 @@ from worlds.AutoWorld import World
 from . import consts
 from . import items
 from . import locations
+from .S3KUtil import location_for_goal
 
 
 class S3KItem(Item):
@@ -45,19 +46,19 @@ def create_items(
         lambda item: items.ITEM_GROUP_GOAL in item.groups
     )[0]
     if world.options.big_rings_goal.value != consts.GOAL_NONE:
-        goal_loc = locations.location_for_goal(
+        goal_loc = location_for_goal(
             loc_set, world.options.big_rings_goal.value)
         multiworld.get_location(goal_loc.display_name, player).place_locked_item(
             world.create_item(goal_item.name))
         num_filler_items -= 1
     if world.options.chaos_emeralds_goal.value != consts.GOAL_NONE:
-        goal_loc = locations.location_for_goal(
+        goal_loc = location_for_goal(
             loc_set, world.options.chaos_emeralds_goal.value)
         multiworld.get_location(goal_loc.display_name, player).place_locked_item(
             world.create_item(goal_item.name))
         num_filler_items -= 1
     if world.options.super_emeralds_goal.value != consts.GOAL_NONE:
-        goal_loc = locations.location_for_goal(
+        goal_loc = location_for_goal(
             loc_set, world.options.super_emeralds_goal.value)
         multiworld.get_location(goal_loc.display_name, player).place_locked_item(
             world.create_item(goal_item.name))
@@ -103,7 +104,7 @@ def create_items(
     # Only traps and filler items are now left. Determine how many traps should
     # be added based on `trap_weight_percentage` from the player's
     # configuration, and then randomly pick from the set of traps for each one.
-    num_traps = math.floor(num_filler_items * world.options.trap_weight_percentage.value)
+    num_traps = math.floor(num_filler_items * world.options.trap_weight_percentage.value / 100.0)
     num_filler_items -= num_traps
     traps = item_set.filter_items(lambda item: item.trap)
     for _ in range(num_traps):
@@ -146,7 +147,7 @@ def filter_items(world: World, item_set: items.ItemSet) -> items.ItemSet:
             lambda item: items.ITEM_GROUP_MULTIGOAL in item.groups
         )
     assert len(matching) == 1
-    item_code_set.update(matching[0].code)
+    item_code_set.add(matching[0].code)
 
     # Determine if chaos emeralds should be added to the item pool.
     if (

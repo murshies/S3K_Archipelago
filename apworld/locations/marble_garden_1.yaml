@@ -164,7 +164,7 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 12
+- name: Item Box 13
   zone: Marble Garden
   act: 1
   type: lightning_shield

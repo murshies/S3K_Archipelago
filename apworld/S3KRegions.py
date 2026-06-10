@@ -24,4 +24,4 @@ def create_regions(
             s3k_loc = S3KLocations.Location(
                 player, loc.display_name, loc.location_id, region)
             region.locations.append(s3k_loc)
-            menu.connect(region)
+        menu.connect(region)

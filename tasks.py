@@ -1,4 +1,5 @@
 from invoke import task
+from invoke.context import Context
 import json
 import jsonschema
 import io
@@ -10,19 +11,22 @@ import yaml
 import items
 import locations
 
+INVOKE_ROOT = pathlib.Path(__file__).parent
+
 
 @task
-def all(c):
+def all(c: Context):
     location_summary(c)
     item_summary(c)
     validate_player_config(c)
+    test(c)
 
 
 @task
-def location_summary(c):
+def location_summary(c: Context):
     types = locations.LocationTypeSet.from_file(
-        pathlib.Path('.') / 'apworld' / 'locations' / 'types.yaml')
-    base_dir = pathlib.Path('.') / 'apworld' / 'locations'
+        INVOKE_ROOT / 'apworld' / 'locations' / 'types.yaml')
+    base_dir = INVOKE_ROOT / 'apworld' / 'locations'
     location_def_files = [
         base_dir / f for f in os.listdir(base_dir)
         if f.endswith('.yaml') and f != 'types.yaml'
@@ -73,14 +77,14 @@ def location_summary(c):
         )
         doc.write(f'|{zone}|Total|{len(zone_matching)}|\n')
 
-    with open('LOCATION_SUMMARY.md', 'w') as f:
+    with open(INVOKE_ROOT / 'LOCATION_SUMMARY.md', 'w') as f:
         doc.seek(0)
         f.write(doc.read())
 
 
 @task
-def item_summary(c):
-    item_yaml_filename = pathlib.Path('.') / 'apworld' / 'items.yaml'
+def item_summary(c: Context):
+    item_yaml_filename = INVOKE_ROOT / 'apworld' / 'items.yaml'
     item_set = items.ItemSet.from_file(item_yaml_filename)
 
     doc = io.StringIO()
@@ -140,17 +144,26 @@ def item_summary(c):
     for item in trap_items:
         doc.write(f'| {item.name} | {item.description if item.description else ""}\n')
 
-    with open('ITEM_SUMMARY.md', 'w') as f:
+    with open(INVOKE_ROOT / 'ITEM_SUMMARY.md', 'w') as f:
         doc.seek(0)
         f.write(doc.read())
 
 
 @task
-def validate_player_config(c):
-    with open('apworld/example.yaml', 'r') as f:
+def validate_player_config(c: Context):
+    with open(INVOKE_ROOT / 'apworld' / 'example.yaml') as f:
         cfg = yaml.safe_load(f)
-    with open('apworld/player-config.schema.json', 'r') as f:
+    with open(INVOKE_ROOT / 'apworld' / 'player-config.schema.json', 'r') as f:
         schema = json.load(f)
     jsonschema.validate(cfg, schema)
     import pprint
     pprint.pprint(cfg)
+
+
+@task
+def test(c: Context):
+    archipelago_root = INVOKE_ROOT / "submodules" / "Archipelago"
+    with c.cd(INVOKE_ROOT / 'apworld'):
+        test_root = INVOKE_ROOT / 'apworld' / 'test'
+        c.run(f'pytest {test_root}',
+              env={'PYTHONPATH': archipelago_root})

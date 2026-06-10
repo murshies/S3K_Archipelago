@@ -87,7 +87,7 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 8
+- name: Item Box 9
   zone: Marble Garden
   act: 2
   type: flame_shield
@@ -158,7 +158,7 @@
   requirements:
     - character: Sonic
     - character: Tails
-- name: Item Box 17
+- name: Item Box 18
   zone: Marble Garden
   act: 2
   type: super_ring

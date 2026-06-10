@@ -69,7 +69,7 @@
   requirements:
     - character: Sonic
     - character: Tails
-- name: Item Box 5
+- name: Item Box 8
   zone: Angel Island
   act: 2
   type: water_shield

@@ -6,8 +6,6 @@ import jsonschema
 import typing
 import yaml
 
-import consts
-
 ZONE_ORDER = (
     'Angel Island',
     'Hydrocity',
@@ -50,6 +48,16 @@ class InvalidLocationType(Exception):
 
     def __str__(self) -> str:
         return f'"{self.type_name}" is not valid. Valid types are: {self.valid_types}'
+
+
+class DuplicateLocation(Exception):
+    loc_name: str
+
+    def __init__(self, loc_name: str) -> typing.Self:
+        self.loc_name = loc_name
+
+    def __str__(self) -> str:
+        return f'Duplicate location "{self.loc_name}"'
 
 
 class LocationTypeSet:
@@ -187,12 +195,13 @@ class LocationSet:
         }
         locations = []
         id_counter = 1
+        loc_name_cache: set[str] = set()
         for filename in filenames:
             with open(filename) as f:
                 data = yaml.safe_load(f)
                 jsonschema.validate(data, file_schema)
             for entry in data:
-                locations.append(Location(
+                loc = Location(
                     name=entry['name'],
                     zone=entry['zone'],
                     act=entry.get('act'),
@@ -206,7 +215,12 @@ class LocationSet:
                         for req in entry['requirements']
                     ],
                     location_id=id_counter
-                ))
+                )
+                display_name = loc.display_name
+                if display_name in loc_name_cache:
+                    raise DuplicateLocation(display_name)
+                loc_name_cache.add(display_name)
+                locations.append(loc)
                 id_counter += 1
         return LocationSet(locations, types)
 
@@ -224,27 +238,3 @@ class LocationSet:
             for location in self._locations
             if all(filt(location, self._types) for filt in filters)
         ]
-
-
-def location_for_goal(loc_set: LocationSet, goal_zone: str) -> Location:
-    """
-    Given a goal zone, return the location where the goal item should be
-    placed.
-    """
-    if goal_zone == consts.GOAL_DOOMSDAY:
-        locs = loc_set.filter_locations(
-            lambda loc, ts: (loc.location_type == consts.LOCTYPE_BOSS and
-                             loc.zone == consts.ZONE_DOOMSDAY))
-    elif goal_zone == consts.GOAL_KNUCKLES_SKY_SANCTUARY:
-        locs = loc_set.filter_locations(
-            lambda loc, ts: (any(req.character == consts.CHARACTER_KNUCKLES
-                                 for req in loc.requirements) and
-                             loc.zone == consts.ZONE_SKY_SANCTUARY))
-    elif goal_zone == consts.GOAL_DEATH_EGG:
-        locs = loc_set.filter_locations(
-            lambda loc, ts: (loc.location_type == consts.LOCTYPE_BOSS and
-                             loc.zone == consts.ZONE_DEATH_EGG))
-    else:
-        raise Exception(f'Invalid goal zone "{goal_zone}"')
-    assert len(locs) == 1
-    return locs[0]

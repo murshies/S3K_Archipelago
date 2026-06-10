@@ -3,6 +3,7 @@ from worlds.AutoWorld import World
 
 from . import consts
 from . import locations
+from .S3KUtil import location_for_goal
 
 
 class S3KLocation(Location):
@@ -25,14 +26,14 @@ def filter_locations(world: World, loc_set: locations.LocationSet) -> locations.
     # when all master emerald pieces are collected. This means that the boss of
     # each goal zone needs to be added as a location.
     if world.options.big_rings_goal.value != consts.GOAL_NONE:
-        loc_id_set.update(locations.location_for_goal(
-            loc_set, world.options.big_rings_goal.value))
+        loc_id_set.add(location_for_goal(
+            loc_set, world.options.big_rings_goal.value).location_id)
     if world.options.chaos_emeralds_goal.value != consts.GOAL_NONE:
-        loc_id_set.update(locations.location_for_goal(
-            loc_set, world.options.chaos_emeralds_goal.value))
+        loc_id_set.add(location_for_goal(
+            loc_set, world.options.chaos_emeralds_goal.value).location_id)
     if world.options.super_emeralds_goal.value != consts.GOAL_NONE:
-        loc_id_set.update(locations.location_for_goal(
-            loc_set, world.options.super_emeralds_goal.value))
+        loc_id_set.add(location_for_goal(
+            loc_set, world.options.super_emeralds_goal.value).location_id)
 
     # Item box locations
     if world.options.enable_boss_locations:
