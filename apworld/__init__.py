@@ -54,7 +54,7 @@ class S3KWorld(World):
         for loc in self.loc_set.all_locations:
             self.location_name_to_id[loc.display_name] = loc.location_id
 
-        item_yaml_filename = pathlib.Path('.') / 'items.yaml'
+        item_yaml_filename = pathlib.Path(__file__).parent / 'items.yaml'
         item_set = items.ItemSet.from_file(item_yaml_filename)
         self.item_set = S3KItems.filter_items(self, item_set)
         for item in self.item_set.all_items:

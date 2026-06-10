@@ -1,3 +1,4 @@
 invoke==2.2.1
--r apworld/requirements.txt
+jsonschema==4.26.0
+PyYAML==6.0.3
 -r apworld/test-requirements.txt

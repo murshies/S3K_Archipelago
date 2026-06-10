@@ -27,13 +27,15 @@ def all(c: Context):
 @task
 def location_summary(c: Context):
     types = locations.LocationTypeSet.from_file(
-        INVOKE_ROOT / 'apworld' / 'locations' / 'types.yaml')
+        INVOKE_ROOT / 'apworld' / 'locations' / 'types.yaml',
+        validator=jsonschema.validate)
     base_dir = INVOKE_ROOT / 'apworld' / 'locations'
     location_def_files = [
         base_dir / f for f in os.listdir(base_dir)
         if f.endswith('.yaml') and f != 'types.yaml'
     ]
-    location_set = locations.LocationSet.from_files(location_def_files, types)
+    location_set = locations.LocationSet.from_files(
+        location_def_files, types, validator=jsonschema.validate)
     zone_location_order = (
         ('big_ring', 'Big Ring'),
         ('boss', 'Boss'),
@@ -87,7 +89,8 @@ def location_summary(c: Context):
 @task
 def item_summary(c: Context):
     item_yaml_filename = INVOKE_ROOT / 'apworld' / 'items.yaml'
-    item_set = items.ItemSet.from_file(item_yaml_filename)
+    item_set = items.ItemSet.from_file(
+        item_yaml_filename, validator=jsonschema.validate)
 
     doc = io.StringIO()
 

@@ -2,7 +2,6 @@
 # can be obtained during a game).
 
 from dataclasses import dataclass
-import jsonschema
 import typing
 import yaml
 
@@ -43,46 +42,47 @@ class ItemSet:
             self._items[item.name] = item
 
     @staticmethod
-    def from_file(filename: str) -> typing.Self:
-        file_schema = {
-            '$schema': 'https://json-schema.org/draft/2020-12/schema',
-            '$id': 'https://github.com/murshies/S3K_Archipelago/apworld/items.schema.json',
-            'type': 'array',
-            'items': {
-                'type': 'object',
-                'properties': {
-                    'name': {'type': 'string'},
-                    'description': {
-                        'type': ['string', 'null'],
-                        'default': None,
-                    },
-                    'groups': {
-                        'type': 'array',
-                        'items': {
-                            'type': 'string',
-                            'enum': list(ITEM_GROUPS)
-                        }
-                    },
-                    'progression': {
-                        'type': 'boolean',
-                        'default': False
-                    },
-                    'filler': {
-                        'type': 'boolean',
-                        'default': False
-                    },
-                    'trap': {
-                        'type': 'boolean',
-                        'default': False
-                    }
-                },
-                'required': ['name', 'groups'],
-                'additionalProperties': False
-            }
-        }
+    def from_file(filename: str, validator: typing.Callable = None) -> typing.Self:
         with open(filename, 'r') as f:
             data = yaml.safe_load(f)
-            jsonschema.validate(data, file_schema)
+            if validator is not None:
+                file_schema = {
+                    '$schema': 'https://json-schema.org/draft/2020-12/schema',
+                    '$id': 'https://github.com/murshies/S3K_Archipelago/apworld/items.schema.json',
+                    'type': 'array',
+                    'items': {
+                        'type': 'object',
+                        'properties': {
+                            'name': {'type': 'string'},
+                            'description': {
+                                'type': ['string', 'null'],
+                                'default': None,
+                            },
+                            'groups': {
+                                'type': 'array',
+                                'items': {
+                                    'type': 'string',
+                                    'enum': list(ITEM_GROUPS)
+                                }
+                            },
+                            'progression': {
+                                'type': 'boolean',
+                                'default': False
+                            },
+                            'filler': {
+                                'type': 'boolean',
+                                'default': False
+                            },
+                            'trap': {
+                                'type': 'boolean',
+                                'default': False
+                            }
+                        },
+                        'required': ['name', 'groups'],
+                        'additionalProperties': False
+                    }
+                }
+                validator(data, file_schema)
         items: typing.Iterable[Item] = []
         code = 1
         for entry in data:
