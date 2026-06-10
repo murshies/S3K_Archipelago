@@ -7,6 +7,7 @@ import os
 import pathlib
 import textwrap
 import yaml
+import zipfile
 
 import items
 import locations
@@ -20,6 +21,7 @@ def all(c: Context):
     item_summary(c)
     validate_player_config(c)
     test(c)
+    apworld_release(c)
 
 
 @task
@@ -167,3 +169,28 @@ def test(c: Context):
         test_root = INVOKE_ROOT / 'apworld' / 'test'
         c.run(f'pytest {test_root}',
               env={'PYTHONPATH': archipelago_root})
+
+
+@task
+def apworld_release(c: Context):
+    build_dir = INVOKE_ROOT / 'build'
+    os.makedirs(build_dir, exist_ok=True)
+    out_file = build_dir / 's3k.apworld'
+    if os.path.exists(out_file):
+        os.remove(out_file)
+    apworld_root = INVOKE_ROOT / 'apworld'
+    apworld_ignore_files: set[str] = {
+        '__pycache__',
+        '.pytest_cache'
+    }
+    with zipfile.ZipFile(out_file, 'w') as zf:
+        for root, dirs, files in os.walk(apworld_root):
+            for f in files:
+                full_file_path = pathlib.Path(root) / f
+                should_ignore = any(
+                    ignore in str(full_file_path)
+                    for ignore in apworld_ignore_files)
+                if should_ignore:
+                    continue
+                zf.write(full_file_path,
+                         os.path.relpath(full_file_path, apworld_root))
