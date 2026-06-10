@@ -7,6 +7,7 @@ from . import consts
 from . import items
 from . import locations
 from .S3KUtil import location_for_goal
+from .S3KOptions import ZoneUnlocks
 
 
 class S3KItem(Item):
@@ -66,7 +67,7 @@ def create_items(
 
     itempool: list[S3KItem] = []
 
-    # Add chaos emeralds to the pool for
+    # Add chaos emeralds to the pool
     if world.options.chaos_emeralds_goal.value != consts.GOAL_NONE:
         for i in range(0, consts.EMERALDS_FOR_CHAOS_HUNT):
             itempool.append(world.create_item(consts.ITEM_CHAOS_EMERALD))
@@ -163,7 +164,7 @@ def filter_items(world: World, item_set: items.ItemSet) -> items.ItemSet:
     # selected in their configuration for zone_unlocks. Note that no items are
     # added for ZONE_UNLOCKS_ALL_UNLOCKED, since all characters and zones will
     # be available to the player at the start of the game.
-    if world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_CHARACTERS_ONLY:
+    if world.options.zone_unlocks.value == ZoneUnlocks.option_characters_only:
         # Sonic/Tails/Knuckles items that each unlock all zones for the given
         # character
         matching = item_set.filter_items(
@@ -171,14 +172,14 @@ def filter_items(world: World, item_set: items.ItemSet) -> items.ItemSet:
                           items.ITEM_GROUP_LEVEL not in item.groups)
         )
         item_code_set.update(item.code for item in matching)
-    elif world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_ZONES_AND_CHARACTERS:
+    elif world.options.zone_unlocks.value == ZoneUnlocks.option_zones_and_characters:
         # Per-character, per-zone items, for example Sonic - Angel Island Zone
         matching = item_set.filter_items(
             lambda item: (items.ITEM_GROUP_CHARACTER in item.groups and
                           items.ITEM_GROUP_LEVEL in item.groups)
         )
         item_code_set.update(item.code for item in matching)
-    elif world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_ZONES_ONLY:
+    elif world.options.zone_unlocks.value == ZoneUnlocks.option_zones_only:
         # Zone items that unlock a single zone for all characters
         matching = item_set.filter_items(
             lambda item: (items.ITEM_GROUP_CHARACTER not in item.groups and

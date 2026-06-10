@@ -13,7 +13,7 @@ ITEM_CHAOS_EMERALD: str = 'Chaos Emerald'
 EMERALDS_FOR_CHAOS_HUNT: int = 7
 EMERALDS_FOR_SUPER_HUNT: int = 7
 
-LOCTYPE_BIG_RING: str = 'big ring'
+LOCTYPE_BIG_RING: str = 'big_ring'
 LOCTYPE_BOSS: str = 'boss'
 LOCTYPE_EMERALD: str = 'emerald'
 LOCTYPE_FLAME_SHIELD: str = 'flame_shield'

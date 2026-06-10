@@ -32,7 +32,7 @@ class S3KWorld(World):
     game: str = consts.GAME
     options_dataclass = S3KOptions
     options: S3KOptions
-    topology_present: bool = False
+    topology_present: bool = True
     web: WebWorld = S3KWebWorld()
 
     # These will be filled in later, during world generation.
