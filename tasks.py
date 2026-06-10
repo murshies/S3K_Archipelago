@@ -196,4 +196,4 @@ def apworld_release(c: Context):
                 if should_ignore:
                     continue
                 zf.write(full_file_path,
-                         os.path.relpath(full_file_path, apworld_root))
+                         pathlib.Path('s3k') / os.path.relpath(full_file_path, apworld_root))

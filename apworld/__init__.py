@@ -1,5 +1,5 @@
-import os
-import pathlib
+import importlib
+import yaml
 
 from BaseClasses import ItemClassification, Tutorial
 from worlds.AutoWorld import WebWorld, World
@@ -40,22 +40,26 @@ class S3KWorld(World):
     location_name_to_id = {}
 
     def generate_early(self) -> None:
-        # Locations and items are defined in YAML files, read them in this step
-        # so that they are available for location and item generation in later
-        # steps.
-        locs_base_dir = pathlib.Path(__file__).parent / 'locations'
-        loc_types = locations.LocationTypeSet.from_file(locs_base_dir / 'types.yaml')
-        loc_def_files = [
-            locs_base_dir / f for f in os.listdir(locs_base_dir)
-            if f.endswith('.yaml') and f != 'types.yaml'
-        ]
-        loc_set = locations.LocationSet.from_files(loc_def_files, loc_types)
+        locs_path = importlib.resources.files(__name__) / 'locations'
+
+        loc_types_file = locs_path / 'types.yaml'
+        with importlib.resources.as_file(loc_types_file) as types_file:
+            loc_types = locations.LocationTypeSet.from_file(types_file)
+
+        loc_defs = []
+        for f in locs_path.iterdir():
+            if str(f).endswith('.yaml') and not str(f).endswith('types.yaml'):
+                with f.open('r', encoding='utf-8') as loc_file:
+                    loc_defs += yaml.safe_load(loc_file)
+
+        loc_set = locations.LocationSet.from_definitions(loc_defs, loc_types)
         self.loc_set = S3KLocations.filter_locations(self, loc_set)
         for loc in self.loc_set.all_locations:
             self.location_name_to_id[loc.display_name] = loc.location_id
 
-        item_yaml_filename = pathlib.Path(__file__).parent / 'items.yaml'
-        item_set = items.ItemSet.from_file(item_yaml_filename)
+        item_yaml_filename = importlib.resources.files(__name__) / 'items.yaml'
+        with importlib.resources.as_file(item_yaml_filename) as items_file:
+            item_set = items.ItemSet.from_file(items_file)
         self.item_set = S3KItems.filter_items(self, item_set)
         for item in self.item_set.all_items:
             self.item_name_to_id[item.name] = item.code

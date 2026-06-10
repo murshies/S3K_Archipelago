@@ -149,84 +149,93 @@ class LocationSet:
             types: LocationTypeSet,
             validator: typing.Callable = None,
     ) -> typing.Self:
+        defs = []
+        for filename in filenames:
+            with open(filename, 'r') as f:
+                defs += yaml.safe_load(f)
+        return LocationSet.from_definitions(defs, types, validator)
+
+    @staticmethod
+    def from_definitions(
+            defs: list[dict],
+            types: LocationTypeSet,
+            validator: typing.Callable = None,
+    ) -> typing.Self:
         locations = []
         id_counter = 1
         loc_name_cache: set[str] = set()
-        for filename in filenames:
-            with open(filename) as f:
-                data = yaml.safe_load(f)
-                if validator is not None:
-                    file_schema = {
-                        '$schema': 'https://json-schema.org/draft/2020-12/schema',
-                        '$id': 'https://github.com/murshies/S3K_Archipelago/locations.schema.json',
-                        'title': 'Schema for the locations yaml file for a single act',
-                        'type': 'array',
-                        'items': {
-                            'type': 'object',
-                            'properties': {
-                                'name': {'type': 'string'},
-                                'zone': {
-                                    'type': 'string',
-                                    'enum': list(ZONE_ORDER)
-                                },
-                                'act': {
-                                    'type': ['integer', 'null'],
-                                    'default': None
-                                },
-                                'type': {
-                                    'type': 'string',
-                                    'enum': list(types.all_type_names)
-                                },
-                                'requirements': {
-                                    'type': 'array',
-                                    'items': {
-                                        'type': 'object',
-                                        'properties': {
-                                            'character': {
-                                                'type': 'string',
-                                                'enum': ['Sonic', 'Tails', 'Knuckles']
-                                            },
-                                            'super_state': {
-                                                'type': ['string', 'null'],
-                                                'enum': ['super', 'hyper'],
-                                                'default': None,
-                                            },
-                                            'difficulty': {
-                                                'type': 'string',
-                                                'enum': ['normal', 'hard']
-                                            }
-                                        },
-                                        'additionalProperties': False
+        if validator is not None:
+            schema = {
+                '$schema': 'https://json-schema.org/draft/2020-12/schema',
+                '$id': 'https://github.com/murshies/S3K_Archipelago/locations.schema.json',
+                'title': 'Schema for the locations yaml file for a single act',
+                'type': 'array',
+                'items': {
+                    'type': 'object',
+                    'properties': {
+                        'name': {'type': 'string'},
+                        'zone': {
+                            'type': 'string',
+                            'enum': list(ZONE_ORDER)
+                        },
+                        'act': {
+                            'type': ['integer', 'null'],
+                            'default': None
+                        },
+                        'type': {
+                            'type': 'string',
+                            'enum': list(types.all_type_names)
+                        },
+                        'requirements': {
+                            'type': 'array',
+                            'items': {
+                                'type': 'object',
+                                'properties': {
+                                    'character': {
+                                        'type': 'string',
+                                        'enum': ['Sonic', 'Tails', 'Knuckles']
+                                    },
+                                    'super_state': {
+                                        'type': ['string', 'null'],
+                                        'enum': ['super', 'hyper'],
+                                        'default': None,
+                                    },
+                                    'difficulty': {
+                                        'type': 'string',
+                                        'enum': ['normal', 'hard']
                                     }
-                                }
-                            },
-                            'required': ['name', 'zone', 'type', 'requirements'],
-                            'additionalProperties': False
+                                },
+                                'additionalProperties': False
+                            }
                         }
-                    }
-                    validator(data, file_schema)
-            for entry in data:
-                loc = Location(
-                    name=entry['name'],
-                    zone=entry['zone'],
-                    act=entry.get('act'),
-                    location_type=entry['type'],
-                    requirements=[
-                        LocationRequirement(
-                            character=req.get('character'),
-                            super_state=req.get('super_state'),
-                            difficulty=req.get('difficulty', 'normal'),
-                        )
-                        for req in entry['requirements']
-                    ],
-                    location_id=id_counter
-                )
-                display_name = loc.display_name
-                if display_name in loc_name_cache:
-                    raise DuplicateLocation(display_name)
-                loc_name_cache.add(display_name)
-                locations.append(loc)
-                id_counter += 1
+                    },
+                    'required': ['name', 'zone', 'type', 'requirements'],
+                    'additionalProperties': False
+                }
+            }
+            validator(defs, schema)
+        for entry in defs:
+            loc = Location(
+                name=entry['name'],
+                zone=entry['zone'],
+                act=entry.get('act'),
+                location_type=entry['type'],
+                requirements=[
+                    LocationRequirement(
+                        character=req.get('character'),
+                        super_state=req.get('super_state'),
+                        difficulty=req.get('difficulty', 'normal'),
+                    )
+                    for req in entry['requirements']
+                ],
+                location_id=id_counter
+            )
+            display_name = loc.display_name
+            if display_name in loc_name_cache:
+                raise DuplicateLocation(display_name)
+            loc_name_cache.add(display_name)
+            locations.append(loc)
+            id_counter += 1
         return LocationSet(locations, types)
 
     @property
