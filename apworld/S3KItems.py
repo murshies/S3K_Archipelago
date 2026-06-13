@@ -99,8 +99,21 @@ def create_items(
         lambda item: (items.ITEM_GROUP_CHARACTER in item.groups or
                       items.ITEM_GROUP_LEVEL in item.groups)
     )
-    itempool += [world.create_item(item.name) for item in zone_items]
-    num_filler_items -= len(zone_items)
+    if len(zone_items) > 0:
+        # If the player has all zones and characters unlocked as part of their
+        # settings, there will be no zone items, and therefore also no need to
+        # give them a starting zone/character.
+        starting_zone_item = pick_starting_zone_item(world, player, zone_items)
+        s3k_starting_zone_item: S3KItem = None
+        for item in zone_items:
+            s3k_item = world.create_item(item.name)
+            if item.code == starting_zone_item.code:
+                assert s3k_starting_zone_item is None
+                s3k_starting_zone_item = s3k_item
+            itempool.append(s3k_item)
+        num_filler_items -= len(zone_items)
+        # Give the player the starting zone/character
+        multiworld.precollected_items[player].append(s3k_starting_zone_item)
 
     # Only traps and filler items are now left. Determine how many traps should
     # be added based on `trap_weight_percentage` from the player's
@@ -230,3 +243,19 @@ def item_is_goal_zone(world: World, item: items.Item) -> bool:
         ):
             return True
     return False
+
+
+def pick_starting_zone_item(
+        world: World,
+        player: int,
+        zone_item_list: list[items.Item],
+) -> items.Item:
+    """
+    Given the filtered list of zone/character items, pick a starting
+    zone/character.
+    """
+    valid_choices = [
+        item for item in zone_item_list
+        if not item_is_goal_zone(world, item)
+    ]
+    return world.random.choice(valid_choices)
