@@ -30,14 +30,15 @@ def loc_requirement_to_rule(
     # zones/characters unlocked from the start
     # (i.e. consts.ZONE_UNLOCKS_ALL_UNLOCKED) means there is no character-based
     # rule that needs to be followed, so no function is added here.
-    if world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_CHARACTERS_ONLY:
-        reqs.append(lambda state: state.has(req.character, player))
-    elif world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_ZONES_AND_CHARACTERS:
-        zone_item_name = f'{loc.zone} Zone - {req.character}'
-        reqs.append(lambda state: state.has(zone_item_name, player))
-    elif world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_ZONES_ONLY:
-        zone_item_name = f'{loc.zone} Zone'
-        reqs.append(lambda state: state.has(zone_item_name, player))
+    if not is_enabled_goal_zone(world, loc.zone):
+        if world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_CHARACTERS_ONLY:
+            reqs.append(lambda state: state.has(req.character, player))
+        elif world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_ZONES_AND_CHARACTERS:
+            zone_item_name = f'{loc.zone} Zone - {req.character}'
+            reqs.append(lambda state: state.has(zone_item_name, player))
+        elif world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_ZONES_ONLY:
+            zone_item_name = f'{loc.zone} Zone'
+            reqs.append(lambda state: state.has(zone_item_name, player))
 
     if req.super_state is not None:
         if req.super_state == consts.SUPER_STATE_SUPER:
@@ -96,3 +97,17 @@ def set_rules(
     for loc in loc_set.all_locations:
         add_rule(multiworld.get_location(loc.display_name, player),
                  loc_requirements_to_rule(world, player, loc))
+
+
+def is_enabled_goal_zone(world: World, zone: str) -> bool:
+    option_to_str: dict[int, str] = {
+        consts.GOAL_DEATH_EGG: consts.ZONE_DEATH_EGG,
+        consts.GOAL_DOOMSDAY: consts.ZONE_DOOMSDAY,
+        consts.GOAL_KNUCKLES_SKY_SANCTUARY: consts.ZONE_KNUCKLES_SKY_SANCTUARY,
+        consts.GOAL_NONE: 'none',
+    }
+    return (
+        option_to_str[world.options.big_rings_goal.value] == zone or
+        option_to_str[world.options.chaos_emeralds_goal.value] == zone or
+        option_to_str[world.options.super_emeralds_goal.value] == zone
+    )

@@ -18,6 +18,7 @@ ZONE_ORDER = (
     'Lava Reef',
     'Hidden Palace',
     'Sky Sanctuary',
+    'Knuckles Sky Sanctuary',
     'Death Egg',
     'Doomsday',
     'Special Stage 1',

@@ -1,11 +1,14 @@
-from BaseClasses import MultiWorld, Region
+from BaseClasses import CollectionState, Location, MultiWorld, Region
+from worlds.AutoWorld import World
 
+from . import consts
 from . import locations
 from . import S3KLocations
 
 
 def create_regions(
         multiworld: MultiWorld,
+        world: World,
         player: int,
         loc_set: locations.LocationSet,
 ) -> None:
@@ -13,15 +16,99 @@ def create_regions(
     # Knuckles will be connected to each zone/special stage.
     menu = Region('Menu', player, multiworld)
     multiworld.regions.append(menu)
-    zone_set = set(loc.zone for loc in loc_set.all_locations)
-    for zone in zone_set:
+    zone_char_map: dict[str, set[str]] = {}
+    for loc in loc_set.all_locations:
+        zone = loc.zone
+        if zone not in zone_char_map:
+            zone_char_map[zone] = set()
+        for req in loc.requirements:
+            if req.character is not None:
+                zone_char_map[zone].add(req.character)
+    for zone, chars in zone_char_map.items():
         region = Region(zone, player, multiworld)
         multiworld.regions.append(region)
         # Add the locations corresponding to this region to the multiworld's
         # location pool.
         zone_locs = [loc for loc in loc_set.all_locations if loc.zone == zone]
         for loc in zone_locs:
-            s3k_loc = S3KLocations.Location(
+            s3k_loc = S3KLocations.S3KLocation(
                 player, loc.display_name, loc.location_id, region)
             region.locations.append(s3k_loc)
-        menu.connect(region)
+
+        # Determine the rule for accessing the zone for the character. This
+        # will depend on the zone unlock settings, as well as which goal zones
+        # are enabled.
+
+        # Handle the goal zones first
+        if goal_applicable(world.options.big_rings_goal.value, zone):
+            menu.connect(
+                region,
+                rule=lambda state: can_check_required_num_big_rings(
+                    state, player, loc_set, world.options.big_rings_to_check.value))
+        elif goal_applicable(world.options.chaos_emeralds_goal.value, zone):
+            menu.connect(
+                region,
+                rule=lambda state: state.has(
+                    consts.ITEM_CHAOS_EMERALD, player, consts.EMERALDS_FOR_CHAOS_HUNT))
+        elif goal_applicable(world.options.super_emeralds_goal.value, zone):
+            menu.connect(
+                region,
+                rule=lambda state: state.has(
+                    consts.ITEM_CHAOS_EMERALD, player, consts.EMERALDS_FOR_SUPER_HUNT))
+        # Next, handle access to other zones based on zone unlock logic
+        elif world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_ZONES_ONLY:
+            menu.connect(
+                region,
+                rule=lambda state: state.has(f"{zone} Zone", player))
+        elif world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_ZONES_AND_CHARACTERS:
+            menu.connect(
+                region,
+                rule=lambda state: any(state.has(f"{zone} Zone - {char}", player)
+                                       for char in chars))
+        # Otherwise, there are two options:
+        # 1. All zones and characters are unlocked from the start
+        # 2. The player has their settings to get character unlocks, meaning a
+        #    single item like "Sonic" will unlock all zones for Sonic. In order
+        #    for the player to do anything at the start, they must be given one
+        #    character unlock, meaning that all zones will be available to the
+        #    player from the start.
+        # The only exception is goal zones, but those have already been given
+        # their rules above.
+        else:
+            menu.connect(region)
+
+
+def goal_applicable(goal_value: int, zone: str) -> bool:
+    """
+    Given a goal value and a target zone, return a bool indicating whether or
+    not the goal is for the zone.
+    """
+    return (
+        (
+            goal_value == consts.GOAL_KNUCKLES_SKY_SANCTUARY and
+            zone == consts.ZONE_KNUCKLES_SKY_SANCTUARY
+        ) or (
+            goal_value == consts.GOAL_DEATH_EGG and
+            zone == consts.ZONE_DEATH_EGG
+        ) or (
+            goal_value == consts.GOAL_DOOMSDAY and
+            zone == consts.ZONE_DOOMSDAY
+        )
+    )
+
+
+def can_check_required_num_big_rings(
+        state: CollectionState,
+        player: int,
+        loc_set: locations.LocationSet,
+        num_required: int,
+) -> bool:
+    """
+    Helper function used in rules to determine whether or not the player can
+    reach the required number of big rings for the big ring hunt goal.
+    """
+    reachable_big_rings = loc_set.filter_locations(
+        lambda loc, ts: (loc.location_type == consts.LOCTYPE_BIG_RING and
+                         state.can_reach_location(loc.display_name, player))
+    )
+    return len(reachable_big_rings) >= num_required

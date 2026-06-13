@@ -16,7 +16,7 @@ def location_for_goal(loc_set: LocationSet, goal_zone: str) -> Location:
         locs = loc_set.filter_locations(
             lambda loc, ts: (any(req.character == consts.CHARACTER_KNUCKLES
                                  for req in loc.requirements) and
-                             loc.zone == consts.ZONE_SKY_SANCTUARY))
+                             loc.zone == consts.ZONE_KNUCKLES_SKY_SANCTUARY))
     elif goal_zone == consts.GOAL_DEATH_EGG:
         locs = loc_set.filter_locations(
             lambda loc, ts: (loc.location_type == consts.LOCTYPE_BOSS and

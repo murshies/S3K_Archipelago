@@ -65,7 +65,7 @@ class S3KWorld(World):
             self.item_name_to_id[item.name] = item.code
 
     def create_regions(self) -> None:
-        S3KRegions.create_regions(self.multiworld, self.player, self.loc_set)
+        S3KRegions.create_regions(self.multiworld, self, self.player, self.loc_set)
 
     def create_items(self) -> None:
         S3KItems.create_items(self.multiworld, self, self.player, self.item_set, self.loc_set)

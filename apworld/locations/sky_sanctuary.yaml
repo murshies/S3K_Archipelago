@@ -4,8 +4,8 @@
   requirements:
     - character: Sonic
     - character: Tails
-- name: Knuckles Boss
-  zone: Sky Sanctuary
+- name: Boss
+  zone: Knuckles Sky Sanctuary
   type: boss
   requirements:
     - character: Knuckles

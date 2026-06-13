@@ -169,21 +169,24 @@ def filter_items(world: World, item_set: items.ItemSet) -> items.ItemSet:
         # character
         matching = item_set.filter_items(
             lambda item: (items.ITEM_GROUP_CHARACTER in item.groups and
-                          items.ITEM_GROUP_LEVEL not in item.groups)
+                          items.ITEM_GROUP_LEVEL not in item.groups and
+                          not item_is_goal_zone(world, item))
         )
         item_code_set.update(item.code for item in matching)
     elif world.options.zone_unlocks.value == ZoneUnlocks.option_zones_and_characters:
         # Per-character, per-zone items, for example Sonic - Angel Island Zone
         matching = item_set.filter_items(
             lambda item: (items.ITEM_GROUP_CHARACTER in item.groups and
-                          items.ITEM_GROUP_LEVEL in item.groups)
+                          items.ITEM_GROUP_LEVEL in item.groups and
+                          not item_is_goal_zone(world, item))
         )
         item_code_set.update(item.code for item in matching)
     elif world.options.zone_unlocks.value == ZoneUnlocks.option_zones_only:
         # Zone items that unlock a single zone for all characters
         matching = item_set.filter_items(
             lambda item: (items.ITEM_GROUP_CHARACTER not in item.groups and
-                          items.ITEM_GROUP_LEVEL in item.groups)
+                          items.ITEM_GROUP_LEVEL in item.groups and
+                          not item_is_goal_zone(world, item))
         )
         item_code_set.update(item.code for item in matching)
 
@@ -205,3 +208,25 @@ def filter_items(world: World, item_set: items.ItemSet) -> items.ItemSet:
         for item in item_set.all_items
         if item.code in item_code_set
     ])
+
+
+def item_is_goal_zone(world: World, item: items.Item) -> bool:
+    """
+    Determines if an item would unlock a goal zone. Used in item set filtering
+    to avoid putting goal zone unlocks into the item pool.
+    """
+    for goal_value in (
+            world.options.big_rings_goal.value,
+            world.options.chaos_emeralds_goal.value,
+            world.options.super_emeralds_goal.value,
+    ):
+        if (
+                (goal_value == consts.GOAL_DEATH_EGG and
+                 consts.ZONE_DEATH_EGG in item.name) or
+                (goal_value == consts.GOAL_KNUCKLES_SKY_SANCTUARY and
+                 consts.ZONE_KNUCKLES_SKY_SANCTUARY in item.name) or
+                (goal_value == consts.GOAL_DOOMSDAY and
+                 consts.ZONE_DOOMSDAY in item.name)
+        ):
+            return True
+    return False
