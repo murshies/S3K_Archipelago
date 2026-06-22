@@ -172,7 +172,7 @@ def test(c: Context):
     with c.cd(INVOKE_ROOT / 'apworld'):
         test_root = INVOKE_ROOT / 'apworld' / 'test'
         c.run(f'pytest {test_root}',
-              env={'PYTHONPATH': archipelago_root})
+              env={'PYTHONPATH': str(archipelago_root)})
 
 
 @task
