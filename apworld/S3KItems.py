@@ -49,24 +49,30 @@ def create_items(
     goal_item = item_set.filter_items(
         lambda item: items.ITEM_GROUP_GOAL in item.groups
     )[0]
+    goals_placed = 0
     if world.options.big_rings_goal.value != consts.GOAL_NONE:
         goal_loc = location_for_goal(
             loc_set, world.options.big_rings_goal.value)
         multiworld.get_location(goal_loc.display_name, player).place_locked_item(
             world.create_item(goal_item.name))
         num_filler_items -= 1
+        goals_placed += 1
     if world.options.chaos_emeralds_goal.value != consts.GOAL_NONE:
         goal_loc = location_for_goal(
             loc_set, world.options.chaos_emeralds_goal.value)
         multiworld.get_location(goal_loc.display_name, player).place_locked_item(
             world.create_item(goal_item.name))
         num_filler_items -= 1
+        goals_placed += 1
     if world.options.super_emeralds_goal.value != consts.GOAL_NONE:
         goal_loc = location_for_goal(
             loc_set, world.options.super_emeralds_goal.value)
         multiworld.get_location(goal_loc.display_name, player).place_locked_item(
             world.create_item(goal_item.name))
         num_filler_items -= 1
+        goals_placed += 1
+    multiworld.completion_condition[player] = lambda state: state.has(
+        goal_item.name, player, goals_placed)
 
     itempool: list[S3KItem] = []
 
