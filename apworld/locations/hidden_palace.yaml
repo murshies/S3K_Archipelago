@@ -1,3 +1,10 @@
+- name: Complete
+  zone: Hidden Palace
+  type: complete
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
 - name: Item Box 1
   zone: Hidden Palace
   type: power_sneakers

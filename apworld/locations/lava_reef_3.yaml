@@ -1,3 +1,10 @@
+- name: Complete
+  zone: Lava Reef
+  act: 3
+  type: complete
+  requirements:
+    - character: Sonic
+    - character: Tails
 - name: Boss
   zone: Lava Reef
   act: 3

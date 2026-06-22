@@ -64,11 +64,64 @@ class S3KWorld(World):
         for item in self.item_set.all_items:
             self.item_name_to_id[item.name] = item.code
 
+        # Determine the starting zone/character here, if one is needed. This
+        # needs to happen here because region generation happens before item
+        # generation, so we can't rely on the item creation step to handle
+        # this.
+        self.starting_zone: str = None
+        self.starting_item: items.Item = None
+        zone_item_list = self.item_set.filter_items(
+            lambda item: (items.ITEM_GROUP_CHARACTER in item.groups or
+                          items.ITEM_GROUP_LEVEL in item.groups)
+        )
+        if len(zone_item_list) > 0:
+            self.starting_item = self.pick_starting_zone_item(zone_item_list)
+            if (
+                    self.options.zone_unlocks.value == consts.ZONE_UNLOCKS_ZONES_ONLY or
+                    self.options.zone_unlocks.value == consts.ZONE_UNLOCKS_ZONES_AND_CHARACTERS
+            ):
+                self.starting_zone = self.starting_item.name.split('-')[0].strip()
+
+    def pick_starting_zone_item(self, zone_item_list: list[items.Item]) -> items.Item:
+        """
+        Given the filtered list of zone/character items, pick a starting
+        zone/character.
+        """
+        valid_choices = []
+        for item in zone_item_list:
+            if self.item_is_goal_zone(item):
+                continue
+            valid_choices.append(item)
+        return self.random.choice(valid_choices)
+
+    def item_is_goal_zone(self, item: items.Item) -> bool:
+        """
+        Determines if an item would unlock a goal zone. Used in item set filtering
+        to avoid putting goal zone unlocks into the item pool.
+        """
+        for goal_value in (
+                self.options.big_rings_goal.value,
+                self.options.chaos_emeralds_goal.value,
+                self.options.super_emeralds_goal.value,
+        ):
+            if (
+                    (goal_value == consts.GOAL_DEATH_EGG and
+                     consts.ZONE_DEATH_EGG in item.name) or
+                    (goal_value == consts.GOAL_KNUCKLES_SKY_SANCTUARY and
+                     consts.ZONE_KNUCKLES_SKY_SANCTUARY in item.name) or
+                    (goal_value == consts.GOAL_DOOMSDAY and
+                     consts.ZONE_DOOMSDAY in item.name)
+            ):
+                return True
+        return False
+
     def create_regions(self) -> None:
-        S3KRegions.create_regions(self.multiworld, self, self.player, self.loc_set)
+        S3KRegions.create_regions(self.multiworld, self, self.player, self.loc_set, self.starting_zone)
 
     def create_items(self) -> None:
-        S3KItems.create_items(self.multiworld, self, self.player, self.item_set, self.loc_set)
+        # If one exists, S3KRegions.create_regions needs to know the starting
+        # zone so that it doesn't add any access requirements to it.
+        S3KItems.create_items(self.multiworld, self, self.player, self.item_set, self.loc_set, self.starting_item)
 
     def create_item(self, item_name: str) -> S3KItems.S3KItem:
         item = self.item_set.item_with_name(item_name)
@@ -89,3 +142,20 @@ class S3KWorld(World):
 
     def generate_output(self, output_directory: str) -> None:
         pass
+
+    def hyper_state_available(self) -> bool:
+        """
+        Determines whether or not hyper state is obtainable, given the player's
+        settings.
+
+        Without any chaos/super emerald hunt goals, the emeralds will be in
+        their regular locations, i.e. rewarded for beating special stages. With
+        emerald hunt goals enabled, super emeralds will only be available when
+        super emerald hunt is enabled. Therefore, enabling chaos emerald hunt
+        without super emerald hunt makes hyper state unobtainable. There are a
+        few locations which only Hyper Sonic can reach, so the absence of Hyper
+        Sonic removes those locations from the pool.
+        """
+        chaos_emeralds_goal_enabled = self.options.chaos_emeralds_goal.value != consts.GOAL_NONE
+        super_emeralds_goal_enabled = self.options.super_emeralds_goal.value != consts.GOAL_NONE
+        return super_emeralds_goal_enabled or not chaos_emeralds_goal_enabled

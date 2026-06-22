@@ -1,3 +1,11 @@
+- name: Complete
+  zone: Hydrocity
+  act: 1
+  type: complete
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
 - name: Big Ring 1
   zone: Hydrocity
   act: 1

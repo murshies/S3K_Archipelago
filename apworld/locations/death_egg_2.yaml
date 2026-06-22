@@ -1,3 +1,10 @@
+- name: Complete
+  zone: Death Egg
+  act: 2
+  type: complete
+  requirements:
+    - character: Sonic
+    - character: Tails
 - name: Boss
   zone: Death Egg
   act: 2

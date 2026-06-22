@@ -11,10 +11,11 @@ GOAL_DEATH_EGG: int = 3
 
 ITEM_CHAOS_EMERALD: str = 'Chaos Emerald'
 EMERALDS_FOR_CHAOS_HUNT: int = 7
-EMERALDS_FOR_SUPER_HUNT: int = 7
+EMERALDS_FOR_SUPER_HUNT: int = 14
 
 LOCTYPE_BIG_RING: str = 'big_ring'
 LOCTYPE_BOSS: str = 'boss'
+LOCTYPE_COMPLETE: str = 'complete'
 LOCTYPE_EMERALD: str = 'emerald'
 LOCTYPE_FLAME_SHIELD: str = 'flame_shield'
 LOCTYPE_INVINCIBILITY: str = 'invincibility'
@@ -62,7 +63,7 @@ ZONE_SPECIAL_STAGE_12: str = 'Special Stage 12'
 ZONE_SPECIAL_STAGE_13: str = 'Special Stage 13'
 ZONE_SPECIAL_STAGE_14: str = 'Special Stage 14'
 
-ZONE_UNLOCKS_ALL_UNLOCKED: str = 'all_unlocked'
-ZONE_UNLOCKS_ZONES_AND_CHARACTERS: str = 'zones_and_characters'
-ZONE_UNLOCKS_ZONES_ONLY: str = 'zones_only'
-ZONE_UNLOCKS_CHARACTERS_ONLY: str = 'characters_only'
+ZONE_UNLOCKS_ALL_UNLOCKED: int = 0
+ZONE_UNLOCKS_ZONES_AND_CHARACTERS: int = 1
+ZONE_UNLOCKS_ZONES_ONLY: int = 2
+ZONE_UNLOCKS_CHARACTERS_ONLY: int = 3

@@ -1,3 +1,11 @@
+- name: Complete
+  zone: Mushroom Hill
+  act: 1
+  type: complete
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
 - name: Big Ring 1
   zone: Mushroom Hill
   act: 1

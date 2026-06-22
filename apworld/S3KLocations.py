@@ -20,6 +20,7 @@ def filter_locations(world: World, loc_set: locations.LocationSet) -> locations.
     # example if two different parts of this function try to include the same
     # location.
     loc_id_set: set[int] = set()
+    disallowed_id_set: set[int] = set()
 
     # Goal based checks
     # Each zone goal adds a "master emerald" item, and the player wins the game
@@ -34,6 +35,25 @@ def filter_locations(world: World, loc_set: locations.LocationSet) -> locations.
     if world.options.super_emeralds_goal.value != consts.GOAL_NONE:
         loc_id_set.add(location_for_goal(
             loc_set, world.options.super_emeralds_goal.value).location_id)
+
+    # Act completion locations are always enabled. This prevents the player
+    # from creating a configuration with no checks in it. It also prevents
+    # Knuckles' Hidden Palace Zone from having no checks.
+    locs = loc_set.filter_locations(
+        lambda loc, ts: loc.location_type == consts.LOCTYPE_COMPLETE
+    )
+    loc_id_set.update(loc.location_id for loc in locs)
+
+    # There are a few locations that are only accessible by Hyper Sonic. If
+    # Hyper Sonic is not obtainable with the player's settings, remove those
+    # locations from the pool.
+    if not world.hyper_state_available():
+        locs = loc_set.filter_locations(
+            lambda loc, ts: (len(loc.requirements) == 1 and
+                             loc.requirements[0].character == consts.CHARACTER_SONIC and
+                             loc.requirements[0].super_state == consts.SUPER_STATE_HYPER)
+        )
+        disallowed_id_set.update(loc.location_id for loc in locs)
 
     # Item box locations
     if world.options.enable_boss_locations:
@@ -89,7 +109,7 @@ def filter_locations(world: World, loc_set: locations.LocationSet) -> locations.
         locations=[
             loc
             for loc in loc_set.all_locations
-            if loc.location_id in loc_id_set
+            if loc.location_id in loc_id_set and loc.location_id not in disallowed_id_set
         ],
         types=loc_set.types,
     )

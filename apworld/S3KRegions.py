@@ -1,4 +1,6 @@
-from BaseClasses import CollectionState, Location, MultiWorld, Region
+import typing
+
+from BaseClasses import CollectionState, MultiWorld, Region
 from worlds.AutoWorld import World
 
 from . import consts
@@ -11,6 +13,7 @@ def create_regions(
         world: World,
         player: int,
         loc_set: locations.LocationSet,
+        starting_zone: typing.Optional[str],
 ) -> None:
     # Archipelago requires a Menu region, which in the case of Sonic 3 &
     # Knuckles will be connected to each zone/special stage.
@@ -44,7 +47,7 @@ def create_regions(
             menu.connect(
                 region,
                 rule=lambda state: can_check_required_num_big_rings(
-                    state, player, loc_set, world.options.big_rings_to_check.value))
+                    world, state, player, loc_set, world.options.big_rings_to_check.value))
         elif goal_applicable(world.options.chaos_emeralds_goal.value, zone):
             menu.connect(
                 region,
@@ -55,15 +58,18 @@ def create_regions(
                 region,
                 rule=lambda state: state.has(
                     consts.ITEM_CHAOS_EMERALD, player, consts.EMERALDS_FOR_SUPER_HUNT))
+        # Make sure no access requirements are added to the starting zone, if one exists.
+        elif zone == starting_zone:
+            menu.connect(region)
         # Next, handle access to other zones based on zone unlock logic
         elif world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_ZONES_ONLY:
             menu.connect(
                 region,
-                rule=lambda state: state.has(f"{zone} Zone", player))
+                rule=lambda state: state.has(zone, player))
         elif world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_ZONES_AND_CHARACTERS:
             menu.connect(
                 region,
-                rule=lambda state: any(state.has(f"{zone} Zone - {char}", player)
+                rule=lambda state: any(state.has(f"{zone} - {char}", player)
                                        for char in chars))
         # Otherwise, there are two options:
         # 1. All zones and characters are unlocked from the start
@@ -98,6 +104,7 @@ def goal_applicable(goal_value: int, zone: str) -> bool:
 
 
 def can_check_required_num_big_rings(
+        world: World,
         state: CollectionState,
         player: int,
         loc_set: locations.LocationSet,
@@ -107,8 +114,39 @@ def can_check_required_num_big_rings(
     Helper function used in rules to determine whether or not the player can
     reach the required number of big rings for the big ring hunt goal.
     """
-    reachable_big_rings = loc_set.filter_locations(
-        lambda loc, ts: (loc.location_type == consts.LOCTYPE_BIG_RING and
-                         state.can_reach_location(loc.display_name, player))
-    )
-    return len(reachable_big_rings) >= num_required
+    if world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_ALL_UNLOCKED:
+        # All big rings are reachable from the start
+        return True
+    elif world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_CHARACTERS_ONLY:
+        big_ring_locations = loc_set.filter_locations(
+            lambda loc, ts: loc.location_type == consts.LOCTYPE_BIG_RING
+        )
+        num_reachable = 0
+        for big_ring_loc in big_ring_locations:
+            for req in big_ring_loc.requirements:
+                if state.has(req.character, player):
+                    num_reachable += 1
+                    break
+        return num_reachable >= num_required
+    elif world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_ZONES_ONLY:
+        big_ring_locations = loc_set.filter_locations(
+            lambda loc, ts: loc.location_type == consts.LOCTYPE_BIG_RING
+        )
+        num_reachable = 0
+        for big_ring_loc in big_ring_locations:
+            if state.has(big_ring_loc.zone, player):
+                num_reachable += 1
+        return num_reachable >= num_required
+    else:
+        # Zones are unlocked per character
+        big_ring_locations = loc_set.filter_locations(
+            lambda loc, ts: loc.location_type == consts.LOCTYPE_BIG_RING
+        )
+        num_reachable = 0
+        for big_ring_loc in big_ring_locations:
+            for req in big_ring_loc.requirements:
+                required_item = f"{big_ring_loc.zone} - {req.character}"
+                if state.has(required_item, player):
+                    num_reachable += 1
+                    break
+        return num_reachable >= num_required

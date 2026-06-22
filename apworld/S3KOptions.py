@@ -85,11 +85,11 @@ class ZoneUnlocks(Choice):
        game
     2. zones_and_characters: Items will be added to the item pool for
        per-character, per-zone unlocks. For example, with this option selected,
-       "Sonic Angel Island Zone" can be found as a pickup. Note that
+       "Angel Island - Sonic" can be found as a pickup. Note that
        Sonic-specific items will unlock the zone for both the Sonic-only save
        file and the Sonic & Tails save file.
     3. zones_only: Zones are unlocked for all characters with a single
-       pickup. For example, the item "Angel Island Zone" will be added to the
+       pickup. For example, the item "Angel Island" will be added to the
        item pool, and once it is found, all character will be able to visit
        Angel Island Zone.
     4. characters_only: All zones are unlocked for a character with a single
@@ -101,11 +101,11 @@ class ZoneUnlocks(Choice):
     player's starting character(s)/zone(s).
     """
     display_name = 'Zone Unlocks'
-    option_all_unlocked = 0
-    option_zones_and_characters = 1
-    option_zones_only = 2
-    option_characters_only = 3
-    default = 0
+    option_all_unlocked = consts.ZONE_UNLOCKS_ALL_UNLOCKED
+    option_zones_and_characters = consts.ZONE_UNLOCKS_ZONES_AND_CHARACTERS
+    option_zones_only = consts.ZONE_UNLOCKS_ZONES_ONLY
+    option_characters_only = consts.ZONE_UNLOCKS_CHARACTERS_ONLY
+    default = consts.ZONE_UNLOCKS_ALL_UNLOCKED
 
 
 class TrapsEnabled(Toggle):

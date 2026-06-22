@@ -1,9 +1,20 @@
+- name: Complete
+  zone: Sky Sanctuary
+  type: complete
+  requirements:
+    - character: Sonic
+    - character: Tails
 - name: Boss
   zone: Sky Sanctuary
   type: boss
   requirements:
     - character: Sonic
     - character: Tails
+- name: Complete
+  zone: Knuckles Sky Sanctuary
+  type: complete
+  requirements:
+    - character: Knuckles
 - name: Boss
   zone: Knuckles Sky Sanctuary
   type: boss

@@ -1,4 +1,5 @@
 import math
+import typing
 
 from BaseClasses import Item, ItemClassification, MultiWorld
 from worlds.AutoWorld import World
@@ -7,7 +8,6 @@ from . import consts
 from . import items
 from . import locations
 from .S3KUtil import location_for_goal
-from .S3KOptions import ZoneUnlocks
 
 
 class S3KItem(Item):
@@ -29,10 +29,13 @@ def create_items(
         player: int,
         item_set: items.ItemSet,
         loc_set: locations.LocationSet,
-):
+        starting_zone: typing.Optional[items.Item],
+) -> typing.Optional[str]:
     """
     Given a filtered list of items and the player's settings, add the player's
     items to the item pool.
+
+    This function returns the starting zone, if one exists.
     """
     # This function will place a number of items equal to the number of
     # locations enabled by the player's settings. To determine the filler item
@@ -68,29 +71,18 @@ def create_items(
     itempool: list[S3KItem] = []
 
     # Add chaos emeralds to the pool
+    num_chaos_emeralds = 0
     if world.options.chaos_emeralds_goal.value != consts.GOAL_NONE:
-        for i in range(0, consts.EMERALDS_FOR_CHAOS_HUNT):
-            itempool.append(world.create_item(consts.ITEM_CHAOS_EMERALD))
-        num_filler_items -= consts.EMERALDS_FOR_CHAOS_HUNT
+        num_chaos_emeralds = consts.EMERALDS_FOR_CHAOS_HUNT
     if world.options.super_emeralds_goal.value != consts.GOAL_NONE:
-        for i in range(0, consts.EMERALDS_FOR_SUPER_HUNT):
-            itempool.append(world.create_item(consts.ITEM_CHAOS_EMERALD))
-        num_filler_items -= consts.EMERALDS_FOR_SUPER_HUNT
-    if (
-            world.options.chaos_emeralds_goal.value == consts.GOAL_NONE and
-            world.options.super_emeralds_goal.value == consts.GOAL_NONE
-    ):
-        # If there are no emerald hunt goals enabled, put the chaos emeralds as
-        # rewards for each special stage, to make the behavior closer to the
-        # base game.
-        special_stage_complete_locs = loc_set.filter_locations(
-            lambda loc, ts: loc.location_type == consts.LOCTYPE_EMERALD
-        )
-        assert len(special_stage_complete_locs) == 14
-        for loc in special_stage_complete_locs:
-            multiworld.get_location(loc.display_name, player).place_locked_item(
-                world.create_item(consts.ITEM_CHAOS_EMERALD))
-            num_filler_items -= 1
+        num_chaos_emeralds = consts.EMERALDS_FOR_SUPER_HUNT
+    for i in range(0, num_chaos_emeralds):
+        itempool.append(world.create_item(consts.ITEM_CHAOS_EMERALD))
+    num_filler_items -= num_chaos_emeralds
+    # Otherwise, chaos emeralds will be rewarded by beating special stages, but
+    # will not be the check for those locations. This incentivizes players to
+    # do the special stages to get checks, while still keeping chaos emerald
+    # gathering the same as the base game.
 
     # Add the zone/character items based on the player's
     # settings. `filter_items` has already taken care of putting the correct
@@ -99,21 +91,20 @@ def create_items(
         lambda item: (items.ITEM_GROUP_CHARACTER in item.groups or
                       items.ITEM_GROUP_LEVEL in item.groups)
     )
+    s3k_starting_zone_item: S3KItem = None
     if len(zone_items) > 0:
         # If the player has all zones and characters unlocked as part of their
         # settings, there will be no zone items, and therefore also no need to
         # give them a starting zone/character.
-        starting_zone_item = pick_starting_zone_item(world, player, zone_items)
-        s3k_starting_zone_item: S3KItem = None
         for item in zone_items:
             s3k_item = world.create_item(item.name)
-            if item.code == starting_zone_item.code:
+            if item.code == starting_zone.code:
                 assert s3k_starting_zone_item is None
                 s3k_starting_zone_item = s3k_item
             itempool.append(s3k_item)
         num_filler_items -= len(zone_items)
         # Give the player the starting zone/character
-        multiworld.precollected_items[player].append(s3k_starting_zone_item)
+        assert s3k_starting_zone_item is not None
 
     # Only traps and filler items are now left. Determine how many traps should
     # be added based on `trap_weight_percentage` from the player's
@@ -130,6 +121,9 @@ def create_items(
         itempool.append(world.create_item(world.random.choice(filler_items).name))
 
     multiworld.itempool += itempool
+    if s3k_starting_zone_item is not None:
+        world.push_precollected(s3k_starting_zone_item)
+    return starting_zone
 
 
 def filter_items(world: World, item_set: items.ItemSet) -> items.ItemSet:
@@ -173,33 +167,50 @@ def filter_items(world: World, item_set: items.ItemSet) -> items.ItemSet:
         )
         item_code_set.update(item.code for item in matching)
 
+    # All zones have one "complete" location per act, meaning every zone will
+    # have at least one enabled location regardless of what settings the player
+    # picks. The exceptions are the special stages - they each have two pickups
+    # (getting a perfect and beating the stage), both of which can be turned
+    # off in the player settings. This exception has been made for the case
+    # where the player simply does not want to do special stages. In this case,
+    # completely remove special stages from the item pool.
+    special_stages_enabled = (
+        world.options.enable_special_stage_emerald_locations or
+        world.options.enable_special_stage_perfect_locations
+    )
+
+    def special_stage_filter(item: items.Item) -> bool:
+        return special_stages_enabled or 'Special Stage' not in item.name
+
     # Next, add the zone & character items depending on what the player
     # selected in their configuration for zone_unlocks. Note that no items are
     # added for ZONE_UNLOCKS_ALL_UNLOCKED, since all characters and zones will
     # be available to the player at the start of the game.
-    if world.options.zone_unlocks.value == ZoneUnlocks.option_characters_only:
+    if world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_CHARACTERS_ONLY:
         # Sonic/Tails/Knuckles items that each unlock all zones for the given
         # character
         matching = item_set.filter_items(
             lambda item: (items.ITEM_GROUP_CHARACTER in item.groups and
                           items.ITEM_GROUP_LEVEL not in item.groups and
-                          not item_is_goal_zone(world, item))
+                          not world.item_is_goal_zone(item))
         )
         item_code_set.update(item.code for item in matching)
-    elif world.options.zone_unlocks.value == ZoneUnlocks.option_zones_and_characters:
-        # Per-character, per-zone items, for example Sonic - Angel Island Zone
+    elif world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_ZONES_AND_CHARACTERS:
+        # Per-character, per-zone items, for example Angel Island - Sonic
         matching = item_set.filter_items(
             lambda item: (items.ITEM_GROUP_CHARACTER in item.groups and
                           items.ITEM_GROUP_LEVEL in item.groups and
-                          not item_is_goal_zone(world, item))
+                          not world.item_is_goal_zone(item) and
+                          special_stage_filter(item))
         )
         item_code_set.update(item.code for item in matching)
-    elif world.options.zone_unlocks.value == ZoneUnlocks.option_zones_only:
+    elif world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_ZONES_ONLY:
         # Zone items that unlock a single zone for all characters
         matching = item_set.filter_items(
             lambda item: (items.ITEM_GROUP_CHARACTER not in item.groups and
                           items.ITEM_GROUP_LEVEL in item.groups and
-                          not item_is_goal_zone(world, item))
+                          not world.item_is_goal_zone(item) and
+                          special_stage_filter(item))
         )
         item_code_set.update(item.code for item in matching)
 
@@ -221,41 +232,3 @@ def filter_items(world: World, item_set: items.ItemSet) -> items.ItemSet:
         for item in item_set.all_items
         if item.code in item_code_set
     ])
-
-
-def item_is_goal_zone(world: World, item: items.Item) -> bool:
-    """
-    Determines if an item would unlock a goal zone. Used in item set filtering
-    to avoid putting goal zone unlocks into the item pool.
-    """
-    for goal_value in (
-            world.options.big_rings_goal.value,
-            world.options.chaos_emeralds_goal.value,
-            world.options.super_emeralds_goal.value,
-    ):
-        if (
-                (goal_value == consts.GOAL_DEATH_EGG and
-                 consts.ZONE_DEATH_EGG in item.name) or
-                (goal_value == consts.GOAL_KNUCKLES_SKY_SANCTUARY and
-                 consts.ZONE_KNUCKLES_SKY_SANCTUARY in item.name) or
-                (goal_value == consts.GOAL_DOOMSDAY and
-                 consts.ZONE_DOOMSDAY in item.name)
-        ):
-            return True
-    return False
-
-
-def pick_starting_zone_item(
-        world: World,
-        player: int,
-        zone_item_list: list[items.Item],
-) -> items.Item:
-    """
-    Given the filtered list of zone/character items, pick a starting
-    zone/character.
-    """
-    valid_choices = [
-        item for item in zone_item_list
-        if not item_is_goal_zone(world, item)
-    ]
-    return world.random.choice(valid_choices)

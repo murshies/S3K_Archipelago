@@ -1,6 +1,7 @@
 # Total Item Counts
 | Location Type | Count |
 |-|-|
+|Act Complete|27|
 |Big Ring|77|
 |Boss|25|
 |1 UP|47|
@@ -15,10 +16,11 @@
 |Total Item Boxes|496|
 |Special Stage Emerald|14|
 |Special Stage Perfect|14|
-|Total|626|
+|Total|653|
 # Items Per Zone
 | Zone | Location Type | Count |
 |-|-|-|
+|Angel Island|Act Complete|2|
 |Angel Island|Big Ring|4|
 |Angel Island|Boss|2|
 |Angel Island|1 UP|5|
@@ -30,7 +32,8 @@
 |Angel Island|Invincibility|3|
 |Angel Island|Power Sneakers|1|
 |Angel Island|Total Item Boxes|32|
-|Angel Island|Total|38|
+|Angel Island|Total|40|
+|Hydrocity|Act Complete|2|
 |Hydrocity|Big Ring|4|
 |Hydrocity|Boss|2|
 |Hydrocity|1 UP|7|
@@ -41,7 +44,8 @@
 |Hydrocity|Invincibility|4|
 |Hydrocity|Robotnik Item Box|1|
 |Hydrocity|Total Item Boxes|41|
-|Hydrocity|Total|47|
+|Hydrocity|Total|49|
+|Marble Garden|Act Complete|2|
 |Marble Garden|Big Ring|11|
 |Marble Garden|Boss|2|
 |Marble Garden|1 UP|4|
@@ -53,7 +57,8 @@
 |Marble Garden|Invincibility|3|
 |Marble Garden|Power Sneakers|2|
 |Marble Garden|Total Item Boxes|49|
-|Marble Garden|Total|62|
+|Marble Garden|Total|64|
+|Carnival Night|Act Complete|2|
 |Carnival Night|Big Ring|11|
 |Carnival Night|Boss|2|
 |Carnival Night|1 UP|8|
@@ -65,7 +70,8 @@
 |Carnival Night|Invincibility|7|
 |Carnival Night|Power Sneakers|2|
 |Carnival Night|Total Item Boxes|87|
-|Carnival Night|Total|100|
+|Carnival Night|Total|102|
+|Ice Cap|Act Complete|2|
 |Ice Cap|Big Ring|5|
 |Ice Cap|Boss|2|
 |Ice Cap|1 UP|2|
@@ -75,7 +81,8 @@
 |Ice Cap|Invincibility|2|
 |Ice Cap|Robotnik Item Box|2|
 |Ice Cap|Total Item Boxes|13|
-|Ice Cap|Total|20|
+|Ice Cap|Total|22|
+|Launch Base|Act Complete|2|
 |Launch Base|Big Ring|8|
 |Launch Base|Boss|2|
 |Launch Base|1 UP|1|
@@ -87,7 +94,8 @@
 |Launch Base|Invincibility|5|
 |Launch Base|Power Sneakers|1|
 |Launch Base|Total Item Boxes|50|
-|Launch Base|Total|60|
+|Launch Base|Total|62|
+|Mushroom Hill|Act Complete|2|
 |Mushroom Hill|Big Ring|11|
 |Mushroom Hill|Boss|2|
 |Mushroom Hill|1 UP|3|
@@ -100,7 +108,8 @@
 |Mushroom Hill|Robotnik Item Box|1|
 |Mushroom Hill|Power Sneakers|2|
 |Mushroom Hill|Total Item Boxes|42|
-|Mushroom Hill|Total|55|
+|Mushroom Hill|Total|57|
+|Flying Battery|Act Complete|2|
 |Flying Battery|Big Ring|4|
 |Flying Battery|Boss|2|
 |Flying Battery|1 UP|3|
@@ -110,7 +119,8 @@
 |Flying Battery|All Shields|6|
 |Flying Battery|Invincibility|3|
 |Flying Battery|Total Item Boxes|17|
-|Flying Battery|Total|23|
+|Flying Battery|Total|25|
+|Sandopolis|Act Complete|2|
 |Sandopolis|Big Ring|11|
 |Sandopolis|Boss|2|
 |Sandopolis|1 UP|3|
@@ -122,7 +132,8 @@
 |Sandopolis|Invincibility|6|
 |Sandopolis|Power Sneakers|1|
 |Sandopolis|Total Item Boxes|51|
-|Sandopolis|Total|64|
+|Sandopolis|Total|66|
+|Lava Reef|Act Complete|3|
 |Lava Reef|Big Ring|8|
 |Lava Reef|Boss|2|
 |Lava Reef|1 UP|5|
@@ -134,7 +145,8 @@
 |Lava Reef|Invincibility|2|
 |Lava Reef|Robotnik Item Box|2|
 |Lava Reef|Total Item Boxes|50|
-|Lava Reef|Total|60|
+|Lava Reef|Total|63|
+|Hidden Palace|Act Complete|1|
 |Hidden Palace|1 UP|1|
 |Hidden Palace|Super Ring (10 rings)|4|
 |Hidden Palace|Lightning Shield|1|
@@ -144,7 +156,8 @@
 |Hidden Palace|Invincibility|1|
 |Hidden Palace|Power Sneakers|1|
 |Hidden Palace|Total Item Boxes|10|
-|Hidden Palace|Total|10|
+|Hidden Palace|Total|11|
+|Sky Sanctuary|Act Complete|1|
 |Sky Sanctuary|Boss|1|
 |Sky Sanctuary|1 UP|3|
 |Sky Sanctuary|Super Ring (10 rings)|8|
@@ -154,9 +167,11 @@
 |Sky Sanctuary|All Shields|3|
 |Sky Sanctuary|Invincibility|2|
 |Sky Sanctuary|Total Item Boxes|16|
-|Sky Sanctuary|Total|17|
+|Sky Sanctuary|Total|18|
+|Knuckles Sky Sanctuary|Act Complete|1|
 |Knuckles Sky Sanctuary|Boss|1|
-|Knuckles Sky Sanctuary|Total|1|
+|Knuckles Sky Sanctuary|Total|2|
+|Death Egg|Act Complete|2|
 |Death Egg|Boss|2|
 |Death Egg|1 UP|2|
 |Death Egg|Super Ring (10 rings)|20|
@@ -167,9 +182,10 @@
 |Death Egg|Invincibility|1|
 |Death Egg|Robotnik Item Box|1|
 |Death Egg|Total Item Boxes|38|
-|Death Egg|Total|40|
+|Death Egg|Total|42|
+|Doomsday|Act Complete|1|
 |Doomsday|Boss|1|
-|Doomsday|Total|1|
+|Doomsday|Total|2|
 |Special Stage 1|Special Stage Emerald|1|
 |Special Stage 1|Special Stage Perfect|1|
 |Special Stage 1|Total|2|

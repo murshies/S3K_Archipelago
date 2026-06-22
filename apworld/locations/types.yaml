@@ -1,3 +1,5 @@
+- name: complete
+  is: []
 - name: big_ring
   is: []
 - name: item_box

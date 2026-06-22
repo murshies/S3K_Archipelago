@@ -37,6 +37,7 @@ def location_summary(c: Context):
     location_set = locations.LocationSet.from_files(
         location_def_files, types, validator=jsonschema.validate)
     zone_location_order = (
+        ('complete', 'Act Complete'),
         ('big_ring', 'Big Ring'),
         ('boss', 'Boss'),
         ('1_up', '1 UP'),
