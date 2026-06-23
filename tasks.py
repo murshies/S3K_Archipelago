@@ -5,12 +5,25 @@ import jsonschema
 import io
 import os
 import pathlib
+import shutil
 import textwrap
 import yaml
 import zipfile
 
-import items
-import locations
+# Using imports directly from the apworld causes this script to need a lot of
+# unnecessary libraries installed from the built-in worlds in
+# Archipelago. Instead, copy the files needed to this directory and them import
+# them.
+required_apworld_files = (
+    "items.py",
+    "locations.py",
+)
+for req_file in required_apworld_files:
+    shutil.copy(str(pathlib.Path(".") / "apworld" / req_file),
+                req_file)
+
+import items  # noqa: E402
+import locations  # noqa: E402
 
 INVOKE_ROOT = pathlib.Path(__file__).parent
 
