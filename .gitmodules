@@ -1,3 +1,6 @@
 [submodule "submodules/Archipelago"]
 	path = submodules/Archipelago
 	url = https://github.com/ArchipelagoMW/Archipelago
+[submodule "submodules/skdisasm"]
+	path = submodules/skdisasm
+	url = https://github.com/murshies/skdisasm

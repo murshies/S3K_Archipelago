@@ -1,3 +1,4 @@
+import bsdiff4
 from invoke import task
 from invoke.context import Context
 import json
@@ -34,7 +35,7 @@ def all(c: Context):
     item_summary(c)
     validate_player_config(c)
     test(c)
-    apworld_release(c)
+    apworld_release(c)  # Note that build_rom_base_diff is called as part of apworld_release
 
 
 @task
@@ -189,6 +190,49 @@ def test(c: Context):
 
 
 @task
+def build_rom_base_diff(c: Context):
+    disasm_root = INVOKE_ROOT / "submodules" / "skdisasm"
+    try:
+        cwd = os.getcwd()
+        os.chdir(str(disasm_root))
+        # The skdisasm repo does contain a single script to build a Sonic 3 &
+        # Knuckles ROM with a single command. However, this is not a byte
+        # perfect build, which is needed here in order to create the base patch
+        # file correctly. Instead, the commands for building the individual
+        # ROMs do create byte perfect builds (other than the intended
+        # modifications), and will generate a combined ROM that is the exact
+        # same size as the unmodified base ROM.
+        if os.name == "nt":
+            c.run("buildS3.bat")
+            c.run("buildSK.bat")
+        else:
+            c.run("buildS3.lua")
+            c.run("buildSK.lua")
+        with open("s3built.bin", "rb") as f:
+            s3_rom = f.read()
+        with open("skbuilt.bin", "rb") as f:
+            sk_rom = f.read()
+        # Combine the two ROMs in memory. Note that it is important that the
+        # Sonic & Knuckles ROM comes before the Sonic 3 ROM.
+        s3k_modded_rom = sk_rom + s3_rom
+    finally:
+        os.chdir(cwd)
+
+    s3k_base_rom_file = INVOKE_ROOT / "S3K_base.md"
+    with open(s3k_base_rom_file, "rb") as f:
+        s3k_base_rom = f.read()
+
+    if len(s3k_modded_rom) != len(s3k_base_rom):
+        raise Exception(f"Found modded ROM length ({len(s3k_modded_rom)}) "
+                        f"!= base ROM length ({len(s3k_base_rom)})")
+
+    rom_patch = bsdiff4.diff(s3k_base_rom, s3k_modded_rom)
+    patch_file = pathlib.Path(".") / "apworld" / "base_patch.bsdiff4"
+    with open(str(patch_file), "wb") as f:
+        f.write(rom_patch)
+
+
+@task
 def apworld_release(c: Context):
     build_dir = INVOKE_ROOT / 'build'
     os.makedirs(build_dir, exist_ok=True)
@@ -200,6 +244,7 @@ def apworld_release(c: Context):
         '__pycache__',
         '.pytest_cache'
     }
+    build_rom_base_diff(c)
     with zipfile.ZipFile(out_file, 'w') as zf:
         for root, dirs, files in os.walk(apworld_root):
             for f in files:

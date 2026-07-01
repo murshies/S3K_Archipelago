@@ -4,7 +4,7 @@ import yaml
 from BaseClasses import ItemClassification, Tutorial
 from worlds.AutoWorld import WebWorld, World
 
-from . import consts, items, locations, S3KItems, S3KLocations, S3KRegions, S3KRules
+from . import consts, items, locations, rom, S3KItems, S3KLocations, S3KRegions, S3KRules
 from .S3KOptions import S3KOptions, s3k_option_groups
 
 
@@ -141,7 +141,7 @@ class S3KWorld(World):
         S3KRules.set_rules(self.multiworld, self, self.player, self.loc_set)
 
     def generate_output(self, output_directory: str) -> None:
-        pass
+        rom.generate_output(self, output_directory)
 
     def hyper_state_available(self) -> bool:
         """

@@ -6,3 +6,6 @@ build/
 
 /items.py
 /locations.py
+
+S3K_base.md
+base_patch.bsdiff4
