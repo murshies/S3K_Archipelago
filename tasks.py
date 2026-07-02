@@ -206,8 +206,8 @@ def build_rom_base_diff(c: Context):
             c.run("buildS3.bat")
             c.run("buildSK.bat")
         else:
-            c.run("buildS3.lua")
-            c.run("buildSK.lua")
+            c.run("./buildS3.lua")
+            c.run("./buildSK.lua")
         with open("s3built.bin", "rb") as f:
             s3_rom = f.read()
         with open("skbuilt.bin", "rb") as f:
