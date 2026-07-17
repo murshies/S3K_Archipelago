@@ -1,11 +1,15 @@
 import importlib
+import typing
 import yaml
 
 from BaseClasses import ItemClassification, Tutorial
 from worlds.AutoWorld import WebWorld, World
 
-from . import consts, items, locations, rom, S3KItems, S3KLocations, S3KRegions, S3KRules
+from . import consts, items, locations
+from . import S3KClient, S3KItems, S3KLocations, S3KRegions, S3KRules, S3KROM
 from .S3KOptions import S3KOptions, s3k_option_groups
+
+S3KClient  # Used to avoid an unused import warning on S3KClient
 
 
 class S3KWebWorld(WebWorld):
@@ -34,6 +38,9 @@ class S3KWorld(World):
     options: S3KOptions
     topology_present: bool = True
     web: WebWorld = S3KWebWorld()
+
+    settings_key = "s3k_settings"
+    settings: typing.ClassVar[S3KROM.S3KSettings]
 
     # These will be filled in later, during world generation.
     item_name_to_id = {}
@@ -141,7 +148,7 @@ class S3KWorld(World):
         S3KRules.set_rules(self.multiworld, self, self.player, self.loc_set)
 
     def generate_output(self, output_directory: str) -> None:
-        rom.generate_output(self, output_directory)
+        S3KROM.generate_output(self, output_directory)
 
     def hyper_state_available(self) -> bool:
         """
