@@ -75,3 +75,5 @@ class S3KClient(BizHawkClient):
                  S3KMemory.arch_initialized.location)
             ]
         )
+
+        self.initialized = True
