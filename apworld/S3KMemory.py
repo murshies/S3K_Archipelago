@@ -39,11 +39,48 @@ knuckles_lvl_bitmask = MemObject(0xE6A8, 4, MEM_RAM)
 sonic_save_file = MemObject(0xE6AC, 10, MEM_RAM)
 tails_save_file = MemObject(0xE6B6, 10, MEM_RAM)
 knuckles_save_file = MemObject(0xE6C0, 10, MEM_RAM)
+game_mode = MemObject(0xF600, 1, MEM_RAM)
+current_zone = MemObject(0xFE10, 1, MEM_RAM)
+act_number = MemObject(0xFE11, 1, MEM_RAM)
+
+
+class GameMode(Enum):
+    """
+    Represents the current game mode, as specified at the address in
+    game_mode. There are other valid values but these are the ones relevant to
+    Archipelago.
+    """
+    UNKNOWN = 0xFF  # Placeholder to use for all other values
+    LEVEL_LOADED = 0x0C
+    SAVE_SELECT = 0x4C
+
+
+class Zone(Enum):
+    """
+    Represents the id values used internall in the game at the current_zone RAM
+    address.
+    """
+    ANGEL_ISLAND = 0
+    HYDROCITY = 1
+    MARBLE_GARDEN = 2
+    CARNIVAL_NIGHT = 3
+    ICE_CAP = 5  # Not a typo - Flying Battery really is 4
+    LAUNCH_BASE = 6
+    MUSHROOM_HILL = 7
+    FLYING_BATTERY = 4
+    SANDOPOLIS = 8
+    LAVA_REEF = 9
+    HIDDEN_PALACE = 22
+    SKY_SANCTUARY = 10
+    DEATH_EGG = 11
+    DOOMSDAY = 12
 
 
 class SaveFileCharacter(Enum):
-    # These values correspond to the values used in the save slot in the game's
-    # SRAM
+    """
+    These values correspond to the values used in the save slot in the game's
+    SRAM
+    """
     SONIC_AND_TAILS = 0x0
     SONIC = 0x10
     TAILS = 0x20
