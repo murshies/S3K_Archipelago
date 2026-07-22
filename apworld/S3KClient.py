@@ -66,7 +66,7 @@ class S3KClient(BizHawkClient):
             logger.info("Game not yet initialized, deferring")
             return
         elif init_flag != b"\x80\x00":
-            # Already initialized, set the clients flag to indicate this and no
+            # Already initialized, set the clients flag to indicate this and do
             # nothing further.
             logger.info("Game already initialized")
             self.initialized = True
