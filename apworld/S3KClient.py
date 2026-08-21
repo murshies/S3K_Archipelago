@@ -64,6 +64,7 @@ class S3KClient(BizHawkClient):
         try:
             game_mode = S3KMemory.GameMode(game_state[0][0])
         except ValueError:
+            logger.info(f"Unknown game mode {game_state[0][0]} received")
             game_mode = S3KMemory.GameMode.UNKNOWN
         curr_zone = S3KMemory.Zone(game_state[1][0])
         act_number = game_state[2][0]
@@ -100,19 +101,19 @@ class S3KClient(BizHawkClient):
         # if all setup is successful.
         sonic_save_file = S3KMemory.SaveFile(
             character=S3KMemory.SaveFileCharacter.SONIC,
-            emeralds=0,
+            emeralds=10,
             lives=3,
             continues=0,
         )
         tails_save_file = S3KMemory.SaveFile(
             character=S3KMemory.SaveFileCharacter.TAILS,
-            emeralds=0,
+            emeralds=10,
             lives=3,
             continues=0,
         )
         knuckles_save_file = S3KMemory.SaveFile(
             character=S3KMemory.SaveFileCharacter.KNUCKLES,
-            emeralds=0,
+            emeralds=10,
             lives=3,
             continues=0,
         )

@@ -33,9 +33,9 @@ s3_game_name = MemObject(0x200120, 32, MEM_ROM)
 
 # RAM addresses
 arch_initialized = MemObject(0xE6AC, 2, MEM_RAM)  # The slot state of the first save slot
-sonic_lvl_bitmask = MemObject(0xE6A0, 4, MEM_RAM)
-tails_lvl_bitmask = MemObject(0xE6A4, 4, MEM_RAM)
-knuckles_lvl_bitmask = MemObject(0xE6A8, 4, MEM_RAM)
+sonic_lvl_bitmask = MemObject(0xE69C, 4, MEM_RAM)
+tails_lvl_bitmask = MemObject(0xE6A0, 4, MEM_RAM)
+knuckles_lvl_bitmask = MemObject(0xE6A4, 4, MEM_RAM)
 sonic_save_file = MemObject(0xE6AC, 10, MEM_RAM)
 tails_save_file = MemObject(0xE6B6, 10, MEM_RAM)
 knuckles_save_file = MemObject(0xE6C0, 10, MEM_RAM)
@@ -132,6 +132,7 @@ class SaveFile:
             curr_level = 0xD
         elif self.character == SaveFileCharacter.KNUCKLES:
             curr_level = 0xC
+        curr_level = 28
 
         # In this Archipelago, instead of finding specific chaos or super
         # emeralds (e.g. "blue super emerald"), there are generic chaos emerald
