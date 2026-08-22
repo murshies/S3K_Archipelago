@@ -121,13 +121,13 @@ class S3KClient(BizHawkClient):
         # As a first test, assume all levels unlocked for all characters.
         payload = [
             (S3KMemory.sonic_lvl_bitmask.address,
-             [0xFF, 0xFF, 0xFF, 0xFF],
+             [0xFF, 0xFF, 0xF1, 0xFF],
              S3KMemory.sonic_lvl_bitmask.location),
             (S3KMemory.tails_lvl_bitmask.address,
-             [0xFF, 0xFF, 0xFF, 0xFF],
+             [0xFF, 0xFF, 0xDF, 0xFF],
              S3KMemory.tails_lvl_bitmask.location),
             (S3KMemory.knuckles_lvl_bitmask.address,
-             [0xFF, 0xFF, 0xFF, 0xFF],
+             [0xFF, 0xFF, 0xD7, 0xFF],
              S3KMemory.knuckles_lvl_bitmask.location),
             (S3KMemory.arch_initialized.address,
              [0xFF],
