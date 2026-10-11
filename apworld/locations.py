@@ -129,11 +129,19 @@ class Location:
 
     @property
     def display_name(self) -> str:
-        if not self.act:
-            act_str = ''
-        else:
-            act_str = f' Act {self.act}'
-        return f'{self.zone}{act_str} - {self.name}'
+        return format_display_name(self.zone, self.act, self.name)
+
+
+def format_display_name(zone: str, act: typing.Optional[int], name: str) -> str:
+    """
+    Builds the name Archipelago uses for a location, e.g. "Hydrocity Act 1 -
+    Item Box 3".
+    """
+    if not act:
+        act_str = ''
+    else:
+        act_str = f' Act {act}'
+    return f'{zone}{act_str} - {name}'
 
 
 class LocationSet:

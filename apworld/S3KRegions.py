@@ -40,7 +40,9 @@ def create_regions(
 
         # Determine the rule for accessing the zone for the character. This
         # will depend on the zone unlock settings, as well as which goal zones
-        # are enabled.
+        # are enabled. Rules that use zone or chars must bind them as default
+        # arguments, otherwise every rule would see the values from the last
+        # loop iteration.
 
         # Handle the goal zones first
         if goal_applicable(world.options.big_rings_goal.value, zone):
@@ -65,12 +67,12 @@ def create_regions(
         elif world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_ZONES_ONLY:
             menu.connect(
                 region,
-                rule=lambda state: state.has(zone, player))
+                rule=lambda state, zone=zone: state.has(zone, player))
         elif world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_ZONES_AND_CHARACTERS:
             menu.connect(
                 region,
-                rule=lambda state: any(state.has(f"{zone} - {char}", player)
-                                       for char in chars))
+                rule=lambda state, zone=zone, chars=chars: any(
+                    state.has(f"{zone} - {char}", player) for char in chars))
         # Otherwise, there are two options:
         # 1. All zones and characters are unlocked from the start
         # 2. The player has their settings to get character unlocks, meaning a

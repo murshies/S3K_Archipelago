@@ -43,6 +43,35 @@ game_mode = MemObject(0xF600, 1, MEM_RAM)
 current_zone = MemObject(0xFE10, 1, MEM_RAM)
 act_number = MemObject(0xFE11, 1, MEM_RAM)
 
+# Location check buffer. See Archipelago_Location_Buffer in the disassembly's
+# sonic3k.constants.asm for the full description. The layout is:
+# - 2 bytes: integrity value, set once the game has initialized the buffer
+# - 2 bytes: pointer (low word of the RAM address) to the slot the game will
+#   write the next location check to
+# - LOCATION_BUFFER_SLOTS slots of LOCATION_BUFFER_SLOT_SIZE bytes each
+LOCATION_BUFFER_INTEGRITY_VALUE: int = 0x4150  # 'AP'
+LOCATION_BUFFER_SLOTS: int = 15
+LOCATION_BUFFER_SLOT_SIZE: int = 3
+LOCATION_BUFFER_HEADER_SIZE: int = 4
+location_buffer = MemObject(
+    0xE668,
+    LOCATION_BUFFER_HEADER_SIZE + LOCATION_BUFFER_SLOTS * LOCATION_BUFFER_SLOT_SIZE,
+    MEM_RAM,
+)
+location_buffer_slots_address: int = location_buffer.address + LOCATION_BUFFER_HEADER_SIZE
+
+# Location ids written to the location buffer for things that aren't item
+# boxes. These match the Archipelago_Loc_* constants in the disassembly. Item
+# boxes use their index in the object respawn table, which never has the
+# highest bit set.
+LOC_ACT_COMPLETE: int = 0x8000
+LOC_BOSS: int = 0x8001
+LOC_SSZ_MECHA_SONIC_1: int = 0x8002
+LOC_SSZ_MECHA_SONIC_2: int = 0x8003
+LOC_SS_EMERALD: int = 0x8100  # + special stage number (0-13)
+LOC_SS_PERFECT: int = 0x8200  # + special stage number (0-13)
+NUM_SPECIAL_STAGES: int = 14
+
 
 class GameMode(Enum):
     """
@@ -70,7 +99,10 @@ class Zone(Enum):
     FLYING_BATTERY = 4
     SANDOPOLIS = 8
     LAVA_REEF = 9
+    # Act 1 is the Lava Reef boss (Lava Reef act 3), act 2 is Hidden Palace
     HIDDEN_PALACE = 22
+    # Act 1 is the final Death Egg boss, act 2 is the Hidden Palace special stage area
+    DEATH_EGG_BOSS = 23
     SKY_SANCTUARY = 10
     DEATH_EGG = 11
     DOOMSDAY = 12
@@ -171,3 +203,91 @@ class SaveFile:
             self.lives,
             self.continues,
         ]
+
+
+@dataclass(frozen=True)
+class LocationBufferEntry:
+    """
+    A single filled slot from the location buffer. zone and act are the raw
+    values from Apparent_zone_and_act (so act is 0 for act 1, 1 for act 2).
+    """
+    zone: int
+    act: int
+    location_id: int
+
+    @property
+    def is_special_stage(self) -> bool:
+        return (LOC_SS_EMERALD <= self.location_id < LOC_SS_EMERALD + NUM_SPECIAL_STAGES or
+                LOC_SS_PERFECT <= self.location_id < LOC_SS_PERFECT + NUM_SPECIAL_STAGES)
+
+    @property
+    def key(self) -> tuple:
+        """
+        A key which uniquely identifies the checked location. The zone and act
+        have no meaning for special stage locations, so they are left out.
+        """
+        if self.is_special_stage:
+            return (self.location_id,)
+        return (self.zone, self.act, self.location_id)
+
+    def __str__(self) -> str:
+        if self.is_special_stage:
+            return f"special stage id=0x{self.location_id:04X}"
+        return (f"zone=0x{self.zone:02X} act={self.act} "
+                f"id=0x{self.location_id:04X} ({self.location_id})")
+
+
+@dataclass
+class LocationBuffer:
+    integrity: int
+    next_slot: int
+    # One entry per slot, in slot order. None means the slot is empty.
+    slots: list[LocationBufferEntry | None]
+
+    @property
+    def is_valid(self) -> bool:
+        return (self.integrity == LOCATION_BUFFER_INTEGRITY_VALUE and
+                0 <= self.next_slot < LOCATION_BUFFER_SLOTS)
+
+    @property
+    def entries(self) -> list[LocationBufferEntry]:
+        """All filled slots, from oldest to newest."""
+        return [entry for _, entry in self.slots_oldest_first() if entry is not None]
+
+    def slots_oldest_first(self) -> list[tuple[int, LocationBufferEntry | None]]:
+        """
+        (slot index, entry) pairs in the order they were written. The slot the
+        game will write to next holds the oldest entry, since the buffer wraps
+        around.
+        """
+        start = self.next_slot if 0 <= self.next_slot < LOCATION_BUFFER_SLOTS else 0
+        return [
+            ((start + i) % LOCATION_BUFFER_SLOTS, self.slots[(start + i) % LOCATION_BUFFER_SLOTS])
+            for i in range(LOCATION_BUFFER_SLOTS)
+        ]
+
+    @staticmethod
+    def from_bytes(data: bytes) -> "LocationBuffer":
+        integrity = int.from_bytes(data[0:2], "big")
+        next_slot_ptr = int.from_bytes(data[2:4], "big")
+        slot_offset = next_slot_ptr - location_buffer_slots_address
+        if slot_offset % LOCATION_BUFFER_SLOT_SIZE == 0:
+            next_slot = slot_offset // LOCATION_BUFFER_SLOT_SIZE
+        else:
+            next_slot = -1
+        slots = []
+        for idx in range(LOCATION_BUFFER_SLOTS):
+            start = LOCATION_BUFFER_HEADER_SIZE + idx * LOCATION_BUFFER_SLOT_SIZE
+            zone_act, id_high, id_low = data[start:start + LOCATION_BUFFER_SLOT_SIZE]
+            # The game zeroes the buffer on startup. An all-zero slot would
+            # otherwise mean "Angel Island act 1, respawn index 0", which is
+            # not an item box, so it's safe to treat as empty.
+            if zone_act == 0 and id_high == 0 and id_low == 0:
+                slots.append(None)
+                continue
+            slots.append(LocationBufferEntry(
+                zone=zone_act & 0x3F,
+                act=zone_act >> 6,
+                location_id=(id_high << 8) | id_low,
+            ))
+        return LocationBuffer(integrity=integrity, next_slot=next_slot, slots=slots)

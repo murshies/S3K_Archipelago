@@ -5,7 +5,7 @@ import worlds._bizhawk as bizhawk
 from worlds._bizhawk.client import BizHawkClient
 import Utils
 
-from . import consts, S3KMemory
+from . import consts, S3KLocationIds, S3KMemory
 
 if TYPE_CHECKING:
     from worlds._bizhawk.context import BizHawkClientContext
@@ -18,6 +18,10 @@ logger = logging.getLogger("S3KClient")
 SK_GAME_NAME = "SONIC & KNUCKLES"
 S3_GAME_NAME = "SONIC THE             HEDGEHOG 3"
 
+# When enabled, the entire parsed location buffer is logged every time it is
+# read. Useful for figuring out which location ids the game writes.
+LOG_LOCATION_BUFFER = True
+
 
 class S3KClient(BizHawkClient):
     # BizHawkClient variables
@@ -27,6 +31,17 @@ class S3KClient(BizHawkClient):
 
     # S3K-specific variables
     initialized: bool = False
+    # Keys (see S3KMemory.LocationBufferEntry.key) of location buffer entries
+    # that have already been handled. The game keeps old entries in the buffer
+    # until they're overwritten, so the same entries are read many times.
+    processed_location_keys: set[tuple]
+    # The seed that processed_location_keys applies to
+    processed_location_seed: str | None
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.processed_location_keys = set()
+        self.processed_location_seed = None
 
     async def validate_rom(self, ctx: "BizHawkClientContext") -> bool:
         game_names = await bizhawk.read(ctx.bizhawk_ctx, [S3KMemory.sk_game_name,
@@ -55,6 +70,8 @@ class S3KClient(BizHawkClient):
             logger.info("Not initialized, attempting initialization")
             await self.handle_initialization(ctx)
 
+        await self.handle_locations(ctx)
+
         game_state_read_payload = [
             S3KMemory.game_mode,
             S3KMemory.current_zone,
@@ -72,6 +89,73 @@ class S3KClient(BizHawkClient):
             logger.info("On save select")
         elif game_mode == S3KMemory.GameMode.LEVEL_LOADED:
             logger.info(f"In {curr_zone} act {act_number}")
+
+    async def handle_locations(self, ctx: "BizHawkClientContext") -> None:
+        """
+        Reads the location buffer from the game's RAM and sends any new
+        location checks to the server.
+        """
+        data = (await bizhawk.read(ctx.bizhawk_ctx, [S3KMemory.location_buffer]))[0]
+        buffer = S3KMemory.LocationBuffer.from_bytes(data)
+        if LOG_LOCATION_BUFFER:
+            logger.info(self.describe_location_buffer(buffer))
+        if not buffer.is_valid:
+            return
+
+        # Location names can only be translated into ids once connected to a
+        # slot. Until then, leave the entries unprocessed so they're picked up
+        # once the connection is made.
+        if ctx.slot is None or not ctx.server_locations:
+            return
+        if self.processed_location_seed != ctx.seed_name:
+            self.processed_location_keys.clear()
+            self.processed_location_seed = ctx.seed_name
+
+        new_entries = [
+            entry for entry in buffer.entries
+            if entry.key not in self.processed_location_keys
+        ]
+        if not new_entries:
+            return
+
+        # Only the locations enabled by the player's settings are in
+        # server_locations, so this also filters out checks which don't apply
+        # to this slot.
+        name_to_id = {
+            ctx.location_names.lookup_in_game(loc_id): loc_id
+            for loc_id in ctx.server_locations
+        }
+        new_location_ids: set[int] = set()
+        for entry in new_entries:
+            self.processed_location_keys.add(entry.key)
+            name, description = S3KLocationIds.resolve(entry)
+            if name is None:
+                logger.info(f"Ignoring location buffer entry {entry}: {description}")
+            elif name not in name_to_id:
+                logger.info(f"Ignoring {name}: not a location in this slot")
+            else:
+                logger.info(f"Checked {name}")
+                new_location_ids.add(name_to_id[name])
+
+        if new_location_ids:
+            # locations_checked is resent by CommonContext on reconnect
+            ctx.locations_checked |= new_location_ids
+            await ctx.check_locations(new_location_ids)
+
+    @staticmethod
+    def describe_location_buffer(buffer: S3KMemory.LocationBuffer) -> str:
+        lines = [
+            f"Location buffer: integrity=0x{buffer.integrity:04X} "
+            f"({'valid' if buffer.is_valid else 'INVALID'}), next slot={buffer.next_slot}, "
+            "slots oldest to newest:"
+        ]
+        for slot_idx, entry in buffer.slots_oldest_first():
+            if entry is None:
+                lines.append(f"  [{slot_idx:2}] empty")
+            else:
+                _, description = S3KLocationIds.resolve(entry)
+                lines.append(f"  [{slot_idx:2}] {entry} -> {description}")
+        return "\n".join(lines)
 
     async def handle_initialization(self, ctx: "BizHawkClientContext") -> None:
         # To determine whether or not Archipelago has initialized the save

@@ -10,6 +10,21 @@
   requirements:
     - character: Sonic
     - character: Tails
+# The first Mecha Sonic fight (the Green Hill boss). "Boss" is the third and
+# final Mecha Sonic fight.
+- name: Mecha Sonic 1
+  zone: Sky Sanctuary
+  type: boss
+  requirements:
+    - character: Sonic
+    - character: Tails
+# The second Mecha Sonic fight (the Metropolis boss)
+- name: Mecha Sonic 2
+  zone: Sky Sanctuary
+  type: boss
+  requirements:
+    - character: Sonic
+    - character: Tails
 - name: Complete
   zone: Knuckles Sky Sanctuary
   type: complete
