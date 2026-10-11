@@ -6,7 +6,7 @@ location definitions, and the parsing of the location buffer itself.
 import pathlib
 import unittest
 
-from .. import consts, locations, S3KLocationIds, S3KMemory
+from .. import locations, S3KLocationIds, S3KMemory
 from ..S3KMemory import LocationBufferEntry, Zone
 
 LOCATIONS_DIR = pathlib.Path(__file__).parent.parent / 'locations'
@@ -27,6 +27,8 @@ def all_buffer_entries() -> list[S3KMemory.LocationBufferEntry]:
             entries.append(LocationBufferEntry(zone, act, S3KMemory.LOC_BOSS))
         for special_id in act_locs.special_locations:
             entries.append(LocationBufferEntry(zone, act, special_id))
+        for respawn_idx in act_locs.big_rings:
+            entries.append(LocationBufferEntry(zone, act, respawn_idx))
         for respawn_idx in act_locs.item_boxes:
             entries.append(LocationBufferEntry(zone, act, respawn_idx))
     for stage in range(S3KMemory.NUM_SPECIAL_STAGES):
@@ -48,14 +50,15 @@ class TestLocationIds(unittest.TestCase):
                 self.assertIn(name, self.names)
 
     def test_all_locations_mapped(self) -> None:
-        # Big rings aren't reported through the location buffer
-        expected = {
-            loc.display_name
-            for loc in self.loc_set.all_locations
-            if loc.location_type != consts.LOCTYPE_BIG_RING
-        }
+        expected = {loc.display_name for loc in self.loc_set.all_locations}
         mapped = {S3KLocationIds.resolve(entry)[0] for entry in all_buffer_entries()}
         self.assertEqual(set(), expected - mapped)
+
+    def test_no_shared_respawn_indices(self) -> None:
+        # An object can only be an item box or a big ring, never both
+        for key, act_locs in S3KLocationIds.ACTS.items():
+            with self.subTest(act=key):
+                self.assertEqual(set(), act_locs.item_boxes.keys() & act_locs.big_rings.keys())
 
     def test_unmapped_entries(self) -> None:
         sky_sanctuary = Zone.SKY_SANCTUARY.value

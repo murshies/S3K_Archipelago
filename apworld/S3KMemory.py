@@ -61,9 +61,9 @@ location_buffer = MemObject(
 location_buffer_slots_address: int = location_buffer.address + LOCATION_BUFFER_HEADER_SIZE
 
 # Location ids written to the location buffer for things that aren't item
-# boxes. These match the Archipelago_Loc_* constants in the disassembly. Item
-# boxes use their index in the object respawn table, which never has the
-# highest bit set.
+# boxes or big rings. These match the Archipelago_Loc_* constants in the
+# disassembly. Item boxes and big rings use their index in the object respawn
+# table, which never has the highest bit set.
 LOC_ACT_COMPLETE: int = 0x8000
 LOC_BOSS: int = 0x8001
 LOC_SSZ_MECHA_SONIC_1: int = 0x8002
