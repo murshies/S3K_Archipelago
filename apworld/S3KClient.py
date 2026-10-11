@@ -63,7 +63,6 @@ class S3KClient(BizHawkClient):
             logger.error(f"Exception while processing game state: {e}")
 
     async def tick(self, ctx: "BizHawkClientContext") -> None:
-        logger.info("Called S3KClient game_watcher")
         if not self.initialized:
             logger.info("Not initialized, attempting initialization")
             await self.handle_initialization(ctx)
@@ -79,7 +78,6 @@ class S3KClient(BizHawkClient):
         try:
             game_mode = S3KMemory.GameMode(game_state[0][0])
         except ValueError:
-            logger.info(f"Unknown game mode {game_state[0][0]} received")
             game_mode = S3KMemory.GameMode.UNKNOWN
         curr_zone = S3KMemory.Zone(game_state[1][0])
         act_number = game_state[2][0]
