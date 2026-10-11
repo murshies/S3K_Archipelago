@@ -11,8 +11,8 @@ if TYPE_CHECKING:
     from worlds._bizhawk.context import BizHawkClientContext
 
 
-Utils.init_logging("S3KClient")
-logger = logging.getLogger("S3KClient")
+Utils.init_logging("Client")
+logger = logging.getLogger("Client")
 
 # These correspond to the names placed in each individual ROM
 SK_GAME_NAME = "SONIC & KNUCKLES"
