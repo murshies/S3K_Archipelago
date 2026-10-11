@@ -18,7 +18,7 @@ S3_GAME_NAME = "SONIC THE             HEDGEHOG 3"
 
 # When enabled, the entire parsed location buffer is logged every time it is
 # read. Useful for figuring out which location ids the game writes.
-LOG_LOCATION_BUFFER = True
+LOG_LOCATION_BUFFER = False
 
 
 class S3KClient(BizHawkClient):
