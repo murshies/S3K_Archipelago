@@ -1,4 +1,5 @@
 import importlib
+import importlib.resources
 import typing
 import yaml
 
@@ -10,6 +11,39 @@ from . import S3KClient, S3KItems, S3KLocations, S3KRegions, S3KRules, S3KROM
 from .S3KOptions import S3KOptions, s3k_option_groups
 
 S3KClient  # Used to avoid an unused import warning on S3KClient
+
+
+def load_location_set() -> locations.LocationSet:
+    """
+    Loads every location definition. Location ids are assigned in the order the
+    definitions are read, so the files are sorted to keep the ids the same no
+    matter what order the filesystem lists them in.
+    """
+    locs_path = importlib.resources.files(__name__) / 'locations'
+
+    loc_types_file = locs_path / 'types.yaml'
+    with importlib.resources.as_file(loc_types_file) as types_file:
+        loc_types = locations.LocationTypeSet.from_file(types_file)
+
+    loc_defs = []
+    for f in sorted(locs_path.iterdir(), key=lambda f: f.name):
+        if f.name.endswith('.yaml') and f.name != 'types.yaml':
+            with f.open('r', encoding='utf-8') as loc_file:
+                loc_defs += yaml.safe_load(loc_file)
+
+    return locations.LocationSet.from_definitions(loc_defs, loc_types)
+
+
+def load_item_set() -> items.ItemSet:
+    item_yaml_filename = importlib.resources.files(__name__) / 'items.yaml'
+    with importlib.resources.as_file(item_yaml_filename) as items_file:
+        return items.ItemSet.from_file(items_file)
+
+
+# Every location and item, before filtering by the player's options. These are
+# loaded once, when the world is imported.
+ALL_LOCATIONS: locations.LocationSet = load_location_set()
+ALL_ITEMS: items.ItemSet = load_item_set()
 
 
 class S3KWebWorld(WebWorld):
@@ -42,34 +76,15 @@ class S3KWorld(World):
     settings_key = "s3k_settings"
     settings: typing.ClassVar[S3KROM.S3KSettings]
 
-    # These will be filled in later, during world generation.
-    item_name_to_id = {}
-    location_name_to_id = {}
+    # Archipelago builds the data package (and its checksum) from these when
+    # the world is imported, so they must contain every location and item, not
+    # just the ones enabled by a player's options.
+    item_name_to_id = {item.name: item.code for item in ALL_ITEMS.all_items}
+    location_name_to_id = {loc.display_name: loc.location_id for loc in ALL_LOCATIONS.all_locations}
 
     def generate_early(self) -> None:
-        locs_path = importlib.resources.files(__name__) / 'locations'
-
-        loc_types_file = locs_path / 'types.yaml'
-        with importlib.resources.as_file(loc_types_file) as types_file:
-            loc_types = locations.LocationTypeSet.from_file(types_file)
-
-        loc_defs = []
-        for f in locs_path.iterdir():
-            if str(f).endswith('.yaml') and not str(f).endswith('types.yaml'):
-                with f.open('r', encoding='utf-8') as loc_file:
-                    loc_defs += yaml.safe_load(loc_file)
-
-        loc_set = locations.LocationSet.from_definitions(loc_defs, loc_types)
-        self.loc_set = S3KLocations.filter_locations(self, loc_set)
-        for loc in self.loc_set.all_locations:
-            self.location_name_to_id[loc.display_name] = loc.location_id
-
-        item_yaml_filename = importlib.resources.files(__name__) / 'items.yaml'
-        with importlib.resources.as_file(item_yaml_filename) as items_file:
-            item_set = items.ItemSet.from_file(items_file)
-        self.item_set = S3KItems.filter_items(self, item_set)
-        for item in self.item_set.all_items:
-            self.item_name_to_id[item.name] = item.code
+        self.loc_set = S3KLocations.filter_locations(self, ALL_LOCATIONS)
+        self.item_set = S3KItems.filter_items(self, ALL_ITEMS)
 
         # Determine the starting zone/character here, if one is needed. This
         # needs to happen here because region generation happens before item

@@ -3,19 +3,10 @@ Checks the mapping from location buffer entries to location names against the
 location definitions, and the parsing of the location buffer itself.
 """
 
-import pathlib
 import unittest
 
-from .. import locations, S3KLocationIds, S3KMemory
+from .. import ALL_LOCATIONS, S3KLocationIds, S3KMemory
 from ..S3KMemory import LocationBufferEntry, Zone
-
-LOCATIONS_DIR = pathlib.Path(__file__).parent.parent / 'locations'
-
-
-def load_location_set() -> locations.LocationSet:
-    types = locations.LocationTypeSet.from_file(LOCATIONS_DIR / 'types.yaml')
-    files = sorted(f for f in LOCATIONS_DIR.glob('*.yaml') if f.name != 'types.yaml')
-    return locations.LocationSet.from_files(files, types)
 
 
 def all_buffer_entries() -> list[S3KMemory.LocationBufferEntry]:
@@ -39,7 +30,7 @@ def all_buffer_entries() -> list[S3KMemory.LocationBufferEntry]:
 
 class TestLocationIds(unittest.TestCase):
     def setUp(self) -> None:
-        self.loc_set = load_location_set()
+        self.loc_set = ALL_LOCATIONS
         self.names = {loc.display_name for loc in self.loc_set.all_locations}
 
     def test_mapped_names_exist(self) -> None:

@@ -3,7 +3,6 @@ from typing import TYPE_CHECKING
 
 import worlds._bizhawk as bizhawk
 from worlds._bizhawk.client import BizHawkClient
-import Utils
 
 from . import consts, S3KLocationIds, S3KMemory
 
@@ -11,7 +10,6 @@ if TYPE_CHECKING:
     from worlds._bizhawk.context import BizHawkClientContext
 
 
-Utils.init_logging("Client")
 logger = logging.getLogger("Client")
 
 # These correspond to the names placed in each individual ROM
