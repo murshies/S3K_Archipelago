@@ -78,13 +78,14 @@ class S3KClient(BizHawkClient):
         try:
             game_mode = S3KMemory.GameMode(game_state[0][0])
         except ValueError:
+            # logger.info(f"Unknown game mode {game_state[0][0]} received")
             game_mode = S3KMemory.GameMode.UNKNOWN
         curr_zone = S3KMemory.Zone(game_state[1][0])
         act_number = game_state[2][0]
-        if game_mode == S3KMemory.GameMode.SAVE_SELECT:
-            logger.info("On save select")
-        elif game_mode == S3KMemory.GameMode.LEVEL_LOADED:
-            logger.info(f"In {curr_zone} act {act_number}")
+        # if game_mode == S3KMemory.GameMode.SAVE_SELECT:
+        #     logger.info("On save select")
+        # elif game_mode == S3KMemory.GameMode.LEVEL_LOADED:
+        #     logger.info(f"In {curr_zone} act {act_number}")
 
     async def handle_locations(self, ctx: "BizHawkClientContext") -> None:
         """
