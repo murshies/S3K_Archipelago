@@ -32,6 +32,7 @@ each game in the generated world:
 - Water Shield
 - Invincibility
 - Power Sneakers
+- Super Ring
 
 # Traps
 
