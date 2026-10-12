@@ -165,6 +165,17 @@ class S3KWorld(World):
     def generate_output(self, output_directory: str) -> None:
         S3KROM.generate_output(self, output_directory)
 
+    def fill_slot_data(self) -> dict[str, typing.Any]:
+        # The client needs these to work out which zones are unlocked. See
+        # S3KReceivedItems.SlotSettings.
+        return self.options.as_dict(
+            'zone_unlocks',
+            'big_rings_goal',
+            'chaos_emeralds_goal',
+            'super_emeralds_goal',
+            'big_rings_to_check',
+        )
+
     def hyper_state_available(self) -> bool:
         """
         Determines whether or not hyper state is obtainable, given the player's
