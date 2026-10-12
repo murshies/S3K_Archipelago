@@ -61,9 +61,9 @@ location_buffer = MemObject(
 location_buffer_slots_address: int = location_buffer.address + LOCATION_BUFFER_HEADER_SIZE
 
 # Location ids written to the location buffer for things that aren't item
-# boxes. These match the Archipelago_Loc_* constants in the disassembly. Item
-# boxes use their index in the object respawn table, which never has the
-# highest bit set.
+# boxes or big rings. These match the Archipelago_Loc_* constants in the
+# disassembly. Item boxes and big rings use their index in the object respawn
+# table, which never has the highest bit set.
 LOC_ACT_COMPLETE: int = 0x8000
 LOC_BOSS: int = 0x8001
 LOC_SSZ_MECHA_SONIC_1: int = 0x8002
@@ -71,6 +71,45 @@ LOC_SSZ_MECHA_SONIC_2: int = 0x8003
 LOC_SS_EMERALD: int = 0x8100  # + special stage number (0-13)
 LOC_SS_PERFECT: int = 0x8200  # + special stage number (0-13)
 NUM_SPECIAL_STAGES: int = 14
+
+# Item mailbox. See Archipelago_Item_Integrity in the disassembly's
+# sonic3k.constants.asm. The client writes an item type and a new request id;
+# once the game has applied the item, it copies the request id into
+# item_last_processed_id.
+ITEM_MAILBOX_INTEGRITY_VALUE: int = 0x4149  # 'AI'
+item_mailbox = MemObject(0xE654, 12, MEM_RAM)  # The whole mailbox, for reading
+item_mailbox_integrity = MemObject(0xE654, 2, MEM_RAM)
+item_last_processed_id = MemObject(0xE656, 4, MEM_RAM)  # Written by the game
+item_request_id = MemObject(0xE65A, 4, MEM_RAM)  # Written by the client
+item_request_type = MemObject(0xE65E, 2, MEM_RAM)  # Written by the client
+
+# Item types for the mailbox, matching the Archipelago_Item_* constants in the
+# disassembly
+ITEM_TYPE_SUPER_RING: int = 1
+ITEM_TYPE_LIGHTNING_SHIELD: int = 2
+ITEM_TYPE_FLAME_SHIELD: int = 3
+ITEM_TYPE_WATER_SHIELD: int = 4
+ITEM_TYPE_INVINCIBILITY: int = 5
+ITEM_TYPE_POWER_SNEAKERS: int = 6
+ITEM_TYPE_ROBOTNIK_TRAP: int = 7
+ITEM_TYPE_POISON_TRAP: int = 8
+
+# Setting the first byte of this to a non-zero value makes the game write the
+# level unlock bitmasks and the save files to SRAM. The game clears it
+# afterwards. It's only checked on the save select screen and while in a level.
+save_flag = MemObject(0xE69A, 2, MEM_RAM)
+
+# The level unlock bitmasks for Sonic, Tails, and Knuckles, 4 bytes each. Each
+# bit is a level in the save select screen's level list (see
+# S3KReceivedItems.LEVEL_BITS).
+level_unlocks = MemObject(0xE69C, 12, MEM_RAM)
+
+# The three save files, one per character, in the same order as the level
+# unlock bitmasks
+save_files = MemObject(0xE6AC, 30, MEM_RAM)
+SAVE_FILE_SIZE: int = 10
+SAVE_FILE_GAME_STATE_OFFSET: int = 0
+SAVE_FILE_EMERALDS_OFFSET: int = 6
 
 
 class GameMode(Enum):
@@ -141,18 +180,6 @@ class SaveFile:
         "Variables for each save slot", for an explanation of the layout. Each
         save slot is 10 bytes total. The return value is a list of bytes.
         """
-        # In order to allow selection of any unlocked zone, each save slot will
-        # at least be considered complete (0x100). Start with this and
-        # determine if it should be changed based on the unlocked
-        # emeralds. Note that these values are the upper byte of the 16 bit
-        # word for this value, the lower bit is always zero and will be filled
-        # in below in the return value.
-        game_state = 0x1
-        if self.emeralds >= consts.EMERALDS_FOR_SUPER_HUNT:
-            game_state = 0x3  # Game Complete with all Super Emeralds
-        elif self.emeralds >= consts.EMERALDS_FOR_CHAOS_HUNT:
-            game_state = 0x2  # Game Complete with all Chaos Emeralds
-
         # Archipelago is going to read which levels are unlocked for each save
         # slot from a different location in SRAM, so the current level byte
         # isn't really needed. Set it to the "last level" value for each
@@ -166,36 +193,10 @@ class SaveFile:
             curr_level = 0xC
         curr_level = 28
 
-        # In this Archipelago, instead of finding specific chaos or super
-        # emeralds (e.g. "blue super emerald"), there are generic chaos emerald
-        # pickups. So, instead of filling in state specific to each emerald
-        # slot, we keep track of how many total emeralds have been
-        # collected. For the purpose of the save slot data, go through and fill
-        # in the emerald state in order:
-        # 0 = not collected
-        # 1 = chaos emerald collected
-        # 3 = super emerald collected
-        # 2, which is "chaos emerald traded for an (inactive) super emerald",
-        # is skipped. This is because the Archipelago works differently from
-        # the base game, in that each character will have access to the super
-        # transformation of the highest completed emerald set.
-        emerald_state = [0, 0, 0, 0, 0, 0, 0]
-        idx = 0
-        for emerald in range(self.emeralds):
-            if emerald_state[idx] == 0:
-                emerald_state[idx] = 1
-            else:
-                emerald_state[idx] = 3
-            idx = (idx + 1) % 7
-        # The emerald state is represented as a bitmask in the save data, with
-        # each emerald using 2 bits
-        emerald_bitmask = 0
-        for idx, emerald_state in enumerate(emerald_state):
-            emerald_bitmask |= emerald_state << (14 - idx * 2)
-
         # Construct the final payload
+        emerald_bitmask = save_emerald_bitmask(self.emeralds)
         return [
-            game_state, 0x0,
+            save_game_state(self.emeralds), 0x0,
             self.character.value,
             curr_level,
             0x0, 0x0,  # Special stage rings entered in current zone, always keep clear
@@ -203,6 +204,54 @@ class SaveFile:
             self.lives,
             self.continues,
         ]
+
+
+def save_game_state(emeralds: int) -> int:
+    """
+    The game state byte (the first byte of a save file) for the given number
+    of emeralds.
+    """
+    # In order to allow selection of any unlocked zone, each save slot will at
+    # least be considered complete (0x100). Start with this and determine if it
+    # should be changed based on the unlocked emeralds. Note that these values
+    # are the upper byte of the 16 bit word for this value, the lower byte is
+    # always zero.
+    if emeralds >= consts.EMERALDS_FOR_SUPER_HUNT:
+        return 0x3  # Game Complete with all Super Emeralds
+    elif emeralds >= consts.EMERALDS_FOR_CHAOS_HUNT:
+        return 0x2  # Game Complete with all Chaos Emeralds
+    return 0x1
+
+
+def save_emerald_bitmask(emeralds: int) -> int:
+    """The 16-bit emerald state of a save file for the given number of emeralds."""
+    # In this Archipelago, instead of finding specific chaos or super
+    # emeralds (e.g. "blue super emerald"), there are generic chaos emerald
+    # pickups. So, instead of filling in state specific to each emerald
+    # slot, we keep track of how many total emeralds have been
+    # collected. For the purpose of the save slot data, go through and fill
+    # in the emerald state in order:
+    # 0 = not collected
+    # 1 = chaos emerald collected
+    # 3 = super emerald collected
+    # 2, which is "chaos emerald traded for an (inactive) super emerald",
+    # is skipped. This is because the Archipelago works differently from
+    # the base game, in that each character will have access to the super
+    # transformation of the highest completed emerald set.
+    emerald_state = [0, 0, 0, 0, 0, 0, 0]
+    idx = 0
+    for emerald in range(min(emeralds, consts.EMERALDS_FOR_SUPER_HUNT)):
+        if emerald_state[idx] == 0:
+            emerald_state[idx] = 1
+        else:
+            emerald_state[idx] = 3
+        idx = (idx + 1) % 7
+    # The emerald state is represented as a bitmask in the save data, with
+    # each emerald using 2 bits
+    emerald_bitmask = 0
+    for idx, emerald_state in enumerate(emerald_state):
+        emerald_bitmask |= emerald_state << (14 - idx * 2)
+    return emerald_bitmask
 
 
 @dataclass(frozen=True)

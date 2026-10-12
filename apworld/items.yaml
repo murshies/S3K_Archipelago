@@ -560,6 +560,10 @@
   groups:
     - item_box
   filler: true
+- name: Super Ring
+  groups:
+    - item_box
+  filler: true
 - name: Robotnik Trap
   description: 'Causes the player to lose all of their rings'
   groups: []
