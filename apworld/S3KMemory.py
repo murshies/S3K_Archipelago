@@ -97,23 +97,23 @@ ITEM_TYPE_DEATH_LINK: int = 9  # Kills the player, regardless of rings, shields,
 
 # The routine of the player 1 object (Player_1+routine), used to detect deaths.
 # Sonic, Tails, and Knuckles all use the same routine numbers.
-PLAYER_1_ROUTINE = MemObject(0xB005, 1, MEM_RAM)
+player_1_routine = MemObject(0xB005, 1, MEM_RAM)
 PLAYER_ROUTINE_DEATH: int = 6  # Set by Kill_Character
 PLAYER_ROUTINE_DROWNED: int = 0xC  # Set by the air countdown when the player drowns
 
 # Setting the first byte of this to a non-zero value makes the game write the
 # level unlock bitmasks and the save files to SRAM. The game clears it
 # afterwards. It's only checked on the save select screen and while in a level.
-SAVE_FLAG = MemObject(0xE69A, 2, MEM_RAM)
+save_flag = MemObject(0xE69A, 2, MEM_RAM)
 
 # The level unlock bitmasks for Sonic, Tails, and Knuckles, 4 bytes each. Each
 # bit is a level in the save select screen's level list (see
 # S3KReceivedItems.LEVEL_BITS).
-LEVEL_UNLOCKS = MemObject(0xE69C, 12, MEM_RAM)
+level_unlocks = MemObject(0xE69C, 12, MEM_RAM)
 
 # The three save files, one per character, in the same order as the level
 # unlock bitmasks
-SAVE_FILES = MemObject(0xE6AC, 30, MEM_RAM)
+save_files = MemObject(0xE6AC, 30, MEM_RAM)
 SAVE_FILE_SIZE: int = 10
 SAVE_FILE_GAME_STATE_OFFSET: int = 0
 SAVE_FILE_EMERALDS_OFFSET: int = 6

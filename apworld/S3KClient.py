@@ -142,7 +142,7 @@ class S3KClient(BizHawkClient):
     async def handle_death(self, ctx: "BizHawkClientContext") -> None:
         """Sends a death link when the player dies in a level."""
         game_mode, routine = await bizhawk.read(
-            ctx.bizhawk_ctx, [S3KMemory.game_mode, S3KMemory.PLAYER_1_ROUTINE])
+            ctx.bizhawk_ctx, [S3KMemory.game_mode, S3KMemory.player_1_routine])
         dead = (game_mode[0] == S3KMemory.GameMode.LEVEL_LOADED.value and
                 routine[0] in (S3KMemory.PLAYER_ROUTINE_DEATH, S3KMemory.PLAYER_ROUTINE_DROWNED))
         if dead and not self.player_dead:
@@ -271,9 +271,9 @@ class S3KClient(BizHawkClient):
             (S3KMemory.level_unlocks.address,
              list(save_state.level_unlock_bytes),
              S3KMemory.level_unlocks.location),
-            (S3KMemory.SAVE_FILES.address,
+            (S3KMemory.save_files.address,
              [byte for save_file in save_files for byte in save_file.data],
-             S3KMemory.SAVE_FILES.location),
+             S3KMemory.save_files.location),
             (S3KMemory.save_flag.address, [1, 0], S3KMemory.save_flag.location),
         ]
         logger.info("Initializing save files")
@@ -314,7 +314,7 @@ class S3KClient(BizHawkClient):
         saves the emeralds from a special stage.
         """
         level_data, save_data = await bizhawk.read(
-            ctx.bizhawk_ctx, [S3KMemory.level_unlocks, S3KMemory.SAVE_FILES])
+            ctx.bizhawk_ctx, [S3KMemory.level_unlocks, S3KMemory.save_files])
 
         writes = []
         if level_data != save_state.level_unlock_bytes:
@@ -331,12 +331,12 @@ class S3KClient(BizHawkClient):
             emerald_offset = base + S3KMemory.SAVE_FILE_EMERALDS_OFFSET
             if (save_data[state_offset] != game_state or
                     save_data[emerald_offset:emerald_offset + 2] != emerald_bytes):
-                writes.append((S3KMemory.SAVE_FILES.address + state_offset,
+                writes.append((S3KMemory.save_files.address + state_offset,
                                [game_state],
-                               S3KMemory.SAVE_FILES.location))
-                writes.append((S3KMemory.SAVE_FILES.address + emerald_offset,
+                               S3KMemory.save_files.location))
+                writes.append((S3KMemory.save_files.address + emerald_offset,
                                list(emerald_bytes),
-                               S3KMemory.SAVE_FILES.location))
+                               S3KMemory.save_files.location))
         if not writes:
             return
 
@@ -346,7 +346,7 @@ class S3KClient(BizHawkClient):
         # Only write if nothing changed since the data was read
         await bizhawk.guarded_write(ctx.bizhawk_ctx, writes, [
             (S3KMemory.level_unlocks.address, list(level_data), S3KMemory.level_unlocks.location),
-            (S3KMemory.SAVE_FILES.address, list(save_data), S3KMemory.SAVE_FILES.location),
+            (S3KMemory.save_files.address, list(save_data), S3KMemory.save_files.location),
         ])
 
     async def handle_mailbox(self, ctx: "BizHawkClientContext", item_names: list[str]) -> None:
