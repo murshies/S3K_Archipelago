@@ -93,6 +93,13 @@ ITEM_TYPE_INVINCIBILITY: int = 5
 ITEM_TYPE_POWER_SNEAKERS: int = 6
 ITEM_TYPE_ROBOTNIK_TRAP: int = 7
 ITEM_TYPE_POISON_TRAP: int = 8
+ITEM_TYPE_DEATH_LINK: int = 9  # Kills the player, regardless of rings, shields, or invincibility
+
+# The routine of the player 1 object (Player_1+routine), used to detect deaths.
+# Sonic, Tails, and Knuckles all use the same routine numbers.
+player_1_routine = MemObject(0xB005, 1, MEM_RAM)
+PLAYER_ROUTINE_DEATH: int = 6  # Set by Kill_Character
+PLAYER_ROUTINE_DROWNED: int = 0xC  # Set by the air countdown when the player drowns
 
 # Setting the first byte of this to a non-zero value makes the game write the
 # level unlock bitmasks and the save files to SRAM. The game clears it

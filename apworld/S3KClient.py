@@ -49,12 +49,31 @@ class S3KClient(BizHawkClient):
     processed_location_seed: str | None
     # Data storage keys that have already been requested from the server
     requested_storage_keys: set[str]
+    # Death link state
+    # A death link was received and still needs to be sent to the game
+    death_link_pending: bool
+    # The id of the death link request in the item mailbox, or 0 if there
+    # isn't one
+    death_link_request_id: int
+    # The game killed the player because of a death link, so the next death
+    # shouldn't be sent out
+    killed_by_death_link: bool
+    # Whether the player was dead the last time the game was checked
+    player_dead: bool
+    # The time of the last death link this client sent, so it can be ignored
+    # when the server sends it back
+    last_sent_death_time: float | None
 
     def __init__(self) -> None:
         super().__init__()
         self.processed_location_keys = set()
         self.processed_location_seed = None
         self.requested_storage_keys = set()
+        self.death_link_pending = False
+        self.death_link_request_id = 0
+        self.killed_by_death_link = False
+        self.player_dead = False
+        self.last_sent_death_time = None
 
     async def validate_rom(self, ctx: "BizHawkClientContext") -> bool:
         game_names = await bizhawk.read(ctx.bizhawk_ctx, [S3KMemory.sk_game_name,
@@ -73,6 +92,14 @@ class S3KClient(BizHawkClient):
 
         return True
 
+    def on_package(self, ctx: "BizHawkClientContext", cmd: str, args: dict) -> None:
+        if cmd != "Bounced" or "DeathLink" not in args.get("tags", []):
+            return
+        if args["data"]["time"] == self.last_sent_death_time:
+            # This client's own death link, sent back by the server
+            return
+        self.death_link_pending = True
+
     async def game_watcher(self, ctx: "BizHawkClientContext") -> None:
         try:
             await self.tick(ctx)
@@ -85,11 +112,14 @@ class S3KClient(BizHawkClient):
         # Applying items needs the slot data, which is only available once
         # connected to a slot
         if ctx.slot is not None and ctx.slot_data is not None:
+            if ctx.slot_data.get("death_link") and "DeathLink" not in ctx.tags:
+                await ctx.update_death_link(True)
+            await self.handle_death(ctx)
             item_names = [ctx.item_names.lookup_in_game(item.item) for item in ctx.items_received]
             save_state = self.save_state(ctx, item_names)
             if await self.handle_initialization(ctx, save_state):
                 await self.sync_save_data(ctx, save_state)
-                await self.deliver_junk_items(ctx, item_names)
+                await self.handle_mailbox(ctx, item_names)
 
         game_state_read_payload = [
             S3KMemory.game_mode,
@@ -108,6 +138,27 @@ class S3KClient(BizHawkClient):
         #     logger.info("On save select")
         # elif game_mode == S3KMemory.GameMode.LEVEL_LOADED:
         #     logger.info(f"In {curr_zone} act {act_number}")
+
+    async def handle_death(self, ctx: "BizHawkClientContext") -> None:
+        """Sends a death link when the player dies in a level."""
+        game_mode, routine = await bizhawk.read(
+            ctx.bizhawk_ctx, [S3KMemory.game_mode, S3KMemory.player_1_routine])
+        dead = (game_mode[0] == S3KMemory.GameMode.LEVEL_LOADED.value and
+                routine[0] in (S3KMemory.PLAYER_ROUTINE_DEATH, S3KMemory.PLAYER_ROUTINE_DROWNED))
+        if dead and not self.player_dead:
+            # The game kills the player in the same frame that it acknowledges a
+            # death link, so a death while a death link is waiting in the
+            # mailbox is treated as caused by it too
+            if self.killed_by_death_link or self.death_link_request_id:
+                self.killed_by_death_link = False
+            elif "DeathLink" in ctx.tags:
+                await ctx.send_death(f"{ctx.player_names[ctx.slot]} died")
+                self.last_sent_death_time = ctx.last_death_link
+        if dead:
+            # The player is already dead, so a death link received now
+            # doesn't need to kill them again on their next life
+            self.death_link_pending = False
+        self.player_dead = dead
 
     async def handle_locations(self, ctx: "BizHawkClientContext") -> None:
         """
@@ -298,16 +349,19 @@ class S3KClient(BizHawkClient):
             (S3KMemory.save_files.address, list(save_data), S3KMemory.save_files.location),
         ])
 
-    async def deliver_junk_items(self, ctx: "BizHawkClientContext", item_names: list[str]) -> None:
+    async def handle_mailbox(self, ctx: "BizHawkClientContext", item_names: list[str]) -> None:
         """
-        Gives the player junk items (shields, traps, etc.) one at a time
-        through the item mailbox. See S3KMemory.item_mailbox.
+        Sends requests to the game through the item mailbox, one at a time
+        (see S3KMemory.item_mailbox). These are junk items (shields, traps,
+        etc.) and received death links. A death link goes ahead of the next
+        junk item.
 
         How many junk items have been delivered is kept in the server's data
         storage, so items aren't given twice when the client restarts. The id
-        of the request that's waiting for the game is stored there too, so the
-        client can tell whether the game processed it while the client wasn't
-        running.
+        of the junk item request that's waiting for the game is stored there
+        too, so the client can tell whether the game processed it while the
+        client wasn't running. Death links aren't stored, since a death only
+        matters at the time it happens.
         """
         key = f"S3K_item_delivery_{ctx.team}_{ctx.slot}"
         if key not in ctx.stored_data:
@@ -325,6 +379,21 @@ class S3KClient(BizHawkClient):
         request_id = int.from_bytes(data[6:10], "big")
         if integrity != S3KMemory.ITEM_MAILBOX_INTEGRITY_VALUE:
             return
+
+        if self.death_link_request_id:
+            if last_processed_id == self.death_link_request_id:
+                # The game killed the player. Don't send that death back out,
+                # unless handle_death already saw and skipped it.
+                logger.info("DeathLink: Killed the player")
+                self.death_link_request_id = 0
+                self.killed_by_death_link = not self.player_dead
+                return
+            if request_id == self.death_link_request_id:
+                # Still waiting for the game to kill the player
+                return
+            # The game was reset before it processed the death link, so
+            # there's no one to kill anymore
+            self.death_link_request_id = 0
 
         junk = S3KReceivedItems.junk_items(item_names)
         if pending_id:
@@ -344,27 +413,43 @@ class S3KClient(BizHawkClient):
             # about, so wait for it to finish
             return
 
+        new_id = self.next_request_id(last_processed_id, request_id)
+        if self.death_link_pending and not pending_id:
+            self.death_link_pending = False
+            if await self.write_mailbox_request(
+                    ctx, data, S3KMemory.ITEM_TYPE_DEATH_LINK, new_id):
+                self.death_link_request_id = new_id
+            return
+
         if index >= len(junk):
             return
         name, item_type = junk[index]
-        new_id = self.next_request_id(last_processed_id, request_id)
         # Save the request before sending it, so a client restart can tell
         # whether the game applied it
         await self.save_delivery_state(ctx, key, index, new_id)
-        sent = await bizhawk.guarded_write(
+        if await self.write_mailbox_request(ctx, data, item_type, new_id):
+            logger.info(f"Sending {name} to the game")
+
+    @staticmethod
+    async def write_mailbox_request(
+            ctx: "BizHawkClientContext", mailbox: bytes, item_type: int, request_id: int) -> bool:
+        """
+        Writes a request to the item mailbox. The request is only written if
+        the mailbox still matches what was read, and the return value says
+        whether it was.
+        """
+        return await bizhawk.guarded_write(
             ctx.bizhawk_ctx,
             [
                 (S3KMemory.item_request_type.address,
                  list(item_type.to_bytes(2, "big")),
                  S3KMemory.item_request_type.location),
                 (S3KMemory.item_request_id.address,
-                 list(new_id.to_bytes(4, "big")),
+                 list(request_id.to_bytes(4, "big")),
                  S3KMemory.item_request_id.location),
             ],
-            [(S3KMemory.item_mailbox.address, list(data), S3KMemory.item_mailbox.location)],
+            [(S3KMemory.item_mailbox.address, list(mailbox), S3KMemory.item_mailbox.location)],
         )
-        if sent:
-            logger.info(f"Sending {name} to the game")
 
     @staticmethod
     def next_request_id(last_processed_id: int, request_id: int) -> int:

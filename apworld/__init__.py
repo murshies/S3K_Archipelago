@@ -166,14 +166,15 @@ class S3KWorld(World):
         S3KROM.generate_output(self, output_directory)
 
     def fill_slot_data(self) -> dict[str, typing.Any]:
-        # The client needs these to work out which zones are unlocked. See
-        # S3KReceivedItems.SlotSettings.
+        # The client needs these to work out which zones are unlocked (see
+        # S3KReceivedItems.SlotSettings), and whether to enable death link.
         return self.options.as_dict(
             'zone_unlocks',
             'big_rings_goal',
             'chaos_emeralds_goal',
             'super_emeralds_goal',
             'big_rings_to_check',
+            'death_link',
         )
 
     def hyper_state_available(self) -> bool:
