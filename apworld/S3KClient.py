@@ -284,7 +284,7 @@ class S3KClient(BizHawkClient):
             (S3KMemory.save_flag.address, [1, 0], S3KMemory.save_flag.location),
         ]
         logger.info("Initializing save files")
-        await bizhawk.guarded_write(ctx.bizhawk_ctx, payload)
+        await bizhawk.write(ctx.bizhawk_ctx, payload)
         return True
 
     @staticmethod
