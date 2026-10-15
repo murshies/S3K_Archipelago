@@ -234,22 +234,29 @@ class S3KClient(BizHawkClient):
         Returns whether the save data is ready to be updated.
         """
         # To determine whether or not Archipelago has initialized the save
-        # files, check the slot state of the first save slot. For the purposes
-        # of the randomizer, all three save slots will be marked as "game
-        # complete" (0x100 for complete with no emerald set, 0x200 for complete
-        # with all chaos emeralds, or 0x300 for complete with all super
-        # emeralds). Therefore, reading a zero here means that the game has not
-        # yet initialized the same data in RAM, and reading 0x8000 (new game)
-        # means that this client has not yet initialized the save files. This
-        # is checked every time, since a reset with no save data in SRAM makes
-        # the save files new again.
-        init_flag = (await bizhawk.read(ctx.bizhawk_ctx, [S3KMemory.arch_initialized]))[0]
-        if init_flag == b"\x00\x00":
-            # Wait for the game to read the save data from SRAM before
-            # attempting to manipulate the save data in RAM.
+        # data, check the level unlock bitmasks. If the integrity bytes is set,
+        # meaning that the game has initialized that memory location, but the
+        # bitmasks are completely clear, that means that this client has not
+        # set any save data. If that's the case, initialize.
+        integrity, sonic_bitmask, tails_bitmask, knuckles_bitmask = await bizhawk.read(
+            ctx.bizhawk_ctx,
+            [S3KMemory.lvl_bitmask_integrity,
+             S3KMemory.sonic_lvl_bitmask,
+             S3KMemory.tails_lvl_bitmask,
+             S3KMemory.knuckles_lvl_bitmask])
+
+        if integrity != b"\x41\x50":
+            # If the game somehow hasn't set the integrity value by this point,
+            # defer initialization.
+            logger.info("Level bitmask integrity word not set yet")
             return False
-        elif init_flag != b"\x80\x00":
-            # Already initialized
+
+        # If any bitmasks have been written with values, we are initialized.
+        if sonic_bitmask != b"\x00\x00\x00\x00":
+            return True
+        if tails_bitmask != b"\x00\x00\x00\x00":
+            return True
+        if knuckles_bitmask != b"\x00\x00\x00\x00":
             return True
 
         # Otherwise, do Archipelago initialization. Set up the save files and
@@ -277,14 +284,8 @@ class S3KClient(BizHawkClient):
             (S3KMemory.save_flag.address, [1, 0], S3KMemory.save_flag.location),
         ]
         logger.info("Initializing save files")
-        # Only write if the save files haven't changed since they were read
-        return await bizhawk.guarded_write(
-            ctx.bizhawk_ctx,
-            payload,
-            [(S3KMemory.arch_initialized.address,
-              list(init_flag),
-              S3KMemory.arch_initialized.location)],
-        )
+        await bizhawk.guarded_write(ctx.bizhawk_ctx, payload)
+        return True
 
     @staticmethod
     def save_state(ctx: "BizHawkClientContext", item_names: list[str]) -> SaveState:
