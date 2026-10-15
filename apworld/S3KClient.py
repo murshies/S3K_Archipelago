@@ -248,7 +248,7 @@ class S3KClient(BizHawkClient):
         if integrity != b"\x41\x50":
             # If the game somehow hasn't set the integrity value by this point,
             # defer initialization.
-            logger.info("Level bitmask integrity word not set yet")
+            logger.info(f"Level bitmask integrity word not set yet (found {integrity})")
             return False
 
         # If any bitmasks have been written with values, we are initialized.
