@@ -132,7 +132,12 @@ class S3KClient(BizHawkClient):
         except ValueError:
             # logger.info(f"Unknown game mode {game_state[0][0]} received")
             game_mode = S3KMemory.GameMode.UNKNOWN
-        curr_zone = S3KMemory.Zone(game_state[1][0])
+        try:
+            curr_zone = S3KMemory.Zone(game_state[1][0])
+        except ValueError:
+            # The zone isn't meaningful outside of levels (e.g. in special
+            # stages or on the save select screen)
+            curr_zone = None
         act_number = game_state[2][0]
         # if game_mode == S3KMemory.GameMode.SAVE_SELECT:
         #     logger.info("On save select")
