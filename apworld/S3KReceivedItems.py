@@ -109,6 +109,10 @@ JUNK_ITEM_TYPES: dict[str, int] = {
 
 BIG_RING_LOCATION_MARKER: str = ' - Big Ring '
 
+# The items placed at the goal locations. With one goal there's a single Master
+# Emerald, otherwise there's one Master Emerald Shard per goal.
+GOAL_ITEMS: tuple[str, ...] = ('Master Emerald', 'Master Emerald Shard')
+
 
 @dataclass(frozen=True)
 class SlotSettings:
@@ -138,10 +142,27 @@ class SlotSettings:
             if goal != consts.GOAL_NONE
         }
 
+    @property
+    def num_goals(self) -> int:
+        return len([
+            goal for goal in (self.big_rings_goal, self.chaos_emeralds_goal, self.super_emeralds_goal)
+            if goal != consts.GOAL_NONE
+        ])
+
 
 def emerald_count(item_names: typing.Iterable[str]) -> int:
     count = sum(1 for name in item_names if name == consts.ITEM_CHAOS_EMERALD)
     return min(count, consts.EMERALDS_FOR_SUPER_HUNT)
+
+
+def goal_complete(item_names: typing.Iterable[str], settings: SlotSettings) -> bool:
+    """
+    Whether every goal has been completed. This mirrors the completion condition
+    set in S3KItems.create_items: each goal location holds a goal item, and the
+    game is complete once all of them have been received.
+    """
+    goal_items = sum(1 for name in item_names if name in GOAL_ITEMS)
+    return goal_items >= settings.num_goals
 
 
 def big_rings_checked(checked_location_names: typing.Iterable[str]) -> int:

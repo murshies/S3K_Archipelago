@@ -3,6 +3,7 @@ import logging
 import time
 from typing import TYPE_CHECKING
 
+from NetUtils import ClientStatus
 import worlds._bizhawk as bizhawk
 from worlds._bizhawk.client import BizHawkClient
 
@@ -116,6 +117,7 @@ class S3KClient(BizHawkClient):
                 await ctx.update_death_link(True)
             await self.handle_death(ctx)
             item_names = [ctx.item_names.lookup_in_game(item.item) for item in ctx.items_received]
+            await self.handle_goal(ctx, item_names)
             save_state = self.save_state(ctx, item_names)
             if await self.handle_initialization(ctx, save_state):
                 await self.sync_save_data(ctx, save_state)
@@ -143,6 +145,17 @@ class S3KClient(BizHawkClient):
         #     logger.info("On save select")
         # elif game_mode == S3KMemory.GameMode.LEVEL_LOADED:
         #     logger.info(f"In {curr_zone} act {act_number}")
+
+    @staticmethod
+    async def handle_goal(ctx: "BizHawkClientContext", item_names: list[str]) -> None:
+        """Tells the server once all of the goals have been completed."""
+        if ctx.finished_game:
+            return
+        settings = S3KReceivedItems.SlotSettings.from_slot_data(ctx.slot_data)
+        if S3KReceivedItems.goal_complete(item_names, settings):
+            await ctx.send_msgs([{"cmd": "StatusUpdate", "status": ClientStatus.CLIENT_GOAL}])
+            ctx.finished_game = True
+            logger.info("All goals complete!")
 
     async def handle_death(self, ctx: "BizHawkClientContext") -> None:
         """Sends a death link when the player dies in a level."""

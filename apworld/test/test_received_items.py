@@ -154,6 +154,26 @@ class TestEmeralds(unittest.TestCase):
                          (S3KMemory.save_game_state(14), S3KMemory.save_emerald_bitmask(14)))
 
 
+class TestGoal(unittest.TestCase):
+    def test_goal_items_exist(self) -> None:
+        goal_items = {item.name for item in ALL_ITEMS.filter_items(
+            lambda item: items.ITEM_GROUP_GOAL in item.groups)}
+        self.assertEqual(goal_items, set(S3KReceivedItems.GOAL_ITEMS))
+
+    def test_single_goal(self) -> None:
+        slot = settings(chaos_emeralds_goal=consts.GOAL_DOOMSDAY)
+        self.assertFalse(S3KReceivedItems.goal_complete(
+            [consts.ITEM_CHAOS_EMERALD] * 7, slot))
+        self.assertTrue(S3KReceivedItems.goal_complete(
+            [consts.ITEM_CHAOS_EMERALD] * 7 + ['Master Emerald'], slot))
+
+    def test_multiple_goals(self) -> None:
+        slot = settings(big_rings_goal=consts.GOAL_DEATH_EGG,
+                        chaos_emeralds_goal=consts.GOAL_DOOMSDAY)
+        self.assertFalse(S3KReceivedItems.goal_complete(['Master Emerald Shard'], slot))
+        self.assertTrue(S3KReceivedItems.goal_complete(['Master Emerald Shard'] * 2, slot))
+
+
 class TestJunkItems(unittest.TestCase):
     def test_order_kept(self) -> None:
         names = [
