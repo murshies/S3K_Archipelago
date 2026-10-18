@@ -3,6 +3,7 @@ import logging
 import time
 from typing import TYPE_CHECKING
 
+from NetUtils import ClientStatus
 import worlds._bizhawk as bizhawk
 from worlds._bizhawk.client import BizHawkClient
 
@@ -47,6 +48,9 @@ class S3KClient(BizHawkClient):
     processed_location_keys: set[tuple]
     # The seed that processed_location_keys applies to
     processed_location_seed: str | None
+    # Keys of location buffer entries that were found while not connected to
+    # a slot, and are waiting to be sent. Only used for logging.
+    waiting_location_keys: set[tuple]
     # Data storage keys that have already been requested from the server
     requested_storage_keys: set[str]
     # Death link state
@@ -68,6 +72,7 @@ class S3KClient(BizHawkClient):
         super().__init__()
         self.processed_location_keys = set()
         self.processed_location_seed = None
+        self.waiting_location_keys = set()
         self.requested_storage_keys = set()
         self.death_link_pending = False
         self.death_link_request_id = 0
@@ -116,6 +121,7 @@ class S3KClient(BizHawkClient):
                 await ctx.update_death_link(True)
             await self.handle_death(ctx)
             item_names = [ctx.item_names.lookup_in_game(item.item) for item in ctx.items_received]
+            await self.handle_goal(ctx, item_names)
             save_state = self.save_state(ctx, item_names)
             if await self.handle_initialization(ctx, save_state):
                 await self.sync_save_data(ctx, save_state)
@@ -132,12 +138,28 @@ class S3KClient(BizHawkClient):
         except ValueError:
             # logger.info(f"Unknown game mode {game_state[0][0]} received")
             game_mode = S3KMemory.GameMode.UNKNOWN
-        curr_zone = S3KMemory.Zone(game_state[1][0])
+        try:
+            curr_zone = S3KMemory.Zone(game_state[1][0])
+        except ValueError:
+            # The zone isn't meaningful outside of levels (e.g. in special
+            # stages or on the save select screen)
+            curr_zone = None
         act_number = game_state[2][0]
         # if game_mode == S3KMemory.GameMode.SAVE_SELECT:
         #     logger.info("On save select")
         # elif game_mode == S3KMemory.GameMode.LEVEL_LOADED:
         #     logger.info(f"In {curr_zone} act {act_number}")
+
+    @staticmethod
+    async def handle_goal(ctx: "BizHawkClientContext", item_names: list[str]) -> None:
+        """Tells the server once all of the goals have been completed."""
+        if ctx.finished_game:
+            return
+        settings = S3KReceivedItems.SlotSettings.from_slot_data(ctx.slot_data)
+        if S3KReceivedItems.goal_complete(item_names, settings):
+            await ctx.send_msgs([{"cmd": "StatusUpdate", "status": ClientStatus.CLIENT_GOAL}])
+            ctx.finished_game = True
+            logger.info("All goals complete!")
 
     async def handle_death(self, ctx: "BizHawkClientContext") -> None:
         """Sends a death link when the player dies in a level."""
@@ -169,6 +191,14 @@ class S3KClient(BizHawkClient):
         buffer = S3KMemory.LocationBuffer.from_bytes(data)
         if LOG_LOCATION_BUFFER:
             logger.info(self.describe_location_buffer(buffer))
+        current_keys = {entry.key for entry in buffer.entries} if buffer.is_valid else set()
+        lost_keys = self.waiting_location_keys - current_keys
+        if lost_keys:
+            logger.warning(
+                f"{len(lost_keys)} location check(s) disappeared from the game before they could "
+                "be sent to the server. This happens if the game is reset, or if more than "
+                f"{S3KMemory.LOCATION_BUFFER_SLOTS} checks are made while disconnected.")
+            self.waiting_location_keys -= lost_keys
         if not buffer.is_valid:
             return
 
@@ -176,7 +206,15 @@ class S3KClient(BizHawkClient):
         # slot. Until then, leave the entries unprocessed so they're picked up
         # once the connection is made.
         if ctx.slot is None or not ctx.server_locations:
+            new_keys = current_keys - self.processed_location_keys - self.waiting_location_keys
+            if new_keys:
+                logger.info(
+                    f"Found {len(new_keys)} location check(s) in the game that this client hasn't "
+                    "sent yet. They will be sent once connected to the server.")
+                self.waiting_location_keys |= new_keys
             return
+        # Everything in the buffer is handled below
+        self.waiting_location_keys.clear()
         if self.processed_location_seed != ctx.seed_name:
             self.processed_location_keys.clear()
             self.processed_location_seed = ctx.seed_name
