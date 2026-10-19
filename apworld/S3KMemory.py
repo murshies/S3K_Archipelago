@@ -60,6 +60,41 @@ location_buffer = MemObject(
 )
 location_buffer_slots_address: int = location_buffer.address + LOCATION_BUFFER_HEADER_SIZE
 
+# The object respawn table: one byte for every object in the current act's
+# object layout, indexed by the object's position in the layout. The game
+# clears it every time a level is loaded. Bit 7 means the object is loaded,
+# and monitors use bit 0 to remember that they're broken. The client uses two
+# more bits to tell item boxes and big rings about their location state; see
+# Archipelago_Respawn_Unchecked_bit in the disassembly's sonic3k.constants.asm.
+object_respawn_table = MemObject(0xEB00, 0x300, MEM_RAM)
+# The item box or big ring is a location that still has to be checked: it
+# gives no vanilla reward, and item boxes show static
+RESPAWN_UNCHECKED_BIT: int = 1 << 6
+# The big ring is a location that has already been checked, so it doesn't
+# spawn
+RESPAWN_CHECKED_BIT: int = 1 << 5
+RESPAWN_ARCHIPELAGO_MASK: int = RESPAWN_UNCHECKED_BIT | RESPAWN_CHECKED_BIT
+
+
+def respawn_table_writes(data: bytes, start_index: int,
+                         marks: dict[int, int]) -> dict[int, tuple[int, int]]:
+    """
+    Works out the respawn table bytes that need to change so that each
+    respawn index in marks has exactly the Archipelago bits given for it.
+    data is the respawn table read from the game, starting at start_index.
+    The other bits are left alone, since the game uses them. The return value
+    maps the respawn index to (current byte, new byte), for the bytes that
+    need to change.
+    """
+    writes = {}
+    for index, bits in marks.items():
+        current = data[index - start_index]
+        new = (current & ~RESPAWN_ARCHIPELAGO_MASK & 0xFF) | bits
+        if new != current:
+            writes[index] = (current, new)
+    return writes
+
+
 # Location ids written to the location buffer for things that aren't item
 # boxes or big rings. These match the Archipelago_Loc_* constants in the
 # disassembly. Item boxes and big rings use their index in the object respawn

@@ -53,6 +53,10 @@ class S3KClient(BizHawkClient):
     waiting_location_keys: set[tuple]
     # Data storage keys that have already been requested from the server
     requested_storage_keys: set[str]
+    # Location name -> id, for the locations in this slot
+    location_ids: dict[str, int]
+    # The (seed, slot) that location_ids applies to
+    location_ids_slot: tuple | None
     # Death link state
     # A death link was received and still needs to be sent to the game
     death_link_pending: bool
@@ -74,6 +78,8 @@ class S3KClient(BizHawkClient):
         self.processed_location_seed = None
         self.waiting_location_keys = set()
         self.requested_storage_keys = set()
+        self.location_ids = {}
+        self.location_ids_slot = None
         self.death_link_pending = False
         self.death_link_request_id = 0
         self.killed_by_death_link = False
@@ -122,6 +128,7 @@ class S3KClient(BizHawkClient):
             await self.handle_death(ctx)
             item_names = [ctx.item_names.lookup_in_game(item.item) for item in ctx.items_received]
             await self.handle_goal(ctx, item_names)
+            await self.handle_respawn_marks(ctx)
             save_state = self.save_state(ctx, item_names)
             if await self.handle_initialization(ctx, save_state):
                 await self.sync_save_data(ctx, save_state)
@@ -226,13 +233,7 @@ class S3KClient(BizHawkClient):
         if not new_entries:
             return
 
-        # Only the locations enabled by the player's settings are in
-        # server_locations, so this also filters out checks which don't apply
-        # to this slot.
-        name_to_id = {
-            ctx.location_names.lookup_in_game(loc_id): loc_id
-            for loc_id in ctx.server_locations
-        }
+        name_to_id = self.slot_location_ids(ctx)
         new_location_ids: set[int] = set()
         for entry in new_entries:
             self.processed_location_keys.add(entry.key)
@@ -249,6 +250,78 @@ class S3KClient(BizHawkClient):
             # locations_checked is resent by CommonContext on reconnect
             ctx.locations_checked |= new_location_ids
             await ctx.check_locations(new_location_ids)
+
+    def slot_location_ids(self, ctx: "BizHawkClientContext") -> dict[str, int]:
+        """
+        Maps location names to ids. Only the locations enabled by the player's
+        settings are in server_locations, so this leaves out locations which
+        don't apply to this slot.
+        """
+        if self.location_ids_slot != (ctx.seed_name, ctx.slot) or not self.location_ids:
+            self.location_ids = {
+                ctx.location_names.lookup_in_game(loc_id): loc_id
+                for loc_id in ctx.server_locations
+            }
+            self.location_ids_slot = (ctx.seed_name, ctx.slot)
+        return self.location_ids
+
+    async def handle_respawn_marks(self, ctx: "BizHawkClientContext") -> None:
+        """
+        Marks the item boxes and big rings in the current act in the object
+        respawn table (see S3KMemory.RESPAWN_UNCHECKED_BIT), so that the game
+        can show which ones still have to be checked. The game clears the
+        respawn table every time a level is loaded, so the marks have to be
+        written again each time. Every tick, only the respawn byte of a single
+        marked object is read to see if that's happened; the whole act is
+        written at once when it has.
+        """
+        if not ctx.server_locations:
+            return
+        game_mode, zone, act = await bizhawk.read(
+            ctx.bizhawk_ctx,
+            [S3KMemory.game_mode, S3KMemory.current_zone, S3KMemory.act_number])
+        if game_mode[0] != S3KMemory.GameMode.LEVEL_LOADED.value:
+            return
+        marks = S3KLocationIds.respawn_marks(
+            zone[0], act[0], self.slot_location_ids(ctx),
+            ctx.checked_locations | ctx.locations_checked)
+        if not marks:
+            # Nothing in this act needs to look different from the vanilla game
+            return
+
+        table = S3KMemory.object_respawn_table
+        sentinel_index, sentinel_bits = next(iter(marks.items()))
+        sentinel = (await bizhawk.read(
+            ctx.bizhawk_ctx, [(table.address + sentinel_index, 1, table.location)]))[0]
+        if sentinel[0] & S3KMemory.RESPAWN_ARCHIPELAGO_MASK == sentinel_bits:
+            # Already marked since the act was loaded
+            return
+
+        start = min(marks)
+        data = (await bizhawk.read(
+            ctx.bizhawk_ctx,
+            [(table.address + start, max(marks) - start + 1, table.location)]))[0]
+        writes = S3KMemory.respawn_table_writes(data, start, marks)
+        if not writes:
+            return
+        # Only write if the same act is still loaded, and the game hasn't
+        # changed any of the bytes since they were read, e.g. by loading or
+        # unloading one of the objects
+        guards = [
+            (S3KMemory.game_mode.address, list(game_mode), S3KMemory.game_mode.location),
+            (S3KMemory.current_zone.address, list(zone), S3KMemory.current_zone.location),
+            (S3KMemory.act_number.address, list(act), S3KMemory.act_number.location),
+        ] + [
+            (table.address + index, [current], table.location)
+            for index, (current, _) in writes.items()
+        ]
+        if await bizhawk.guarded_write(
+                ctx.bizhawk_ctx,
+                [(table.address + index, [new], table.location)
+                 for index, (_, new) in writes.items()],
+                guards):
+            logger.debug(f"Marked {len(writes)} item box(es) and big ring(s) in zone "
+                         f"0x{zone[0]:02X} act {act[0]}")
 
     @staticmethod
     def describe_location_buffer(buffer: S3KMemory.LocationBuffer) -> str:

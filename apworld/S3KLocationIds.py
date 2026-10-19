@@ -24,6 +24,8 @@ from .S3KMemory import (
     LOC_SSZ_MECHA_SONIC_1,
     LOC_SSZ_MECHA_SONIC_2,
     NUM_SPECIAL_STAGES,
+    RESPAWN_CHECKED_BIT,
+    RESPAWN_UNCHECKED_BIT,
     LocationBufferEntry,
     Zone,
 )
@@ -53,6 +55,9 @@ class ActLocations:
     special_locations: dict[int, str] = field(default_factory=dict)
     # Respawn table index -> big ring number
     big_rings: dict[int, int] = field(default_factory=dict)
+    # Respawn table indices from item_boxes and big_rings that are in the next
+    # act's object layout, rather than this act's
+    next_layout: frozenset[int] = frozenset()
 
 
 # Keyed by the (zone, act) values written to the location buffer. Note that act
@@ -68,7 +73,7 @@ ACTS: dict[tuple[int, int], ActLocations] = {
         # Big ring 2 is in the burnt part of act 1, so it's an act 2 respawn
         # index, like item boxes 11-15
         25: 1, 19: 2,
-    }),
+    }, next_layout=frozenset({49, 79, 121, 134, 133, 19})),
     (Zone.ANGEL_ISLAND.value, 1): ActLocations(consts.ZONE_ANGEL_ISLAND, 2, LOC_NAME_BOSS, {
         259: 1, 265: 2, 287: 3, 348: 4, 414: 5, 494: 6, 523: 7, 549: 8, 545: 9,
         589: 10, 576: 11, 578: 12, 582: 13, 676: 14, 185: 15, 228: 16, 292: 17,
@@ -244,3 +249,56 @@ def resolve(entry: LocationBufferEntry) -> tuple[typing.Optional[str], str]:
 
     name = format_display_name(act.zone, act.act, loc_name)
     return name, name
+
+
+@dataclass(frozen=True)
+class LayoutObject:
+    """An item box or big ring in an act's object layout."""
+    location_name: str
+    big_ring: bool
+
+
+def _build_layouts() -> dict[tuple[int, int], dict[int, LayoutObject]]:
+    layouts: dict[tuple[int, int], dict[int, LayoutObject]] = {}
+    for (zone, act), act_locs in ACTS.items():
+        objects = [
+            (index, f'{LOC_NAME_ITEM_BOX} {number}', False)
+            for index, number in act_locs.item_boxes.items()
+        ] + [
+            (index, f'{LOC_NAME_BIG_RING} {number}', True)
+            for index, number in act_locs.big_rings.items()
+        ]
+        for index, loc_name, big_ring in objects:
+            layout_act = act + 1 if index in act_locs.next_layout else act
+            name = format_display_name(act_locs.zone, act_locs.act, loc_name)
+            layouts.setdefault((zone, layout_act), {})[index] = LayoutObject(name, big_ring)
+    return layouts
+
+
+# Keyed by Current_zone_and_act, which says which object layout is loaded.
+# This is the same as the ACTS key, except for the burnt part of Angel Island
+# act 1. Each value maps the respawn table index to the object.
+LAYOUTS: dict[tuple[int, int], dict[int, LayoutObject]] = _build_layouts()
+
+
+def respawn_marks(zone: int, act: int, location_ids: dict[str, int],
+                  checked: typing.Collection[int]) -> dict[int, int]:
+    """
+    The Archipelago respawn table bits (see S3KMemory.RESPAWN_UNCHECKED_BIT)
+    for the item boxes and big rings in the given object layout. zone and act
+    are the values from Current_zone_and_act. location_ids maps the names of
+    the locations in this slot to their ids, so objects that aren't locations
+    in this slot are left out; checked holds the ids of the checked locations.
+    The return value maps the respawn index to its bits, and leaves out
+    objects that should behave like they do in the vanilla game.
+    """
+    marks = {}
+    for index, obj in LAYOUTS.get((zone, act), {}).items():
+        loc_id = location_ids.get(obj.location_name)
+        if loc_id is None:
+            continue
+        if loc_id not in checked:
+            marks[index] = RESPAWN_UNCHECKED_BIT
+        elif obj.big_ring:
+            marks[index] = RESPAWN_CHECKED_BIT
+    return marks
