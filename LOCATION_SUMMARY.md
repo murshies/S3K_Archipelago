@@ -4,8 +4,8 @@
 |Act Complete|27|
 |Big Ring|77|
 |Boss|27|
-|1 UP|47|
-|Super Ring (10 rings)|245|
+|1 UP|48|
+|Super Ring (10 rings)|246|
 |Lightning Shield|58|
 |Flame Shield|47|
 |Water Shield|37|
@@ -13,10 +13,10 @@
 |Invincibility|45|
 |Robotnik Item Box|7|
 |Power Sneakers|10|
-|Total Item Boxes|496|
+|Total Item Boxes|498|
 |Special Stage Emerald|14|
 |Special Stage Perfect|14|
-|Total|655|
+|Total|657|
 # Items Per Zone
 | Zone | Location Type | Count |
 |-|-|-|
@@ -24,15 +24,15 @@
 |Angel Island|Big Ring|4|
 |Angel Island|Boss|2|
 |Angel Island|1 UP|5|
-|Angel Island|Super Ring (10 rings)|10|
+|Angel Island|Super Ring (10 rings)|11|
 |Angel Island|Lightning Shield|4|
 |Angel Island|Flame Shield|5|
 |Angel Island|Water Shield|4|
 |Angel Island|All Shields|13|
 |Angel Island|Invincibility|3|
 |Angel Island|Power Sneakers|1|
-|Angel Island|Total Item Boxes|32|
-|Angel Island|Total|40|
+|Angel Island|Total Item Boxes|33|
+|Angel Island|Total|41|
 |Hydrocity|Act Complete|2|
 |Hydrocity|Big Ring|4|
 |Hydrocity|Boss|2|
@@ -112,14 +112,14 @@
 |Flying Battery|Act Complete|2|
 |Flying Battery|Big Ring|4|
 |Flying Battery|Boss|2|
-|Flying Battery|1 UP|3|
+|Flying Battery|1 UP|4|
 |Flying Battery|Super Ring (10 rings)|5|
 |Flying Battery|Lightning Shield|4|
 |Flying Battery|Flame Shield|2|
 |Flying Battery|All Shields|6|
 |Flying Battery|Invincibility|3|
-|Flying Battery|Total Item Boxes|17|
-|Flying Battery|Total|25|
+|Flying Battery|Total Item Boxes|18|
+|Flying Battery|Total|26|
 |Sandopolis|Act Complete|2|
 |Sandopolis|Big Ring|11|
 |Sandopolis|Boss|2|

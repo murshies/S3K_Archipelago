@@ -95,7 +95,7 @@ class TestLocationIds(unittest.TestCase):
                 LocationBufferEntry(sky_sanctuary, 1, S3KMemory.LOC_SSZ_MECHA_SONIC_1),
                 LocationBufferEntry(sky_sanctuary, 1, S3KMemory.LOC_SSZ_MECHA_SONIC_2),
                 LocationBufferEntry(Zone.LAVA_REEF.value, 1, S3KMemory.LOC_BOSS),
-                LocationBufferEntry(Zone.ANGEL_ISLAND.value, 0, 138),
+                LocationBufferEntry(Zone.ANGEL_ISLAND.value, 0, 137),
                 LocationBufferEntry(0x3F, 3, 0),
         ):
             with self.subTest(entry=str(entry)):
@@ -130,8 +130,9 @@ class TestLayouts(unittest.TestCase):
     def test_angel_island_burnt_part(self) -> None:
         act_1 = S3KLocationIds.LAYOUTS[(Zone.ANGEL_ISLAND.value, 0)]
         act_2 = S3KLocationIds.LAYOUTS[(Zone.ANGEL_ISLAND.value, 1)]
-        self.assertEqual('Angel Island Act 1 - Item Box 10', act_1[149].location_name)
-        self.assertEqual('Angel Island Act 1 - Item Box 11', act_2[49].location_name)
+        self.assertEqual('Angel Island Act 1 - Item Box 10', act_1[138].location_name)
+        self.assertEqual('Angel Island Act 1 - Item Box 11', act_1[149].location_name)
+        self.assertEqual('Angel Island Act 1 - Item Box 12', act_2[49].location_name)
         self.assertEqual('Angel Island Act 1 - Big Ring 2', act_2[19].location_name)
         self.assertTrue(act_2[19].big_ring)
         self.assertEqual('Angel Island Act 2 - Item Box 1', act_2[259].location_name)

@@ -104,7 +104,7 @@
 - name: Item Box 10
   zone: Angel Island
   act: 1
-  type: 1_up
+  type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
@@ -112,18 +112,26 @@
 - name: Item Box 11
   zone: Angel Island
   act: 1
+  type: 1_up
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Item Box 12
+  zone: Angel Island
+  act: 1
   type: super_ring
   requirements:
     - character: Sonic
       super_state: hyper
     - character: Tails
-- name: Item Box 12
+- name: Item Box 13
   zone: Angel Island
   act: 1
   type: invincibility
   requirements:
     - character: Tails
-- name: Item Box 13
+- name: Item Box 14
   zone: Angel Island
   act: 1
   type: lightning_shield
@@ -131,7 +139,7 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 14
+- name: Item Box 15
   zone: Angel Island
   act: 1
   type: super_ring
@@ -139,7 +147,7 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
-- name: Item Box 15
+- name: Item Box 16
   zone: Angel Island
   act: 1
   type: flame_shield

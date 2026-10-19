@@ -64,14 +64,14 @@ class ActLocations:
 # is zero based here (0 = act 1).
 ACTS: dict[tuple[int, int], ActLocations] = {
     (Zone.ANGEL_ISLAND.value, 0): ActLocations(consts.ZONE_ANGEL_ISLAND, 1, LOC_NAME_MINIBOSS, {
-        4: 1, 5: 2, 18: 3, 59: 4, 77: 5, 86: 6, 111: 7, 115: 8, 117: 9, 149: 10,
-        # Item boxes 11-15 are in the burnt part of act 1. By then, the game
+        4: 1, 5: 2, 18: 3, 59: 4, 77: 5, 86: 6, 111: 7, 115: 8, 117: 9, 138: 10, 149: 11,
+        # Item boxes 12-16 are in the burnt part of act 1. By then, the game
         # has already switched over to the act 2 object layout, but the
         # apparent act is still act 1, so these are act 2 respawn indices.
-        49: 11, 79: 12, 121: 13, 134: 14, 133: 15,
+        49: 12, 79: 13, 121: 14, 134: 15, 133: 16,
     }, big_rings={
         # Big ring 2 is in the burnt part of act 1, so it's an act 2 respawn
-        # index, like item boxes 11-15
+        # index, like item boxes 12-16
         25: 1, 19: 2,
     }, next_layout=frozenset({49, 79, 121, 134, 133, 19})),
     (Zone.ANGEL_ISLAND.value, 1): ActLocations(consts.ZONE_ANGEL_ISLAND, 2, LOC_NAME_BOSS, {
@@ -107,7 +107,6 @@ ACTS: dict[tuple[int, int], ActLocations] = {
         30: 28, 54: 29, 56: 30, 59: 31, 63: 32, 61: 33, 64: 34, 68: 35, 87: 36,
         88: 37, 90: 38, 114: 39, 122: 40, 123: 41, 376: 42,
     }, big_rings={
-        # Big ring 6 (475) isn't numbered on the map; it's the only one left
         93: 1, 104: 2, 262: 3, 345: 4, 470: 5, 475: 6,
     }),
     (Zone.CARNIVAL_NIGHT.value, 1): ActLocations(consts.ZONE_CARNIVAL_NIGHT, 2, LOC_NAME_BOSS, {
@@ -119,7 +118,7 @@ ACTS: dict[tuple[int, int], ActLocations] = {
         643: 45,
     }, big_rings={50: 1, 158: 2, 110: 3, 582: 4, 686: 5}),
     (Zone.FLYING_BATTERY.value, 0): ActLocations(consts.ZONE_FLYING_BATTERY, 1, LOC_NAME_MINIBOSS, {
-        44: 1, 45: 2, 22: 3, 20: 4, 171: 5, 173: 6, 232: 7, 233: 8, 311: 9, 316: 10,
+        44: 1, 45: 2, 22: 3, 20: 4, 35: 5, 171: 6, 173: 7, 232: 8, 233: 9, 311: 10, 316: 11,
     }, big_rings={277: 1, 362: 2}),
     (Zone.FLYING_BATTERY.value, 1): ActLocations(consts.ZONE_FLYING_BATTERY, 2, LOC_NAME_BOSS, {
         36: 1, 143: 2, 144: 3, 194: 4, 307: 5, 306: 6, 425: 7,

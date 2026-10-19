@@ -63,7 +63,7 @@
 - name: Item Box 5
   zone: Flying Battery
   act: 1
-  type: super_ring
+  type: 1_up
   requirements:
     - character: Sonic
     - character: Tails
@@ -71,7 +71,7 @@
 - name: Item Box 6
   zone: Flying Battery
   act: 1
-  type: 1_up
+  type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
@@ -79,7 +79,7 @@
 - name: Item Box 7
   zone: Flying Battery
   act: 1
-  type: super_ring
+  type: 1_up
   requirements:
     - character: Sonic
     - character: Tails
@@ -87,7 +87,7 @@
 - name: Item Box 8
   zone: Flying Battery
   act: 1
-  type: invincibility
+  type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
@@ -95,12 +95,20 @@
 - name: Item Box 9
   zone: Flying Battery
   act: 1
-  type: 1_up
+  type: invincibility
   requirements:
     - character: Sonic
     - character: Tails
     - character: Knuckles
 - name: Item Box 10
+  zone: Flying Battery
+  act: 1
+  type: 1_up
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+- name: Item Box 11
   zone: Flying Battery
   act: 1
   type: lightning_shield
