@@ -10,7 +10,9 @@ from dataclasses import dataclass
 import typing
 
 from . import consts
+from .locations import format_display_name
 from .S3KMemory import (
+    ENDING_ZONE_BITS,
     ITEM_TYPE_FLAME_SHIELD,
     ITEM_TYPE_INVINCIBILITY,
     ITEM_TYPE_LIGHTNING_SHIELD,
@@ -95,6 +97,14 @@ GOAL_ZONES: dict[int, str] = {
     consts.GOAL_KNUCKLES_SKY_SANCTUARY: consts.ZONE_KNUCKLES_SKY_SANCTUARY,
 }
 
+# The locations that hold the goal items, see S3KUtil.location_for_goal
+GOAL_LOCATIONS: dict[int, str] = {
+    consts.GOAL_DEATH_EGG: format_display_name(consts.ZONE_DEATH_EGG, 2, 'Complete'),
+    consts.GOAL_DOOMSDAY: format_display_name(consts.ZONE_DOOMSDAY, None, 'Complete'),
+    consts.GOAL_KNUCKLES_SKY_SANCTUARY: format_display_name(
+        consts.ZONE_KNUCKLES_SKY_SANCTUARY, None, 'Complete'),
+}
+
 # Items given to the player through the item mailbox, and their item types
 JUNK_ITEM_TYPES: dict[str, int] = {
     'Super Ring': ITEM_TYPE_SUPER_RING,
@@ -163,6 +173,29 @@ def goal_complete(item_names: typing.Iterable[str], settings: SlotSettings) -> b
     """
     goal_items = sum(1 for name in item_names if name in GOAL_ITEMS)
     return goal_items >= settings.num_goals
+
+
+def ending_zones(settings: SlotSettings, checked_location_names: typing.Iterable[str]) -> int:
+    """
+    The value of S3KMemory.ending_zones: a bit is set for each goal zone where
+    completing it would complete every goal, because every other goal zone has
+    already been completed. Those goal zones play the ending instead of warping
+    back to the save select screen. The goal items are placed at the goal
+    locations (see S3KUtil.location_for_goal), so checked locations are used
+    instead of received items. The locations are known as soon as they're
+    sent, while the items have to come back from the server first.
+    """
+    goals = {
+        goal
+        for goal in (settings.big_rings_goal, settings.chaos_emeralds_goal, settings.super_emeralds_goal)
+        if goal != consts.GOAL_NONE
+    }
+    checked = set(checked_location_names)
+    bits = 0
+    for goal in goals:
+        if all(GOAL_LOCATIONS[other] in checked for other in goals - {goal}):
+            bits |= 1 << ENDING_ZONE_BITS[goal]
+    return bits
 
 
 def big_rings_checked(checked_location_names: typing.Iterable[str]) -> int:

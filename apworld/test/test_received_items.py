@@ -5,7 +5,8 @@ junk items for the item mailbox.
 
 import unittest
 
-from .. import ALL_ITEMS, consts, items, S3KMemory, S3KReceivedItems
+from .. import ALL_ITEMS, ALL_LOCATIONS, consts, items, S3KMemory, S3KReceivedItems
+from ..S3KUtil import location_for_goal
 from ..S3KReceivedItems import (
     CHARACTER_ZONES,
     CHARACTERS,
@@ -172,6 +173,48 @@ class TestGoal(unittest.TestCase):
                         chaos_emeralds_goal=consts.GOAL_DOOMSDAY)
         self.assertFalse(S3KReceivedItems.goal_complete(['Master Emerald Shard'], slot))
         self.assertTrue(S3KReceivedItems.goal_complete(['Master Emerald Shard'] * 2, slot))
+
+
+class TestEndingZones(unittest.TestCase):
+    DEATH_EGG = 1 << S3KMemory.ENDING_ZONE_BITS[consts.GOAL_DEATH_EGG]
+    DOOMSDAY = 1 << S3KMemory.ENDING_ZONE_BITS[consts.GOAL_DOOMSDAY]
+    KNUCKLES_SSZ = 1 << S3KMemory.ENDING_ZONE_BITS[consts.GOAL_KNUCKLES_SKY_SANCTUARY]
+
+    def test_goal_locations_match(self) -> None:
+        for goal, name in S3KReceivedItems.GOAL_LOCATIONS.items():
+            with self.subTest(goal=goal):
+                self.assertEqual(location_for_goal(ALL_LOCATIONS, goal).display_name, name)
+
+    def test_no_goals(self) -> None:
+        self.assertEqual(0, S3KReceivedItems.ending_zones(settings(), []))
+
+    def test_single_goal(self) -> None:
+        # The only goal always finishes the game
+        slot = settings(chaos_emeralds_goal=consts.GOAL_DOOMSDAY)
+        self.assertEqual(self.DOOMSDAY, S3KReceivedItems.ending_zones(slot, []))
+
+    def test_multiple_goals(self) -> None:
+        slot = settings(big_rings_goal=consts.GOAL_DEATH_EGG,
+                        chaos_emeralds_goal=consts.GOAL_DOOMSDAY,
+                        super_emeralds_goal=consts.GOAL_KNUCKLES_SKY_SANCTUARY)
+        death_egg, doomsday, knuckles_ssz = (
+            S3KReceivedItems.GOAL_LOCATIONS[goal]
+            for goal in (consts.GOAL_DEATH_EGG, consts.GOAL_DOOMSDAY,
+                         consts.GOAL_KNUCKLES_SKY_SANCTUARY))
+        self.assertEqual(0, S3KReceivedItems.ending_zones(slot, []))
+        self.assertEqual(0, S3KReceivedItems.ending_zones(slot, [death_egg]))
+        # Only the last remaining goal plays the ending
+        self.assertEqual(self.KNUCKLES_SSZ,
+                         S3KReceivedItems.ending_zones(slot, [death_egg, doomsday]))
+        # Once every goal is complete, any of them plays the ending again
+        self.assertEqual(self.DEATH_EGG | self.DOOMSDAY | self.KNUCKLES_SSZ,
+                         S3KReceivedItems.ending_zones(slot, [death_egg, doomsday, knuckles_ssz]))
+
+    def test_unrelated_locations_ignored(self) -> None:
+        slot = settings(big_rings_goal=consts.GOAL_DEATH_EGG,
+                        chaos_emeralds_goal=consts.GOAL_DOOMSDAY)
+        self.assertEqual(0, S3KReceivedItems.ending_zones(
+            slot, ['Death Egg Act 1 - Complete', 'Doomsday - Boss']))
 
 
 class TestJunkItems(unittest.TestCase):

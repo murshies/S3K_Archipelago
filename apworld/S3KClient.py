@@ -128,6 +128,7 @@ class S3KClient(BizHawkClient):
             await self.handle_death(ctx)
             item_names = [ctx.item_names.lookup_in_game(item.item) for item in ctx.items_received]
             await self.handle_goal(ctx, item_names)
+            await self.handle_ending_zones(ctx)
             await self.handle_respawn_marks(ctx)
             save_state = self.save_state(ctx, item_names)
             if await self.handle_initialization(ctx, save_state):
@@ -167,6 +168,25 @@ class S3KClient(BizHawkClient):
             await ctx.send_msgs([{"cmd": "StatusUpdate", "status": ClientStatus.CLIENT_GOAL}])
             ctx.finished_game = True
             logger.info("All goals complete!")
+
+    @staticmethod
+    async def handle_ending_zones(ctx: "BizHawkClientContext") -> None:
+        """
+        Tells the game which goal zones should play the ending when completed
+        (see S3KMemory.ending_zones). This only changes as goal locations are
+        checked, but the game clears it on reset, so it's checked every tick.
+        """
+        settings = S3KReceivedItems.SlotSettings.from_slot_data(ctx.slot_data)
+        checked_names = [
+            ctx.location_names.lookup_in_game(loc_id)
+            for loc_id in ctx.checked_locations | ctx.locations_checked
+        ]
+        bits = S3KReceivedItems.ending_zones(settings, checked_names)
+        current = (await bizhawk.read(ctx.bizhawk_ctx, [S3KMemory.ending_zones]))[0]
+        if current[0] != bits:
+            await bizhawk.write(ctx.bizhawk_ctx, [
+                (S3KMemory.ending_zones.address, [bits], S3KMemory.ending_zones.location),
+            ])
 
     async def handle_death(self, ctx: "BizHawkClientContext") -> None:
         """Sends a death link when the player dies in a level."""

@@ -141,6 +141,17 @@ PLAYER_ROUTINE_DROWNED: int = 0xC  # Set by the air countdown when the player dr
 # afterwards. It's only checked on the save select screen and while in a level.
 save_flag = MemObject(0xE69A, 2, MEM_RAM)
 
+# Which goal zones play the ending when completed, instead of warping back to
+# the save select screen. See Archipelago_Ending_Zones in the disassembly's
+# sonic3k.constants.asm. Each goal zone has a bit, matching the
+# Archipelago_Ending_*_bit constants.
+ending_zones = MemObject(0xE664, 1, MEM_RAM)
+ENDING_ZONE_BITS: dict[int, int] = {
+    consts.GOAL_DEATH_EGG: 0,
+    consts.GOAL_DOOMSDAY: 1,
+    consts.GOAL_KNUCKLES_SKY_SANCTUARY: 2,
+}
+
 # The level unlock bitmasks for Sonic, Tails, and Knuckles, 4 bytes each. Each
 # bit is a level in the save select screen's level list (see
 # S3KReceivedItems.LEVEL_BITS).
