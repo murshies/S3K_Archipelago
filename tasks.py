@@ -269,7 +269,7 @@ def poptracker_release(c: Context):
         validator=jsonschema.validate)
     base_dir = INVOKE_ROOT / 'apworld' / 'locations'
     location_def_files = [
-        base_dir / f for f in os.listdir(base_dir)
+        base_dir / f for f in sorted(os.listdir(base_dir))
         if f.endswith('.yaml') and f != 'types.yaml'
     ]
     location_set = locations.LocationSet.from_files(
@@ -281,8 +281,9 @@ def poptracker_release(c: Context):
             # Special Stages are a special (lol) case, the mapping for that is
             # statically defined in the base file.
             continue
-        # Lava Reef boss is technically act 3, so look for act 3 locations too.
-        for act in range(1, 4):
+        # Lava Reef boss is technically act 3, so look for act 3 locations
+        # too. Some zones like Sky Sanctuary do not have an act at all.
+        for act in [None, 1, 2, 3]:
             # Things like act complete and bosses
             act_locs = location_set.filter_locations(
                 lambda p, ts: (
@@ -330,14 +331,14 @@ def poptracker_release(c: Context):
             big_rings_locs_layout = gen_group_layout(big_ring_locs, 'Big Rings')
             item_box_locs_layout = gen_group_layout(item_box_locs, 'Item Boxes')
             act_tracker_data = {
-                'title': abbrev,
+                'title': f'{abbrev}{act}' if act is not None else abbrev,
                 'content': {
                     'type': 'dock',
                     'content': [
                         {
                             'type': 'array',
                             'dock': 'left',
-                            'orientation': 'veritical',
+                            'orientation': 'vertical',
                             'margin': '2,2',
                             'max_width': 240,
                             'v_alignment': 'top',
@@ -355,17 +356,17 @@ def poptracker_release(c: Context):
                                 },
                                 {
                                     'type': 'text',
-                                    'text': 'Middle check: reset map view'
+                                    'text': 'Middle click: reset map view'
                                 }
                             ]
                         },
                         {
                             'type': 'group',
-                            'header': f'{zone} Act {act}',
+                            'header': f'{zone} Act {act}' if act is not None else zone,
                             'content': {
                                 'type': 'map',
                                 'maps': [
-                                    f'{abbrev}{act}'
+                                    f'{abbrev}{act}' if act is not None else abbrev
                                 ]
                             }
                         }
