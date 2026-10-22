@@ -4,6 +4,7 @@ from invoke.context import Context
 import json
 import jsonschema
 import io
+import itertools
 import os
 import pathlib
 import shutil
@@ -256,3 +257,122 @@ def apworld_release(c: Context):
                     continue
                 zf.write(full_file_path,
                          pathlib.Path('s3k') / os.path.relpath(full_file_path, apworld_root))
+
+
+@task
+def poptracker_release(c: Context):
+    # There are a few files which are essentially apworld information
+    # translated into JSON/Lua bindings. Generate those first before building
+    # the pack zip file.
+    types = locations.LocationTypeSet.from_file(
+        INVOKE_ROOT / 'apworld' / 'locations' / 'types.yaml',
+        validator=jsonschema.validate)
+    base_dir = INVOKE_ROOT / 'apworld' / 'locations'
+    location_def_files = [
+        base_dir / f for f in os.listdir(base_dir)
+        if f.endswith('.yaml') and f != 'types.yaml'
+    ]
+    location_set = locations.LocationSet.from_files(
+        location_def_files, types, validator=jsonschema.validate)
+    with open(INVOKE_ROOT / 'poptracker' / 'tracker_base.json') as tracker_base:
+        tracker = json.load(tracker_base)
+    for zone, abbrev in locations.ZONE_ABBREVS.items():
+        if 'Special Stage' in zone:
+            # Special Stages are a special (lol) case, the mapping for that is
+            # statically defined in the base file.
+            continue
+        # Lava Reef boss is technically act 3, so look for act 3 locations too.
+        for act in range(1, 4):
+            # Things like act complete and bosses
+            act_locs = location_set.filter_locations(
+                lambda p, ts: (
+                    zone == p.zone and
+                    act == p.act and
+                    ('boss' in ts.types_for(p.location_type) or
+                     'complete' in ts.types_for(p.location_type))
+                )
+            )
+            item_box_locs = location_set.filter_locations(
+                lambda p, ts: (
+                    zone == p.zone and
+                    act == p.act and
+                    'item_box' in ts.types_for(p.location_type)
+                )
+            )
+            big_ring_locs = location_set.filter_locations(
+                lambda p, ts: (
+                    zone == p.zone and
+                    act == p.act and
+                    'big_ring' in ts.types_for(p.location_type)
+                )
+            )
+            if len(act_locs) == 0:
+                # No completes or bosses, skip it.
+                continue
+            # Generate the groupings per item type for the tracker layout.
+
+            def gen_group_layout(locs, header, max_per_row=5):
+                return {
+                    'type': 'group',
+                    'header': header,
+                    'content': {
+                        'type': 'itemgrid',
+                        'item_margin': '2,2',
+                        'item_size': 32,
+                        'h_alignment': 'left',
+                        'rows': [
+                            [f'loc_{loc.location_id}' for loc in batch]
+                            for batch in itertools.batched(locs, max_per_row)
+                        ]
+                    }
+                }
+            act_locs_layout = gen_group_layout(act_locs, 'Act')
+            big_rings_locs_layout = gen_group_layout(big_ring_locs, 'Big Rings')
+            item_box_locs_layout = gen_group_layout(item_box_locs, 'Item Boxes')
+            act_tracker_data = {
+                'title': abbrev,
+                'content': {
+                    'type': 'dock',
+                    'content': [
+                        {
+                            'type': 'array',
+                            'dock': 'left',
+                            'orientation': 'veritical',
+                            'margin': '2,2',
+                            'max_width': 240,
+                            'v_alignment': 'top',
+                            'content': [
+                                act_locs_layout,
+                                big_rings_locs_layout,
+                                item_box_locs_layout,
+                                {
+                                    'type': 'text',
+                                    'text': 'Left click: show on map'
+                                },
+                                {
+                                    'type': 'text',
+                                    'text': 'Right click: mark as checked'
+                                },
+                                {
+                                    'type': 'text',
+                                    'text': 'Middle check: reset map view'
+                                }
+                            ]
+                        },
+                        {
+                            'type': 'group',
+                            'header': f'{zone} Act {act}',
+                            'content': {
+                                'type': 'map',
+                                'maps': [
+                                    f'{abbrev}{act}'
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+            tracker['tracker_default']['content'][1]['tabs'].append(act_tracker_data)
+
+    with open(INVOKE_ROOT / 'poptracker' / 'tracker.json', 'w') as tracker_out:
+        json.dump(tracker, tracker_out, indent=2)

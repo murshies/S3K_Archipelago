@@ -37,6 +37,38 @@ ZONE_ORDER = (
     'Special Stage 14',
 )
 
+ZONE_ABBREVS = {
+    'Angel Island': 'AIZ',
+    'Hydrocity': 'HCZ',
+    'Marble Garden': 'MGZ',
+    'Carnival Night': 'CNZ',
+    'Ice Cap': 'ICZ',
+    'Launch Base': 'LBZ',
+    'Mushroom Hill': 'MHZ',
+    'Flying Battery': 'FBZ',
+    'Sandopolis': 'SZ',
+    'Lava Reef': 'LRZ',
+    'Hidden Palace': 'HPZ',
+    'Sky Sanctuary': 'SSZ',
+    'Knuckles Sky Sanctuary': 'KSSZ',
+    'Death Egg': 'DEZ',
+    'Doomsday': 'DDZ',
+    'Special Stage 1': 'SS1',
+    'Special Stage 2': 'SS2',
+    'Special Stage 3': 'SS3',
+    'Special Stage 4': 'SS4',
+    'Special Stage 5': 'SS5',
+    'Special Stage 6': 'SS6',
+    'Special Stage 7': 'SS7',
+    'Special Stage 8': 'SS8',
+    'Special Stage 9': 'SS9',
+    'Special Stage 10': 'SS10',
+    'Special Stage 11': 'SS11',
+    'Special Stage 12': 'SS12',
+    'Special Stage 13': 'SS13',
+    'Special Stage 14': 'SS14',
+}
+
 
 class InvalidLocationType(Exception):
     type_name: str
