@@ -15,7 +15,7 @@
     - character: Tails
     - character: Knuckles
   poptracker:
-    x: 4278
+    x: 951
     y: 346
 - name: Big Ring 2
   zone: Ice Cap
@@ -26,7 +26,7 @@
     - character: Tails
     - character: Knuckles
   poptracker:
-    x: 4567
+    x: 1240
     y: 58
 - name: Miniboss
   zone: Ice Cap
@@ -45,7 +45,7 @@
     - character: Tails
     - character: Knuckles
   poptracker:
-    x: 4646
+    x: 1319
     y: 293
 - name: Item Box 2
   zone: Ice Cap
@@ -56,7 +56,7 @@
     - character: Tails
     - character: Knuckles
   poptracker:
-    x: 5372
+    x: 2045
     y: 69
 - name: Item Box 3
   zone: Ice Cap
@@ -73,7 +73,7 @@
       # you reach the ground with this item box.
       difficulty: hard
   poptracker:
-    x: 6653
+    x: 3326
     y: 198
 - name: Item Box 4
   zone: Ice Cap
@@ -82,5 +82,5 @@
   requirements:
     - character: Knuckles
   poptracker:
-    x: 5074
+    x: 1747
     y: 452
