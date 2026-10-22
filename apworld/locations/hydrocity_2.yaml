@@ -179,3 +179,11 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+- name: Item Box 20
+  zone: Hydrocity
+  act: 2
+  type: super_ring
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles

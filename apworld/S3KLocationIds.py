@@ -87,7 +87,7 @@ ACTS: dict[tuple[int, int], ActLocations] = {
         # 233 and 234 are two item boxes stacked on top of each other
         44: 1, 143: 2, 163: 3, 95: 4, 96: 5, 97: 6, 98: 7, 99: 8, 233: 9, 234: 9,
         190: 10, 196: 11, 222: 12, 297: 13, 292: 14, 374: 15, 338: 16, 357: 17,
-        427: 18, 386: 19,
+        427: 18, 386: 19, 391: 20,
     }, big_rings={260: 1, 448: 2}),
     (Zone.MARBLE_GARDEN.value, 0): ActLocations(consts.ZONE_MARBLE_GARDEN, 1, LOC_NAME_MINIBOSS, {
         16: 1, 22: 2, 90: 3, 35: 4, 58: 5, 62: 6, 135: 7, 116: 8, 119: 9, 169: 10,
