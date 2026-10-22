@@ -14,6 +14,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 944
+    y: 803
 - name: Big Ring 2
   zone: Marble Garden
   act: 1
@@ -22,6 +25,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 432
+    y: 579
 - name: Big Ring 3
   zone: Marble Garden
   act: 1
@@ -29,6 +35,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 848
+    y: 484
 - name: Big Ring 4
   zone: Marble Garden
   act: 1
@@ -37,6 +46,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1008
+    y: 644
 - name: Big Ring 5
   zone: Marble Garden
   act: 1
@@ -45,6 +57,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1584
+    y: 580
 - name: Big Ring 6
   zone: Marble Garden
   act: 1
@@ -53,6 +68,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1360
+    y: 132
 - name: Big Ring 7
   zone: Marble Garden
   act: 1
@@ -61,6 +79,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1712
+    y: 291
 - name: Big Ring 8
   zone: Marble Garden
   act: 1
@@ -69,6 +90,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2384
+    y: 131
 - name: Miniboss
   zone: Marble Garden
   act: 1
@@ -85,6 +109,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 460
+    y: 424
 - name: Item Box 2
   zone: Marble Garden
   act: 1
@@ -93,6 +120,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 528
+    y: 434
 - name: Item Box 3
   zone: Marble Garden
   act: 1
@@ -101,6 +131,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 876
+    y: 808
 - name: Item Box 4
   zone: Marble Garden
   act: 1
@@ -109,6 +142,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 601
+    y: 600
 - name: Item Box 5
   zone: Marble Garden
   act: 1
@@ -117,6 +153,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 710
+    y: 582
 - name: Item Box 6
   zone: Marble Garden
   act: 1
@@ -124,6 +163,9 @@
   requirements:
     - character: Sonic # Can get as base Sonic with lightning shield, or as Super Sonic
     - character: Tails
+  poptracker:
+    x: 732
+    y: 487
 - name: Item Box 7
   zone: Marble Garden
   act: 1
@@ -132,6 +174,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1076
+    y: 648
 - name: Item Box 8
   zone: Marble Garden
   act: 1
@@ -140,6 +185,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1029
+    y: 712
 - name: Item Box 9
   zone: Marble Garden
   act: 1
@@ -148,6 +196,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1036
+    y: 712
 - name: Item Box 10
   zone: Marble Garden
   act: 1
@@ -156,6 +207,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1245
+    y: 665
 - name: Item Box 11
   zone: Marble Garden
   act: 1
@@ -164,6 +218,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1252
+    y: 665
 - name: Item Box 12
   zone: Marble Garden
   act: 1
@@ -172,6 +229,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1260
+    y: 665
 - name: Item Box 13
   zone: Marble Garden
   act: 1
@@ -180,6 +240,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 979
+    y: 905
 - name: Item Box 14
   zone: Marble Garden
   act: 1
@@ -188,6 +251,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1452
+    y: 985
 - name: Item Box 15
   zone: Marble Garden
   act: 1
@@ -196,6 +262,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1933
+    y: 696
 - name: Item Box 16
   zone: Marble Garden
   act: 1
@@ -204,6 +273,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1792
+    y: 600
 - name: Item Box 17
   zone: Marble Garden
   act: 1
@@ -212,6 +284,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2140
+    y: 680
 - name: Item Box 18
   zone: Marble Garden
   act: 1
@@ -220,6 +295,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2132
+    y: 680
 - name: Item Box 19
   zone: Marble Garden
   act: 1
@@ -228,6 +306,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2332
+    y: 776
 - name: Item Box 20
   zone: Marble Garden
   act: 1
@@ -236,6 +317,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1836
+    y: 233
 - name: Item Box 21
   zone: Marble Garden
   act: 1
@@ -244,6 +328,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1946
+    y: 136
 - name: Item Box 22
   zone: Marble Garden
   act: 1
@@ -252,6 +339,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1954
+    y: 136
 - name: Item Box 23
   zone: Marble Garden
   act: 1
@@ -260,6 +350,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2068
+    y: 42
 - name: Item Box 24
   zone: Marble Garden
   act: 1
@@ -268,6 +361,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2520
+    y: 56
 - name: Item Box 25
   zone: Marble Garden
   act: 1
@@ -276,6 +372,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2528
+    y: 56
 - name: Item Box 26
   zone: Marble Garden
   act: 1
@@ -284,6 +383,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2536
+    y: 56
 - name: Item Box 27
   zone: Marble Garden
   act: 1
@@ -291,6 +393,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 2716
+    y: 344
 - name: Item Box 28
   zone: Marble Garden
   act: 1
@@ -299,6 +404,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2752
+    y: 536
 - name: Item Box 29
   zone: Marble Garden
   act: 1
@@ -307,6 +415,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1408
+    y: 473
 - name: Item Box 30
   zone: Marble Garden
   act: 1
@@ -315,3 +426,6 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1568
+    y: 536

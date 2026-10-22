@@ -14,6 +14,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1552
+    y: 452
 - name: Big Ring 2
   zone: Flying Battery
   act: 2
@@ -22,6 +25,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2416
+    y: 452
 - name: Boss
   zone: Flying Battery
   act: 2
@@ -38,6 +44,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 516
+    y: 181
 - name: Item Box 2
   zone: Flying Battery
   act: 2
@@ -46,6 +55,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1011
+    y: 501
 - name: Item Box 3
   zone: Flying Battery
   act: 2
@@ -54,6 +66,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1019
+    y: 501
 - name: Item Box 4
   zone: Flying Battery
   act: 2
@@ -62,6 +77,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1540
+    y: 596
 - name: Item Box 5
   zone: Flying Battery
   act: 2
@@ -70,6 +88,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2094
+    y: 117
 - name: Item Box 6
   zone: Flying Battery
   act: 2
@@ -78,6 +99,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2086
+    y: 118
 - name: Item Box 7
   zone: Flying Battery
   act: 2
@@ -86,3 +110,6 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 3292
+    y: 181

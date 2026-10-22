@@ -13,6 +13,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1400
+    y: 424
 - name: Big Ring 2
   zone: Lava Reef
   act: 2
@@ -20,6 +23,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1784
+    y: 520
 - name: Big Ring 3
   zone: Lava Reef
   act: 2
@@ -27,6 +33,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 2136
+    y: 104
 - name: Big Ring 4
   zone: Lava Reef
   act: 2
@@ -34,12 +43,18 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 2456
+    y: 391
 - name: Big Ring 5
   zone: Lava Reef
   act: 2
   type: big_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 1304
+    y: 712
 - name: Item Box 1
   zone: Lava Reef
   act: 2
@@ -48,6 +63,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 736
+    y: 342
 - name: Item Box 2
   zone: Lava Reef
   act: 2
@@ -56,6 +74,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1044
+    y: 469
 - name: Item Box 3
   zone: Lava Reef
   act: 2
@@ -64,6 +85,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1052
+    y: 469
 - name: Item Box 4
   zone: Lava Reef
   act: 2
@@ -71,6 +95,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 886
+    y: 84
 - name: Item Box 5
   zone: Lava Reef
   act: 2
@@ -78,6 +105,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 873
+    y: 84
 - name: Item Box 6
   zone: Lava Reef
   act: 2
@@ -85,6 +115,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1120
+    y: 101
 - name: Item Box 7
   zone: Lava Reef
   act: 2
@@ -92,6 +125,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1180
+    y: 206
 - name: Item Box 8
   zone: Lava Reef
   act: 2
@@ -99,6 +135,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1588
+    y: 453
 - name: Item Box 9
   zone: Lava Reef
   act: 2
@@ -106,6 +145,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1879
+    y: 116
 - name: Item Box 10
   zone: Lava Reef
   act: 2
@@ -113,6 +155,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1865
+    y: 116
 - name: Item Box 11
   zone: Lava Reef
   act: 2
@@ -120,6 +165,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 2268
+    y: 389
 - name: Item Box 12
   zone: Lava Reef
   act: 2
@@ -127,6 +175,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 2260
+    y: 389
 - name: Item Box 13
   zone: Lava Reef
   act: 2
@@ -137,6 +188,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 3740
+    y: 198
 - name: Item Box 14
   zone: Lava Reef
   act: 2
@@ -145,6 +199,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 3748
+    y: 190
 - name: Item Box 15
   zone: Lava Reef
   act: 2
@@ -153,15 +210,24 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 3756
+    y: 182
 - name: Item Box 16
   zone: Lava Reef
   act: 2
   type: flame_shield
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 928
+    y: 542
 - name: Item Box 17
   zone: Lava Reef
   act: 2
   type: flame_shield
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 1620
+    y: 38

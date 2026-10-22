@@ -13,6 +13,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 816
+    y: 71
 - name: Big Ring 2
   zone: Carnival Night
   act: 1
@@ -20,6 +23,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 880
+    y: 519
 - name: Big Ring 3
   zone: Carnival Night
   act: 1
@@ -27,6 +33,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1744
+    y: 231
 - name: Big Ring 4
   zone: Carnival Night
   act: 1
@@ -34,6 +43,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 2288
+    y: 134
 - name: Big Ring 5
   zone: Carnival Night
   act: 1
@@ -41,12 +53,18 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 2928
+    y: 392
 - name: Big Ring 6
   zone: Carnival Night
   act: 1
   type: big_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 2992
+    y: 680
 - name: Miniboss
   zone: Carnival Night
   act: 1
@@ -62,6 +80,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 208
+    y: 397
 - name: Item Box 2
   zone: Carnival Night
   act: 1
@@ -69,6 +90,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 696
+    y: 356
 - name: Item Box 3
   zone: Carnival Night
   act: 1
@@ -76,6 +100,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 704
+    y: 357
 - name: Item Box 4
   zone: Carnival Night
   act: 1
@@ -83,6 +110,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 712
+    y: 356
 - name: Item Box 5
   zone: Carnival Night
   act: 1
@@ -90,6 +120,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 612
+    y: 164
 - name: Item Box 6
   zone: Carnival Night
   act: 1
@@ -97,6 +130,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 816
+    y: 388
 - name: Item Box 7
   zone: Carnival Night
   act: 1
@@ -104,6 +140,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1609
+    y: 500
 - name: Item Box 8
   zone: Carnival Night
   act: 1
@@ -111,6 +150,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1616
+    y: 500
 - name: Item Box 9
   zone: Carnival Night
   act: 1
@@ -118,6 +160,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1623
+    y: 500
 - name: Item Box 10
   zone: Carnival Night
   act: 1
@@ -125,6 +170,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1932
+    y: 324
 - name: Item Box 11
   zone: Carnival Night
   act: 1
@@ -132,6 +180,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 880
+    y: 189
 - name: Item Box 12
   zone: Carnival Night
   act: 1
@@ -139,6 +190,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1168
+    y: 170
 - name: Item Box 13
   zone: Carnival Night
   act: 1
@@ -146,6 +200,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1676
+    y: 45
 - name: Item Box 14
   zone: Carnival Night
   act: 1
@@ -153,6 +210,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1684
+    y: 45
 - name: Item Box 15
   zone: Carnival Night
   act: 1
@@ -160,6 +220,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 2060
+    y: 389
 - name: Item Box 16
   zone: Carnival Night
   act: 1
@@ -167,6 +230,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1968
+    y: 437
 - name: Item Box 17
   zone: Carnival Night
   act: 1
@@ -174,6 +240,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 2404
+    y: 324
 - name: Item Box 18
   zone: Carnival Night
   act: 1
@@ -181,6 +250,9 @@
   requirements:
     - character: Sonic
       super_state: hyper
+  poptracker:
+    x: 2345
+    y: 341
 - name: Item Box 19
   zone: Carnival Night
   act: 1
@@ -188,6 +260,9 @@
   requirements:
     - character: Sonic
       super_state: hyper
+  poptracker:
+    x: 2352
+    y: 341
 - name: Item Box 20
   zone: Carnival Night
   act: 1
@@ -195,6 +270,9 @@
   requirements:
     - character: Sonic
       super_state: hyper
+  poptracker:
+    x: 2359
+    y: 341
 - name: Item Box 21
   zone: Carnival Night
   act: 1
@@ -202,6 +280,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 2874
+    y: 406
 - name: Item Box 22
   zone: Carnival Night
   act: 1
@@ -209,6 +290,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 3080
+    y: 309
 - name: Item Box 23
   zone: Carnival Night
   act: 1
@@ -216,6 +300,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 3088
+    y: 309
 - name: Item Box 24
   zone: Carnival Night
   act: 1
@@ -223,111 +310,168 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 3095
+    y: 309
 - name: Item Box 25
   zone: Carnival Night
   act: 1
   type: power_sneakers
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 52
+    y: 514
 - name: Item Box 26
   zone: Carnival Night
   act: 1
   type: super_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 361
+    y: 661
 - name: Item Box 27
   zone: Carnival Night
   act: 1
   type: super_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 368
+    y: 662
 - name: Item Box 28
   zone: Carnival Night
   act: 1
   type: super_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 375
+    y: 662
 - name: Item Box 29
   zone: Carnival Night
   act: 1
   type: super_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 612
+    y: 610
 - name: Item Box 30
   zone: Carnival Night
   act: 1
   type: super_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 620
+    y: 610
 - name: Item Box 31
   zone: Carnival Night
   act: 1
   type: super_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 628
+    y: 610
 - name: Item Box 32
   zone: Carnival Night
   act: 1
   type: super_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 636
+    y: 610
 - name: Item Box 33
   zone: Carnival Night
   act: 1
   type: super_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 632
+    y: 677
 - name: Item Box 34
   zone: Carnival Night
   act: 1
   type: 1_up
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 640
+    y: 677
 - name: Item Box 35
   zone: Carnival Night
   act: 1
   type: super_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 648
+    y: 677
 - name: Item Box 36
   zone: Carnival Night
   act: 1
   type: super_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 777
+    y: 566
 - name: Item Box 37
   zone: Carnival Night
   act: 1
   type: lightning_shield
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 784
+    y: 566
 - name: Item Box 38
   zone: Carnival Night
   act: 1
   type: super_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 791
+    y: 566
 - name: Item Box 39
   zone: Carnival Night
   act: 1
   type: super_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 952
+    y: 645
 - name: Item Box 40
   zone: Carnival Night
   act: 1
   type: super_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 959
+    y: 645
 - name: Item Box 41
   zone: Carnival Night
   act: 1
   type: super_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 968
+    y: 645
 - name: Item Box 42
   zone: Carnival Night
   act: 1
   type: flame_shield
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 2388
+    y: 549

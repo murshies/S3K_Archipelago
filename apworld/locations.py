@@ -216,6 +216,15 @@ class LocationSet:
                                 },
                                 'additionalProperties': False
                             }
+                        },
+                        'poptracker': {
+                            'type': 'object',
+                            'properties': {
+                                'x': {'type': 'integer'},
+                                'y': {'type': 'integer'},
+                            },
+                            'required': ['x', 'y'],
+                            'additionalProperties': False
                         }
                     },
                     'required': ['name', 'zone', 'type', 'requirements'],

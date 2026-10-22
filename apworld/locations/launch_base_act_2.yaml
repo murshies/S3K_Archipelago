@@ -13,6 +13,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 368
+    y: 420
 - name: Big Ring 2
   zone: Launch Base
   act: 2
@@ -20,6 +23,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 560
+    y: 101
 - name: Big Ring 3
   zone: Launch Base
   act: 2
@@ -27,6 +33,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 3056
+    y: 292
 - name: Big Ring 4
   zone: Launch Base
   act: 2
@@ -34,12 +43,18 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 3024
+    y: 132
 - name: Big Ring 5
   zone: Launch Base
   act: 2
   type: big_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 1808
+    y: 676
 - name: Boss
   zone: Launch Base
   act: 2
@@ -55,6 +70,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 557
+    y: 388
 - name: Item Box 2
   zone: Launch Base
   act: 2
@@ -62,6 +80,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 780
+    y: 388
 - name: Item Box 3
   zone: Launch Base
   act: 2
@@ -69,6 +90,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1068
+    y: 309
 - name: Item Box 4
   zone: Launch Base
   act: 2
@@ -76,6 +100,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 740
+    y: 53
 - name: Item Box 5
   zone: Launch Base
   act: 2
@@ -83,6 +110,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1180
+    y: 181
 - name: Item Box 6
   zone: Launch Base
   act: 2
@@ -90,6 +120,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1228
+    y: 149
 - name: Item Box 7
   zone: Launch Base
   act: 2
@@ -97,6 +130,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1236
+    y: 149
 - name: Item Box 8
   zone: Launch Base
   act: 2
@@ -104,6 +140,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1837
+    y: 389
 - name: Item Box 9
   zone: Launch Base
   act: 2
@@ -111,6 +150,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 2260
+    y: 101
 - name: Item Box 10
   zone: Launch Base
   act: 2
@@ -118,6 +160,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 2268
+    y: 101
 - name: Item Box 11
   zone: Launch Base
   act: 2
@@ -125,6 +170,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1872
+    y: 173
 - name: Item Box 12
   zone: Launch Base
   act: 2
@@ -132,6 +180,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1676
+    y: 277
 - name: Item Box 13
   zone: Launch Base
   act: 2
@@ -139,6 +190,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1684
+    y: 277
 - name: Item Box 14
   zone: Launch Base
   act: 2
@@ -146,6 +200,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 2380
+    y: 134
 - name: Item Box 15
   zone: Launch Base
   act: 2
@@ -153,6 +210,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 3476
+    y: 69
 - name: Item Box 16
   zone: Launch Base
   act: 2
@@ -160,6 +220,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 3468
+    y: 69
 - name: Item Box 17
   zone: Launch Base
   act: 2
@@ -167,6 +230,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 3460
+    y: 69
 - name: Item Box 18
   zone: Launch Base
   act: 2
@@ -174,6 +240,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 3052
+    y: 214
 - name: Item Box 19
   zone: Launch Base
   act: 2
@@ -181,6 +250,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 3044
+    y: 214
 - name: Item Box 20
   zone: Launch Base
   act: 2
@@ -188,6 +260,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 2436
+    y: 398
 - name: Item Box 21
   zone: Launch Base
   act: 2
@@ -195,6 +270,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 2348
+    y: 469
 - name: Item Box 22
   zone: Launch Base
   act: 2
@@ -202,6 +280,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 2340
+    y: 469
 - name: Item Box 23
   zone: Launch Base
   act: 2
@@ -210,6 +291,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2972
+    y: 341
 - name: Item Box 24
   zone: Launch Base
   act: 2
@@ -217,6 +301,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 3044
+    y: 245
 - name: Item Box 25
   zone: Launch Base
   act: 2
@@ -224,21 +311,33 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 3592
+    y: 277
 - name: Item Box 26
   zone: Launch Base
   act: 2
   type: flame_shield
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 772
+    y: 622
 - name: Item Box 27
   zone: Launch Base
   act: 2
   type: super_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 1068
+    y: 557
 - name: Item Box 28
   zone: Launch Base
   act: 2
   type: water_shield
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 2336
+    y: 677

@@ -19,6 +19,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 834
+    y: 298
 - name: Item Box 2
   zone: Lava Reef
   act: 3
@@ -26,3 +29,6 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 698
+    y: 294

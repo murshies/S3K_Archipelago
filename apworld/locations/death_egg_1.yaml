@@ -22,6 +22,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 244
+    y: 470
 - name: Item Box 2
   zone: Death Egg
   act: 1
@@ -29,6 +32,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 656
+    y: 468
 - name: Item Box 3
   zone: Death Egg
   act: 1
@@ -36,6 +42,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 896
+    y: 613
 - name: Item Box 4
   zone: Death Egg
   act: 1
@@ -45,6 +54,9 @@
     # the wall to get to this one.
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1232
+    y: 628
 - name: Item Box 5
   zone: Death Egg
   act: 1
@@ -52,6 +64,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1068
+    y: 421
 - name: Item Box 6
   zone: Death Egg
   act: 1
@@ -59,6 +74,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1865
+    y: 372
 - name: Item Box 7
   zone: Death Egg
   act: 1
@@ -66,6 +84,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1872
+    y: 372
 - name: Item Box 8
   zone: Death Egg
   act: 1
@@ -73,6 +94,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1879
+    y: 372
 - name: Item Box 9
   zone: Death Egg
   act: 1
@@ -80,6 +104,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1880
+    y: 237
 - name: Item Box 10
   zone: Death Egg
   act: 1
@@ -87,6 +114,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1888
+    y: 237
 - name: Item Box 11
   zone: Death Egg
   act: 1
@@ -94,6 +124,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1896
+    y: 237
 - name: Item Box 12
   zone: Death Egg
   act: 1
@@ -101,6 +134,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1952
+    y: 174
 - name: Item Box 13
   zone: Death Egg
   act: 1
@@ -108,6 +144,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 2192
+    y: 469
 - name: Item Box 14
   zone: Death Egg
   act: 1
@@ -115,6 +154,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 3128
+    y: 197
 - name: Item Box 15
   zone: Death Egg
   act: 1
@@ -122,6 +164,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 3136
+    y: 197
 - name: Item Box 16
   zone: Death Egg
   act: 1
@@ -129,3 +174,6 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 3144
+    y: 197

@@ -14,6 +14,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2471
+    y: 392
 - name: Big Ring 2
   zone: Hydrocity
   act: 2
@@ -22,6 +25,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 3559
+    y: 296
 - name: Boss
   zone: Hydrocity
   act: 2
@@ -38,6 +44,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 636
+    y: 388
 - name: Item Box 2
   zone: Hydrocity
   act: 2
@@ -46,6 +55,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1668
+    y: 340
 - name: Item Box 3
   zone: Hydrocity
   act: 2
@@ -54,6 +66,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1800
+    y: 212
 - name: Item Box 4
   zone: Hydrocity
   act: 2
@@ -61,6 +76,9 @@
   requirements:
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1076
+    y: 213
 - name: Item Box 5
   zone: Hydrocity
   act: 2
@@ -68,6 +86,9 @@
   requirements:
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1084
+    y: 212
 - name: Item Box 6
   zone: Hydrocity
   act: 2
@@ -75,6 +96,9 @@
   requirements:
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1092
+    y: 212
 - name: Item Box 7
   zone: Hydrocity
   act: 2
@@ -82,6 +106,9 @@
   requirements:
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1100
+    y: 212
 - name: Item Box 8
   zone: Hydrocity
   act: 2
@@ -90,6 +117,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1156
+    y: 493
 - name: Item Box 9
   zone: Hydrocity
   act: 2
@@ -98,6 +128,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2136
+    y: 564
 - name: Item Box 10
   zone: Hydrocity
   act: 2
@@ -106,6 +139,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1896
+    y: 404
 - name: Item Box 11
   zone: Hydrocity
   act: 2
@@ -114,6 +150,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1928
+    y: 85
 - name: Item Box 12
   zone: Hydrocity
   act: 2
@@ -123,6 +162,9 @@
       super_state: super
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2072
+    y: 52
 - name: Item Box 13
   zone: Hydrocity
   act: 2
@@ -131,6 +173,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2660
+    y: 308
 - name: Item Box 14
   zone: Hydrocity
   act: 2
@@ -139,6 +184,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2628
+    y: 109
 - name: Item Box 15
   zone: Hydrocity
   act: 2
@@ -147,6 +195,9 @@
     - character: Sonic
       super_state: hyper
     - character: Tails
+  poptracker:
+    x: 3256
+    y: 117
 - name: Item Box 16
   zone: Hydrocity
   act: 2
@@ -155,6 +206,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2852
+    y: 493
 - name: Item Box 17
   zone: Hydrocity
   act: 2
@@ -163,6 +217,9 @@
     - character: Sonic
       super_state: hyper
     - character: Tails
+  poptracker:
+    x: 3104
+    y: 372
 - name: Item Box 18
   zone: Hydrocity
   act: 2
@@ -171,6 +228,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 3484
+    y: 644
 - name: Item Box 19
   zone: Hydrocity
   act: 2
@@ -179,6 +239,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 3332
+    y: 517
 - name: Item Box 20
   zone: Hydrocity
   act: 2
@@ -187,3 +250,6 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 3340
+    y: 516

@@ -14,6 +14,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 176
+    y: 453
 - name: Big Ring 2
   zone: Launch Base
   act: 1
@@ -24,6 +27,9 @@
       difficulty: hard
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 560
+    y: 69
 - name: Big Ring 3
   zone: Launch Base
   act: 1
@@ -32,6 +38,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2288
+    y: 516
 - name: Miniboss
   zone: Launch Base
   act: 1
@@ -48,6 +57,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 276
+    y: 373
 - name: Item Box 2
   zone: Launch Base
   act: 1
@@ -56,6 +68,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 720
+    y: 421
 - name: Item Box 3
   zone: Launch Base
   act: 1
@@ -64,6 +79,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1140
+    y: 253
 - name: Item Box 4
   zone: Launch Base
   act: 1
@@ -72,6 +90,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1148
+    y: 253
 - name: Item Box 5
   zone: Launch Base
   act: 1
@@ -87,6 +108,9 @@
       difficulty: hard
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1164
+    y: 165
 - name: Item Box 6
   zone: Launch Base
   act: 1
@@ -96,6 +120,9 @@
       difficulty: hard
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1172
+    y: 165
 - name: Item Box 7
   zone: Launch Base
   act: 1
@@ -104,6 +131,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1438
+    y: 229
 - name: Item Box 8
   zone: Launch Base
   act: 1
@@ -113,6 +143,9 @@
       difficulty: hard
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1600
+    y: 37
 - name: Item Box 9
   zone: Launch Base
   act: 1
@@ -121,6 +154,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2292
+    y: 149
 - name: Item Box 10
   zone: Launch Base
   act: 1
@@ -129,6 +165,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2300
+    y: 149
 - name: Item Box 11
   zone: Launch Base
   act: 1
@@ -137,6 +176,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2308
+    y: 149
 - name: Item Box 12
   zone: Launch Base
   act: 1
@@ -145,6 +187,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1887
+    y: 353
 - name: Item Box 13
   zone: Launch Base
   act: 1
@@ -153,6 +198,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1436
+    y: 341
 - name: Item Box 14
   zone: Launch Base
   act: 1
@@ -161,6 +209,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2748
+    y: 438
 - name: Item Box 15
   zone: Launch Base
   act: 1
@@ -169,6 +220,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2756
+    y: 438
 - name: Item Box 16
   zone: Launch Base
   act: 1
@@ -177,6 +231,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2404
+    y: 349
 - name: Item Box 17
   zone: Launch Base
   act: 1
@@ -185,6 +242,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2420
+    y: 62
 - name: Item Box 18
   zone: Launch Base
   act: 1
@@ -193,6 +253,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2412
+    y: 61
 - name: Item Box 19
   zone: Launch Base
   act: 1
@@ -201,6 +264,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2816
+    y: 277
 - name: Item Box 20
   zone: Launch Base
   act: 1
@@ -209,6 +275,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2808
+    y: 277
 - name: Item Box 21
   zone: Launch Base
   act: 1
@@ -217,6 +286,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2800
+    y: 277
 - name: Item Box 22
   zone: Launch Base
   act: 1
@@ -225,3 +297,6 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 3124
+    y: 461

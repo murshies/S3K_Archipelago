@@ -10,49 +10,79 @@
   type: power_sneakers
   requirements:
     - character: Tails
+  poptracker:
+    x: 220
+    y: 405
 - name: Item Box 2
   zone: Hidden Palace
   type: invincibility
   requirements:
     - character: Tails
+  poptracker:
+    x: 212
+    y: 405
 - name: Item Box 3
   zone: Hidden Palace
   type: water_shield
   requirements:
     - character: Tails
+  poptracker:
+    x: 204
+    y: 405
 - name: Item Box 4
   zone: Hidden Palace
   type: lightning_shield
   requirements:
     - character: Tails
+  poptracker:
+    x: 196
+    y: 404
 - name: Item Box 5
   zone: Hidden Palace
   type: flame_shield
   requirements:
     - character: Tails
+  poptracker:
+    x: 188
+    y: 404
 - name: Item Box 6
   zone: Hidden Palace
   type: super_ring
   requirements:
     - character: Tails
+  poptracker:
+    x: 180
+    y: 404
 - name: Item Box 7
   zone: Hidden Palace
   type: super_ring
   requirements:
     - character: Tails
+  poptracker:
+    x: 604
+    y: 373
 - name: Item Box 8
   zone: Hidden Palace
   type: super_ring
   requirements:
     - character: Tails
+  poptracker:
+    x: 612
+    y: 373
 - name: Item Box 9
   zone: Hidden Palace
   type: 1_up
   requirements:
     - character: Tails
+  poptracker:
+    x: 620
+    y: 373
 - name: Item Box 10
   zone: Hidden Palace
   type: super_ring
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 780
+    y: 550

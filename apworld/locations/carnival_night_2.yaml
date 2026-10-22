@@ -15,6 +15,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 976
+    y: 520
 - name: Big Ring 2
   zone: Carnival Night
   act: 2
@@ -24,6 +27,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 1424
+    y: 328
 - name: Big Ring 3
   zone: Carnival Night
   act: 2
@@ -33,6 +39,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 1264
+    y: 136
 - name: Big Ring 4
   zone: Carnival Night
   act: 2
@@ -42,6 +51,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 3120
+    y: 168
 - name: Big Ring 5
   zone: Carnival Night
   act: 2
@@ -50,6 +62,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 4464
+    y: 616
 - name: Boss
   zone: Carnival Night
   act: 2
@@ -74,6 +89,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 832
+    y: 592
 - name: Item Box 2
   zone: Carnival Night
   act: 2
@@ -82,6 +100,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 776
+    y: 516
 - name: Item Box 3
   zone: Carnival Night
   act: 2
@@ -90,6 +111,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 784
+    y: 516
 - name: Item Box 4
   zone: Carnival Night
   act: 2
@@ -98,6 +122,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 791
+    y: 516
 - name: Item Box 5
   zone: Carnival Night
   act: 2
@@ -106,6 +133,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1193
+    y: 693
 - name: Item Box 6
   zone: Carnival Night
   act: 2
@@ -114,6 +144,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1200
+    y: 693
 - name: Item Box 7
   zone: Carnival Night
   act: 2
@@ -122,6 +155,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1207
+    y: 693
 # Starting here, these locations are on the Sonic/Tails path. Knuckles can get
 # here with some careful scaling of the first red and white pipe at the
 # beginning of the stage, jumping to the platform with the spike to the left of
@@ -136,6 +172,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 1550
+    y: 582
 - name: Item Box 9
   zone: Carnival Night
   act: 2
@@ -145,6 +184,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 1044
+    y: 469
 - name: Item Box 10
   zone: Carnival Night
   act: 2
@@ -154,6 +196,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 983
+    y: 469
 - name: Item Box 11
   zone: Carnival Night
   act: 2
@@ -163,6 +208,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 976
+    y: 469
 - name: Item Box 12
   zone: Carnival Night
   act: 2
@@ -172,6 +220,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 969
+    y: 469
 - name: Item Box 13
   zone: Carnival Night
   act: 2
@@ -181,6 +232,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 820
+    y: 130
 - name: Item Box 14
   zone: Carnival Night
   act: 2
@@ -190,6 +244,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 966
+    y: 174
 - name: Item Box 15
   zone: Carnival Night
   act: 2
@@ -199,6 +256,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 1524
+    y: 317
 - name: Item Box 16
   zone: Carnival Night
   act: 2
@@ -208,6 +268,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 1516
+    y: 317
 - name: Item Box 17
   zone: Carnival Night
   act: 2
@@ -217,6 +280,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 1580
+    y: 274
 - name: Item Box 18
   zone: Carnival Night
   act: 2
@@ -226,6 +292,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 1469
+    y: 66
 - name: Item Box 19
   zone: Carnival Night
   act: 2
@@ -235,6 +304,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 1476
+    y: 66
 - name: Item Box 20
   zone: Carnival Night
   act: 2
@@ -244,6 +316,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 1484
+    y: 66
 - name: Item Box 21
   zone: Carnival Night
   act: 2
@@ -253,6 +328,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 1460
+    y: 162
 - name: Item Box 22
   zone: Carnival Night
   act: 2
@@ -262,6 +340,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 2123
+    y: 162
 - name: Item Box 23
   zone: Carnival Night
   act: 2
@@ -271,6 +352,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 1760
+    y: 645
 - name: Item Box 24
   zone: Carnival Night
   act: 2
@@ -280,6 +364,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 2316
+    y: 405
 - name: Item Box 25
   zone: Carnival Night
   act: 2
@@ -289,6 +376,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 2324
+    y: 405
 - name: Item Box 26
   zone: Carnival Night
   act: 2
@@ -298,6 +388,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 2084
+    y: 450
 - name: Item Box 27
   zone: Carnival Night
   act: 2
@@ -307,6 +400,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 2076
+    y: 450
 - name: Item Box 28
   zone: Carnival Night
   act: 2
@@ -316,6 +412,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 2067
+    y: 450
 - name: Item Box 29
   zone: Carnival Night
   act: 2
@@ -325,6 +424,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 2154
+    y: 318
 - name: Item Box 30
   zone: Carnival Night
   act: 2
@@ -334,6 +436,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 2638
+    y: 253
 - name: Item Box 31
   zone: Carnival Night
   act: 2
@@ -343,6 +448,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 2632
+    y: 253
 - name: Item Box 32
   zone: Carnival Night
   act: 2
@@ -352,6 +460,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 2922
+    y: 150
 - name: Item Box 33
   zone: Carnival Night
   act: 2
@@ -361,6 +472,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 2923
+    y: 210
 - name: Item Box 34
   zone: Carnival Night
   act: 2
@@ -370,6 +484,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 3275
+    y: 549
 - name: Item Box 35
   zone: Carnival Night
   act: 2
@@ -379,6 +496,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 3284
+    y: 549
 - name: Item Box 36
   zone: Carnival Night
   act: 2
@@ -388,6 +508,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 3292
+    y: 549
 - name: Item Box 37
   zone: Carnival Night
   act: 2
@@ -397,6 +520,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 3351
+    y: 182
 - name: Item Box 38
   zone: Carnival Night
   act: 2
@@ -406,6 +532,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 3344
+    y: 182
 - name: Item Box 39
   zone: Carnival Night
   act: 2
@@ -415,6 +544,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 3337
+    y: 182
 - name: Item Box 40
   zone: Carnival Night
   act: 2
@@ -424,6 +556,9 @@
     - character: Tails
     - character: Knuckles
       difficulty: hard
+  poptracker:
+    x: 2992
+    y: 212
 # These items are on the Knuckles path.
 - name: Item Box 41
   zone: Carnival Night
@@ -431,27 +566,42 @@
   type: lightning_shield
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 2060
+    y: 669
 - name: Item Box 42
   zone: Carnival Night
   act: 2
   type: super_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 2068
+    y: 669
 - name: Item Box 43
   zone: Carnival Night
   act: 2
   type: super_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 3497
+    y: 662
 - name: Item Box 44
   zone: Carnival Night
   act: 2
   type: super_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 3504
+    y: 662
 - name: Item Box 45
   zone: Carnival Night
   act: 2
   type: super_ring
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 3510
+    y: 662

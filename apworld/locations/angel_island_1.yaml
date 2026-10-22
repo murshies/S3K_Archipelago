@@ -14,6 +14,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 572
+    y: 264
 - name: Big Ring 2
   zone: Angel Island
   act: 1
@@ -22,6 +25,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1936
+    y: 232
 - name: Miniboss
   zone: Angel Island
   act: 1
@@ -38,6 +44,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 293
+    y: 136
 - name: Item Box 2
   zone: Angel Island
   act: 1
@@ -46,6 +55,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 299
+    y: 136
 - name: Item Box 3
   zone: Angel Island
   act: 1
@@ -53,6 +65,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 485
+    y: 72
 - name: Item Box 4
   zone: Angel Island
   act: 1
@@ -61,6 +76,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 849
+    y: 74
 - name: Item Box 5
   zone: Angel Island
   act: 1
@@ -69,6 +87,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 971
+    y: 189
 - name: Item Box 6
   zone: Angel Island
   act: 1
@@ -77,6 +98,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1077
+    y: 289
 - name: Item Box 7
   zone: Angel Island
   act: 1
@@ -85,6 +109,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1385
+    y: 305
 - name: Item Box 8
   zone: Angel Island
   act: 1
@@ -93,6 +120,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1392
+    y: 305
 - name: Item Box 9
   zone: Angel Island
   act: 1
@@ -101,6 +131,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1399
+    y: 305
 - name: Item Box 10
   zone: Angel Island
   act: 1
@@ -109,6 +142,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1550
+    y: 142
 - name: Item Box 11
   zone: Angel Island
   act: 1
@@ -117,6 +153,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1628
+    y: 170
 - name: Item Box 12
   zone: Angel Island
   act: 1
@@ -125,12 +164,18 @@
     - character: Sonic
       super_state: hyper
     - character: Tails
+  poptracker:
+    x: 2116
+    y: 90
 - name: Item Box 13
   zone: Angel Island
   act: 1
   type: invincibility
   requirements:
     - character: Tails
+  poptracker:
+    x: 2308
+    y: 122
 - name: Item Box 14
   zone: Angel Island
   act: 1
@@ -139,6 +184,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2606
+    y: 206
 - name: Item Box 15
   zone: Angel Island
   act: 1
@@ -147,6 +195,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2676
+    y: 282
 - name: Item Box 16
   zone: Angel Island
   act: 1
@@ -154,3 +205,6 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 2676
+    y: 202
