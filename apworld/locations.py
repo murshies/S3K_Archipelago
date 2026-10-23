@@ -200,7 +200,7 @@ class Location:
         except ValueError:
             # No number for this location - use a blank string
             pass
-        loc_map = ZONE_ABBREVS[self.zone]
+        loc_map = 'special' if 'Special Stage' in self.zone else ZONE_ABBREVS[self.zone]
         if self.act is not None:
             loc_map += str(self.act)
         x_coords = ''

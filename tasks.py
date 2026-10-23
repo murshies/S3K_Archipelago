@@ -310,7 +310,7 @@ def poptracker_release(c: Context):
                 )
             )
             if len(act_locs) == 0:
-                # No completes or bosses, skip it.
+                # No completes or bosses or emeralds, skip it.
                 continue
             # Generate the groupings per item type for the tracker layout.
 
@@ -335,50 +335,56 @@ def poptracker_release(c: Context):
             act_abbrev = abbrev
             if act is not None:
                 act_abbrev = f'{abbrev}{act}'
-            act_tracker_data = {
-                'title': f'{abbrev}{act}' if act is not None else abbrev,
-                'content': {
-                    'type': 'dock',
-                    'content': [
-                        {
-                            'type': 'array',
-                            'dock': 'left',
-                            'orientation': 'vertical',
-                            'margin': '2,2',
-                            'max_width': 240,
-                            'v_alignment': 'top',
-                            'content': [
-                                act_locs_layout,
-                                big_rings_locs_layout,
-                                item_box_locs_layout,
-                                {
-                                    'type': 'text',
-                                    'text': 'Left click: highlight on map'
-                                },
-                                {
-                                    'type': 'text',
-                                    'text': 'Right click: mark as checked'
-                                },
-                                {
-                                    'type': 'text',
-                                    'text': 'Middle click: reset highlighting'
+            if 'Special Stage' not in zone:
+                content = []
+                if len(act_locs) > 0:
+                    content.append(act_locs_layout)
+                if len(big_ring_locs) > 0:
+                    content.append(big_rings_locs_layout)
+                if len(item_box_locs) > 0:
+                    content.append(item_box_locs_layout)
+                content += [
+                    {
+                        'type': 'text',
+                        'text': 'Left click: highlight on map'
+                    },
+                    {
+                        'type': 'text',
+                        'text': 'Right click: mark as checked'
+                    },
+                    {
+                        'type': 'text',
+                        'text': 'Middle click: reset highlighting'
+                    }
+                ]
+                act_tracker_data = {
+                    'title': f'{abbrev}{act}' if act is not None else abbrev,
+                    'content': {
+                        'type': 'dock',
+                        'content': [
+                            {
+                                'type': 'array',
+                                'dock': 'left',
+                                'orientation': 'vertical',
+                                'margin': '2,2',
+                                'max_width': 240,
+                                'v_alignment': 'top',
+                                'content': content
+                            },
+                            {
+                                'type': 'group',
+                                'header': f'{zone} Act {act}' if act is not None else zone,
+                                'content': {
+                                    'type': 'map',
+                                    'maps': [
+                                        'special' if 'Special Stage' in zone else act_abbrev
+                                    ]
                                 }
-                            ]
-                        },
-                        {
-                            'type': 'group',
-                            'header': f'{zone} Act {act}' if act is not None else zone,
-                            'content': {
-                                'type': 'map',
-                                'maps': [
-                                    act_abbrev
-                                ]
                             }
-                        }
-                    ]
+                        ]
+                    }
                 }
-            }
-            tracker['tracker_default']['content'][1]['tabs'].append(act_tracker_data)
+                tracker['tracker_default']['content'][1]['tabs'].append(act_tracker_data)
 
             full_act_locs = location_set.filter_locations(
                 lambda p, ts: zone == p.zone and act == p.act
@@ -405,7 +411,7 @@ def poptracker_release(c: Context):
                 if loc.poptracker_info is not None:
                     entry['map_locations'] = [
                         {
-                            'map': act_abbrev,
+                            'map': 'special' if 'Special Stage' in zone else act_abbrev,
                             'x': loc.poptracker_info.x,
                             'y': loc.poptracker_info.y,
                             # 'size': 127,
@@ -416,11 +422,11 @@ def poptracker_release(c: Context):
 
             act_loc_file = INVOKE_ROOT / 'poptracker' / 'locations' / f'{act_abbrev.lower()}.json'
             print(f'Writing {act_loc_file}')
-            with open(act_loc_file, 'w') as f:
+            with open(act_loc_file, 'a') as f:
                 json.dump(act_loc_data, f, indent=2)
 
             lua_struct_file = INVOKE_ROOT / 'poptracker' / 'scripts' / 'structure.lua'
-    with open(lua_struct_file, 'a') as f:
+    with open(lua_struct_file, 'w') as f:
         f.write('LOCATIONS = {\n')
         f.write(','.join(lua_defs))
         f.write('\n}')

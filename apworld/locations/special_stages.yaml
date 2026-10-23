@@ -5,6 +5,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 72
+    y: 190
 - name: Perfect
   zone: Special Stage 1
   type: special_stage_perfect
@@ -12,6 +15,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 72
+    y: 260
 - name: Emerald
   zone: Special Stage 2
   type: emerald
@@ -19,6 +25,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 402
+    y: 190
 - name: Perfect
   zone: Special Stage 2
   type: special_stage_perfect
@@ -26,6 +35,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 402
+    y: 260
 - name: Emerald
   zone: Special Stage 3
   type: emerald
@@ -33,6 +45,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 732
+    y: 190
 - name: Perfect
   zone: Special Stage 3
   type: special_stage_perfect
@@ -40,6 +55,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 732
+    y: 260
 - name: Emerald
   zone: Special Stage 4
   type: emerald
@@ -47,6 +65,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1062
+    y: 190
 - name: Perfect
   zone: Special Stage 4
   type: special_stage_perfect
@@ -54,6 +75,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1062
+    y: 260
 - name: Emerald
   zone: Special Stage 5
   type: emerald
@@ -61,6 +85,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1392
+    y: 190
 - name: Perfect
   zone: Special Stage 5
   type: special_stage_perfect
@@ -68,6 +95,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1392
+    y: 260
 - name: Emerald
   zone: Special Stage 6
   type: emerald
@@ -75,6 +105,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1722
+    y: 190
 - name: Perfect
   zone: Special Stage 6
   type: special_stage_perfect
@@ -82,6 +115,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1722
+    y: 260
 - name: Emerald
   zone: Special Stage 7
   type: emerald
@@ -89,6 +125,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2052
+    y: 190
 - name: Perfect
   zone: Special Stage 7
   type: special_stage_perfect
@@ -96,6 +135,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2052
+    y: 260
 - name: Emerald
   zone: Special Stage 8
   type: emerald
@@ -103,6 +145,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 72
+    y: 460
 - name: Perfect
   zone: Special Stage 8
   type: special_stage_perfect
@@ -110,6 +155,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 72
+    y: 530
 - name: Emerald
   zone: Special Stage 9
   type: emerald
@@ -117,6 +165,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 402
+    y: 460
 - name: Perfect
   zone: Special Stage 9
   type: special_stage_perfect
@@ -124,6 +175,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 402
+    y: 530
 - name: Emerald
   zone: Special Stage 10
   type: emerald
@@ -131,6 +185,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 732
+    y: 460
 - name: Perfect
   zone: Special Stage 10
   type: special_stage_perfect
@@ -138,6 +195,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 732
+    y: 530
 - name: Emerald
   zone: Special Stage 11
   type: emerald
@@ -145,6 +205,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1062
+    y: 460
 - name: Perfect
   zone: Special Stage 11
   type: special_stage_perfect
@@ -152,6 +215,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1062
+    y: 530
 - name: Emerald
   zone: Special Stage 12
   type: emerald
@@ -159,6 +225,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1392
+    y: 460
 - name: Perfect
   zone: Special Stage 12
   type: special_stage_perfect
@@ -166,6 +235,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1392
+    y: 530
 - name: Emerald
   zone: Special Stage 13
   type: emerald
@@ -173,6 +245,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1722
+    y: 460
 - name: Perfect
   zone: Special Stage 13
   type: special_stage_perfect
@@ -180,6 +255,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1722
+    y: 530
 - name: Emerald
   zone: Special Stage 14
   type: emerald
@@ -187,6 +265,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2052
+    y: 460
 - name: Perfect
   zone: Special Stage 14
   type: special_stage_perfect
@@ -194,3 +275,6 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2052
+    y: 530
