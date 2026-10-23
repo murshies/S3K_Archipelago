@@ -274,13 +274,14 @@ def poptracker_release(c: Context):
     ]
     location_set = locations.LocationSet.from_files(
         location_def_files, types, validator=jsonschema.validate)
+    locs_path = INVOKE_ROOT / 'poptracker' / 'locations'
+    shutil.rmtree(locs_path)
+    os.makedirs(locs_path)
     with open(INVOKE_ROOT / 'poptracker' / 'tracker_base.json') as tracker_base:
         tracker = json.load(tracker_base)
+    lua_defs = []
     for zone, abbrev in locations.ZONE_ABBREVS.items():
-        if 'Special Stage' in zone:
-            # Special Stages are a special (lol) case, the mapping for that is
-            # statically defined in the base file.
-            continue
+        print(f'Iterating on {zone} {abbrev}')
         # Lava Reef boss is technically act 3, so look for act 3 locations
         # too. Some zones like Sky Sanctuary do not have an act at all.
         for act in [None, 1, 2, 3]:
@@ -290,7 +291,8 @@ def poptracker_release(c: Context):
                     zone == p.zone and
                     act == p.act and
                     ('boss' in ts.types_for(p.location_type) or
-                     'complete' in ts.types_for(p.location_type))
+                     'complete' in ts.types_for(p.location_type) or
+                     'emerald' in ts.types_for(p.location_type))
                 )
             )
             item_box_locs = location_set.filter_locations(
@@ -330,6 +332,9 @@ def poptracker_release(c: Context):
             act_locs_layout = gen_group_layout(act_locs, 'Act')
             big_rings_locs_layout = gen_group_layout(big_ring_locs, 'Big Rings')
             item_box_locs_layout = gen_group_layout(item_box_locs, 'Item Boxes')
+            act_abbrev = abbrev
+            if act is not None:
+                act_abbrev = f'{abbrev}{act}'
             act_tracker_data = {
                 'title': f'{abbrev}{act}' if act is not None else abbrev,
                 'content': {
@@ -348,7 +353,7 @@ def poptracker_release(c: Context):
                                 item_box_locs_layout,
                                 {
                                     'type': 'text',
-                                    'text': 'Left click: show on map'
+                                    'text': 'Left click: highlight on map'
                                 },
                                 {
                                     'type': 'text',
@@ -356,7 +361,7 @@ def poptracker_release(c: Context):
                                 },
                                 {
                                     'type': 'text',
-                                    'text': 'Middle click: reset map view'
+                                    'text': 'Middle click: reset highlighting'
                                 }
                             ]
                         },
@@ -366,7 +371,7 @@ def poptracker_release(c: Context):
                             'content': {
                                 'type': 'map',
                                 'maps': [
-                                    f'{abbrev}{act}' if act is not None else abbrev
+                                    act_abbrev
                                 ]
                             }
                         }
@@ -374,6 +379,51 @@ def poptracker_release(c: Context):
                 }
             }
             tracker['tracker_default']['content'][1]['tabs'].append(act_tracker_data)
+
+            full_act_locs = location_set.filter_locations(
+                lambda p, ts: zone == p.zone and act == p.act
+            )
+            act_loc_data = []
+            for loc in full_act_locs:
+                entry = {
+                    'name': loc.display_name,
+                    'access_rules': [
+                        f'^$s3k_access|{loc.location_id}'
+                    ],
+                    'visibility_rules': [
+                        f'$s3k_in_seed|{loc.location_id}'
+                    ],
+                    'chest_unopened_img': f'images/locations/{loc.location_type}.png',
+                    'chest_opened_img': f'images/locations/{loc.location_type}.png',
+                    'sections': [
+                        {
+                            'name': loc.location_type,
+                            'item_count': 1
+                        }
+                    ]
+                }
+                if loc.poptracker_info is not None:
+                    entry['map_locations'] = [
+                        {
+                            'map': act_abbrev,
+                            'x': loc.poptracker_info.x,
+                            'y': loc.poptracker_info.y,
+                            # 'size': 127,
+                        }
+                    ]
+                act_loc_data.append(entry)
+                lua_defs.append(loc.lua)
+
+            act_loc_file = INVOKE_ROOT / 'poptracker' / 'locations' / f'{act_abbrev.lower()}.json'
+            print(f'Writing {act_loc_file}')
+            with open(act_loc_file, 'w') as f:
+                json.dump(act_loc_data, f, indent=2)
+
+            lua_struct_file = INVOKE_ROOT / 'poptracker' / 'scripts' / 'structure.lua'
+    with open(lua_struct_file, 'a') as f:
+        f.write('LOCATIONS = {\n')
+        f.write(','.join(lua_defs))
+        f.write('\n}')
 
     with open(INVOKE_ROOT / 'poptracker' / 'tracker.json', 'w') as tracker_out:
         json.dump(tracker, tracker_out, indent=2)
