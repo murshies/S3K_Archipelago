@@ -433,3 +433,16 @@ def poptracker_release(c: Context):
 
     with open(INVOKE_ROOT / 'poptracker' / 'tracker.json', 'w') as tracker_out:
         json.dump(tracker, tracker_out, indent=2)
+
+    # Finally, build the pack by zipping the poptracker directory
+
+    poptracker_root = INVOKE_ROOT / 'poptracker'
+    out_file = INVOKE_ROOT / 'build' / 's3k_poptracker.zip'
+    if os.path.exists(out_file):
+        os.remove(out_file)
+    with zipfile.ZipFile(out_file, 'w') as zf:
+        for root, dirs, files, in os.walk(poptracker_root):
+            for f in files:
+                full_file_path = pathlib.Path(root) / f
+                zf.write(full_file_path,
+                         os.path.relpath(full_file_path, poptracker_root))
