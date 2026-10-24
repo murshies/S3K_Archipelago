@@ -75,7 +75,7 @@ ACTS: dict[tuple[int, int], ActLocations] = {
         25: 1, 19: 2,
     }, next_layout=frozenset({49, 79, 121, 134, 133, 19})),
     (Zone.ANGEL_ISLAND.value, 1): ActLocations(consts.ZONE_ANGEL_ISLAND, 2, LOC_NAME_BOSS, {
-        259: 1, 265: 2, 287: 3, 348: 4, 414: 5, 494: 6, 523: 7, 549: 8, 545: 9,
+        259: 1, 258: 2, 287: 3, 348: 4, 414: 5, 494: 6, 523: 7, 549: 8, 545: 9,
         589: 10, 576: 11, 578: 12, 582: 13, 676: 14, 185: 15, 228: 16, 292: 17,
     }, big_rings={226: 1, 673: 2}),
     (Zone.HYDROCITY.value, 0): ActLocations(consts.ZONE_HYDROCITY, 1, LOC_NAME_MINIBOSS, {
