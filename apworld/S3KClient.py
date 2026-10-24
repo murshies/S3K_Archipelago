@@ -19,10 +19,6 @@ logger = logging.getLogger("Client")
 SK_GAME_NAME = "SONIC & KNUCKLES"
 S3_GAME_NAME = "SONIC THE             HEDGEHOG 3"
 
-# When enabled, the entire parsed location buffer is logged every time it is
-# read. Useful for figuring out which location ids the game writes.
-LOG_LOCATION_BUFFER = False
-
 
 @dataclass(frozen=True)
 class SaveState:
@@ -216,8 +212,6 @@ class S3KClient(BizHawkClient):
         """
         data = (await bizhawk.read(ctx.bizhawk_ctx, [S3KMemory.location_buffer]))[0]
         buffer = S3KMemory.LocationBuffer.from_bytes(data)
-        if LOG_LOCATION_BUFFER:
-            logger.info(self.describe_location_buffer(buffer))
         current_keys = {entry.key for entry in buffer.entries} if buffer.is_valid else set()
         lost_keys = self.waiting_location_keys - current_keys
         if lost_keys:
