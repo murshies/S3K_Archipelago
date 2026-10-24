@@ -1,0 +1,861 @@
+[
+    {
+        "name": "Sonic",
+        "type": "toggle",
+        "img": "images/items/char_sonic.png",
+        "codes": "char_sonic"
+    },
+    {
+        "name": "Tails",
+        "type": "toggle",
+        "img": "images/items/char_tails.png",
+        "codes": "char_tails"
+    },
+    {
+        "name": "Knuckles",
+        "type": "toggle",
+        "img": "images/items/char_knuckles.png",
+        "codes": "char_knuckles"
+    },
+    {
+        "name": "Chaos Emeralds",
+        "type": "consumable",
+        "img": "images/locations/emerald.png",
+        "codes": "chaos_emerald",
+        "max_quantity": 14
+    },
+    {
+        "name": "Master Emerald",
+        "type": "toggle",
+        "img": "images/items/master_emerald.png",
+        "codes": "master_emerald"
+    },
+    {
+        "name": "Master Emerald Shards",
+        "type": "consumable",
+        "img": "images/items/master_emerald.png",
+        "codes": "master_emerald_shard",
+        "max_quantity": 3
+    },
+    {
+        "name": "Angel Island",
+        "type": "toggle",
+        "img": "images/items/zone_angel_island.png",
+        "codes": "zone_angel_island"
+    },
+    {
+        "name": "Angel Island - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_angel_island.png",
+        "codes": "zone_angel_island_sonic"
+    },
+    {
+        "name": "Angel Island - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_angel_island.png",
+        "codes": "zone_angel_island_tails"
+    },
+    {
+        "name": "Angel Island - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_angel_island.png",
+        "codes": "zone_angel_island_knuckles"
+    },
+    {
+        "name": "Hydrocity",
+        "type": "toggle",
+        "img": "images/items/zone_hydrocity.png",
+        "codes": "zone_hydrocity"
+    },
+    {
+        "name": "Hydrocity - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_hydrocity.png",
+        "codes": "zone_hydrocity_sonic"
+    },
+    {
+        "name": "Hydrocity - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_hydrocity.png",
+        "codes": "zone_hydrocity_tails"
+    },
+    {
+        "name": "Hydrocity - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_hydrocity.png",
+        "codes": "zone_hydrocity_knuckles"
+    },
+    {
+        "name": "Marble Garden",
+        "type": "toggle",
+        "img": "images/items/zone_marble_garden.png",
+        "codes": "zone_marble_garden"
+    },
+    {
+        "name": "Marble Garden - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_marble_garden.png",
+        "codes": "zone_marble_garden_sonic"
+    },
+    {
+        "name": "Marble Garden - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_marble_garden.png",
+        "codes": "zone_marble_garden_tails"
+    },
+    {
+        "name": "Marble Garden - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_marble_garden.png",
+        "codes": "zone_marble_garden_knuckles"
+    },
+    {
+        "name": "Carnival Night",
+        "type": "toggle",
+        "img": "images/items/zone_carnival_night.png",
+        "codes": "zone_carnival_night"
+    },
+    {
+        "name": "Carnival Night - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_carnival_night.png",
+        "codes": "zone_carnival_night_sonic"
+    },
+    {
+        "name": "Carnival Night - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_carnival_night.png",
+        "codes": "zone_carnival_night_tails"
+    },
+    {
+        "name": "Carnival Night - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_carnival_night.png",
+        "codes": "zone_carnival_night_knuckles"
+    },
+    {
+        "name": "Ice Cap",
+        "type": "toggle",
+        "img": "images/items/zone_ice_cap.png",
+        "codes": "zone_ice_cap"
+    },
+    {
+        "name": "Ice Cap - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_ice_cap.png",
+        "codes": "zone_ice_cap_sonic"
+    },
+    {
+        "name": "Ice Cap - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_ice_cap.png",
+        "codes": "zone_ice_cap_tails"
+    },
+    {
+        "name": "Ice Cap - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_ice_cap.png",
+        "codes": "zone_ice_cap_knuckles"
+    },
+    {
+        "name": "Launch Base",
+        "type": "toggle",
+        "img": "images/items/zone_launch_base.png",
+        "codes": "zone_launch_base"
+    },
+    {
+        "name": "Launch Base - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_launch_base.png",
+        "codes": "zone_launch_base_sonic"
+    },
+    {
+        "name": "Launch Base - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_launch_base.png",
+        "codes": "zone_launch_base_tails"
+    },
+    {
+        "name": "Launch Base - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_launch_base.png",
+        "codes": "zone_launch_base_knuckles"
+    },
+    {
+        "name": "Mushroom Hill",
+        "type": "toggle",
+        "img": "images/items/zone_mushroom_hill.png",
+        "codes": "zone_mushroom_hill"
+    },
+    {
+        "name": "Mushroom Hill - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_mushroom_hill.png",
+        "codes": "zone_mushroom_hill_sonic"
+    },
+    {
+        "name": "Mushroom Hill - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_mushroom_hill.png",
+        "codes": "zone_mushroom_hill_tails"
+    },
+    {
+        "name": "Mushroom Hill - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_mushroom_hill.png",
+        "codes": "zone_mushroom_hill_knuckles"
+    },
+    {
+        "name": "Flying Battery",
+        "type": "toggle",
+        "img": "images/items/zone_flying_battery.png",
+        "codes": "zone_flying_battery"
+    },
+    {
+        "name": "Flying Battery - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_flying_battery.png",
+        "codes": "zone_flying_battery_sonic"
+    },
+    {
+        "name": "Flying Battery - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_flying_battery.png",
+        "codes": "zone_flying_battery_tails"
+    },
+    {
+        "name": "Flying Battery - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_flying_battery.png",
+        "codes": "zone_flying_battery_knuckles"
+    },
+    {
+        "name": "Sandopolis",
+        "type": "toggle",
+        "img": "images/items/zone_sandopolis.png",
+        "codes": "zone_sandopolis"
+    },
+    {
+        "name": "Sandopolis - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_sandopolis.png",
+        "codes": "zone_sandopolis_sonic"
+    },
+    {
+        "name": "Sandopolis - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_sandopolis.png",
+        "codes": "zone_sandopolis_tails"
+    },
+    {
+        "name": "Sandopolis - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_sandopolis.png",
+        "codes": "zone_sandopolis_knuckles"
+    },
+    {
+        "name": "Lava Reef",
+        "type": "toggle",
+        "img": "images/items/zone_lava_reef.png",
+        "codes": "zone_lava_reef"
+    },
+    {
+        "name": "Lava Reef - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_lava_reef.png",
+        "codes": "zone_lava_reef_sonic"
+    },
+    {
+        "name": "Lava Reef - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_lava_reef.png",
+        "codes": "zone_lava_reef_tails"
+    },
+    {
+        "name": "Lava Reef - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_lava_reef.png",
+        "codes": "zone_lava_reef_knuckles"
+    },
+    {
+        "name": "Hidden Palace",
+        "type": "toggle",
+        "img": "images/items/zone_hidden_palace.png",
+        "codes": "zone_hidden_palace"
+    },
+    {
+        "name": "Hidden Palace - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_hidden_palace.png",
+        "codes": "zone_hidden_palace_sonic"
+    },
+    {
+        "name": "Hidden Palace - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_hidden_palace.png",
+        "codes": "zone_hidden_palace_tails"
+    },
+    {
+        "name": "Hidden Palace - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_hidden_palace.png",
+        "codes": "zone_hidden_palace_knuckles"
+    },
+    {
+        "name": "Sky Sanctuary",
+        "type": "toggle",
+        "img": "images/items/zone_sky_sanctuary.png",
+        "codes": "zone_sky_sanctuary"
+    },
+    {
+        "name": "Sky Sanctuary - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_sky_sanctuary.png",
+        "codes": "zone_sky_sanctuary_sonic"
+    },
+    {
+        "name": "Sky Sanctuary - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_sky_sanctuary.png",
+        "codes": "zone_sky_sanctuary_tails"
+    },
+    {
+        "name": "Knuckles Sky Sanctuary",
+        "type": "toggle",
+        "img": "images/items/zone_sky_sanctuary.png",
+        "codes": "zone_knuckles_sky_sanctuary"
+    },
+    {
+        "name": "Knuckles Sky Sanctuary - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_sky_sanctuary.png",
+        "codes": "zone_knuckles_sky_sanctuary_knuckles"
+    },
+    {
+        "name": "Death Egg",
+        "type": "toggle",
+        "img": "images/items/zone_death_egg.png",
+        "codes": "zone_death_egg"
+    },
+    {
+        "name": "Death Egg - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_death_egg.png",
+        "codes": "zone_death_egg_sonic"
+    },
+    {
+        "name": "Death Egg - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_death_egg.png",
+        "codes": "zone_death_egg_tails"
+    },
+    {
+        "name": "Death Egg - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_death_egg.png",
+        "codes": "zone_death_egg_knuckles"
+    },
+    {
+        "name": "Doomsday",
+        "type": "toggle",
+        "img": "images/items/zone_doomsday.png",
+        "codes": "zone_doomsday"
+    },
+    {
+        "name": "Doomsday - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_doomsday.png",
+        "codes": "zone_doomsday_sonic"
+    },
+    {
+        "name": "Doomsday - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_doomsday.png",
+        "codes": "zone_doomsday_tails"
+    },
+    {
+        "name": "Doomsday - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_doomsday.png",
+        "codes": "zone_doomsday_knuckles"
+    },
+    {
+        "name": "Special Stage 1",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_1.png",
+        "codes": "zone_special_stage_1"
+    },
+    {
+        "name": "Special Stage 1 - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_1.png",
+        "codes": "zone_special_stage_1_sonic"
+    },
+    {
+        "name": "Special Stage 1 - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_1.png",
+        "codes": "zone_special_stage_1_tails"
+    },
+    {
+        "name": "Special Stage 1 - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_1.png",
+        "codes": "zone_special_stage_1_knuckles"
+    },
+    {
+        "name": "Special Stage 2",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_2.png",
+        "codes": "zone_special_stage_2"
+    },
+    {
+        "name": "Special Stage 2 - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_2.png",
+        "codes": "zone_special_stage_2_sonic"
+    },
+    {
+        "name": "Special Stage 2 - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_2.png",
+        "codes": "zone_special_stage_2_tails"
+    },
+    {
+        "name": "Special Stage 2 - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_2.png",
+        "codes": "zone_special_stage_2_knuckles"
+    },
+    {
+        "name": "Special Stage 3",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_3.png",
+        "codes": "zone_special_stage_3"
+    },
+    {
+        "name": "Special Stage 3 - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_3.png",
+        "codes": "zone_special_stage_3_sonic"
+    },
+    {
+        "name": "Special Stage 3 - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_3.png",
+        "codes": "zone_special_stage_3_tails"
+    },
+    {
+        "name": "Special Stage 3 - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_3.png",
+        "codes": "zone_special_stage_3_knuckles"
+    },
+    {
+        "name": "Special Stage 4",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_4.png",
+        "codes": "zone_special_stage_4"
+    },
+    {
+        "name": "Special Stage 4 - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_4.png",
+        "codes": "zone_special_stage_4_sonic"
+    },
+    {
+        "name": "Special Stage 4 - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_4.png",
+        "codes": "zone_special_stage_4_tails"
+    },
+    {
+        "name": "Special Stage 4 - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_4.png",
+        "codes": "zone_special_stage_4_knuckles"
+    },
+    {
+        "name": "Special Stage 5",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_5.png",
+        "codes": "zone_special_stage_5"
+    },
+    {
+        "name": "Special Stage 5 - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_5.png",
+        "codes": "zone_special_stage_5_sonic"
+    },
+    {
+        "name": "Special Stage 5 - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_5.png",
+        "codes": "zone_special_stage_5_tails"
+    },
+    {
+        "name": "Special Stage 5 - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_5.png",
+        "codes": "zone_special_stage_5_knuckles"
+    },
+    {
+        "name": "Special Stage 6",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_6.png",
+        "codes": "zone_special_stage_6"
+    },
+    {
+        "name": "Special Stage 6 - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_6.png",
+        "codes": "zone_special_stage_6_sonic"
+    },
+    {
+        "name": "Special Stage 6 - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_6.png",
+        "codes": "zone_special_stage_6_tails"
+    },
+    {
+        "name": "Special Stage 6 - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_6.png",
+        "codes": "zone_special_stage_6_knuckles"
+    },
+    {
+        "name": "Special Stage 7",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_7.png",
+        "codes": "zone_special_stage_7"
+    },
+    {
+        "name": "Special Stage 7 - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_7.png",
+        "codes": "zone_special_stage_7_sonic"
+    },
+    {
+        "name": "Special Stage 7 - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_7.png",
+        "codes": "zone_special_stage_7_tails"
+    },
+    {
+        "name": "Special Stage 7 - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_7.png",
+        "codes": "zone_special_stage_7_knuckles"
+    },
+    {
+        "name": "Special Stage 8",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_8.png",
+        "codes": "zone_special_stage_8"
+    },
+    {
+        "name": "Special Stage 8 - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_8.png",
+        "codes": "zone_special_stage_8_sonic"
+    },
+    {
+        "name": "Special Stage 8 - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_8.png",
+        "codes": "zone_special_stage_8_tails"
+    },
+    {
+        "name": "Special Stage 8 - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_8.png",
+        "codes": "zone_special_stage_8_knuckles"
+    },
+    {
+        "name": "Special Stage 9",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_9.png",
+        "codes": "zone_special_stage_9"
+    },
+    {
+        "name": "Special Stage 9 - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_9.png",
+        "codes": "zone_special_stage_9_sonic"
+    },
+    {
+        "name": "Special Stage 9 - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_9.png",
+        "codes": "zone_special_stage_9_tails"
+    },
+    {
+        "name": "Special Stage 9 - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_9.png",
+        "codes": "zone_special_stage_9_knuckles"
+    },
+    {
+        "name": "Special Stage 10",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_10.png",
+        "codes": "zone_special_stage_10"
+    },
+    {
+        "name": "Special Stage 10 - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_10.png",
+        "codes": "zone_special_stage_10_sonic"
+    },
+    {
+        "name": "Special Stage 10 - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_10.png",
+        "codes": "zone_special_stage_10_tails"
+    },
+    {
+        "name": "Special Stage 10 - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_10.png",
+        "codes": "zone_special_stage_10_knuckles"
+    },
+    {
+        "name": "Special Stage 11",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_11.png",
+        "codes": "zone_special_stage_11"
+    },
+    {
+        "name": "Special Stage 11 - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_11.png",
+        "codes": "zone_special_stage_11_sonic"
+    },
+    {
+        "name": "Special Stage 11 - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_11.png",
+        "codes": "zone_special_stage_11_tails"
+    },
+    {
+        "name": "Special Stage 11 - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_11.png",
+        "codes": "zone_special_stage_11_knuckles"
+    },
+    {
+        "name": "Special Stage 12",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_12.png",
+        "codes": "zone_special_stage_12"
+    },
+    {
+        "name": "Special Stage 12 - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_12.png",
+        "codes": "zone_special_stage_12_sonic"
+    },
+    {
+        "name": "Special Stage 12 - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_12.png",
+        "codes": "zone_special_stage_12_tails"
+    },
+    {
+        "name": "Special Stage 12 - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_12.png",
+        "codes": "zone_special_stage_12_knuckles"
+    },
+    {
+        "name": "Special Stage 13",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_13.png",
+        "codes": "zone_special_stage_13"
+    },
+    {
+        "name": "Special Stage 13 - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_13.png",
+        "codes": "zone_special_stage_13_sonic"
+    },
+    {
+        "name": "Special Stage 13 - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_13.png",
+        "codes": "zone_special_stage_13_tails"
+    },
+    {
+        "name": "Special Stage 13 - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_13.png",
+        "codes": "zone_special_stage_13_knuckles"
+    },
+    {
+        "name": "Special Stage 14",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_14.png",
+        "codes": "zone_special_stage_14"
+    },
+    {
+        "name": "Special Stage 14 - Sonic",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_14.png",
+        "codes": "zone_special_stage_14_sonic"
+    },
+    {
+        "name": "Special Stage 14 - Tails",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_14.png",
+        "codes": "zone_special_stage_14_tails"
+    },
+    {
+        "name": "Special Stage 14 - Knuckles",
+        "type": "toggle",
+        "img": "images/items/zone_special_stage_14.png",
+        "codes": "zone_special_stage_14_knuckles"
+    },
+    {
+        "name": "Zone Unlocks",
+        "type": "progressive",
+        "allow_disabled": false,
+        "loop": true,
+        "stages": [
+            {
+                "img": "images/settings/setting_zone_unlocks_all.png",
+                "codes": "setting_zone_unlocks_all",
+                "inherit_codes": false,
+                "name": "All unlocked"
+            },
+            {
+                "img": "images/settings/setting_zone_unlocks_zones_and_characters.png",
+                "codes": "setting_zone_unlocks_zones_and_characters",
+                "inherit_codes": false,
+                "name": "Zones + chars"
+            },
+            {
+                "img": "images/settings/setting_zone_unlocks_zones.png",
+                "codes": "setting_zone_unlocks_zones",
+                "inherit_codes": false,
+                "name": "Zones only"
+            },
+            {
+                "img": "images/settings/setting_zone_unlocks_characters.png",
+                "codes": "setting_zone_unlocks_characters",
+                "inherit_codes": false,
+                "name": "Chars only"
+            }
+        ]
+    },
+    {
+        "name": "Big Rings Goal",
+        "type": "progressive",
+        "allow_disabled": false,
+        "loop": true,
+        "stages": [
+            {
+                "img": "images/settings/setting_big_rings_goal_none.png",
+                "codes": "setting_big_rings_goal_none",
+                "inherit_codes": false,
+                "name": "Rings: None"
+            },
+            {
+                "img": "images/settings/setting_big_rings_goal_doomsday.png",
+                "codes": "setting_big_rings_goal_doomsday",
+                "inherit_codes": false,
+                "name": "Rings: Doomsday"
+            },
+            {
+                "img": "images/settings/setting_big_rings_goal_kss.png",
+                "codes": "setting_big_rings_goal_kss",
+                "inherit_codes": false,
+                "name": "Rings: Knuckles Sky Sanctuary"
+            },
+            {
+                "img": "images/settings/setting_big_rings_goal_death_egg.png",
+                "codes": "setting_big_rings_goal_death_egg",
+                "inherit_codes": false,
+                "name": "Rings: Death Egg Zone"
+            }
+        ]
+    },
+    {
+        "name": "Chaos Emeralds Goal",
+        "type": "progressive",
+        "allow_disabled": false,
+        "loop": true,
+        "stages": [
+            {
+                "img": "images/settings/setting_chaos_emeralds_goal_none.png",
+                "codes": "setting_chaos_emeralds_goal_none",
+                "inherit_codes": false,
+                "name": "Chaos: None"
+            },
+            {
+                "img": "images/settings/setting_chaos_emeralds_goal_doomsday.png",
+                "codes": "setting_chaos_emeralds_goal_doomsday",
+                "inherit_codes": false,
+                "name": "Chaos: Doomsday"
+            },
+            {
+                "img": "images/settings/setting_chaos_emeralds_goal_kss.png",
+                "codes": "setting_chaos_emeralds_goal_kss",
+                "inherit_codes": false,
+                "name": "Chaos: Knuckles Sky Sanctuary"
+            },
+            {
+                "img": "images/settings/setting_chaos_emeralds_goal_death_egg.png",
+                "codes": "setting_chaos_emeralds_goal_death_egg",
+                "inherit_codes": false,
+                "name": "Chaos: Death Egg Zone"
+            }
+        ]
+    },
+    {
+        "name": "Super Emeralds Goal",
+        "type": "progressive",
+        "allow_disabled": false,
+        "loop": true,
+        "stages": [
+            {
+                "img": "images/settings/setting_super_emeralds_goal_none.png",
+                "codes": "setting_super_emeralds_goal_none",
+                "inherit_codes": false,
+                "name": "Super: None"
+            },
+            {
+                "img": "images/settings/setting_super_emeralds_goal_doomsday.png",
+                "codes": "setting_super_emeralds_goal_doomsday",
+                "inherit_codes": false,
+                "name": "Super: Doomsday"
+            },
+            {
+                "img": "images/settings/setting_super_emeralds_goal_kss.png",
+                "codes": "setting_super_emeralds_goal_kss",
+                "inherit_codes": false,
+                "name": "Super: Knuckles Sky Sanctuary"
+            },
+            {
+                "img": "images/settings/setting_super_emeralds_goal_death_egg.png",
+                "codes": "setting_super_emeralds_goal_death_egg",
+                "inherit_codes": false,
+                "name": "Super: Death Egg Zone"
+            }
+        ]
+    },
+    {
+        "name": "Big Rings Needed",
+        "type": "consumable",
+        "img": "images/settings/big_rings_to_check.png",
+        "codes": "setting_big_rings_to_check",
+        "min_quantity": 1,
+        "max_quantity": 77,
+        "initial_quantity": 77
+    },
+    {
+        "name": "Hard Logic",
+        "type": "toggle",
+        "img": "images/settings/hard_logic.png",
+        "codes": "setting_hard_logic"
+    }
+]

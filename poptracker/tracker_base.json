@@ -1,0 +1,372 @@
+{
+    "tracker_default": {
+        "type": "dock",
+        "content": [
+            {
+                "type": "array",
+                "dock": "bottom",
+                "orientation": "horizontal",
+                "margin": "2,2",
+                "content": [
+                    {
+                        "type": "itemgrid",
+                        "item_margin": "2,2",
+                        "item_size": 28,
+                        "h_alignment": "left",
+                        "rows": [
+                            [
+                                "char_sonic",
+                                "char_tails",
+                                "char_knuckles",
+                                "chaos_emerald",
+                                "master_emerald",
+                                "master_emerald_shard"
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "text",
+                        "text": "  Hover a map marker or list icon for details."
+                    }
+                ]
+            },
+            {
+                "type": "tabbed",
+                "tabs": [
+                    {
+                        "title": "Items",
+                        "content": {
+                            "type": "array",
+                            "orientation": "horizontal",
+                            "v_alignment": "top",
+                            "content": [
+                                {
+                                    "type": "array",
+                                    "orientation": "vertical",
+                                    "v_alignment": "top",
+                                    "content": [
+                                        {
+                                            "type": "group",
+                                            "header": "Characters",
+                                            "content": {
+                                                "type": "itemgrid",
+                                                "item_margin": "2,2",
+                                                "item_size": 48,
+                                                "h_alignment": "left",
+                                                "rows": [
+                                                    [
+                                                        "char_sonic",
+                                                        "char_tails",
+                                                        "char_knuckles"
+                                                    ]
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "group",
+                                            "header": "Emeralds & Goal",
+                                            "content": {
+                                                "type": "itemgrid",
+                                                "item_margin": "2,2",
+                                                "item_size": 48,
+                                                "h_alignment": "left",
+                                                "rows": [
+                                                    [
+                                                        "chaos_emerald",
+                                                        "master_emerald",
+                                                        "master_emerald_shard"
+                                                    ]
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "group",
+                                            "header": "Zone Unlocks (zones only)",
+                                            "content": {
+                                                "type": "itemgrid",
+                                                "item_margin": "2,2",
+                                                "item_size": 40,
+                                                "h_alignment": "left",
+                                                "rows": [
+                                                    [
+                                                        "zone_angel_island",
+                                                        "zone_hydrocity",
+                                                        "zone_marble_garden",
+                                                        "zone_carnival_night",
+                                                        "zone_ice_cap",
+                                                        "zone_launch_base",
+                                                        "zone_mushroom_hill",
+                                                        "zone_flying_battery"
+                                                    ],
+                                                    [
+                                                        "zone_sandopolis",
+                                                        "zone_lava_reef",
+                                                        "zone_hidden_palace",
+                                                        "zone_sky_sanctuary",
+                                                        "zone_death_egg",
+                                                        "zone_doomsday"
+                                                    ]
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "group",
+                                            "header": "Special Stage Unlocks (zones only)",
+                                            "content": {
+                                                "type": "itemgrid",
+                                                "item_margin": "2,2",
+                                                "item_size": 40,
+                                                "h_alignment": "left",
+                                                "rows": [
+                                                    [
+                                                        "zone_special_stage_1",
+                                                        "zone_special_stage_2",
+                                                        "zone_special_stage_3",
+                                                        "zone_special_stage_4",
+                                                        "zone_special_stage_5",
+                                                        "zone_special_stage_6",
+                                                        "zone_special_stage_7"
+                                                    ],
+                                                    [
+                                                        "zone_special_stage_8",
+                                                        "zone_special_stage_9",
+                                                        "zone_special_stage_10",
+                                                        "zone_special_stage_11",
+                                                        "zone_special_stage_12",
+                                                        "zone_special_stage_13",
+                                                        "zone_special_stage_14"
+                                                    ]
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "group",
+                                            "header": "Settings (filled in from Archipelago)",
+                                            "content": {
+                                                "type": "itemgrid",
+                                                "item_margin": "2,2",
+                                                "item_size": 48,
+                                                "h_alignment": "left",
+                                                "rows": [
+                                                    [
+                                                        "setting_zone_unlocks_all",
+                                                        "setting_big_rings_goal_none",
+                                                        "setting_chaos_emeralds_goal_none",
+                                                        "setting_super_emeralds_goal_none",
+                                                        "setting_big_rings_to_check",
+                                                        "setting_hard_logic"
+                                                    ]
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "group",
+                                    "header": "Zone Unlocks (per character)",
+                                    "content": {
+                                        "type": "array",
+                                        "orientation": "horizontal",
+                                        "v_alignment": "top",
+                                        "content": [
+                                            {
+                                                "type": "itemgrid",
+                                                "item_margin": "2,2",
+                                                "item_size": 32,
+                                                "h_alignment": "left",
+                                                "rows": [
+                                                    [
+                                                        "zone_angel_island_sonic",
+                                                        "zone_angel_island_tails",
+                                                        "zone_angel_island_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_marble_garden_sonic",
+                                                        "zone_marble_garden_tails",
+                                                        "zone_marble_garden_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_ice_cap_sonic",
+                                                        "zone_ice_cap_tails",
+                                                        "zone_ice_cap_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_mushroom_hill_sonic",
+                                                        "zone_mushroom_hill_tails",
+                                                        "zone_mushroom_hill_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_sandopolis_sonic",
+                                                        "zone_sandopolis_tails",
+                                                        "zone_sandopolis_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_hidden_palace_sonic",
+                                                        "zone_hidden_palace_tails",
+                                                        "zone_hidden_palace_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_knuckles_sky_sanctuary_knuckles",
+                                                        "zone_doomsday_sonic"
+                                                    ],
+                                                    [
+                                                        "zone_special_stage_2_sonic",
+                                                        "zone_special_stage_2_tails",
+                                                        "zone_special_stage_2_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_special_stage_4_sonic",
+                                                        "zone_special_stage_4_tails",
+                                                        "zone_special_stage_4_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_special_stage_6_sonic",
+                                                        "zone_special_stage_6_tails",
+                                                        "zone_special_stage_6_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_special_stage_8_sonic",
+                                                        "zone_special_stage_8_tails",
+                                                        "zone_special_stage_8_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_special_stage_10_sonic",
+                                                        "zone_special_stage_10_tails",
+                                                        "zone_special_stage_10_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_special_stage_12_sonic",
+                                                        "zone_special_stage_12_tails",
+                                                        "zone_special_stage_12_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_special_stage_14_sonic",
+                                                        "zone_special_stage_14_tails",
+                                                        "zone_special_stage_14_knuckles"
+                                                    ]
+                                                ]
+                                            },
+                                            {
+                                                "type": "itemgrid",
+                                                "item_margin": "2,2",
+                                                "item_size": 32,
+                                                "h_alignment": "left",
+                                                "rows": [
+                                                    [
+                                                        "zone_hydrocity_sonic",
+                                                        "zone_hydrocity_tails",
+                                                        "zone_hydrocity_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_carnival_night_sonic",
+                                                        "zone_carnival_night_tails",
+                                                        "zone_carnival_night_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_launch_base_sonic",
+                                                        "zone_launch_base_tails",
+                                                        "zone_launch_base_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_flying_battery_sonic",
+                                                        "zone_flying_battery_tails",
+                                                        "zone_flying_battery_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_lava_reef_sonic",
+                                                        "zone_lava_reef_tails",
+                                                        "zone_lava_reef_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_sky_sanctuary_sonic",
+                                                        "zone_sky_sanctuary_tails",
+                                                        "zone_sky_sanctuary_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_death_egg_sonic",
+                                                        "zone_death_egg_tails",
+                                                        "zone_death_egg_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_special_stage_1_sonic",
+                                                        "zone_special_stage_1_tails",
+                                                        "zone_special_stage_1_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_special_stage_3_sonic",
+                                                        "zone_special_stage_3_tails",
+                                                        "zone_special_stage_3_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_special_stage_5_sonic",
+                                                        "zone_special_stage_5_tails",
+                                                        "zone_special_stage_5_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_special_stage_7_sonic",
+                                                        "zone_special_stage_7_tails",
+                                                        "zone_special_stage_7_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_special_stage_9_sonic",
+                                                        "zone_special_stage_9_tails",
+                                                        "zone_special_stage_9_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_special_stage_11_sonic",
+                                                        "zone_special_stage_11_tails",
+                                                        "zone_special_stage_11_knuckles"
+                                                    ],
+                                                    [
+                                                        "zone_special_stage_13_sonic",
+                                                        "zone_special_stage_13_tails",
+                                                        "zone_special_stage_13_knuckles"
+                                                    ]
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "title": "Special Stages",
+                        "content": {
+                            "type": "map",
+                            "maps": [
+                                "special"
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "settings_popup": {
+        "type": "array",
+        "orientation": "vertical",
+        "content": [
+            {
+                "type": "group",
+                "header": "Settings",
+                "content": {
+                    "type": "itemgrid",
+                    "item_margin": "2,2",
+                    "item_size": 48,
+                    "h_alignment": "left",
+                    "rows": [
+                        [
+                            "setting_zone_unlocks_all",
+                            "setting_big_rings_goal_none",
+                            "setting_chaos_emeralds_goal_none",
+                            "setting_super_emeralds_goal_none",
+                            "setting_big_rings_to_check",
+                            "setting_hard_logic"
+                        ]
+                    ]
+                }
+            }
+        ]
+    }
+}
