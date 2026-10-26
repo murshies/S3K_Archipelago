@@ -5,7 +5,7 @@
 |Big Ring|77|
 |Boss|27|
 |1 UP|48|
-|Super Ring (10 rings)|246|
+|Super Ring (10 rings)|247|
 |Lightning Shield|58|
 |Flame Shield|47|
 |Water Shield|37|
@@ -13,10 +13,10 @@
 |Invincibility|45|
 |Robotnik Item Box|7|
 |Power Sneakers|10|
-|Total Item Boxes|498|
+|Total Item Boxes|499|
 |Special Stage Emerald|14|
 |Special Stage Perfect|14|
-|Total|657|
+|Total|658|
 # Items Per Zone
 | Zone | Location Type | Count |
 |-|-|-|
@@ -37,14 +37,14 @@
 |Hydrocity|Big Ring|4|
 |Hydrocity|Boss|2|
 |Hydrocity|1 UP|7|
-|Hydrocity|Super Ring (10 rings)|20|
+|Hydrocity|Super Ring (10 rings)|21|
 |Hydrocity|Lightning Shield|2|
 |Hydrocity|Water Shield|7|
 |Hydrocity|All Shields|9|
 |Hydrocity|Invincibility|4|
 |Hydrocity|Robotnik Item Box|1|
-|Hydrocity|Total Item Boxes|41|
-|Hydrocity|Total|49|
+|Hydrocity|Total Item Boxes|42|
+|Hydrocity|Total|50|
 |Marble Garden|Act Complete|2|
 |Marble Garden|Big Ring|11|
 |Marble Garden|Boss|2|

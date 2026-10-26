@@ -2,6 +2,7 @@
   zone: Lava Reef
   act: 2
   type: complete
+  obj_id: 0x8000
   requirements:
     - character: Sonic
     - character: Tails
@@ -10,6 +11,7 @@
   zone: Lava Reef
   act: 2
   type: big_ring
+  obj_id: 152
   requirements:
     - character: Sonic
     - character: Tails
@@ -17,6 +19,7 @@
   zone: Lava Reef
   act: 2
   type: big_ring
+  obj_id: 225
   requirements:
     - character: Sonic
     - character: Tails
@@ -24,6 +27,7 @@
   zone: Lava Reef
   act: 2
   type: big_ring
+  obj_id: 287
   requirements:
     - character: Sonic
     - character: Tails
@@ -31,6 +35,7 @@
   zone: Lava Reef
   act: 2
   type: big_ring
+  obj_id: 318
   requirements:
     - character: Sonic
     - character: Tails
@@ -38,12 +43,14 @@
   zone: Lava Reef
   act: 2
   type: big_ring
+  obj_id: 125
   requirements:
     - character: Knuckles
 - name: Item Box 1
   zone: Lava Reef
   act: 2
   type: flame_shield
+  obj_id: 7
   requirements:
     - character: Sonic
     - character: Tails
@@ -52,6 +59,7 @@
   zone: Lava Reef
   act: 2
   type: robotnik
+  obj_id: 68
   requirements:
     - character: Sonic
     - character: Tails
@@ -60,6 +68,7 @@
   zone: Lava Reef
   act: 2
   type: robotnik
+  obj_id: 69
   requirements:
     - character: Sonic
     - character: Tails
@@ -68,6 +77,7 @@
   zone: Lava Reef
   act: 2
   type: super_ring
+  obj_id: 30
   requirements:
     - character: Sonic
     - character: Tails
@@ -75,6 +85,7 @@
   zone: Lava Reef
   act: 2
   type: super_ring
+  obj_id: 28
   requirements:
     - character: Sonic
     - character: Tails
@@ -82,6 +93,7 @@
   zone: Lava Reef
   act: 2
   type: invincibility
+  obj_id: 82
   requirements:
     - character: Sonic
     - character: Tails
@@ -89,6 +101,7 @@
   zone: Lava Reef
   act: 2
   type: water_shield
+  obj_id: 100
   requirements:
     - character: Sonic
     - character: Tails
@@ -96,6 +109,7 @@
   zone: Lava Reef
   act: 2
   type: flame_shield
+  obj_id: 188
   requirements:
     - character: Sonic
     - character: Tails
@@ -103,6 +117,7 @@
   zone: Lava Reef
   act: 2
   type: super_ring
+  obj_id: 243
   requirements:
     - character: Sonic
     - character: Tails
@@ -110,6 +125,7 @@
   zone: Lava Reef
   act: 2
   type: flame_shield
+  obj_id: 237
   requirements:
     - character: Sonic
     - character: Tails
@@ -117,6 +133,7 @@
   zone: Lava Reef
   act: 2
   type: lightning_shield
+  obj_id: 305
   requirements:
     - character: Sonic
     - character: Tails
@@ -124,6 +141,7 @@
   zone: Lava Reef
   act: 2
   type: super_ring
+  obj_id: 304
   requirements:
     - character: Sonic
     - character: Tails
@@ -131,6 +149,7 @@
   zone: Lava Reef
   act: 2
   type: 1_up
+  obj_id: 438
   requirements:
     # To get 13-15 as normal Sonic, get a lightning shield and jump down from
     # above. The lightning shield's double jump can reach these.
@@ -141,6 +160,7 @@
   zone: Lava Reef
   act: 2
   type: super_ring
+  obj_id: 439
   requirements:
     - character: Sonic
     - character: Tails
@@ -149,6 +169,7 @@
   zone: Lava Reef
   act: 2
   type: super_ring
+  obj_id: 441
   requirements:
     - character: Sonic
     - character: Tails
@@ -157,11 +178,13 @@
   zone: Lava Reef
   act: 2
   type: flame_shield
+  obj_id: 34
   requirements:
     - character: Knuckles
 - name: Item Box 17
   zone: Lava Reef
   act: 2
   type: flame_shield
+  obj_id: 190
   requirements:
     - character: Knuckles

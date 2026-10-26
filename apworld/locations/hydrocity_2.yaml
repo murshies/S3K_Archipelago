@@ -2,6 +2,7 @@
   zone: Hydrocity
   act: 2
   type: complete
+  obj_id: 0x8000
   requirements:
     - character: Sonic
     - character: Tails
@@ -10,6 +11,7 @@
   zone: Hydrocity
   act: 2
   type: big_ring
+  obj_id: 260
   requirements:
     - character: Sonic
     - character: Tails
@@ -18,6 +20,7 @@
   zone: Hydrocity
   act: 2
   type: big_ring
+  obj_id: 448
   requirements:
     - character: Sonic
     - character: Tails
@@ -26,6 +29,7 @@
   zone: Hydrocity
   act: 2
   type: boss
+  obj_id: 0x8001
   requirements:
     - character: Sonic
     - character: Tails
@@ -34,6 +38,7 @@
   zone: Hydrocity
   act: 2
   type: 1_up
+  obj_id: 44
   requirements:
     - character: Sonic
     - character: Tails
@@ -42,6 +47,7 @@
   zone: Hydrocity
   act: 2
   type: super_ring
+  obj_id: 143
   requirements:
     - character: Sonic
     - character: Tails
@@ -50,6 +56,7 @@
   zone: Hydrocity
   act: 2
   type: 1_up
+  obj_id: 163
   requirements:
     - character: Sonic
     - character: Tails
@@ -58,6 +65,7 @@
   zone: Hydrocity
   act: 2
   type: super_ring
+  obj_id: 95
   requirements:
     - character: Tails
     - character: Knuckles
@@ -65,6 +73,7 @@
   zone: Hydrocity
   act: 2
   type: super_ring
+  obj_id: 96
   requirements:
     - character: Tails
     - character: Knuckles
@@ -72,6 +81,7 @@
   zone: Hydrocity
   act: 2
   type: super_ring
+  obj_id: 97
   requirements:
     - character: Tails
     - character: Knuckles
@@ -79,6 +89,7 @@
   zone: Hydrocity
   act: 2
   type: water_shield
+  obj_id: 98
   requirements:
     - character: Tails
     - character: Knuckles
@@ -86,6 +97,7 @@
   zone: Hydrocity
   act: 2
   type: invincibility
+  obj_id: 99
   requirements:
     - character: Sonic
     - character: Tails
@@ -94,6 +106,7 @@
   zone: Hydrocity
   act: 2
   type: super_ring
+  obj_id: 233
   requirements:
     - character: Sonic
     - character: Tails
@@ -102,6 +115,7 @@
   zone: Hydrocity
   act: 2
   type: 1_up
+  obj_id: 190
   requirements:
     - character: Sonic
     - character: Tails
@@ -110,6 +124,7 @@
   zone: Hydrocity
   act: 2
   type: invincibility
+  obj_id: 196
   requirements:
     - character: Sonic
     - character: Tails
@@ -118,6 +133,7 @@
   zone: Hydrocity
   act: 2
   type: water_shield
+  obj_id: 222
   requirements:
     - character: Sonic
       super_state: super
@@ -127,6 +143,7 @@
   zone: Hydrocity
   act: 2
   type: invincibility
+  obj_id: 297
   requirements:
     - character: Sonic
     - character: Tails
@@ -135,6 +152,7 @@
   zone: Hydrocity
   act: 2
   type: super_ring
+  obj_id: 292
   requirements:
     - character: Sonic
     - character: Tails
@@ -143,6 +161,7 @@
   zone: Hydrocity
   act: 2
   type: water_shield
+  obj_id: 374
   requirements:
     - character: Sonic
       super_state: hyper
@@ -151,6 +170,7 @@
   zone: Hydrocity
   act: 2
   type: robotnik
+  obj_id: 338
   requirements:
     - character: Sonic
     - character: Tails
@@ -159,6 +179,7 @@
   zone: Hydrocity
   act: 2
   type: super_ring
+  obj_id: 357
   requirements:
     - character: Sonic
       super_state: hyper
@@ -167,6 +188,7 @@
   zone: Hydrocity
   act: 2
   type: water_shield
+  obj_id: 427
   requirements:
     - character: Sonic
     - character: Tails
@@ -175,6 +197,7 @@
   zone: Hydrocity
   act: 2
   type: 1_up
+  obj_id: 386
   requirements:
     - character: Sonic
     - character: Tails
@@ -183,6 +206,7 @@
   zone: Hydrocity
   act: 2
   type: super_ring
+  obj_id: 391
   requirements:
     - character: Sonic
     - character: Tails

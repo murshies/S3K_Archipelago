@@ -124,6 +124,7 @@ class Location:
     zone: str
     act: typing.Optional[int]
     location_type: str
+    obj_id: int
     requirements: list[LocationRequirement]
     location_id: int
 
@@ -195,6 +196,9 @@ class LocationSet:
                             'type': 'string',
                             'enum': list(types.all_type_names)
                         },
+                        'obj_id': {
+                            'type': 'integer',
+                        },
                         'requirements': {
                             'type': 'array',
                             'items': {
@@ -229,6 +233,7 @@ class LocationSet:
                 zone=entry['zone'],
                 act=entry.get('act'),
                 location_type=entry['type'],
+                obj_id=entry['obj_id'],
                 requirements=[
                     LocationRequirement(
                         character=req.get('character'),

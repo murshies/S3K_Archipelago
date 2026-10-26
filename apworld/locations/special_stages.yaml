@@ -1,6 +1,7 @@
 - name: Emerald
   zone: Special Stage 1
   type: emerald
+  obj_id: 0x8100
   requirements:
     - character: Sonic
     - character: Tails
@@ -8,6 +9,7 @@
 - name: Perfect
   zone: Special Stage 1
   type: special_stage_perfect
+  obj_id: 0x8200
   requirements:
     - character: Sonic
     - character: Tails
@@ -15,6 +17,7 @@
 - name: Emerald
   zone: Special Stage 2
   type: emerald
+  obj_id: 0x8100
   requirements:
     - character: Sonic
     - character: Tails
@@ -22,6 +25,7 @@
 - name: Perfect
   zone: Special Stage 2
   type: special_stage_perfect
+  obj_id: 0x8200
   requirements:
     - character: Sonic
     - character: Tails
@@ -29,6 +33,7 @@
 - name: Emerald
   zone: Special Stage 3
   type: emerald
+  obj_id: 0x8100
   requirements:
     - character: Sonic
     - character: Tails
@@ -36,6 +41,7 @@
 - name: Perfect
   zone: Special Stage 3
   type: special_stage_perfect
+  obj_id: 0x8200
   requirements:
     - character: Sonic
     - character: Tails
@@ -43,6 +49,7 @@
 - name: Emerald
   zone: Special Stage 4
   type: emerald
+  obj_id: 0x8100
   requirements:
     - character: Sonic
     - character: Tails
@@ -50,6 +57,7 @@
 - name: Perfect
   zone: Special Stage 4
   type: special_stage_perfect
+  obj_id: 0x8200
   requirements:
     - character: Sonic
     - character: Tails
@@ -57,6 +65,7 @@
 - name: Emerald
   zone: Special Stage 5
   type: emerald
+  obj_id: 0x8100
   requirements:
     - character: Sonic
     - character: Tails
@@ -64,6 +73,7 @@
 - name: Perfect
   zone: Special Stage 5
   type: special_stage_perfect
+  obj_id: 0x8200
   requirements:
     - character: Sonic
     - character: Tails
@@ -71,6 +81,7 @@
 - name: Emerald
   zone: Special Stage 6
   type: emerald
+  obj_id: 0x8100
   requirements:
     - character: Sonic
     - character: Tails
@@ -78,6 +89,7 @@
 - name: Perfect
   zone: Special Stage 6
   type: special_stage_perfect
+  obj_id: 0x8200
   requirements:
     - character: Sonic
     - character: Tails
@@ -85,6 +97,7 @@
 - name: Emerald
   zone: Special Stage 7
   type: emerald
+  obj_id: 0x8100
   requirements:
     - character: Sonic
     - character: Tails
@@ -92,6 +105,7 @@
 - name: Perfect
   zone: Special Stage 7
   type: special_stage_perfect
+  obj_id: 0x8200
   requirements:
     - character: Sonic
     - character: Tails
@@ -99,6 +113,7 @@
 - name: Emerald
   zone: Special Stage 8
   type: emerald
+  obj_id: 0x8100
   requirements:
     - character: Sonic
     - character: Tails
@@ -106,6 +121,7 @@
 - name: Perfect
   zone: Special Stage 8
   type: special_stage_perfect
+  obj_id: 0x8200
   requirements:
     - character: Sonic
     - character: Tails
@@ -113,6 +129,7 @@
 - name: Emerald
   zone: Special Stage 9
   type: emerald
+  obj_id: 0x8100
   requirements:
     - character: Sonic
     - character: Tails
@@ -120,6 +137,7 @@
 - name: Perfect
   zone: Special Stage 9
   type: special_stage_perfect
+  obj_id: 0x8200
   requirements:
     - character: Sonic
     - character: Tails
@@ -127,6 +145,7 @@
 - name: Emerald
   zone: Special Stage 10
   type: emerald
+  obj_id: 0x8100
   requirements:
     - character: Sonic
     - character: Tails
@@ -134,6 +153,7 @@
 - name: Perfect
   zone: Special Stage 10
   type: special_stage_perfect
+  obj_id: 0x8200
   requirements:
     - character: Sonic
     - character: Tails
@@ -141,6 +161,7 @@
 - name: Emerald
   zone: Special Stage 11
   type: emerald
+  obj_id: 0x8100
   requirements:
     - character: Sonic
     - character: Tails
@@ -148,6 +169,7 @@
 - name: Perfect
   zone: Special Stage 11
   type: special_stage_perfect
+  obj_id: 0x8200
   requirements:
     - character: Sonic
     - character: Tails
@@ -155,6 +177,7 @@
 - name: Emerald
   zone: Special Stage 12
   type: emerald
+  obj_id: 0x8100
   requirements:
     - character: Sonic
     - character: Tails
@@ -162,6 +185,7 @@
 - name: Perfect
   zone: Special Stage 12
   type: special_stage_perfect
+  obj_id: 0x8200
   requirements:
     - character: Sonic
     - character: Tails
@@ -169,6 +193,7 @@
 - name: Emerald
   zone: Special Stage 13
   type: emerald
+  obj_id: 0x8100
   requirements:
     - character: Sonic
     - character: Tails
@@ -176,6 +201,7 @@
 - name: Perfect
   zone: Special Stage 13
   type: special_stage_perfect
+  obj_id: 0x8200
   requirements:
     - character: Sonic
     - character: Tails
@@ -183,6 +209,7 @@
 - name: Emerald
   zone: Special Stage 14
   type: emerald
+  obj_id: 0x8100
   requirements:
     - character: Sonic
     - character: Tails
@@ -190,6 +217,7 @@
 - name: Perfect
   zone: Special Stage 14
   type: special_stage_perfect
+  obj_id: 0x8200
   requirements:
     - character: Sonic
     - character: Tails
