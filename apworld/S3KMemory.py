@@ -1,6 +1,7 @@
 # This file contains an abstraction of Sonic 3 & Knuckles RAM/ROM layout
 from dataclasses import dataclass
 from enum import Enum
+import typing
 
 from . import consts
 from . import locations
@@ -215,7 +216,6 @@ ZONE_TO_NAME: dict[Zone, str] = {
     Zone.HIDDEN_PALACE: consts.ZONE_HIDDEN_PALACE,
     Zone.SKY_SANCTUARY: consts.ZONE_SKY_SANCTUARY,
     Zone.DEATH_EGG: consts.ZONE_DEATH_EGG,
-    Zone.DEATH_EGG_BOSS: consts.ZONE_DEATH_EGG_BOSS,
     Zone.DOOMSDAY: consts.ZONE_DOOMSDAY,
 }
 
@@ -355,17 +355,23 @@ class LocationBufferEntry:
                 loc.zone == f'Special Stage {special_stage_num}' and
                 self.obj_id == loc.obj_id
             )
-        elif self.zone == Zone.SKY_SANCTUARY and self.act == 1:
+
+        try:
+            zone = Zone(self.zone)
+        except ValueError:
+            return False
+
+        if zone == Zone.SKY_SANCTUARY and self.act == 1:
             return (
                 loc.zone == consts.ZONE_KNUCKLES_SKY_SANCTUARY and
                 loc.obj_id == self.obj_id
             )
-        elif self.zone == Zone.SKY_SANCTUARY:
+        elif zone == Zone.SKY_SANCTUARY:
             return (
                 loc.zone == consts.ZONE_SKY_SANCTUARY and
                 loc.obj_id == self.obj_id
             )
-        elif self.zone == Zone.HIDDEN_PALACE and self.act == 0:
+        elif zone == Zone.HIDDEN_PALACE and self.act == 0:
             # It's odd but the game uses Hidden Palace act 1 for the Lava Reef
             # act 2 boss
             return (
@@ -373,25 +379,31 @@ class LocationBufferEntry:
                 loc.act == 3 and
                 loc.obj_id == self.obj_id
             )
-        elif self.zone == Zone.HIDDEN_PALACE and self.act == 1:
+        elif zone == Zone.HIDDEN_PALACE and self.act == 1:
             # ...meaning act 2 is the actual Hidden Palace zone
             return (
                 loc.zone == consts.ZONE_HIDDEN_PALACE and
                 loc.obj_id == self.obj_id
             )
-        elif self.zone == Zone.DOOMSDAY:
+        elif zone == Zone.DEATH_EGG_BOSS and self.act == 0:
+            return (
+                loc.zone == consts.ZONE_DEATH_EGG and
+                loc.act == 2 and
+                loc.obj_id == self.obj_id
+            )
+        elif zone == Zone.DOOMSDAY:
             return (
                 loc.zone == consts.ZONE_DOOMSDAY and
                 loc.obj_id == self.obj_id
             )
 
         return (
-            loc.zone == ZONE_TO_NAME[Zone(self.zone)] and
+            loc.zone == ZONE_TO_NAME.get(zone) and
             loc.act == self.act + 1 and
             loc.obj_id == self.obj_id
         )
 
-    def to_location(self, loc_set: locations.LocationSet) -> locations.Location:
+    def to_location(self, loc_set: locations.LocationSet) -> typing.Optional[locations.Location]:
         matches = loc_set.filter_locations(self._loc_filter)
         if len(matches) != 1:
             return None

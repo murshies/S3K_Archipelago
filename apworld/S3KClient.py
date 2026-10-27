@@ -219,8 +219,6 @@ class S3KClient(BizHawkClient):
         Reads the location buffer from the game's RAM and sends any new
         location checks to the server.
         """
-        if ctx.slot is None or not ctx.server_locations:
-            return
         data = (await bizhawk.read(ctx.bizhawk_ctx, [S3KMemory.location_buffer]))[0]
         buffer = S3KMemory.LocationBuffer.from_bytes(data)
         current_keys = {entry.key for entry in buffer.entries} if buffer.is_valid else set()
@@ -279,8 +277,10 @@ class S3KClient(BizHawkClient):
         needed.
         """
         next_seed_slot = (ctx.seed_name, ctx.slot)
-        if self.curr_seed_slot is None or self.curr_seed_slot != next_seed_slot:
+        if self.curr_seed_slot != next_seed_slot:
+            self.curr_seed_slot = next_seed_slot
             self._location_set = None
+            self.location_cache = {}
         if self._location_set is not None:
             return self._location_set
         loc_set = locations.load_location_set()  # start with everything
@@ -320,6 +320,11 @@ class S3KClient(BizHawkClient):
         marks = {}
         checked = ctx.checked_locations | ctx.locations_checked
 
+        try:
+            game_zone = S3KMemory.Zone(zone)
+        except ValueError:
+            return marks
+
         def _loc_filter(loc: locations.Location, ts: locations.LocationTypeSet) -> bool:
             """
             Given the zone and act from the game, what locations are applicable?
@@ -330,17 +335,17 @@ class S3KClient(BizHawkClient):
                     loc.location_type == consts.LOCTYPE_BIG_RING
                 )
 
-            if zone == S3KMemory.Zone.HIDDEN_PALACE and act == 0:
+            if game_zone == S3KMemory.Zone.HIDDEN_PALACE and act == 0:
                 return (
                     loc.zone == consts.ZONE_LAVA_REEF and
                     loc.act == 3 and
                     type_filter()
                 )
-            elif zone == S3KMemory.Zone.HIDDEN_PALACE and act == 1:
+            elif game_zone == S3KMemory.Zone.HIDDEN_PALACE and act == 1:
                 return loc.zone == consts.ZONE_HIDDEN_PALACE and type_filter()
-            elif zone == S3KMemory.Zone.SKY_SANCTUARY and act == 0:
+            elif game_zone == S3KMemory.Zone.SKY_SANCTUARY and act == 0:
                 return loc.zone == consts.ZONE_SKY_SANCTUARY and type_filter()
-            elif zone == S3KMemory.Zone.ANGEL_ISLAND:
+            elif game_zone == S3KMemory.Zone.ANGEL_ISLAND:
                 if act == 0:
                     # Filter out the burnt section ones
                     return (
@@ -360,21 +365,17 @@ class S3KClient(BizHawkClient):
                     )
             else:
                 return (
-                    loc.zone == S3KMemory.ZONE_TO_NAME.get(S3KMemory.Zone(zone)) and
+                    loc.zone == S3KMemory.ZONE_TO_NAME.get(game_zone) and
                     loc.act == act + 1 and
                     type_filter()
                 )
 
-        next_seed_slot = (ctx.seed_name, ctx.slot)
-        if self.curr_seed_slot is None or self.curr_seed_slot != next_seed_slot:
-            self.curr_seed_slot = next_seed_slot
-            self.location_cache = {}
-
+        loc_set = self.location_set(ctx)
         cache_key = (zone, act)
         if cache_key in self.location_cache:
             locs = self.location_cache[cache_key]
         else:
-            locs = self.location_set(ctx).filter_locations(_loc_filter)
+            locs = loc_set.filter_locations(_loc_filter)
             self.location_cache[cache_key] = locs
 
         for loc in locs:

@@ -29,7 +29,7 @@
   zone: Hydrocity
   act: 1
   type: miniboss
-  obj_id: 8001
+  obj_id: 0x8001
   requirements:
     - character: Sonic
     - character: Tails
