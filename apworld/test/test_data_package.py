@@ -7,7 +7,7 @@ leaves clients unable to look up location and item names.
 
 import unittest
 
-from .. import ALL_ITEMS, ALL_LOCATIONS, load_location_set, S3KWorld
+from .. import ALL_ITEMS, ALL_LOCATIONS, locations, S3KWorld
 from . import S3KTestBase
 
 # Taken when this module is imported, which is before any test generates a
@@ -31,7 +31,7 @@ class TestDataPackage(unittest.TestCase):
                          len(set(S3KWorld.item_name_to_id.values())))
 
     def test_ids_stable(self) -> None:
-        reloaded = {loc.display_name: loc.location_id for loc in load_location_set().all_locations}
+        reloaded = {loc.display_name: loc.location_id for loc in locations.load_location_set().all_locations}
         self.assertEqual(S3KWorld.location_name_to_id, reloaded)
 
 
