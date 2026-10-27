@@ -2,6 +2,7 @@
 # can be obtained during a game).
 
 from dataclasses import dataclass
+import importlib.resources
 import typing
 import yaml
 
@@ -111,3 +112,9 @@ class ItemSet:
 
     def item_with_name(self, item_name: str) -> Item:
         return self._items[item_name]
+
+
+def load_item_set() -> ItemSet:
+    item_yaml_filename = importlib.resources.files(__package__) / 'items.yaml'
+    with importlib.resources.as_file(item_yaml_filename) as items_file:
+        return ItemSet.from_file(items_file)

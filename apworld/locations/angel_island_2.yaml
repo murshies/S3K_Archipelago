@@ -11,7 +11,7 @@
   zone: Angel Island
   act: 2
   type: big_ring
-  obj_id: 25
+  obj_id: 226
   requirements:
     - character: Sonic
     - character: Tails
@@ -19,7 +19,7 @@
   zone: Angel Island
   act: 2
   type: big_ring
-  obj_id: 19
+  obj_id: 673
   requirements:
     - character: Sonic
     - character: Tails

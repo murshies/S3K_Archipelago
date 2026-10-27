@@ -202,52 +202,52 @@ ACTS: dict[tuple[int, int], ActLocations] = {
 }
 
 
-def special_stage_zone(stage: int) -> str:
-    """stage is the zero based special stage number written by the game"""
-    return f'Special Stage {stage + 1}'
+# def special_stage_zone(stage: int) -> str:
+#     """stage is the zero based special stage number written by the game"""
+#     return f'Special Stage {stage + 1}'
 
 
-def resolve(entry: LocationBufferEntry) -> tuple[typing.Optional[str], str]:
-    """
-    Translates a location buffer entry into an Archipelago location name. The
-    return value is (location name, description). The location name is None if
-    the entry doesn't correspond to any location; in that case, the
-    description explains why.
-    """
-    loc_id = entry.location_id
-    if LOC_SS_EMERALD <= loc_id < LOC_SS_EMERALD + NUM_SPECIAL_STAGES:
-        zone = special_stage_zone(loc_id - LOC_SS_EMERALD)
-        name = format_display_name(zone, None, LOC_NAME_SS_EMERALD)
-        return name, name
-    if LOC_SS_PERFECT <= loc_id < LOC_SS_PERFECT + NUM_SPECIAL_STAGES:
-        zone = special_stage_zone(loc_id - LOC_SS_PERFECT)
-        name = format_display_name(zone, None, LOC_NAME_SS_PERFECT)
-        return name, name
+# def resolve(entry: LocationBufferEntry) -> tuple[typing.Optional[str], str]:
+#     """
+#     Translates a location buffer entry into an Archipelago location name. The
+#     return value is (location name, description). The location name is None if
+#     the entry doesn't correspond to any location; in that case, the
+#     description explains why.
+#     """
+#     loc_id = entry.location_id
+#     if LOC_SS_EMERALD <= loc_id < LOC_SS_EMERALD + NUM_SPECIAL_STAGES:
+#         zone = special_stage_zone(loc_id - LOC_SS_EMERALD)
+#         name = format_display_name(zone, None, LOC_NAME_SS_EMERALD)
+#         return name, name
+#     if LOC_SS_PERFECT <= loc_id < LOC_SS_PERFECT + NUM_SPECIAL_STAGES:
+#         zone = special_stage_zone(loc_id - LOC_SS_PERFECT)
+#         name = format_display_name(zone, None, LOC_NAME_SS_PERFECT)
+#         return name, name
 
-    act = ACTS.get((entry.zone, entry.act))
-    if act is None:
-        return None, f'no locations in zone 0x{entry.zone:02X} act {entry.act}'
-    act_name = format_display_name(act.zone, act.act, '').removesuffix(' - ')
+#     act = ACTS.get((entry.zone, entry.act))
+#     if act is None:
+#         return None, f'no locations in zone 0x{entry.zone:02X} act {entry.act}'
+#     act_name = format_display_name(act.zone, act.act, '').removesuffix(' - ')
 
-    if loc_id == LOC_ACT_COMPLETE:
-        loc_name = LOC_NAME_COMPLETE
-    elif loc_id == LOC_BOSS:
-        if act.boss is None:
-            return None, f'{act_name} has no boss location'
-        loc_name = act.boss
-    elif loc_id in act.special_locations:
-        loc_name = act.special_locations[loc_id]
-    elif loc_id & 0x8000:
-        return None, f'unknown special location id 0x{loc_id:04X}'
-    elif loc_id in act.item_boxes:
-        loc_name = f'{LOC_NAME_ITEM_BOX} {act.item_boxes[loc_id]}'
-    elif loc_id in act.big_rings:
-        loc_name = f'{LOC_NAME_BIG_RING} {act.big_rings[loc_id]}'
-    else:
-        return None, f'{act_name} respawn index {loc_id} is not mapped to an item box or big ring'
+#     if loc_id == LOC_ACT_COMPLETE:
+#         loc_name = LOC_NAME_COMPLETE
+#     elif loc_id == LOC_BOSS:
+#         if act.boss is None:
+#             return None, f'{act_name} has no boss location'
+#         loc_name = act.boss
+#     elif loc_id in act.special_locations:
+#         loc_name = act.special_locations[loc_id]
+#     elif loc_id & 0x8000:
+#         return None, f'unknown special location id 0x{loc_id:04X}'
+#     elif loc_id in act.item_boxes:
+#         loc_name = f'{LOC_NAME_ITEM_BOX} {act.item_boxes[loc_id]}'
+#     elif loc_id in act.big_rings:
+#         loc_name = f'{LOC_NAME_BIG_RING} {act.big_rings[loc_id]}'
+#     else:
+#         return None, f'{act_name} respawn index {loc_id} is not mapped to an item box or big ring'
 
-    name = format_display_name(act.zone, act.act, loc_name)
-    return name, name
+#     name = format_display_name(act.zone, act.act, loc_name)
+#     return name, name
 
 
 @dataclass(frozen=True)

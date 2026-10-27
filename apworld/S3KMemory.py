@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from enum import Enum
 
 from . import consts
+from . import locations
 
 MEM_RAM: str = "68K RAM"
 MEM_ROM: str = "ROM"
@@ -200,6 +201,25 @@ class Zone(Enum):
     DOOMSDAY = 12
 
 
+ZONE_TO_NAME: dict[Zone, str] = {
+    Zone.ANGEL_ISLAND: consts.ZONE_ANGEL_ISLAND,
+    Zone.HYDROCITY: consts.ZONE_HYDROCITY,
+    Zone.MARBLE_GARDEN: consts.ZONE_MARBLE_GARDEN,
+    Zone.CARNIVAL_NIGHT: consts.ZONE_CARNIVAL_NIGHT,
+    Zone.ICE_CAP: consts.ZONE_ICE_CAP,
+    Zone.LAUNCH_BASE: consts.ZONE_LAUNCH_BASE,
+    Zone.MUSHROOM_HILL: consts.ZONE_MUSHROOM_HILL,
+    Zone.FLYING_BATTERY: consts.ZONE_FLYING_BATTERY,
+    Zone.SANDOPOLIS: consts.ZONE_SANDOPOLIS,
+    Zone.LAVA_REEF: consts.ZONE_LAVA_REEF,
+    Zone.HIDDEN_PALACE: consts.ZONE_HIDDEN_PALACE,
+    Zone.SKY_SANCTUARY: consts.ZONE_SKY_SANCTUARY,
+    Zone.DEATH_EGG: consts.ZONE_DEATH_EGG,
+    Zone.DEATH_EGG_BOSS: consts.ZONE_DEATH_EGG_BOSS,
+    Zone.DOOMSDAY: consts.ZONE_DOOMSDAY,
+}
+
+
 class SaveFileCharacter(Enum):
     """
     These values correspond to the values used in the save slot in the game's
@@ -307,36 +327,117 @@ def save_emerald_bitmask(emeralds: int) -> int:
     return emerald_bitmask
 
 
-@dataclass(frozen=True)
 class LocationBufferEntry:
-    """
-    A single filled slot from the location buffer. zone and act are the raw
-    values from Apparent_zone_and_act (so act is 0 for act 1, 1 for act 2).
-    """
     zone: int
     act: int
-    location_id: int
+    obj_id: int
 
-    @property
-    def is_special_stage(self) -> bool:
-        return (LOC_SS_EMERALD <= self.location_id < LOC_SS_EMERALD + NUM_SPECIAL_STAGES or
-                LOC_SS_PERFECT <= self.location_id < LOC_SS_PERFECT + NUM_SPECIAL_STAGES)
+    def __init__(self, zone: int, act: int, obj_id: int):
+        self.zone = zone
+        self.act = act
+        self.obj_id = obj_id
+
+    def _loc_filter(
+            self,
+            loc: locations.Location,
+            ts: locations.LocationTypeSet,
+    ) -> bool:
+        # We have to handle a few special cases:
+        if self.obj_id >= 0x8100 and self.obj_id < 0x8200:
+            special_stage_num = self.obj_id - 0x8100 + 1
+            return (
+                loc.zone == f'Special Stage {special_stage_num}' and
+                self.obj_id == loc.obj_id
+            )
+        elif self.obj_id >= 0x8200 and self.obj_id < 0x8300:
+            special_stage_num = self.obj_id - 0x8200 + 1
+            return (
+                loc.zone == f'Special Stage {special_stage_num}' and
+                self.obj_id == loc.obj_id
+            )
+        elif self.zone == Zone.SKY_SANCTUARY and self.act == 1:
+            return (
+                loc.zone == consts.ZONE_KNUCKLES_SKY_SANCTUARY and
+                loc.obj_id == self.obj_id
+            )
+        elif self.zone == Zone.SKY_SANCTUARY:
+            return (
+                loc.zone == consts.ZONE_SKY_SANCTUARY and
+                loc.obj_id == self.obj_id
+            )
+        elif self.zone == Zone.HIDDEN_PALACE and self.act == 0:
+            # It's odd but the game uses Hidden Palace act 1 for the Lava Reef
+            # act 2 boss
+            return (
+                loc.zone == consts.ZONE_LAVA_REEF and
+                loc.act == 3 and
+                loc.obj_id == self.obj_id
+            )
+        elif self.zone == Zone.HIDDEN_PALACE and self.act == 1:
+            # ...meaning act 2 is the actual Hidden Palace zone
+            return (
+                loc.zone == consts.ZONE_HIDDEN_PALACE and
+                loc.obj_id == self.obj_id
+            )
+        elif self.zone == Zone.DOOMSDAY:
+            return (
+                loc.zone == consts.ZONE_DOOMSDAY and
+                loc.obj_id == self.obj_id
+            )
+
+        return (
+            loc.zone == ZONE_TO_NAME[Zone(self.zone)] and
+            loc.act == self.act + 1 and
+            loc.obj_id == self.obj_id
+        )
+
+    def to_location(self, loc_set: locations.LocationSet) -> locations.Location:
+        matches = loc_set.filter_locations(self._loc_filter)
+        if len(matches) != 1:
+            return None
+        return matches[0]
 
     @property
     def key(self) -> tuple:
-        """
-        A key which uniquely identifies the checked location. The zone and act
-        have no meaning for special stage locations, so they are left out.
-        """
-        if self.is_special_stage:
-            return (self.location_id,)
-        return (self.zone, self.act, self.location_id)
+        if self.obj_id >= 0x8100 and self.obj_id < 0x8300:
+            return (self.obj_id,)
+        return (self.zone, self.act, self.obj_id)
 
     def __str__(self) -> str:
-        if self.is_special_stage:
-            return f"special stage id=0x{self.location_id:04X}"
         return (f"zone=0x{self.zone:02X} act={self.act} "
-                f"id=0x{self.location_id:04X} ({self.location_id})")
+                f"id=0x{self.obj_id:04X} ({self.obj_id})")
+
+
+# @dataclass(frozen=True)
+# class LocationBufferEntry:
+#     """
+#     A single filled slot from the location buffer. zone and act are the raw
+#     values from Apparent_zone_and_act (so act is 0 for act 1, 1 for act 2).
+#     """
+#     zone: int
+#     act: int
+#     location_id: int
+
+#     @property
+#     def is_special_stage(self) -> bool:
+#         return (LOC_SS_EMERALD <= self.location_id < LOC_SS_EMERALD + NUM_SPECIAL_STAGES or
+#                 LOC_SS_PERFECT <= self.location_id < LOC_SS_PERFECT + NUM_SPECIAL_STAGES)
+
+#     @property
+#     def key(self) -> tuple:
+#         """
+#         A key which uniquely identifies the checked location. The zone and act
+#         have no meaning for special stage locations, so they are left out.
+#         """
+#         if self.is_special_stage:
+#             return (self.location_id,)
+#         return (self.zone, self.act, self.location_id)
+
+#     def __str__(self) -> str:
+#         if self.is_special_stage:
+#             return f"special stage id=0x{self.location_id:04X}"
+#         return (f"zone=0x{self.zone:02X} act={self.act} "
+#                 f"id=0x{self.location_id:04X} ({self.location_id})")
 
 
 @dataclass
@@ -390,6 +491,6 @@ class LocationBuffer:
             slots.append(LocationBufferEntry(
                 zone=zone_act & 0x3F,
                 act=zone_act >> 6,
-                location_id=(id_high << 8) | id_low,
+                obj_id=(id_high << 8) | id_low,
             ))
         return LocationBuffer(integrity=integrity, next_slot=next_slot, slots=slots)
