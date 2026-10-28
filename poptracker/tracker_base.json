@@ -141,7 +141,7 @@
                                         },
                                         {
                                             "type": "group",
-                                            "header": "Settings (filled in from Archipelago)",
+                                            "header": "Settings",
                                             "content": {
                                                 "type": "itemgrid",
                                                 "item_margin": "2,2",
