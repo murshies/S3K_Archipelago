@@ -2,6 +2,7 @@
   zone: Death Egg
   act: 2
   type: complete
+  obj_id: 0x8000
   requirements:
     - character: Sonic
     - character: Tails
@@ -9,6 +10,7 @@
   zone: Death Egg
   act: 2
   type: boss
+  obj_id: 0x8001
   requirements:
     - character: Sonic
     - character: Tails
@@ -16,6 +18,7 @@
   zone: Death Egg
   act: 2
   type: lightning_shield
+  obj_id: 85
   requirements:
     - character: Sonic
     - character: Tails
@@ -26,6 +29,7 @@
   zone: Death Egg
   act: 2
   type: super_ring
+  obj_id: 86
   requirements:
     - character: Sonic
     - character: Tails
@@ -36,6 +40,7 @@
   zone: Death Egg
   act: 2
   type: lightning_shield
+  obj_id: 81
   requirements:
     - character: Sonic
     - character: Tails
@@ -46,6 +51,7 @@
   zone: Death Egg
   act: 2
   type: flame_shield
+  obj_id: 35
   requirements:
     - character: Sonic
     - character: Tails
@@ -56,6 +62,7 @@
   zone: Death Egg
   act: 2
   type: lightning_shield
+  obj_id: 87
   requirements:
     - character: Sonic
     - character: Tails
@@ -66,6 +73,7 @@
   zone: Death Egg
   act: 2
   type: water_shield
+  obj_id: 102
   requirements:
     - character: Sonic
     - character: Tails
@@ -76,6 +84,7 @@
   zone: Death Egg
   act: 2
   type: super_ring
+  obj_id: 255
   requirements:
     - character: Sonic
     - character: Tails
@@ -86,6 +95,7 @@
   zone: Death Egg
   act: 2
   type: super_ring
+  obj_id: 253
   requirements:
     - character: Sonic
     - character: Tails
@@ -96,6 +106,7 @@
   zone: Death Egg
   act: 2
   type: super_ring
+  obj_id: 250
   requirements:
     - character: Sonic
     - character: Tails
@@ -106,6 +117,7 @@
   zone: Death Egg
   act: 2
   type: robotnik
+  obj_id: 321
   requirements:
     - character: Sonic
     - character: Tails
@@ -116,6 +128,7 @@
   zone: Death Egg
   act: 2
   type: super_ring
+  obj_id: 322
   requirements:
     - character: Sonic
     - character: Tails
@@ -126,6 +139,7 @@
   zone: Death Egg
   act: 2
   type: 1_up
+  obj_id: 182
   requirements:
     - character: Sonic
     - character: Tails
@@ -136,6 +150,7 @@
   zone: Death Egg
   act: 2
   type: super_ring
+  obj_id: 197
   requirements:
     - character: Sonic
     - character: Tails
@@ -146,6 +161,7 @@
   zone: Death Egg
   act: 2
   type: super_ring
+  obj_id: 199
   requirements:
     - character: Sonic
     - character: Tails
@@ -156,6 +172,7 @@
   zone: Death Egg
   act: 2
   type: super_ring
+  obj_id: 203
   requirements:
     - character: Sonic
     - character: Tails
@@ -166,6 +183,7 @@
   zone: Death Egg
   act: 2
   type: super_ring
+  obj_id: 155
   requirements:
     - character: Sonic
     - character: Tails
@@ -176,6 +194,7 @@
   zone: Death Egg
   act: 2
   type: water_shield
+  obj_id: 156
   requirements:
     - character: Sonic
     - character: Tails
@@ -186,6 +205,7 @@
   zone: Death Egg
   act: 2
   type: super_ring
+  obj_id: 271
   requirements:
     - character: Sonic
     - character: Tails
@@ -196,6 +216,7 @@
   zone: Death Egg
   act: 2
   type: super_ring
+  obj_id: 269
   requirements:
     - character: Sonic
     - character: Tails
@@ -206,6 +227,7 @@
   zone: Death Egg
   act: 2
   type: 1_up
+  obj_id: 267
   requirements:
     - character: Sonic
     - character: Tails
@@ -216,6 +238,7 @@
   zone: Death Egg
   act: 2
   type: super_ring
+  obj_id: 440
   requirements:
     - character: Sonic
     - character: Tails
@@ -226,6 +249,7 @@
   zone: Death Egg
   act: 2
   type: super_ring
+  obj_id: 439
   requirements:
     - character: Sonic
     - character: Tails

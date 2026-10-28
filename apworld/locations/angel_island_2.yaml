@@ -2,6 +2,7 @@
   zone: Angel Island
   act: 2
   type: complete
+  obj_id: 0x8000
   requirements:
     - character: Sonic
     - character: Tails
@@ -10,6 +11,7 @@
   zone: Angel Island
   act: 2
   type: big_ring
+  obj_id: 226
   requirements:
     - character: Sonic
     - character: Tails
@@ -20,6 +22,7 @@
   zone: Angel Island
   act: 2
   type: big_ring
+  obj_id: 673
   requirements:
     - character: Sonic
     - character: Tails
@@ -30,6 +33,7 @@
   zone: Angel Island
   act: 2
   type: boss
+  obj_id: 0x8001
   requirements:
     - character: Sonic
     - character: Tails
@@ -38,6 +42,7 @@
   zone: Angel Island
   act: 2
   type: 1_up
+  obj_id: 259
   requirements:
     - character: Sonic
     - character: Tails
@@ -48,6 +53,7 @@
   zone: Angel Island
   act: 2
   type: water_shield
+  obj_id: 265
   requirements:
     - character: Sonic
     - character: Tails
@@ -58,6 +64,7 @@
   zone: Angel Island
   act: 2
   type: 1_up
+  obj_id: 287
   requirements:
     - character: Sonic
     - character: Tails
@@ -68,6 +75,7 @@
   zone: Angel Island
   act: 2
   type: lightning_shield
+  obj_id: 348
   requirements:
     - character: Sonic
     - character: Tails
@@ -78,6 +86,7 @@
   zone: Angel Island
   act: 2
   type: flame_shield
+  obj_id: 414
   requirements:
     - character: Sonic
     - character: Tails
@@ -88,6 +97,7 @@
   zone: Angel Island
   act: 2
   type: lightning_shield
+  obj_id: 494
   requirements:
     - character: Sonic
     - character: Tails
@@ -98,6 +108,7 @@
   zone: Angel Island
   act: 2
   type: super_ring
+  obj_id: 523
   requirements:
     - character: Sonic
     - character: Tails
@@ -108,6 +119,7 @@
   zone: Angel Island
   act: 2
   type: water_shield
+  obj_id: 549
   requirements:
     - character: Sonic
     - character: Tails
@@ -118,6 +130,7 @@
   zone: Angel Island
   act: 2
   type: 1_up
+  obj_id: 545
   requirements:
     - character: Sonic
     - character: Tails
@@ -128,6 +141,7 @@
   zone: Angel Island
   act: 2
   type: 1_up
+  obj_id: 589
   requirements:
     - character: Sonic
     - character: Tails
@@ -138,6 +152,7 @@
   zone: Angel Island
   act: 2
   type: super_ring
+  obj_id: 576
   requirements:
     - character: Sonic
     - character: Tails
@@ -148,6 +163,7 @@
   zone: Angel Island
   act: 2
   type: water_shield
+  obj_id: 578
   requirements:
     - character: Sonic
     - character: Tails
@@ -158,6 +174,7 @@
   zone: Angel Island
   act: 2
   type: super_ring
+  obj_id: 582
   requirements:
     - character: Sonic
     - character: Tails
@@ -168,6 +185,7 @@
   zone: Angel Island
   act: 2
   type: flame_shield
+  obj_id: 676
   requirements:
     - character: Sonic
     - character: Tails
@@ -178,6 +196,7 @@
   zone: Angel Island
   act: 2
   type: flame_shield
+  obj_id: 185
   requirements:
     - character: Knuckles
   poptracker:
@@ -187,6 +206,7 @@
   zone: Angel Island
   act: 2
   type: super_ring
+  obj_id: 228
   requirements:
     - character: Knuckles
   poptracker:
@@ -196,6 +216,7 @@
   zone: Angel Island
   act: 2
   type: lightning_shield
+  obj_id: 292
   requirements:
     - character: Knuckles
   poptracker:

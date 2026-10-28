@@ -2,6 +2,7 @@
   zone: Launch Base
   act: 1
   type: complete
+  obj_id: 0x8000
   requirements:
     - character: Sonic
     - character: Tails
@@ -10,6 +11,7 @@
   zone: Launch Base
   act: 1
   type: big_ring
+  obj_id: 0
   requirements:
     - character: Sonic
     - character: Tails
@@ -21,6 +23,7 @@
   zone: Launch Base
   act: 1
   type: big_ring
+  obj_id: 18
   requirements:
     - character: Sonic
       # See note on item box 5
@@ -34,6 +37,7 @@
   zone: Launch Base
   act: 1
   type: big_ring
+  obj_id: 195
   requirements:
     - character: Sonic
     - character: Tails
@@ -45,6 +49,7 @@
   zone: Launch Base
   act: 1
   type: miniboss
+  obj_id: 0x8001
   requirements:
     - character: Sonic
     - character: Tails
@@ -53,6 +58,7 @@
   zone: Launch Base
   act: 1
   type: super_ring
+  obj_id: 2
   requirements:
     - character: Sonic
     - character: Tails
@@ -64,6 +70,7 @@
   zone: Launch Base
   act: 1
   type: flame_shield
+  obj_id: 33
   requirements:
     - character: Sonic
     - character: Tails
@@ -75,6 +82,7 @@
   zone: Launch Base
   act: 1
   type: super_ring
+  obj_id: 64
   requirements:
     - character: Sonic
     - character: Tails
@@ -86,6 +94,7 @@
   zone: Launch Base
   act: 1
   type: super_ring
+  obj_id: 71
   requirements:
     - character: Sonic
     - character: Tails
@@ -97,6 +106,7 @@
   zone: Launch Base
   act: 1
   type: super_ring
+  obj_id: 75
   requirements:
     - character: Sonic
       # Go to the pyramid of rings directly to the right of item box 8. Do a
@@ -115,6 +125,7 @@
   zone: Launch Base
   act: 1
   type: invincibility
+  obj_id: 77
   requirements:
     - character: Sonic
       difficulty: hard
@@ -127,6 +138,7 @@
   zone: Launch Base
   act: 1
   type: invincibility
+  obj_id: 112
   requirements:
     - character: Sonic
     - character: Tails
@@ -138,6 +150,7 @@
   zone: Launch Base
   act: 1
   type: invincibility
+  obj_id: 126
   requirements:
     - character: Sonic
       difficulty: hard
@@ -150,6 +163,7 @@
   zone: Launch Base
   act: 1
   type: super_ring
+  obj_id: 196
   requirements:
     - character: Sonic
     - character: Tails
@@ -161,6 +175,7 @@
   zone: Launch Base
   act: 1
   type: water_shield
+  obj_id: 199
   requirements:
     - character: Sonic
     - character: Tails
@@ -172,6 +187,7 @@
   zone: Launch Base
   act: 1
   type: super_ring
+  obj_id: 202
   requirements:
     - character: Sonic
     - character: Tails
@@ -183,6 +199,7 @@
   zone: Launch Base
   act: 1
   type: super_ring
+  obj_id: 159
   requirements:
     - character: Sonic
     - character: Tails
@@ -194,6 +211,7 @@
   zone: Launch Base
   act: 1
   type: power_sneakers
+  obj_id: 113
   requirements:
     - character: Sonic
     - character: Tails
@@ -205,6 +223,7 @@
   zone: Launch Base
   act: 1
   type: super_ring
+  obj_id: 278
   requirements:
     - character: Sonic
     - character: Tails
@@ -216,6 +235,7 @@
   zone: Launch Base
   act: 1
   type: super_ring
+  obj_id: 280
   requirements:
     - character: Sonic
     - character: Tails
@@ -227,6 +247,7 @@
   zone: Launch Base
   act: 1
   type: lightning_shield
+  obj_id: 215
   requirements:
     - character: Sonic
     - character: Tails
@@ -238,6 +259,7 @@
   zone: Launch Base
   act: 1
   type: super_ring
+  obj_id: 218
   requirements:
     - character: Sonic
     - character: Tails
@@ -249,6 +271,7 @@
   zone: Launch Base
   act: 1
   type: flame_shield
+  obj_id: 216
   requirements:
     - character: Sonic
     - character: Tails
@@ -260,6 +283,7 @@
   zone: Launch Base
   act: 1
   type: super_ring
+  obj_id: 287
   requirements:
     - character: Sonic
     - character: Tails
@@ -271,6 +295,7 @@
   zone: Launch Base
   act: 1
   type: super_ring
+  obj_id: 286
   requirements:
     - character: Sonic
     - character: Tails
@@ -282,6 +307,7 @@
   zone: Launch Base
   act: 1
   type: lightning_shield
+  obj_id: 284
   requirements:
     - character: Sonic
     - character: Tails
@@ -293,6 +319,7 @@
   zone: Launch Base
   act: 1
   type: super_ring
+  obj_id: 337
   requirements:
     - character: Sonic
     - character: Tails

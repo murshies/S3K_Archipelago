@@ -2,6 +2,7 @@
   zone: Ice Cap
   act: 2
   type: complete
+  obj_id: 0x8000
   requirements:
     - character: Sonic
     - character: Tails
@@ -10,6 +11,7 @@
   zone: Ice Cap
   act: 2
   type: big_ring
+  obj_id: 256
   requirements:
     - character: Sonic
     - character: Tails
@@ -21,6 +23,7 @@
   zone: Ice Cap
   act: 2
   type: big_ring
+  obj_id: 330
   requirements:
     - character: Sonic
     - character: Tails
@@ -32,6 +35,7 @@
   zone: Ice Cap
   act: 2
   type: big_ring
+  obj_id: 60
   requirements:
     - character: Knuckles
   poptracker:
@@ -41,6 +45,7 @@
   zone: Ice Cap
   act: 2
   type: boss
+  obj_id: 0x8001
   requirements:
     - character: Sonic
     - character: Tails
@@ -49,6 +54,7 @@
   zone: Ice Cap
   act: 2
   type: lightning_shield
+  obj_id: 27
   requirements:
     - character: Sonic
     - character: Tails
@@ -68,6 +74,7 @@
   zone: Ice Cap
   act: 2
   type: invincibility
+  obj_id: 112
   requirements:
     - character: Sonic
     - character: Tails
@@ -81,6 +88,7 @@
   zone: Ice Cap
   act: 2
   type: 1_up
+  obj_id: 138
   requirements:
     - character: Sonic
     - character: Tails
@@ -94,6 +102,7 @@
   zone: Ice Cap
   act: 2
   type: 1_up
+  obj_id: 279
   requirements:
     - character: Sonic
     - character: Tails
@@ -105,6 +114,7 @@
   zone: Ice Cap
   act: 2
   type: robotnik
+  obj_id: 272
   requirements:
     - character: Sonic
     - character: Tails
@@ -116,6 +126,7 @@
   zone: Ice Cap
   act: 2
   type: robotnik
+  obj_id: 275
   requirements:
     - character: Sonic
     - character: Tails
@@ -127,6 +138,7 @@
   zone: Ice Cap
   act: 2
   type: lightning_shield
+  obj_id: 261
   requirements:
     - character: Sonic
     - character: Tails
@@ -138,6 +150,7 @@
   zone: Ice Cap
   act: 2
   type: super_ring
+  obj_id: 263
   requirements:
     - character: Sonic
     - character: Tails
@@ -149,6 +162,7 @@
   zone: Ice Cap
   act: 2
   type: super_ring
+  obj_id: 307
   requirements:
     - character: Sonic
     - character: Tails

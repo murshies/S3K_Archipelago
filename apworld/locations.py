@@ -2,6 +2,7 @@
 # that players could potentially look for items) information.
 
 from dataclasses import dataclass
+import importlib.resources
 import typing
 import yaml
 
@@ -68,6 +69,8 @@ ZONE_ABBREVS = {
     'Special Stage 13': 'SS13',
     'Special Stage 14': 'SS14',
 }
+
+ANGEL_ISLAND_1_APPARENT_ACT_2: set[int] = {49, 79, 121, 134, 133, 19}
 
 
 class InvalidLocationType(Exception):
@@ -178,6 +181,7 @@ class Location:
     zone: str
     act: typing.Optional[int]
     location_type: str
+    obj_id: int
     requirements: list[LocationRequirement]
     location_id: int
     poptracker_info: typing.Optional[PopTrackerInfo]
@@ -241,10 +245,19 @@ def format_display_name(zone: str, act: typing.Optional[int], name: str) -> str:
 class LocationSet:
     _locations: list[Location]
     _types: LocationTypeSet
+    _by_id: dict[int, Location]
 
     def __init__(self, locations: list[Location], types: LocationTypeSet) -> typing.Self:
         self._locations = locations
         self._types = types
+        self._by_id = {}
+        for loc in locations:
+            self._by_id[loc.location_id] = loc
+
+    def by_id(self, location_id: int) -> typing.Optional[Location]:
+        if location_id not in self._by_id:
+            return None
+        return self._by_id[location_id]
 
     @staticmethod
     def from_files(
@@ -289,6 +302,9 @@ class LocationSet:
                             'type': 'string',
                             'enum': list(types.all_type_names)
                         },
+                        'obj_id': {
+                            'type': 'integer',
+                        },
                         'requirements': {
                             'type': 'array',
                             'items': {
@@ -332,6 +348,7 @@ class LocationSet:
                 zone=entry['zone'],
                 act=entry.get('act'),
                 location_type=entry['type'],
+                obj_id=entry['obj_id'],
                 requirements=[
                     LocationRequirement(
                         character=req.get('character'),
@@ -368,3 +385,24 @@ class LocationSet:
             for location in self._locations
             if all(filt(location, self._types) for filt in filters)
         ]
+
+
+def load_location_set() -> LocationSet:
+    """
+    Loads every location definition. Location ids are assigned in the order the
+    definitions are read, so the files are sorted to keep the ids the same no
+    matter what order the filesystem lists them in.
+    """
+    locs_path = importlib.resources.files(__package__) / 'locations'
+
+    loc_types_file = locs_path / 'types.yaml'
+    with importlib.resources.as_file(loc_types_file) as types_file:
+        loc_types = LocationTypeSet.from_file(types_file)
+
+    loc_defs = []
+    for f in sorted(locs_path.iterdir(), key=lambda f: f.name):
+        if f.name.endswith('.yaml') and f.name != 'types.yaml':
+            with f.open('r', encoding='utf-8') as loc_file:
+                loc_defs += yaml.safe_load(loc_file)
+
+    return LocationSet.from_definitions(loc_defs, loc_types)

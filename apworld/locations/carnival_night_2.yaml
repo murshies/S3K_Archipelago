@@ -2,6 +2,7 @@
   zone: Carnival Night
   act: 2
   type: complete
+  obj_id: 0x8000
   requirements:
     - character: Sonic
     - character: Tails
@@ -10,6 +11,7 @@
   zone: Carnival Night
   act: 2
   type: big_ring
+  obj_id: 50
   requirements:
     - character: Sonic
     - character: Tails
@@ -22,6 +24,7 @@
   zone: Carnival Night
   act: 2
   type: big_ring
+  obj_id: 158
   requirements:
     - character: Sonic
     - character: Tails
@@ -34,6 +37,7 @@
   zone: Carnival Night
   act: 2
   type: big_ring
+  obj_id: 110
   requirements:
     - character: Sonic
     - character: Tails
@@ -46,6 +50,7 @@
   zone: Carnival Night
   act: 2
   type: big_ring
+  obj_id: 582
   requirements:
     - character: Sonic
     - character: Tails
@@ -58,6 +63,7 @@
   zone: Carnival Night
   act: 2
   type: big_ring
+  obj_id: 686
   requirements:
     - character: Sonic
     - character: Tails
@@ -69,6 +75,7 @@
   zone: Carnival Night
   act: 2
   type: boss
+  obj_id: 0x8001
   requirements:
     - character: Sonic
     - character: Tails
@@ -85,6 +92,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 21
   requirements:
     - character: Sonic
     - character: Tails
@@ -96,6 +104,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 8
   requirements:
     - character: Sonic
     - character: Tails
@@ -107,6 +116,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 9
   requirements:
     - character: Sonic
     - character: Tails
@@ -118,6 +128,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 11
   requirements:
     - character: Sonic
     - character: Tails
@@ -129,6 +140,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 97
   requirements:
     - character: Sonic
     - character: Tails
@@ -140,6 +152,7 @@
   zone: Carnival Night
   act: 2
   type: water_shield
+  obj_id: 98
   requirements:
     - character: Sonic
     - character: Tails
@@ -151,6 +164,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 99
   requirements:
     - character: Sonic
     - character: Tails
@@ -167,6 +181,7 @@
   zone: Carnival Night
   act: 2
   type: invincibility
+  obj_id: 205
   requirements:
     - character: Sonic
     - character: Tails
@@ -179,6 +194,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 68
   requirements:
     - character: Sonic
     - character: Tails
@@ -191,6 +207,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 56
   requirements:
     - character: Sonic
     - character: Tails
@@ -203,6 +220,7 @@
   zone: Carnival Night
   act: 2
   type: water_shield
+  obj_id: 49
   requirements:
     - character: Sonic
     - character: Tails
@@ -215,6 +233,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 46
   requirements:
     - character: Sonic
     - character: Tails
@@ -227,6 +246,7 @@
   zone: Carnival Night
   act: 2
   type: 1_up
+  obj_id: 16
   requirements:
     - character: Sonic
     - character: Tails
@@ -239,6 +259,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 47
   requirements:
     - character: Sonic
     - character: Tails
@@ -251,6 +272,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 192
   requirements:
     - character: Sonic
     - character: Tails
@@ -263,6 +285,7 @@
   zone: Carnival Night
   act: 2
   type: flame_shield
+  obj_id: 186
   requirements:
     - character: Sonic
     - character: Tails
@@ -275,6 +298,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 217
   requirements:
     - character: Sonic
     - character: Tails
@@ -287,6 +311,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 166
   requirements:
     - character: Sonic
     - character: Tails
@@ -299,6 +324,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 169
   requirements:
     - character: Sonic
     - character: Tails
@@ -311,6 +337,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 170
   requirements:
     - character: Sonic
     - character: Tails
@@ -323,6 +350,7 @@
   zone: Carnival Night
   act: 2
   type: 1_up
+  obj_id: 162
   requirements:
     - character: Sonic
     - character: Tails
@@ -335,6 +363,7 @@
   zone: Carnival Night
   act: 2
   type: water_shield
+  obj_id: 359
   requirements:
     - character: Sonic
     - character: Tails
@@ -347,6 +376,7 @@
   zone: Carnival Night
   act: 2
   type: 1_up
+  obj_id: 260
   requirements:
     - character: Sonic
     - character: Tails
@@ -359,6 +389,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 410
   requirements:
     - character: Sonic
     - character: Tails
@@ -371,6 +402,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 415
   requirements:
     - character: Sonic
     - character: Tails
@@ -383,6 +415,7 @@
   zone: Carnival Night
   act: 2
   type: invincibility
+  obj_id: 353
   requirements:
     - character: Sonic
     - character: Tails
@@ -395,6 +428,7 @@
   zone: Carnival Night
   act: 2
   type: 1_up
+  obj_id: 351
   requirements:
     - character: Sonic
     - character: Tails
@@ -407,6 +441,7 @@
   zone: Carnival Night
   act: 2
   type: 1_up
+  obj_id: 347
   requirements:
     - character: Sonic
     - character: Tails
@@ -419,6 +454,7 @@
   zone: Carnival Night
   act: 2
   type: lightning_shield
+  obj_id: 366
   requirements:
     - character: Sonic
     - character: Tails
@@ -431,6 +467,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 469
   requirements:
     - character: Sonic
     - character: Tails
@@ -443,6 +480,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 467
   requirements:
     - character: Sonic
     - character: Tails
@@ -455,6 +493,7 @@
   zone: Carnival Night
   act: 2
   type: invincibility
+  obj_id: 549
   requirements:
     - character: Sonic
     - character: Tails
@@ -467,6 +506,7 @@
   zone: Carnival Night
   act: 2
   type: 1_up
+  obj_id: 550
   requirements:
     - character: Sonic
     - character: Tails
@@ -479,6 +519,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 615
   requirements:
     - character: Sonic
     - character: Tails
@@ -491,6 +532,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 617
   requirements:
     - character: Sonic
     - character: Tails
@@ -503,6 +545,7 @@
   zone: Carnival Night
   act: 2
   type: flame_shield
+  obj_id: 618
   requirements:
     - character: Sonic
     - character: Tails
@@ -515,6 +558,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 626
   requirements:
     - character: Sonic
     - character: Tails
@@ -527,6 +571,7 @@
   zone: Carnival Night
   act: 2
   type: invincibility
+  obj_id: 622
   requirements:
     - character: Sonic
     - character: Tails
@@ -539,6 +584,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 621
   requirements:
     - character: Sonic
     - character: Tails
@@ -551,6 +597,7 @@
   zone: Carnival Night
   act: 2
   type: lightning_shield
+  obj_id: 558
   requirements:
     - character: Sonic
     - character: Tails
@@ -564,6 +611,7 @@
   zone: Carnival Night
   act: 2
   type: lightning_shield
+  obj_id: 345
   requirements:
     - character: Knuckles
   poptracker:
@@ -573,6 +621,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 348
   requirements:
     - character: Knuckles
   poptracker:
@@ -582,6 +631,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 641
   requirements:
     - character: Knuckles
   poptracker:
@@ -591,6 +641,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 642
   requirements:
     - character: Knuckles
   poptracker:
@@ -600,6 +651,7 @@
   zone: Carnival Night
   act: 2
   type: super_ring
+  obj_id: 643
   requirements:
     - character: Knuckles
   poptracker:

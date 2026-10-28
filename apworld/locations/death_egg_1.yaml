@@ -5,6 +5,7 @@
   zone: Death Egg
   act: 1
   type: complete
+  obj_id: 0x8000
   requirements:
     - character: Sonic
     - character: Tails
@@ -12,6 +13,7 @@
   zone: Death Egg
   act: 1
   type: miniboss
+  obj_id: 0x8001
   requirements:
     - character: Sonic
     - character: Tails
@@ -19,6 +21,7 @@
   zone: Death Egg
   act: 1
   type: water_shield
+  obj_id: 8
   requirements:
     - character: Sonic
     - character: Tails
@@ -29,6 +32,7 @@
   zone: Death Egg
   act: 1
   type: lightning_shield
+  obj_id: 43
   requirements:
     - character: Sonic
     - character: Tails
@@ -39,6 +43,7 @@
   zone: Death Egg
   act: 1
   type: lightning_shield
+  obj_id: 62
   requirements:
     - character: Sonic
     - character: Tails
@@ -49,6 +54,7 @@
   zone: Death Egg
   act: 1
   type: lightning_shield
+  obj_id: 115
   requirements:
     # Sonic can use the lightning shield from item box 3 to double jump into
     # the wall to get to this one.
@@ -61,6 +67,7 @@
   zone: Death Egg
   act: 1
   type: super_ring
+  obj_id: 89
   requirements:
     - character: Sonic
     - character: Tails
@@ -71,6 +78,7 @@
   zone: Death Egg
   act: 1
   type: flame_shield
+  obj_id: 214
   requirements:
     - character: Sonic
     - character: Tails
@@ -81,6 +89,7 @@
   zone: Death Egg
   act: 1
   type: lightning_shield
+  obj_id: 215
   requirements:
     - character: Sonic
     - character: Tails
@@ -91,6 +100,7 @@
   zone: Death Egg
   act: 1
   type: water_shield
+  obj_id: 217
   requirements:
     - character: Sonic
     - character: Tails
@@ -101,6 +111,7 @@
   zone: Death Egg
   act: 1
   type: super_ring
+  obj_id: 218
   requirements:
     - character: Sonic
     - character: Tails
@@ -111,6 +122,7 @@
   zone: Death Egg
   act: 1
   type: super_ring
+  obj_id: 219
   requirements:
     - character: Sonic
     - character: Tails
@@ -121,6 +133,7 @@
   zone: Death Egg
   act: 1
   type: super_ring
+  obj_id: 220
   requirements:
     - character: Sonic
     - character: Tails
@@ -131,6 +144,7 @@
   zone: Death Egg
   act: 1
   type: lightning_shield
+  obj_id: 233
   requirements:
     - character: Sonic
     - character: Tails
@@ -141,6 +155,7 @@
   zone: Death Egg
   act: 1
   type: invincibility
+  obj_id: 273
   requirements:
     - character: Sonic
     - character: Tails
@@ -151,6 +166,7 @@
   zone: Death Egg
   act: 1
   type: super_ring
+  obj_id: 356
   requirements:
     - character: Sonic
     - character: Tails
@@ -161,6 +177,7 @@
   zone: Death Egg
   act: 1
   type: super_ring
+  obj_id: 357
   requirements:
     - character: Sonic
     - character: Tails
@@ -171,6 +188,7 @@
   zone: Death Egg
   act: 1
   type: super_ring
+  obj_id: 358
   requirements:
     - character: Sonic
     - character: Tails

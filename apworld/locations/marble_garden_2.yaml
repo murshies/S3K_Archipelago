@@ -2,6 +2,7 @@
   zone: Marble Garden
   act: 2
   type: complete
+  obj_id: 0x8000
   requirements:
     - character: Sonic
     - character: Tails
@@ -10,6 +11,7 @@
   zone: Marble Garden
   act: 2
   type: big_ring
+  obj_id: 23
   requirements:
     - character: Tails
   poptracker:
@@ -19,6 +21,7 @@
   zone: Marble Garden
   act: 2
   type: big_ring
+  obj_id: 98
   requirements:
     - character: Sonic
     - character: Tails
@@ -30,6 +33,7 @@
   zone: Marble Garden
   act: 2
   type: big_ring
+  obj_id: 209
   requirements:
     - character: Sonic
     - character: Tails
@@ -41,6 +45,7 @@
   zone: Marble Garden
   act: 2
   type: boss
+  obj_id: 0x8001
   requirements:
     - character: Sonic
     - character: Tails
@@ -49,6 +54,7 @@
   zone: Marble Garden
   act: 2
   type: super_ring
+  obj_id: 1
   requirements:
     - character: Tails
     - character: Knuckles # Can do a glide bounce off of the spike enemy from below
@@ -59,6 +65,7 @@
   zone: Marble Garden
   act: 2
   type: lightning_shield
+  obj_id: 34
   requirements:
     - character: Tails
   poptracker:
@@ -68,6 +75,7 @@
   zone: Marble Garden
   act: 2
   type: super_ring
+  obj_id: 36
   requirements:
     - character: Tails
   poptracker:
@@ -77,6 +85,7 @@
   zone: Marble Garden
   act: 2
   type: super_ring
+  obj_id: 93
   requirements:
     - character: Sonic
     - character: Tails
@@ -88,6 +97,7 @@
   zone: Marble Garden
   act: 2
   type: 1_up
+  obj_id: 90
   requirements:
     - character: Sonic
     - character: Tails
@@ -99,6 +109,7 @@
   zone: Marble Garden
   act: 2
   type: lightning_shield
+  obj_id: 105
   requirements:
     - character: Sonic
     - character: Tails
@@ -110,6 +121,7 @@
   zone: Marble Garden
   act: 2
   type: super_ring
+  obj_id: 187
   requirements:
     - character: Sonic
     - character: Tails
@@ -121,6 +133,7 @@
   zone: Marble Garden
   act: 2
   type: super_ring
+  obj_id: 189
   requirements:
     - character: Sonic
     - character: Tails
@@ -132,6 +145,7 @@
   zone: Marble Garden
   act: 2
   type: flame_shield
+  obj_id: 190
   requirements:
     - character: Sonic
     - character: Tails
@@ -143,6 +157,7 @@
   zone: Marble Garden
   act: 2
   type: 1_up
+  obj_id: 221
   requirements:
     - character: Sonic
     - character: Tails
@@ -154,6 +169,7 @@
   zone: Marble Garden
   act: 2
   type: invincibility
+  obj_id: 195
   requirements:
     - character: Sonic
     - character: Tails
@@ -165,6 +181,7 @@
   zone: Marble Garden
   act: 2
   type: invincibility
+  obj_id: 167
   requirements:
     - character: Sonic
     - character: Tails
@@ -176,6 +193,7 @@
   zone: Marble Garden
   act: 2
   type: super_ring
+  obj_id: 232
   requirements:
     - character: Sonic
     - character: Tails
@@ -187,6 +205,7 @@
   zone: Marble Garden
   act: 2
   type: water_shield
+  obj_id: 233
   requirements:
     - character: Sonic
     - character: Tails
@@ -198,6 +217,7 @@
   zone: Marble Garden
   act: 2
   type: super_ring
+  obj_id: 235
   requirements:
     - character: Sonic
     - character: Tails
@@ -209,6 +229,7 @@
   zone: Marble Garden
   act: 2
   type: power_sneakers
+  obj_id: 248
   requirements:
     - character: Sonic
     - character: Tails
@@ -220,6 +241,7 @@
   zone: Marble Garden
   act: 2
   type: flame_shield
+  obj_id: 308
   requirements:
     - character: Sonic
     - character: Tails
@@ -230,6 +252,7 @@
   zone: Marble Garden
   act: 2
   type: super_ring
+  obj_id: 260
   requirements:
     - character: Sonic
     - character: Tails
@@ -240,6 +263,7 @@
   zone: Marble Garden
   act: 2
   type: lightning_shield
+  obj_id: 300
   requirements:
     - character: Sonic
     - character: Tails

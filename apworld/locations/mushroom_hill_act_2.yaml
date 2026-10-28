@@ -2,6 +2,7 @@
   zone: Mushroom Hill
   act: 2
   type: complete
+  obj_id: 0x8000
   requirements:
     - character: Sonic
     - character: Tails
@@ -10,6 +11,7 @@
   zone: Mushroom Hill
   act: 2
   type: big_ring
+  obj_id: 119
   requirements:
     - character: Sonic
     - character: Tails
@@ -21,6 +23,7 @@
   zone: Mushroom Hill
   act: 2
   type: big_ring
+  obj_id: 251
   requirements:
     - character: Sonic
     - character: Tails
@@ -32,6 +35,7 @@
   zone: Mushroom Hill
   act: 2
   type: big_ring
+  obj_id: 403
   requirements:
     - character: Sonic
     - character: Tails
@@ -43,6 +47,7 @@
   zone: Mushroom Hill
   act: 2
   type: big_ring
+  obj_id: 536
   requirements:
     - character: Sonic
     - character: Tails
@@ -54,6 +59,7 @@
   zone: Mushroom Hill
   act: 2
   type: big_ring
+  obj_id: 345
   requirements:
     - character: Knuckles
   poptracker:
@@ -63,6 +69,7 @@
   zone: Mushroom Hill
   act: 2
   type: big_ring
+  obj_id: 452
   requirements:
     - character: Knuckles
   poptracker:
@@ -72,6 +79,7 @@
   zone: Mushroom Hill
   act: 2
   type: boss
+  obj_id: 0x8001
   requirements:
     - character: Sonic
     - character: Tails
@@ -80,6 +88,7 @@
   zone: Mushroom Hill
   act: 2
   type: invincibility
+  obj_id: 7
   requirements:
     - character: Sonic
     - character: Tails
@@ -91,6 +100,7 @@
   zone: Mushroom Hill
   act: 2
   type: water_shield
+  obj_id: 28
   requirements:
     - character: Sonic
     - character: Tails
@@ -102,6 +112,7 @@
   zone: Mushroom Hill
   act: 2
   type: super_ring
+  obj_id: 36
   requirements:
     - character: Sonic
     - character: Tails
@@ -113,6 +124,7 @@
   zone: Mushroom Hill
   act: 2
   type: super_ring
+  obj_id: 39
   requirements:
     - character: Sonic
     - character: Tails
@@ -124,6 +136,7 @@
   zone: Mushroom Hill
   act: 2
   type: super_ring
+  obj_id: 150
   requirements:
     - character: Sonic
     - character: Tails
@@ -135,6 +148,7 @@
   zone: Mushroom Hill
   act: 2
   type: super_ring
+  obj_id: 151
   requirements:
     - character: Sonic
     - character: Tails
@@ -146,6 +160,7 @@
   zone: Mushroom Hill
   act: 2
   type: super_ring
+  obj_id: 235
   requirements:
     - character: Sonic
     - character: Tails
@@ -157,6 +172,7 @@
   zone: Mushroom Hill
   act: 2
   type: super_ring
+  obj_id: 274
   requirements:
     - character: Sonic
     - character: Tails
@@ -168,6 +184,7 @@
   zone: Mushroom Hill
   act: 2
   type: super_ring
+  obj_id: 258
   requirements:
     - character: Sonic
     - character: Tails
@@ -179,6 +196,7 @@
   zone: Mushroom Hill
   act: 2
   type: power_sneakers
+  obj_id: 312
   requirements:
     - character: Sonic
     - character: Tails
@@ -190,6 +208,7 @@
   zone: Mushroom Hill
   act: 2
   type: super_ring
+  obj_id: 336
   requirements:
     - character: Sonic
     - character: Tails
@@ -201,6 +220,7 @@
   zone: Mushroom Hill
   act: 2
   type: flame_shield
+  obj_id: 324
   requirements:
     - character: Sonic
     - character: Tails
@@ -212,6 +232,7 @@
   zone: Mushroom Hill
   act: 2
   type: 1_up
+  obj_id: 484
   requirements:
     - character: Sonic
     - character: Tails
@@ -223,6 +244,7 @@
   zone: Mushroom Hill
   act: 2
   type: water_shield
+  obj_id: 486
   requirements:
     - character: Sonic
     - character: Tails
@@ -234,6 +256,7 @@
   zone: Mushroom Hill
   act: 2
   type: lightning_shield
+  obj_id: 488
   requirements:
     - character: Sonic
     - character: Tails
@@ -245,6 +268,7 @@
   zone: Mushroom Hill
   act: 2
   type: flame_shield
+  obj_id: 489
   requirements:
     - character: Sonic
     - character: Tails
@@ -256,6 +280,7 @@
   zone: Mushroom Hill
   act: 2
   type: lightning_shield
+  obj_id: 523
   requirements:
     - character: Sonic
     - character: Tails
@@ -267,6 +292,7 @@
   zone: Mushroom Hill
   act: 2
   type: flame_shield
+  obj_id: 524
   requirements:
     - character: Sonic
     - character: Tails
@@ -278,6 +304,7 @@
   zone: Mushroom Hill
   act: 2
   type: invincibility
+  obj_id: 55
   requirements:
     - character: Knuckles
   poptracker:
@@ -287,6 +314,7 @@
   zone: Mushroom Hill
   act: 2
   type: super_ring
+  obj_id: 75
   requirements:
     - character: Knuckles
   poptracker:
@@ -296,6 +324,7 @@
   zone: Mushroom Hill
   act: 2
   type: invincibility
+  obj_id: 396
   requirements:
     - character: Knuckles
   poptracker:
@@ -305,6 +334,7 @@
   zone: Mushroom Hill
   act: 2
   type: super_ring
+  obj_id: 417
   requirements:
     - character: Knuckles
   poptracker:

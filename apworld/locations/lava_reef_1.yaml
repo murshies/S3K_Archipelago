@@ -2,6 +2,7 @@
   zone: Lava Reef
   act: 1
   type: complete
+  obj_id: 0x8000
   requirements:
     - character: Sonic
     - character: Tails
@@ -10,6 +11,7 @@
   zone: Lava Reef
   act: 1
   type: big_ring
+  obj_id: 216
   requirements:
     - character: Sonic
     - character: Tails
@@ -21,6 +23,7 @@
   zone: Lava Reef
   act: 1
   type: big_ring
+  obj_id: 287
   requirements:
     - character: Sonic
     - character: Tails
@@ -32,6 +35,7 @@
   zone: Lava Reef
   act: 1
   type: big_ring
+  obj_id: 335
   requirements:
     - character: Sonic
       super_state: hyper
@@ -46,6 +50,7 @@
   zone: Lava Reef
   act: 1
   type: miniboss
+  obj_id: 0x8001
   requirements:
     - character: Sonic
     - character: Tails
@@ -54,6 +59,7 @@
   zone: Lava Reef
   act: 1
   type: lightning_shield
+  obj_id: 93
   requirements:
     - character: Sonic
     - character: Tails
@@ -64,6 +70,7 @@
   zone: Lava Reef
   act: 1
   type: 1_up
+  obj_id: 155
   requirements:
     - character: Sonic
     - character: Tails
@@ -74,6 +81,7 @@
   zone: Lava Reef
   act: 1
   type: super_ring
+  obj_id: 212
   requirements:
     - character: Sonic
     - character: Tails
@@ -84,6 +92,7 @@
   zone: Lava Reef
   act: 1
   type: super_ring
+  obj_id: 214
   requirements:
     - character: Sonic
     - character: Tails
@@ -94,6 +103,7 @@
   zone: Lava Reef
   act: 1
   type: flame_shield
+  obj_id: 130
   requirements:
     - character: Sonic
     - character: Tails
@@ -104,6 +114,7 @@
   zone: Lava Reef
   act: 1
   type: super_ring
+  obj_id: 131
   requirements:
     - character: Sonic
     - character: Tails
@@ -114,6 +125,7 @@
   zone: Lava Reef
   act: 1
   type: 1_up
+  obj_id: 190
   requirements:
     - character: Sonic
     - character: Tails
@@ -125,6 +137,7 @@
   zone: Lava Reef
   act: 1
   type: super_ring
+  obj_id: 161
   requirements:
     - character: Sonic
     - character: Tails
@@ -136,6 +149,7 @@
   zone: Lava Reef
   act: 1
   type: super_ring
+  obj_id: 288
   requirements:
     - character: Sonic
     - character: Tails
@@ -147,6 +161,7 @@
   zone: Lava Reef
   act: 1
   type: lightning_shield
+  obj_id: 282
   requirements:
     - character: Sonic
     - character: Tails
@@ -158,6 +173,7 @@
   zone: Lava Reef
   act: 1
   type: flame_shield
+  obj_id: 276
   requirements:
     - character: Sonic
     - character: Tails
@@ -169,6 +185,7 @@
   zone: Lava Reef
   act: 1
   type: super_ring
+  obj_id: 369
   requirements:
     - character: Sonic
     - character: Tails
@@ -180,6 +197,7 @@
   zone: Lava Reef
   act: 1
   type: lightning_shield
+  obj_id: 370
   requirements:
     - character: Sonic
     - character: Tails
@@ -191,6 +209,7 @@
   zone: Lava Reef
   act: 1
   type: 1_up
+  obj_id: 379
   requirements:
     - character: Sonic
     - character: Tails
@@ -202,6 +221,7 @@
   zone: Lava Reef
   act: 1
   type: super_ring
+  obj_id: 455
   requirements:
     - character: Sonic
     - character: Tails
@@ -213,6 +233,7 @@
   zone: Lava Reef
   act: 1
   type: super_ring
+  obj_id: 349
   requirements:
     - character: Sonic
     - character: Tails
@@ -224,6 +245,7 @@
   zone: Lava Reef
   act: 1
   type: super_ring
+  obj_id: 347
   requirements:
     - character: Sonic
     - character: Tails
@@ -235,6 +257,7 @@
   zone: Lava Reef
   act: 1
   type: super_ring
+  obj_id: 345
   requirements:
     - character: Sonic
     - character: Tails
@@ -246,6 +269,7 @@
   zone: Lava Reef
   act: 1
   type: super_ring
+  obj_id: 237
   requirements:
     - character: Sonic
     - character: Tails
@@ -257,6 +281,7 @@
   zone: Lava Reef
   act: 1
   type: super_ring
+  obj_id: 491
   requirements:
     - character: Sonic
     - character: Tails
@@ -268,6 +293,7 @@
   zone: Lava Reef
   act: 1
   type: super_ring
+  obj_id: 492
   requirements:
     - character: Sonic
     - character: Tails
@@ -279,6 +305,7 @@
   zone: Lava Reef
   act: 1
   type: water_shield
+  obj_id: 499
   requirements:
     - character: Sonic
     - character: Tails
@@ -290,6 +317,7 @@
   zone: Lava Reef
   act: 1
   type: super_ring
+  obj_id: 71
   requirements:
     - character: Knuckles
   poptracker:
@@ -299,6 +327,7 @@
   zone: Lava Reef
   act: 1
   type: super_ring
+  obj_id: 74
   requirements:
     - character: Knuckles
   poptracker:
@@ -308,6 +337,7 @@
   zone: Lava Reef
   act: 1
   type: super_ring
+  obj_id: 22
   requirements:
     - character: Knuckles
   poptracker:
@@ -317,6 +347,7 @@
   zone: Lava Reef
   act: 1
   type: super_ring
+  obj_id: 119
   requirements:
     - character: Knuckles
   poptracker:
@@ -326,6 +357,7 @@
   zone: Lava Reef
   act: 1
   type: 1_up
+  obj_id: 101
   requirements:
     - character: Knuckles
   poptracker:
@@ -335,6 +367,7 @@
   zone: Lava Reef
   act: 1
   type: lightning_shield
+  obj_id: 245
   requirements:
     - character: Knuckles
   poptracker:
@@ -344,6 +377,7 @@
   zone: Lava Reef
   act: 1
   type: flame_shield
+  obj_id: 348
   requirements:
     - character: Knuckles
   poptracker:
@@ -353,6 +387,7 @@
   zone: Lava Reef
   act: 1
   type: lightning_shield
+  obj_id: 451
   requirements:
     - character: Knuckles
   poptracker:
@@ -362,6 +397,7 @@
   zone: Lava Reef
   act: 1
   type: invincibility
+  obj_id: 575
   requirements:
     - character: Knuckles
   poptracker:

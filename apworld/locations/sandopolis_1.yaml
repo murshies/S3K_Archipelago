@@ -2,6 +2,7 @@
   zone: Sandopolis
   act: 1
   type: complete
+  obj_id: 0x8000
   requirements:
     - character: Sonic
     - character: Tails
@@ -10,6 +11,7 @@
   zone: Sandopolis
   act: 1
   type: big_ring
+  obj_id: 48
   requirements:
     - character: Sonic
     - character: Tails
@@ -21,6 +23,7 @@
   zone: Sandopolis
   act: 1
   type: big_ring
+  obj_id: 197
   requirements:
     - character: Sonic
     - character: Tails
@@ -32,6 +35,7 @@
   zone: Sandopolis
   act: 1
   type: big_ring
+  obj_id: 228
   requirements:
     - character: Sonic
     - character: Tails
@@ -43,6 +47,7 @@
   zone: Sandopolis
   act: 1
   type: big_ring
+  obj_id: 339
   requirements:
     - character: Sonic
       super_state: hyper
@@ -55,6 +60,7 @@
   zone: Sandopolis
   act: 1
   type: big_ring
+  obj_id: 380
   requirements:
     - character: Sonic
     - character: Tails
@@ -66,6 +72,7 @@
   zone: Sandopolis
   act: 1
   type: big_ring
+  obj_id: 528
   requirements:
     - character: Sonic
     - character: Tails
@@ -77,6 +84,7 @@
   zone: Sandopolis
   act: 1
   type: big_ring
+  obj_id: 574
   requirements:
     - character: Knuckles
   poptracker:
@@ -86,6 +94,7 @@
   zone: Sandopolis
   act: 1
   type: miniboss
+  obj_id: 0x8001
   requirements:
     - character: Sonic
     - character: Tails
@@ -94,6 +103,7 @@
   zone: Sandopolis
   act: 1
   type: invincibility
+  obj_id: 5
   requirements:
     - character: Sonic
       super_state: hyper
@@ -106,6 +116,7 @@
   zone: Sandopolis
   act: 1
   type: super_ring
+  obj_id: 6
   requirements:
     - character: Sonic
       super_state: hyper
@@ -118,6 +129,7 @@
   zone: Sandopolis
   act: 1
   type: super_ring
+  obj_id: 3
   requirements:
     - character: Sonic
     - character: Tails
@@ -129,6 +141,7 @@
   zone: Sandopolis
   act: 1
   type: invincibility
+  obj_id: 35
   requirements:
     - character: Sonic
     - character: Tails
@@ -140,6 +153,7 @@
   zone: Sandopolis
   act: 1
   type: super_ring
+  obj_id: 47
   requirements:
     - character: Sonic
       super_state: hyper
@@ -152,6 +166,7 @@
   zone: Sandopolis
   act: 1
   type: flame_shield
+  obj_id: 46
   requirements:
     - character: Sonic
       super_state: hyper
@@ -164,6 +179,7 @@
   zone: Sandopolis
   act: 1
   type: 1_up
+  obj_id: 102
   requirements:
     - character: Knuckles
   poptracker:
@@ -173,6 +189,7 @@
   zone: Sandopolis
   act: 1
   type: super_ring
+  obj_id: 84
   requirements:
     - character: Sonic
     - character: Tails
@@ -184,6 +201,7 @@
   zone: Sandopolis
   act: 1
   type: super_ring
+  obj_id: 82
   requirements:
     - character: Sonic
     - character: Tails
@@ -195,6 +213,7 @@
   zone: Sandopolis
   act: 1
   type: 1_up
+  obj_id: 60
   requirements:
     - character: Sonic
       super_state: hyper
@@ -214,6 +233,7 @@
   zone: Sandopolis
   act: 1
   type: super_ring
+  obj_id: 147
   requirements:
     - character: Sonic
       super_state: hyper
@@ -227,6 +247,7 @@
   zone: Sandopolis
   act: 1
   type: lightning_shield
+  obj_id: 148
   requirements:
     - character: Sonic
       super_state: hyper
@@ -240,6 +261,7 @@
   zone: Sandopolis
   act: 1
   type: flame_shield
+  obj_id: 104
   requirements:
     - character: Sonic
     - character: Tails
@@ -251,6 +273,7 @@
   zone: Sandopolis
   act: 1
   type: invincibility
+  obj_id: 154
   requirements:
     - character: Sonic
     - character: Tails
@@ -262,6 +285,7 @@
   zone: Sandopolis
   act: 1
   type: super_ring
+  obj_id: 163
   requirements:
     - character: Sonic
     - character: Tails
@@ -273,6 +297,7 @@
   zone: Sandopolis
   act: 1
   type: invincibility
+  obj_id: 160
   requirements:
     - character: Sonic
     - character: Tails
@@ -284,6 +309,7 @@
   zone: Sandopolis
   act: 1
   type: super_ring
+  obj_id: 287
   requirements:
     - character: Sonic
     - character: Tails
@@ -295,6 +321,7 @@
   zone: Sandopolis
   act: 1
   type: super_ring
+  obj_id: 244
   requirements:
     - character: Sonic
     - character: Tails
@@ -306,6 +333,7 @@
   zone: Sandopolis
   act: 1
   type: invincibility
+  obj_id: 242
   requirements:
     - character: Sonic
     - character: Tails
@@ -317,6 +345,7 @@
   zone: Sandopolis
   act: 1
   type: super_ring
+  obj_id: 292
   requirements:
     - character: Sonic
     - character: Tails
@@ -328,6 +357,7 @@
   zone: Sandopolis
   act: 1
   type: super_ring
+  obj_id: 307
   requirements:
     - character: Sonic
     - character: Tails
@@ -339,6 +369,7 @@
   zone: Sandopolis
   act: 1
   type: super_ring
+  obj_id: 333
   requirements:
     - character: Sonic
     - character: Tails
@@ -350,6 +381,7 @@
   zone: Sandopolis
   act: 1
   type: lightning_shield
+  obj_id: 334
   requirements:
     - character: Sonic
     - character: Tails
@@ -361,6 +393,7 @@
   zone: Sandopolis
   act: 1
   type: super_ring
+  obj_id: 388
   requirements:
     - character: Sonic
     - character: Tails
@@ -372,6 +405,7 @@
   zone: Sandopolis
   act: 1
   type: super_ring
+  obj_id: 387
   requirements:
     - character: Sonic
     - character: Tails
@@ -383,6 +417,7 @@
   zone: Sandopolis
   act: 1
   type: water_shield
+  obj_id: 442
   requirements:
     - character: Sonic
     - character: Tails
@@ -394,6 +429,7 @@
   zone: Sandopolis
   act: 1
   type: super_ring
+  obj_id: 444
   requirements:
     - character: Sonic
     - character: Tails
@@ -405,6 +441,7 @@
   zone: Sandopolis
   act: 1
   type: super_ring
+  obj_id: 449
   requirements:
     - character: Sonic
       super_state: hyper
@@ -420,6 +457,7 @@
   zone: Sandopolis
   act: 1
   type: super_ring
+  obj_id: 451
   requirements:
     - character: Sonic
       super_state: hyper
@@ -433,6 +471,7 @@
   zone: Sandopolis
   act: 1
   type: super_ring
+  obj_id: 480
   requirements:
     - character: Knuckles
   poptracker:
@@ -442,6 +481,7 @@
   zone: Sandopolis
   act: 1
   type: super_ring
+  obj_id: 483
   requirements:
     - character: Knuckles
   poptracker:
@@ -451,6 +491,7 @@
   zone: Sandopolis
   act: 1
   type: flame_shield
+  obj_id: 484
   requirements:
     - character: Knuckles
   poptracker:
@@ -460,6 +501,7 @@
   zone: Sandopolis
   act: 1
   type: super_ring
+  obj_id: 545
   requirements:
     - character: Sonic
     - character: Tails
@@ -471,6 +513,7 @@
   zone: Sandopolis
   act: 1
   type: super_ring
+  obj_id: 585
   requirements:
     - character: Sonic
     - character: Tails

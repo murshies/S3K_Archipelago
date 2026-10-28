@@ -1,6 +1,7 @@
 - name: Complete
   zone: Hidden Palace
   type: complete
+  obj_id: 0x8000
   requirements:
     - character: Sonic
     - character: Tails
@@ -8,6 +9,7 @@
 - name: Item Box 1
   zone: Hidden Palace
   type: power_sneakers
+  obj_id: 7
   requirements:
     - character: Tails
   poptracker:
@@ -16,6 +18,7 @@
 - name: Item Box 2
   zone: Hidden Palace
   type: invincibility
+  obj_id: 6
   requirements:
     - character: Tails
   poptracker:
@@ -24,6 +27,7 @@
 - name: Item Box 3
   zone: Hidden Palace
   type: water_shield
+  obj_id: 3
   requirements:
     - character: Tails
   poptracker:
@@ -32,6 +36,7 @@
 - name: Item Box 4
   zone: Hidden Palace
   type: lightning_shield
+  obj_id: 2
   requirements:
     - character: Tails
   poptracker:
@@ -40,6 +45,7 @@
 - name: Item Box 5
   zone: Hidden Palace
   type: flame_shield
+  obj_id: 1
   requirements:
     - character: Tails
   poptracker:
@@ -48,6 +54,7 @@
 - name: Item Box 6
   zone: Hidden Palace
   type: super_ring
+  obj_id: 0
   requirements:
     - character: Tails
   poptracker:
@@ -56,6 +63,7 @@
 - name: Item Box 7
   zone: Hidden Palace
   type: super_ring
+  obj_id: 22
   requirements:
     - character: Tails
   poptracker:
@@ -64,6 +72,7 @@
 - name: Item Box 8
   zone: Hidden Palace
   type: super_ring
+  obj_id: 23
   requirements:
     - character: Tails
   poptracker:
@@ -72,6 +81,7 @@
 - name: Item Box 9
   zone: Hidden Palace
   type: 1_up
+  obj_id: 24
   requirements:
     - character: Tails
   poptracker:
@@ -80,6 +90,7 @@
 - name: Item Box 10
   zone: Hidden Palace
   type: super_ring
+  obj_id: 28
   requirements:
     - character: Sonic
     - character: Tails

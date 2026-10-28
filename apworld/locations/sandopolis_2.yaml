@@ -2,6 +2,7 @@
   zone: Sandopolis
   act: 2
   type: complete
+  obj_id: 0x8000
   requirements:
     - character: Sonic
     - character: Tails
@@ -10,6 +11,7 @@
   zone: Sandopolis
   act: 2
   type: big_ring
+  obj_id: 47
   requirements:
     - character: Knuckles
   poptracker:
@@ -19,6 +21,7 @@
   zone: Sandopolis
   act: 2
   type: big_ring
+  obj_id: 118
   requirements:
     - character: Sonic # Use a lightning shield to make the jump
     - character: Tails
@@ -30,6 +33,7 @@
   zone: Sandopolis
   act: 2
   type: big_ring
+  obj_id: 391
   requirements:
     - character: Knuckles
   poptracker:
@@ -39,6 +43,7 @@
   zone: Sandopolis
   act: 2
   type: big_ring
+  obj_id: 486
   requirements:
     - character: Sonic
     - character: Tails
@@ -49,6 +54,7 @@
   zone: Sandopolis
   act: 2
   type: boss
+  obj_id: 0x8001
   requirements:
     - character: Sonic
     - character: Tails
@@ -57,6 +63,7 @@
   zone: Sandopolis
   act: 2
   type: super_ring
+  obj_id: 27
   requirements:
     - character: Tails
       # To reach this, jump from the platform that moves up and down right at
@@ -74,6 +81,7 @@
   zone: Sandopolis
   act: 2
   type: super_ring
+  obj_id: 11
   requirements:
     - character: Knuckles
   poptracker:
@@ -83,6 +91,7 @@
   zone: Sandopolis
   act: 2
   type: water_shield
+  obj_id: 13
   requirements:
     - character: Knuckles
   poptracker:
@@ -92,6 +101,7 @@
   zone: Sandopolis
   act: 2
   type: lightning_shield
+  obj_id: 30
   requirements:
     - character: Sonic
     - character: Tails
@@ -103,6 +113,7 @@
   zone: Sandopolis
   act: 2
   type: super_ring
+  obj_id: 85
   requirements:
     - character: Sonic
     - character: Tails
@@ -114,6 +125,7 @@
   zone: Sandopolis
   act: 2
   type: super_ring
+  obj_id: 82
   requirements:
     - character: Sonic
     - character: Tails
@@ -125,6 +137,7 @@
   zone: Sandopolis
   act: 2
   type: super_ring
+  obj_id: 173
   requirements:
     - character: Sonic
     - character: Tails
@@ -136,6 +149,7 @@
   zone: Sandopolis
   act: 2
   type: invincibility
+  obj_id: 175
   requirements:
     - character: Sonic
     - character: Tails
@@ -147,6 +161,7 @@
   zone: Sandopolis
   act: 2
   type: flame_shield
+  obj_id: 172
   requirements:
     - character: Sonic
     - character: Tails
@@ -158,6 +173,7 @@
   zone: Sandopolis
   act: 2
   type: super_ring
+  obj_id: 253
   requirements:
     - character: Sonic
     - character: Tails
@@ -169,6 +185,7 @@
   zone: Sandopolis
   act: 2
   type: power_sneakers
+  obj_id: 254
   requirements:
     - character: Sonic
     - character: Tails
@@ -180,6 +197,7 @@
   zone: Sandopolis
   act: 2
   type: 1_up
+  obj_id: 257
   requirements:
     - character: Sonic
     - character: Tails
@@ -191,6 +209,7 @@
   zone: Sandopolis
   act: 2
   type: super_ring
+  obj_id: 272
   requirements:
     - character: Sonic
     - character: Tails
@@ -202,6 +221,7 @@
   zone: Sandopolis
   act: 2
   type: super_ring
+  obj_id: 273
   requirements:
     - character: Sonic
     - character: Tails
@@ -213,6 +233,7 @@
   zone: Sandopolis
   act: 2
   type: water_shield
+  obj_id: 311
   requirements:
     - character: Sonic
     - character: Tails
@@ -224,6 +245,7 @@
   zone: Sandopolis
   act: 2
   type: flame_shield
+  obj_id: 372
   requirements:
     - character: Sonic
       super_state: hyper
@@ -236,6 +258,7 @@
   zone: Sandopolis
   act: 2
   type: lightning_shield
+  obj_id: 411
   requirements:
     - character: Knuckles
   poptracker:
