@@ -1,15 +1,15 @@
 from dataclasses import dataclass
 import logging
 import time
-from typing import TYPE_CHECKING
+import typing
 
 from NetUtils import ClientStatus
 import worlds._bizhawk as bizhawk
 from worlds._bizhawk.client import BizHawkClient
 
-from . import consts, S3KLocationIds, S3KMemory, S3KReceivedItems
+from . import consts, items, locations, S3KMemory, S3KReceivedItems
 
-if TYPE_CHECKING:
+if typing.TYPE_CHECKING:
     from worlds._bizhawk.context import BizHawkClientContext
 
 
@@ -49,11 +49,6 @@ class S3KClient(BizHawkClient):
     waiting_location_keys: set[tuple]
     # Data storage keys that have already been requested from the server
     requested_storage_keys: set[str]
-    # Location name -> id, for the locations in this slot
-    location_ids: dict[str, int]
-    # The (seed, slot) that location_ids applies to
-    location_ids_slot: tuple | None
-    # Death link state
     # A death link was received and still needs to be sent to the game
     death_link_pending: bool
     # The id of the death link request in the item mailbox, or 0 if there
@@ -67,6 +62,12 @@ class S3KClient(BizHawkClient):
     # The time of the last death link this client sent, so it can be ignored
     # when the server sends it back
     last_sent_death_time: float | None
+    # The set of locations for the game, for various queries
+    _location_set: locations.LocationSet | None
+    # A cache of the in-game zone/act combinations to their enabled locations
+    location_cache: dict[tuple[int, int], list[locations.Location]]
+    # The seed and slot for which the location cache is valid
+    curr_seed_slot: tuple | None
 
     def __init__(self) -> None:
         super().__init__()
@@ -74,13 +75,14 @@ class S3KClient(BizHawkClient):
         self.processed_location_seed = None
         self.waiting_location_keys = set()
         self.requested_storage_keys = set()
-        self.location_ids = {}
-        self.location_ids_slot = None
         self.death_link_pending = False
         self.death_link_request_id = 0
         self.killed_by_death_link = False
         self.player_dead = False
         self.last_sent_death_time = None
+        self._location_set = None
+        self.location_cache = {}
+        self.curr_seed_slot = None
 
     async def validate_rom(self, ctx: "BizHawkClientContext") -> bool:
         game_names = await bizhawk.read(ctx.bizhawk_ctx, [S3KMemory.sk_game_name,
@@ -247,37 +249,121 @@ class S3KClient(BizHawkClient):
         if not new_entries:
             return
 
-        name_to_id = self.slot_location_ids(ctx)
         new_location_ids: set[int] = set()
         for entry in new_entries:
             self.processed_location_keys.add(entry.key)
-            name, description = S3KLocationIds.resolve(entry)
-            if name is None:
-                logger.info(f"Ignoring location buffer entry {entry}: {description}")
-            elif name not in name_to_id:
-                logger.info(f"Ignoring {name}: not a location in this slot")
+            loc = entry.to_location(self.location_set(ctx))
+            if loc is None:
+                logger.info(f"Ignoring location buffer entry {entry}")
             else:
-                logger.info(f"Checked {name}")
-                new_location_ids.add(name_to_id[name])
+                logger.info(f"Checked {loc.display_name}")
+                new_location_ids.add(loc.location_id)
 
         if new_location_ids:
             # locations_checked is resent by CommonContext on reconnect
             ctx.locations_checked |= new_location_ids
             await ctx.check_locations(new_location_ids)
 
-    def slot_location_ids(self, ctx: "BizHawkClientContext") -> dict[str, int]:
+    def location_set(self, ctx: "BizHawkClientContext") -> locations.LocationSet:
         """
-        Maps location names to ids. Only the locations enabled by the player's
-        settings are in server_locations, so this leaves out locations which
-        don't apply to this slot.
+        Gets the set of locations relevant to this game, initializing it if
+        needed.
         """
-        if self.location_ids_slot != (ctx.seed_name, ctx.slot) or not self.location_ids:
-            self.location_ids = {
-                ctx.location_names.lookup_in_game(loc_id): loc_id
-                for loc_id in ctx.server_locations
-            }
-            self.location_ids_slot = (ctx.seed_name, ctx.slot)
-        return self.location_ids
+        next_seed_slot = (ctx.seed_name, ctx.slot)
+        if self.curr_seed_slot != next_seed_slot:
+            self.curr_seed_slot = next_seed_slot
+            self._location_set = None
+            self.location_cache = {}
+        if self._location_set is not None:
+            return self._location_set
+        loc_set = locations.load_location_set()  # start with everything
+        filtered = loc_set.filter_locations(
+            lambda p, ts: p.location_id in ctx.server_locations
+        )
+        self._location_set = locations.LocationSet(filtered, loc_set.types)
+        return self._location_set
+
+    def respawn_marks(
+            self,
+            zone: int,
+            act: int,
+            ctx: "BizHawkClientContext",
+    ) -> dict[int, int]:
+        """
+        Get the respawn table bits for all item boxes and big rings in the item
+        layout. This is usually the current act, but there is the one exception
+        of Angel Island act 1 post-burn cutscene items internally belonging to
+        act 2. Remember that zone and act are the values as reported by the
+        game.
+        """
+        marks = {}
+        checked = ctx.checked_locations | ctx.locations_checked
+
+        try:
+            game_zone = S3KMemory.Zone(zone)
+        except ValueError:
+            return marks
+
+        def _loc_filter(loc: locations.Location, ts: locations.LocationTypeSet) -> bool:
+            """
+            Given the zone and act from the game, what locations are applicable?
+            """
+            def type_filter():
+                return (
+                    items.ITEM_GROUP_ITEM_BOX in ts.types_for(loc.location_type) or
+                    loc.location_type == consts.LOCTYPE_BIG_RING
+                )
+
+            if game_zone == S3KMemory.Zone.HIDDEN_PALACE and act == 0:
+                return (
+                    loc.zone == consts.ZONE_LAVA_REEF and
+                    loc.act == 3 and
+                    type_filter()
+                )
+            elif game_zone == S3KMemory.Zone.HIDDEN_PALACE and act == 1:
+                return loc.zone == consts.ZONE_HIDDEN_PALACE and type_filter()
+            elif game_zone == S3KMemory.Zone.SKY_SANCTUARY and act == 0:
+                return loc.zone == consts.ZONE_SKY_SANCTUARY and type_filter()
+            elif game_zone == S3KMemory.Zone.ANGEL_ISLAND:
+                if act == 0:
+                    # Filter out the burnt section ones
+                    return (
+                        loc.zone == consts.ZONE_ANGEL_ISLAND and
+                        loc.act == 1 and
+                        loc.obj_id not in locations.ANGEL_ISLAND_1_APPARENT_ACT_2 and
+                        type_filter()
+                    )
+                else:  # act 2
+                    return (
+                        loc.zone == consts.ZONE_ANGEL_ISLAND and
+                        (
+                            loc.act == 2 or
+                            loc.obj_id in locations.ANGEL_ISLAND_1_APPARENT_ACT_2
+                        ) and
+                        type_filter()
+                    )
+            else:
+                return (
+                    loc.zone == S3KMemory.ZONE_TO_NAME.get(game_zone) and
+                    loc.act == act + 1 and
+                    type_filter()
+                )
+
+        loc_set = self.location_set(ctx)
+        cache_key = (zone, act)
+        if cache_key in self.location_cache:
+            locs = self.location_cache[cache_key]
+        else:
+            locs = loc_set.filter_locations(_loc_filter)
+            self.location_cache[cache_key] = locs
+
+        for loc in locs:
+            if loc.location_id not in checked:
+                marks[loc.obj_id] = S3KMemory.RESPAWN_UNCHECKED_BIT
+            elif loc.location_type == consts.LOCTYPE_BIG_RING:
+                marks[loc.obj_id] = S3KMemory.RESPAWN_CHECKED_BIT
+
+        return marks
 
     async def handle_respawn_marks(self, ctx: "BizHawkClientContext") -> None:
         """
@@ -296,9 +382,7 @@ class S3KClient(BizHawkClient):
             [S3KMemory.game_mode, S3KMemory.current_zone, S3KMemory.act_number])
         if game_mode[0] != S3KMemory.GameMode.LEVEL_LOADED.value:
             return
-        marks = S3KLocationIds.respawn_marks(
-            zone[0], act[0], self.slot_location_ids(ctx),
-            ctx.checked_locations | ctx.locations_checked)
+        marks = self.respawn_marks(zone[0], act[0], ctx)
         if not marks:
             # Nothing in this act needs to look different from the vanilla game
             return
@@ -336,21 +420,6 @@ class S3KClient(BizHawkClient):
                 guards):
             logger.debug(f"Marked {len(writes)} item box(es) and big ring(s) in zone "
                          f"0x{zone[0]:02X} act {act[0]}")
-
-    @staticmethod
-    def describe_location_buffer(buffer: S3KMemory.LocationBuffer) -> str:
-        lines = [
-            f"Location buffer: integrity=0x{buffer.integrity:04X} "
-            f"({'valid' if buffer.is_valid else 'INVALID'}), next slot={buffer.next_slot}, "
-            "slots oldest to newest:"
-        ]
-        for slot_idx, entry in buffer.slots_oldest_first():
-            if entry is None:
-                lines.append(f"  [{slot_idx:2}] empty")
-            else:
-                _, description = S3KLocationIds.resolve(entry)
-                lines.append(f"  [{slot_idx:2}] {entry} -> {description}")
-        return "\n".join(lines)
 
     async def handle_initialization(
             self, ctx: "BizHawkClientContext", save_state: SaveState) -> bool:

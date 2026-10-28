@@ -1,7 +1,4 @@
-import importlib
-import importlib.resources
 import typing
-import yaml
 
 from BaseClasses import ItemClassification, Tutorial
 from worlds.AutoWorld import WebWorld, World
@@ -13,37 +10,10 @@ from .S3KOptions import S3KOptions, s3k_option_groups
 S3KClient  # Used to avoid an unused import warning on S3KClient
 
 
-def load_location_set() -> locations.LocationSet:
-    """
-    Loads every location definition. Location ids are assigned in the order the
-    definitions are read, so the files are sorted to keep the ids the same no
-    matter what order the filesystem lists them in.
-    """
-    locs_path = importlib.resources.files(__name__) / 'locations'
-
-    loc_types_file = locs_path / 'types.yaml'
-    with importlib.resources.as_file(loc_types_file) as types_file:
-        loc_types = locations.LocationTypeSet.from_file(types_file)
-
-    loc_defs = []
-    for f in sorted(locs_path.iterdir(), key=lambda f: f.name):
-        if f.name.endswith('.yaml') and f.name != 'types.yaml':
-            with f.open('r', encoding='utf-8') as loc_file:
-                loc_defs += yaml.safe_load(loc_file)
-
-    return locations.LocationSet.from_definitions(loc_defs, loc_types)
-
-
-def load_item_set() -> items.ItemSet:
-    item_yaml_filename = importlib.resources.files(__name__) / 'items.yaml'
-    with importlib.resources.as_file(item_yaml_filename) as items_file:
-        return items.ItemSet.from_file(items_file)
-
-
 # Every location and item, before filtering by the player's options. These are
 # loaded once, when the world is imported.
-ALL_LOCATIONS: locations.LocationSet = load_location_set()
-ALL_ITEMS: items.ItemSet = load_item_set()
+ALL_LOCATIONS: locations.LocationSet = locations.load_location_set()
+ALL_ITEMS: items.ItemSet = items.load_item_set()
 
 
 class S3KWebWorld(WebWorld):

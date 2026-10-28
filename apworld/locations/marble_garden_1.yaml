@@ -2,6 +2,7 @@
   zone: Marble Garden
   act: 1
   type: complete
+  obj_id: 0x8000
   requirements:
     - character: Sonic
     - character: Tails
@@ -10,6 +11,7 @@
   zone: Marble Garden
   act: 1
   type: big_ring
+  obj_id: 105
   requirements:
     - character: Sonic
     - character: Tails
@@ -18,6 +20,7 @@
   zone: Marble Garden
   act: 1
   type: big_ring
+  obj_id: 12
   requirements:
     - character: Sonic
     - character: Tails
@@ -26,6 +29,7 @@
   zone: Marble Garden
   act: 1
   type: big_ring
+  obj_id: 85
   requirements:
     - character: Sonic
     - character: Tails
@@ -33,6 +37,7 @@
   zone: Marble Garden
   act: 1
   type: big_ring
+  obj_id: 111
   requirements:
     - character: Sonic
     - character: Tails
@@ -41,6 +46,7 @@
   zone: Marble Garden
   act: 1
   type: big_ring
+  obj_id: 251
   requirements:
     - character: Sonic
     - character: Tails
@@ -49,6 +55,7 @@
   zone: Marble Garden
   act: 1
   type: big_ring
+  obj_id: 202
   requirements:
     - character: Sonic
     - character: Tails
@@ -57,6 +64,7 @@
   zone: Marble Garden
   act: 1
   type: big_ring
+  obj_id: 281
   requirements:
     - character: Sonic
     - character: Tails
@@ -65,6 +73,7 @@
   zone: Marble Garden
   act: 1
   type: big_ring
+  obj_id: 380
   requirements:
     - character: Sonic
     - character: Tails
@@ -73,6 +82,7 @@
   zone: Marble Garden
   act: 1
   type: miniboss
+  obj_id: 0x8001
   requirements:
     - character: Sonic
     - character: Tails
@@ -81,6 +91,7 @@
   zone: Marble Garden
   act: 1
   type: super_ring
+  obj_id: 16
   requirements:
     - character: Sonic
     - character: Tails
@@ -89,6 +100,7 @@
   zone: Marble Garden
   act: 1
   type: lightning_shield
+  obj_id: 22
   requirements:
     - character: Sonic
     - character: Tails
@@ -97,6 +109,7 @@
   zone: Marble Garden
   act: 1
   type: invincibility
+  obj_id: 90
   requirements:
     - character: Sonic
     - character: Tails
@@ -105,6 +118,7 @@
   zone: Marble Garden
   act: 1
   type: flame_shield
+  obj_id: 35
   requirements:
     - character: Sonic
     - character: Tails
@@ -113,6 +127,7 @@
   zone: Marble Garden
   act: 1
   type: super_ring
+  obj_id: 58
   requirements:
     - character: Sonic
     - character: Tails
@@ -121,6 +136,7 @@
   zone: Marble Garden
   act: 1
   type: super_ring
+  obj_id: 62
   requirements:
     - character: Sonic # Can get as base Sonic with lightning shield, or as Super Sonic
     - character: Tails
@@ -128,6 +144,7 @@
   zone: Marble Garden
   act: 1
   type: power_sneakers
+  obj_id: 135
   requirements:
     - character: Sonic
     - character: Tails
@@ -136,6 +153,7 @@
   zone: Marble Garden
   act: 1
   type: super_ring
+  obj_id: 116
   requirements:
     - character: Sonic
     - character: Tails
@@ -144,6 +162,7 @@
   zone: Marble Garden
   act: 1
   type: lightning_shield
+  obj_id: 119
   requirements:
     - character: Sonic
     - character: Tails
@@ -152,6 +171,7 @@
   zone: Marble Garden
   act: 1
   type: super_ring
+  obj_id: 169
   requirements:
     - character: Sonic
     - character: Tails
@@ -160,6 +180,7 @@
   zone: Marble Garden
   act: 1
   type: super_ring
+  obj_id: 170
   requirements:
     - character: Sonic
     - character: Tails
@@ -168,6 +189,7 @@
   zone: Marble Garden
   act: 1
   type: super_ring
+  obj_id: 175
   requirements:
     - character: Sonic
     - character: Tails
@@ -176,6 +198,7 @@
   zone: Marble Garden
   act: 1
   type: lightning_shield
+  obj_id: 109
   requirements:
     - character: Sonic
     - character: Tails
@@ -184,6 +207,7 @@
   zone: Marble Garden
   act: 1
   type: water_shield
+  obj_id: 224
   requirements:
     - character: Sonic
     - character: Tails
@@ -192,6 +216,7 @@
   zone: Marble Garden
   act: 1
   type: flame_shield
+  obj_id: 315
   requirements:
     - character: Sonic
     - character: Tails
@@ -200,6 +225,7 @@
   zone: Marble Garden
   act: 1
   type: lightning_shield
+  obj_id: 289
   requirements:
     - character: Sonic
     - character: Tails
@@ -208,6 +234,7 @@
   zone: Marble Garden
   act: 1
   type: super_ring
+  obj_id: 345
   requirements:
     - character: Sonic
     - character: Tails
@@ -216,6 +243,7 @@
   zone: Marble Garden
   act: 1
   type: super_ring
+  obj_id: 341
   requirements:
     - character: Sonic
     - character: Tails
@@ -224,6 +252,7 @@
   zone: Marble Garden
   act: 1
   type: flame_shield
+  obj_id: 372
   requirements:
     - character: Sonic
     - character: Tails
@@ -232,6 +261,7 @@
   zone: Marble Garden
   act: 1
   type: lightning_shield
+  obj_id: 293
   requirements:
     - character: Sonic
     - character: Tails
@@ -240,6 +270,7 @@
   zone: Marble Garden
   act: 1
   type: super_ring
+  obj_id: 316
   requirements:
     - character: Sonic
     - character: Tails
@@ -248,6 +279,7 @@
   zone: Marble Garden
   act: 1
   type: super_ring
+  obj_id: 317
   requirements:
     - character: Sonic
     - character: Tails
@@ -256,6 +288,7 @@
   zone: Marble Garden
   act: 1
   type: flame_shield
+  obj_id: 337
   requirements:
     - character: Sonic
     - character: Tails
@@ -264,6 +297,7 @@
   zone: Marble Garden
   act: 1
   type: super_ring
+  obj_id: 404
   requirements:
     - character: Sonic
     - character: Tails
@@ -272,6 +306,7 @@
   zone: Marble Garden
   act: 1
   type: super_ring
+  obj_id: 406
   requirements:
     - character: Sonic
     - character: Tails
@@ -280,6 +315,7 @@
   zone: Marble Garden
   act: 1
   type: super_ring
+  obj_id: 408
   requirements:
     - character: Sonic
     - character: Tails
@@ -288,6 +324,7 @@
   zone: Marble Garden
   act: 1
   type: 1_up
+  obj_id: 437
   requirements:
     - character: Sonic
     - character: Tails
@@ -295,6 +332,7 @@
   zone: Marble Garden
   act: 1
   type: lightning_shield
+  obj_id: 444
   requirements:
     - character: Sonic
     - character: Tails
@@ -303,6 +341,7 @@
   zone: Marble Garden
   act: 1
   type: lightning_shield
+  obj_id: 210
   requirements:
     - character: Sonic
     - character: Tails
@@ -311,6 +350,7 @@
   zone: Marble Garden
   act: 1
   type: 1_up
+  obj_id: 247
   requirements:
     - character: Sonic
     - character: Tails

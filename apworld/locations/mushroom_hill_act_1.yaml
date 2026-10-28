@@ -2,6 +2,7 @@
   zone: Mushroom Hill
   act: 1
   type: complete
+  obj_id: 0x8000
   requirements:
     - character: Sonic
     - character: Tails
@@ -10,6 +11,7 @@
   zone: Mushroom Hill
   act: 1
   type: big_ring
+  obj_id: 5
   requirements:
     - character: Sonic
     - character: Tails
@@ -18,6 +20,7 @@
   zone: Mushroom Hill
   act: 1
   type: big_ring
+  obj_id: 329
   requirements:
     - character: Sonic
     - character: Tails
@@ -26,6 +29,7 @@
   zone: Mushroom Hill
   act: 1
   type: big_ring
+  obj_id: 409
   requirements:
     - character: Sonic
     - character: Tails
@@ -34,6 +38,7 @@
   zone: Mushroom Hill
   act: 1
   type: big_ring
+  obj_id: 528
   requirements:
     - character: Sonic
     - character: Tails
@@ -42,12 +47,14 @@
   zone: Mushroom Hill
   act: 1
   type: big_ring
+  obj_id: 31
   requirements:
     - character: Knuckles
 - name: Miniboss
   zone: Mushroom Hill
   act: 1
   type: miniboss
+  obj_id: 0x8001
   requirements:
     - character: Sonic
     - character: Tails
@@ -56,6 +63,7 @@
   zone: Mushroom Hill
   act: 1
   type: super_ring
+  obj_id: 48
   requirements:
     - character: Sonic
     - character: Tails
@@ -64,6 +72,7 @@
   zone: Mushroom Hill
   act: 1
   type: super_ring
+  obj_id: 49
   requirements:
     - character: Sonic
     - character: Tails
@@ -72,6 +81,7 @@
   zone: Mushroom Hill
   act: 1
   type: invincibility
+  obj_id: 58
   requirements:
     - character: Sonic
     - character: Tails
@@ -80,6 +90,7 @@
   zone: Mushroom Hill
   act: 1
   type: water_shield
+  obj_id: 97
   requirements:
     - character: Sonic
     - character: Tails
@@ -88,6 +99,7 @@
   zone: Mushroom Hill
   act: 1
   type: power_sneakers
+  obj_id: 145
   requirements:
     - character: Sonic
     - character: Tails
@@ -96,6 +108,7 @@
   zone: Mushroom Hill
   act: 1
   type: robotnik
+  obj_id: 177
   requirements:
     - character: Sonic
     - character: Tails
@@ -104,6 +117,7 @@
   zone: Mushroom Hill
   act: 1
   type: super_ring
+  obj_id: 180
   requirements:
     - character: Sonic
     - character: Tails
@@ -112,6 +126,7 @@
   zone: Mushroom Hill
   act: 1
   type: super_ring
+  obj_id: 183
   requirements:
     - character: Sonic
     - character: Tails
@@ -120,6 +135,7 @@
   zone: Mushroom Hill
   act: 1
   type: 1_up
+  obj_id: 312
   requirements:
     - character: Sonic
     - character: Tails
@@ -128,6 +144,7 @@
   zone: Mushroom Hill
   act: 1
   type: super_ring
+  obj_id: 376
   requirements:
     - character: Sonic
     - character: Tails
@@ -136,6 +153,7 @@
   zone: Mushroom Hill
   act: 1
   type: invincibility
+  obj_id: 380
   requirements:
     - character: Sonic
     - character: Tails
@@ -144,6 +162,7 @@
   zone: Mushroom Hill
   act: 1
   type: super_ring
+  obj_id: 407
   requirements:
     - character: Sonic
     - character: Tails
@@ -152,6 +171,7 @@
   zone: Mushroom Hill
   act: 1
   type: super_ring
+  obj_id: 411
   requirements:
     - character: Sonic
     - character: Tails
@@ -160,6 +180,7 @@
   zone: Mushroom Hill
   act: 1
   type: lightning_shield
+  obj_id: 443
   requirements:
     - character: Sonic
     - character: Tails
@@ -168,6 +189,7 @@
   zone: Mushroom Hill
   act: 1
   type: super_ring
+  obj_id: 513
   requirements:
     - character: Sonic
     - character: Tails
@@ -176,6 +198,7 @@
   zone: Mushroom Hill
   act: 1
   type: flame_shield
+  obj_id: 515
   requirements:
     - character: Sonic
     - character: Tails
@@ -184,6 +207,7 @@
   zone: Mushroom Hill
   act: 1
   type: 1_up
+  obj_id: 527
   requirements:
     - character: Sonic
     - character: Tails
@@ -192,17 +216,20 @@
   zone: Mushroom Hill
   act: 1
   type: flame_shield
+  obj_id: 75
   requirements:
     - character: Knuckles
 - name: Item Box 19
   zone: Mushroom Hill
   act: 1
   type: super_ring
+  obj_id: 132
   requirements:
     - character: Knuckles
 - name: Item Box 20
   zone: Mushroom Hill
   act: 1
   type: invincibility
+  obj_id: 134
   requirements:
     - character: Knuckles
