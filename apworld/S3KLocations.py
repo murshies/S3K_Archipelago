@@ -55,12 +55,13 @@ def filter_locations(world: World, loc_set: locations.LocationSet) -> locations.
         )
         disallowed_id_set.update(loc.location_id for loc in locs)
 
-    # Item box locations
+    # Item box/big ring locations
     if world.options.enable_boss_locations:
         locs = loc_set.filter_locations(
             lambda loc, ts: consts.LOCTYPE_BOSS in ts.types_for(loc.location_type))
         loc_id_set.update(loc.location_id for loc in locs)
-    if world.options.enable_big_ring_locations:
+    if world.options.enable_big_ring_locations or \
+       world.options.big_rings_goal.value != consts.GOAL_NONE:
         locs = loc_set.filter_locations(
             lambda loc, ts: loc.location_type == consts.LOCTYPE_BIG_RING)
         loc_id_set.update(loc.location_id for loc in locs)

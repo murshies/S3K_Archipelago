@@ -211,3 +211,29 @@ class TestOneBigRing(S3KTestBase):
         'enable_super_ring_locations': True,
         'enable_robotnik_locations': True,
     }
+
+
+class TestBigRingLocsOffBigRingGoalEnabled(S3KTestBase):
+    options = {
+        'big_rings_goal': 'death_egg',
+        'big_rings_to_check': 10,
+        'chaos_emeralds_goal': 'none',
+        'super_emeralds_goal': 'none',
+        'death_link': True,
+        'logic_difficulty': 'standard',
+        'zone_unlocks': 'zones_and_characters',
+        'traps_enabled': True,
+        'trap_weight_percentage': 10,
+        'enable_boss_locations': True,
+        'enable_big_ring_locations': False,
+        'enable_special_stage_emerald_locations': True,
+        'enable_special_stage_perfect_locations': True,
+        'enable_lightning_shield_locations': True,
+        'enable_flame_shield_locations': True,
+        'enable_water_shield_locations': True,
+        'enable_invincibility_locations': True,
+        'enable_power_sneaker_locations': True,
+        'enable_1_up_locations': True,
+        'enable_super_ring_locations': True,
+        'enable_robotnik_locations': True,
+    }
