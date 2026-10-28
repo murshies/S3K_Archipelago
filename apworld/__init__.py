@@ -79,9 +79,22 @@ class S3KWorld(World):
         Given the filtered list of zone/character items, pick a starting
         zone/character.
         """
+        zone_deny_list = (
+            'Special Stage',
+            'Hidden Palace',
+            'Doomsday',
+            'Knuckles Sky Sanctuary',
+        )
         valid_choices = []
         for item in zone_item_list:
             if self.item_is_goal_zone(item):
+                continue
+            denied = False
+            for denied_zone in zone_deny_list:
+                if denied_zone in item.name:
+                    denied = True
+                    break
+            if denied:
                 continue
             valid_choices.append(item)
         return self.random.choice(valid_choices)
