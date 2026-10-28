@@ -281,7 +281,6 @@ def poptracker_release(c: Context):
         tracker = json.load(tracker_base)
     lua_defs = []
     for zone, abbrev in locations.ZONE_ABBREVS.items():
-        print(f'Iterating on {zone} {abbrev}')
         # Lava Reef boss is technically act 3, so look for act 3 locations
         # too. Some zones like Sky Sanctuary do not have an act at all.
         for act in [None, 1, 2, 3]:
