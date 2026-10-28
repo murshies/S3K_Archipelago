@@ -420,38 +420,6 @@ class LocationBufferEntry:
                 f"id=0x{self.obj_id:04X} ({self.obj_id})")
 
 
-# @dataclass(frozen=True)
-# class LocationBufferEntry:
-#     """
-#     A single filled slot from the location buffer. zone and act are the raw
-#     values from Apparent_zone_and_act (so act is 0 for act 1, 1 for act 2).
-#     """
-#     zone: int
-#     act: int
-#     location_id: int
-
-#     @property
-#     def is_special_stage(self) -> bool:
-#         return (LOC_SS_EMERALD <= self.location_id < LOC_SS_EMERALD + NUM_SPECIAL_STAGES or
-#                 LOC_SS_PERFECT <= self.location_id < LOC_SS_PERFECT + NUM_SPECIAL_STAGES)
-
-#     @property
-#     def key(self) -> tuple:
-#         """
-#         A key which uniquely identifies the checked location. The zone and act
-#         have no meaning for special stage locations, so they are left out.
-#         """
-#         if self.is_special_stage:
-#             return (self.location_id,)
-#         return (self.zone, self.act, self.location_id)
-
-#     def __str__(self) -> str:
-#         if self.is_special_stage:
-#             return f"special stage id=0x{self.location_id:04X}"
-#         return (f"zone=0x{self.zone:02X} act={self.act} "
-#                 f"id=0x{self.location_id:04X} ({self.location_id})")
-
-
 @dataclass
 class LocationBuffer:
     integrity: int
