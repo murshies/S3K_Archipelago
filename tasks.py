@@ -276,7 +276,7 @@ def poptracker_release(c: Context):
     location_set = locations.LocationSet.from_files(
         location_def_files, types, validator=jsonschema.validate)
     locs_path = INVOKE_ROOT / 'poptracker' / 'locations'
-    shutil.rmtree(locs_path)
+    shutil.rmtree(locs_path, ignore_errors=True)
     os.makedirs(locs_path)
     with open(INVOKE_ROOT / 'poptracker' / 'tracker_base.json') as tracker_base:
         tracker = json.load(tracker_base)
