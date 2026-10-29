@@ -37,6 +37,7 @@ def all(c: Context):
     validate_player_config(c)
     test(c)
     apworld_release(c)  # Note that build_rom_base_diff is called as part of apworld_release
+    poptracker_release(c)
 
 
 @task
