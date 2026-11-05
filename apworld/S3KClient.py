@@ -7,7 +7,7 @@ from NetUtils import ClientStatus
 import worlds._bizhawk as bizhawk
 from worlds._bizhawk.client import BizHawkClient
 
-from . import consts, items, locations, S3KMemory, S3KReceivedItems
+from . import consts, items, locations, S3KMemory
 
 if typing.TYPE_CHECKING:
     from worlds._bizhawk.context import BizHawkClientContext
@@ -18,6 +18,15 @@ logger = logging.getLogger("Client")
 # These correspond to the names placed in each individual ROM
 SK_GAME_NAME = "SONIC & KNUCKLES"
 S3_GAME_NAME = "SONIC THE             HEDGEHOG 3"
+
+GOAL_LOCATIONS: dict[int, str] = {
+    consts.GOAL_DEATH_EGG: locations.format_display_name(
+        consts.ZONE_DEATH_EGG, 2, 'Complete'),
+    consts.GOAL_DOOMSDAY: locations.format_display_name(
+        consts.ZONE_DOOMSDAY, None, 'Complete'),
+    consts.GOAL_KNUCKLES_SKY_SANCTUARY: locations.format_display_name(
+        consts.ZONE_KNUCKLES_SKY_SANCTUARY, None, 'Complete'),
+}
 
 
 @dataclass(frozen=True)
@@ -64,6 +73,13 @@ class S3KClient(BizHawkClient):
     last_sent_death_time: float | None
     # The set of locations for the game, for various queries
     _location_set: locations.LocationSet | None
+    # The set of items for this game, for various queries
+    _item_set: items.ItemSet | None
+    # A mapping of code -> item, so we don't need to compute this over and over again
+    _items_by_code: dict[int, items.Item] | None
+    # The base mapping of zones to characters that can play that zone. Note
+    # that this is keyed on the item group name for the character.
+    _base_chars_to_zones: dict[str, set[str]] | None
     # A cache of the in-game zone/act combinations to their enabled locations
     location_cache: dict[tuple[int, int], list[locations.Location]]
     # The seed and slot for which the location cache is valid
@@ -81,6 +97,9 @@ class S3KClient(BizHawkClient):
         self.player_dead = False
         self.last_sent_death_time = None
         self._location_set = None
+        self._item_set = None
+        self._items_by_code = None
+        self._base_chars_to_zones = None
         self.location_cache = {}
         self.curr_seed_slot = None
 
@@ -115,6 +134,14 @@ class S3KClient(BizHawkClient):
         except Exception as e:
             logger.error(f"Exception while processing game state: {e}")
 
+    def from_arch_rxd_items(self, ctx: "BizHawkClientContext") -> list[items.Item]:
+        """
+        Given the items received according to Archipelago, get the S3K-specific
+        items.
+        """
+        items_by_code = self.items_by_code()
+        return [items_by_code[item.item] for item in ctx.items_received]
+
     async def tick(self, ctx: "BizHawkClientContext") -> None:
         await self.handle_locations(ctx)
 
@@ -124,14 +151,14 @@ class S3KClient(BizHawkClient):
             if ctx.slot_data.get("death_link") and "DeathLink" not in ctx.tags:
                 await ctx.update_death_link(True)
             await self.handle_death(ctx)
-            item_names = [ctx.item_names.lookup_in_game(item.item) for item in ctx.items_received]
-            await self.handle_goal(ctx, item_names)
+            rxd_items = self.from_arch_rxd_items(ctx)
+            await self.handle_goal(ctx, rxd_items)
             await self.handle_ending_zones(ctx)
             await self.handle_respawn_marks(ctx)
-            save_state = self.save_state(ctx, item_names)
+            save_state = self.save_state(ctx, rxd_items)
             if await self.handle_initialization(ctx, save_state):
                 await self.sync_save_data(ctx, save_state)
-                await self.handle_mailbox(ctx, item_names)
+                await self.handle_mailbox(ctx, rxd_items)
 
         game_state_read_payload = [
             S3KMemory.game_mode,
@@ -157,29 +184,52 @@ class S3KClient(BizHawkClient):
         #     logger.info(f"In {curr_zone} act {act_number}")
 
     @staticmethod
-    async def handle_goal(ctx: "BizHawkClientContext", item_names: list[str]) -> None:
+    async def handle_goal(ctx: "BizHawkClientContext", rxd_items: typing.Iterable[items.Item]) -> None:
         """Tells the server once all of the goals have been completed."""
         if ctx.finished_game:
             return
-        settings = S3KReceivedItems.SlotSettings.from_slot_data(ctx.slot_data)
-        if S3KReceivedItems.goal_complete(item_names, settings):
+
+        goals_completed = [
+            item for item in rxd_items
+            if items.ITEM_GROUP_GOAL in item.groups
+        ]
+        goals = (
+            ctx.slot_data['big_rings_goal'],
+            ctx.slot_data['chaos_emeralds_goal'],
+            ctx.slot_data['super_emeralds_goal']
+        )
+        num_goals = 0
+        for goal in goals:
+            if goal != consts.GOAL_NONE:
+                num_goals += 1
+        if len(goals_completed) >= num_goals:
             await ctx.send_msgs([{"cmd": "StatusUpdate", "status": ClientStatus.CLIENT_GOAL}])
             ctx.finished_game = True
             logger.info("All goals complete!")
 
-    @staticmethod
-    async def handle_ending_zones(ctx: "BizHawkClientContext") -> None:
+    async def handle_ending_zones(self, ctx: "BizHawkClientContext") -> None:
         """
         Tells the game which goal zones should play the ending when completed
         (see S3KMemory.ending_zones). This only changes as goal locations are
         checked, but the game clears it on reset, so it's checked every tick.
         """
-        settings = S3KReceivedItems.SlotSettings.from_slot_data(ctx.slot_data)
-        checked_names = [
+        checked = set([
             ctx.location_names.lookup_in_game(loc_id)
             for loc_id in ctx.checked_locations | ctx.locations_checked
-        ]
-        bits = S3KReceivedItems.ending_zones(settings, checked_names)
+        ])
+        goals = {
+            goal
+            for goal in (
+                    ctx.slot_data["big_rings_goal"],
+                    ctx.slot_data["chaos_emeralds_goal"],
+                    ctx.slot_data["super_emeralds_goal"],
+            )
+            if goal != consts.GOAL_NONE
+        }
+        bits = 0
+        for goal in goals:
+            if all(GOAL_LOCATIONS[other] in checked for other in goals - {goal}):
+                bits |= 1 << S3KMemory.ENDING_ZONE_BITS[goal]
         current = (await bizhawk.read(ctx.bizhawk_ctx, [S3KMemory.ending_zones]))[0]
         if current[0] != bits:
             await bizhawk.write(ctx.bizhawk_ctx, [
@@ -283,6 +333,29 @@ class S3KClient(BizHawkClient):
         self._location_set = locations.LocationSet(filtered, loc_set.types)
         return self._location_set
 
+    def _init_item_set(self):
+        if self._item_set is not None and self._items_by_code is not None:
+            return
+        self._item_set = items.load_item_set()
+        self._items_by_code = {item.code: item for item in self._item_set.all_items}
+
+    def item_set(self) -> items.ItemSet:
+        """
+        Gets the set of items for S3K, initializing it if needed.
+
+        Unlike location_set, this is just the full list of items, not just ones
+        that are relevant to the game.
+        """
+        self._init_item_set()
+        return self._item_set
+
+    def items_by_code(self) -> dict[int, items.Item]:
+        """
+        Get the set of items, keyed by code.
+        """
+        self._init_item_set()
+        return self._items_by_code
+
     def respawn_marks(
             self,
             zone: int,
@@ -310,7 +383,7 @@ class S3KClient(BizHawkClient):
             """
             def type_filter():
                 return (
-                    items.ITEM_GROUP_ITEM_BOX in ts.types_for(loc.location_type) or
+                    consts.LOCTYPE_ITEM_BOX in ts.types_for(loc.location_type) or
                     loc.location_type == consts.LOCTYPE_BIG_RING
                 )
 
@@ -481,24 +554,126 @@ class S3KClient(BizHawkClient):
         await bizhawk.write(ctx.bizhawk_ctx, payload)
         return True
 
-    @staticmethod
-    def save_state(ctx: "BizHawkClientContext", item_names: list[str]) -> SaveState:
+    def goal_zone_availability(
+            self,
+            ctx: "BizHawkClientContext",
+            rxd_items: list[items.Item],
+            big_rings_checked: int,
+            emeralds_rxd: int,
+    ) -> dict[int, bool]:
+        """
+        Calculate a mapping of goals zones, to whether or not they are
+        available to the player.
+        """
+        mapping = {}
+
+        if ctx.slot_data["big_rings_goal"] != consts.GOAL_NONE:
+            goal_met = big_rings_checked >= ctx.slot_data["big_rings_to_check"]
+            mapping[ctx.slot_data["big_rings_goal"]] = goal_met
+
+        if ctx.slot_data["chaos_emeralds_goal"] != consts.GOAL_NONE:
+            goal_met = emeralds_rxd >= consts.EMERALDS_FOR_CHAOS_HUNT
+            mapping[ctx.slot_data["chaos_emeralds_goal"]] = goal_met
+
+        if ctx.slot_data["super_emeralds_goal"] != consts.GOAL_NONE:
+            goal_met = emeralds_rxd >= consts.EMERALDS_FOR_SUPER_HUNT
+            mapping[ctx.slot_data["super_emeralds_goal"]] = goal_met
+
+        return mapping
+
+    def zones_to_chars(
+            self,
+            ctx: "BizHawkClientContext",
+            rxd_items: list[items.Item],
+            big_rings_checked: int,
+            emeralds_rxd: int,
+    ) -> dict[str, set[str]]:
+        if self._base_chars_to_zones is None:
+            self._base_chars_to_zones = {}
+            item_set = self.item_set()
+            for char in consts.CHARACTERS:
+                zones = item_set.filter_items(
+                    lambda item: (
+                        char in item.groups and
+                        items.ITEM_GROUP_CHARACTER not in item.groups and
+                        items.ITEM_GROUP_LEVEL in item.groups
+                    ))
+                self._base_chars_to_zones[char] = set([
+                    item.name for item in zones
+                ])
+
+        zones_to_chars = {}
+        chars_unlocked = set()
+        zones_unlocked = set()
+        if ctx.slot_data["zone_unlocks"] == consts.ZONE_UNLOCKS_CHARACTERS_ONLY:
+            for item in rxd_items:
+                if items.ITEM_GROUP_CHARACTER in item.groups:
+                    chars_unlocked.add(item.name)
+        elif ctx.slot_data["zone_unlocks"] == consts.ZONE_UNLOCKS_ZONES_ONLY:
+            for item in rxd_items:
+                if items.ITEM_GROUP_LEVEL in item.groups:
+                    zones_unlocked.add(item.name)
+
+        for char in consts.CHARACTERS:
+            if char not in zones_to_chars:
+                zones_to_chars[char] = set()
+            if ctx.slot_data["zone_unlocks"] == consts.ZONE_UNLOCKS_ALL_UNLOCKED:
+                zones_to_chars[char] = set(self._base_chars_to_zones[char])
+            elif ctx.slot_data["zone_unlocks"] == consts.ZONE_UNLOCKS_CHARACTERS_ONLY:
+                if char in chars_unlocked:
+                    zones_to_chars[char] = set(self._base_chars_to_zones[char])
+            elif ctx.slot_data["zone_unlocks"] == consts.ZONE_UNLOCKS_ZONES_ONLY:
+                for zone in zones_unlocked:
+                    if zone in self._base_chars_to_zones[char]:
+                        zones_to_chars[char].add(zone)
+            elif ctx.slot_data["zone_unlocks"] == consts.ZONE_UNLOCKS_ZONES_AND_CHARACTERS:
+                for item in rxd_items:
+                    if char in item.groups:
+                        zone = item.name.split('-')[0].strip()
+                        zones_to_chars[char].add(zone)
+
+        # Handle adding/removing goal zones
+        goal_zones_availability = self.goal_zone_availability(
+            ctx, rxd_items, big_rings_checked, emeralds_rxd)
+        if goal_zones_availability.get(consts.GOAL_DEATH_EGG):
+            zones_to_chars[items.ITEM_GROUP_SONIC].add(consts.ZONE_DEATH_EGG)
+            zones_to_chars[items.ITEM_GROUP_TAILS].add(consts.ZONE_DEATH_EGG)
+        elif goal_zones_availability.get(consts.GOAL_DEATH_EGG) is False:
+            zones_to_chars[items.ITEM_GROUP_SONIC].discard(consts.ZONE_DEATH_EGG)
+            zones_to_chars[items.ITEM_GROUP_TAILS].discard(consts.ZONE_DEATH_EGG)
+
+        if goal_zones_availability.get(consts.GOAL_KNUCKLES_SKY_SANCTUARY):
+            zones_to_chars[items.ITEM_GROUP_KNUCKLES].add(consts.ZONE_SKY_SANCTUARY)
+        elif goal_zones_availability.get(consts.GOAL_KNUCKLES_SKY_SANCTUARY) is False:
+            zones_to_chars[items.ITEM_GROUP_KNUCKLES].discard(consts.ZONE_SKY_SANCTUARY)
+
+        if goal_zones_availability.get(consts.GOAL_DOOMSDAY):
+            zones_to_chars[items.ITEM_GROUP_SONIC].add(consts.ZONE_DOOMSDAY)
+        elif goal_zones_availability.get(consts.GOAL_DOOMSDAY) is False:
+            zones_to_chars[items.ITEM_GROUP_SONIC].discard(consts.ZONE_DOOMSDAY)
+
+        return zones_to_chars
+
+    def save_state(self, ctx: "BizHawkClientContext", rxd_items: list[items.Item]) -> SaveState:
         """Works out the emeralds and level unlocks from the items received."""
-        settings = S3KReceivedItems.SlotSettings.from_slot_data(ctx.slot_data)
-        checked_names = [
-            ctx.location_names.lookup_in_game(loc_id)
-            for loc_id in ctx.checked_locations | ctx.locations_checked
-        ]
-        emeralds = S3KReceivedItems.emerald_count(item_names)
-        zones = S3KReceivedItems.unlocked_zones(
-            item_names,
-            settings,
-            emeralds,
-            S3KReceivedItems.big_rings_checked(checked_names),
-        )
+        checked = ctx.checked_locations | ctx.locations_checked
+        emeralds_rxd = len([
+            item for item in rxd_items
+            if items.ITEM_GROUP_CHAOS_EMERALD in item.groups
+        ])
+        if emeralds_rxd > consts.EMERALDS_FOR_SUPER_HUNT:
+            emeralds_rxd = consts.EMERALDS_FOR_SUPER_HUNT
+        loc_set = self.location_set(ctx)
+        big_rings_checked = len(loc_set.filter_locations(
+            lambda p, ts: (
+                p.location_type == consts.LOCTYPE_BIG_RING and
+                p.location_id in checked
+            )
+        ))
+        zones_to_chars = self.zones_to_chars(ctx, rxd_items, big_rings_checked, emeralds_rxd)
         return SaveState(
-            emeralds=emeralds,
-            level_bitmasks=S3KReceivedItems.level_bitmasks(zones),
+            emeralds=emeralds_rxd,
+            level_bitmasks=S3KMemory.level_bitmasks(zones_to_chars),
         )
 
     async def sync_save_data(self, ctx: "BizHawkClientContext", save_state: SaveState) -> None:
@@ -520,7 +695,7 @@ class S3KClient(BizHawkClient):
 
         game_state = S3KMemory.save_game_state(save_state.emeralds)
         emerald_bytes = S3KMemory.save_emerald_bitmask(save_state.emeralds).to_bytes(2, "big")
-        for idx in range(len(S3KReceivedItems.CHARACTERS)):
+        for idx in range(len(consts.CHARACTERS)):
             base = idx * S3KMemory.SAVE_FILE_SIZE
             state_offset = base + S3KMemory.SAVE_FILE_GAME_STATE_OFFSET
             emerald_offset = base + S3KMemory.SAVE_FILE_EMERALDS_OFFSET
@@ -544,7 +719,11 @@ class S3KClient(BizHawkClient):
             (S3KMemory.save_files.address, list(save_data), S3KMemory.save_files.location),
         ])
 
-    async def handle_mailbox(self, ctx: "BizHawkClientContext", item_names: list[str]) -> None:
+    async def handle_mailbox(
+            self,
+            ctx: "BizHawkClientContext",
+            rxd_items: list[items.Item],
+    ) -> None:
         """
         Sends requests to the game through the item mailbox, one at a time
         (see S3KMemory.item_mailbox). These are junk items (shields, traps,
@@ -590,7 +769,10 @@ class S3KClient(BizHawkClient):
             # there's no one to kill anymore
             self.death_link_request_id = 0
 
-        junk = S3KReceivedItems.junk_items(item_names)
+        junk = []
+        for item in rxd_items:
+            if item.name in S3KMemory.JUNK_ITEM_TYPES:
+                junk.append((item.name, S3KMemory.JUNK_ITEM_TYPES[item.name]))
         if pending_id:
             if last_processed_id == pending_id:
                 # The game applied the item

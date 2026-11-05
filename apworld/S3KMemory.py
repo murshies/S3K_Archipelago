@@ -132,6 +132,17 @@ ITEM_TYPE_ROBOTNIK_TRAP: int = 7
 ITEM_TYPE_POISON_TRAP: int = 8
 ITEM_TYPE_DEATH_LINK: int = 9  # Kills the player, regardless of rings, shields, or invincibility
 
+JUNK_ITEM_TYPES: dict[str, int] = {
+    'Super Ring': ITEM_TYPE_SUPER_RING,
+    'Lightning Shield': ITEM_TYPE_LIGHTNING_SHIELD,
+    'Flame Shield': ITEM_TYPE_FLAME_SHIELD,
+    'Water Shield': ITEM_TYPE_WATER_SHIELD,
+    'Invincibility': ITEM_TYPE_INVINCIBILITY,
+    'Power Sneakers': ITEM_TYPE_POWER_SNEAKERS,
+    'Robotnik Trap': ITEM_TYPE_ROBOTNIK_TRAP,
+    'Poison Trap': ITEM_TYPE_POISON_TRAP,
+}
+
 # The routine of the player 1 object (Player_1+routine), used to detect deaths.
 # Sonic, Tails, and Knuckles all use the same routine numbers.
 player_1_routine = MemObject(0xB005, 1, MEM_RAM)
@@ -155,8 +166,8 @@ ENDING_ZONE_BITS: dict[int, int] = {
 }
 
 # The level unlock bitmasks for Sonic, Tails, and Knuckles, 4 bytes each. Each
-# bit is a level in the save select screen's level list (see
-# S3KReceivedItems.LEVEL_BITS).
+# bit is a level in the save select screen's level list, corresponding to the
+# mapping ZONE_NAME_TO_LEVEL_BIT below.
 level_unlocks = MemObject(0xE69C, 12, MEM_RAM)
 
 # The three save files, one per character, in the same order as the level
@@ -218,6 +229,49 @@ ZONE_TO_NAME: dict[Zone, str] = {
     Zone.DEATH_EGG: consts.ZONE_DEATH_EGG,
     Zone.DOOMSDAY: consts.ZONE_DOOMSDAY,
 }
+
+ZONE_NAME_TO_LEVEL_BIT: dict[str, int] = {
+    consts.ZONE_ANGEL_ISLAND: 0,
+    consts.ZONE_HYDROCITY: 1,
+    consts.ZONE_MARBLE_GARDEN: 2,
+    consts.ZONE_CARNIVAL_NIGHT: 3,
+    consts.ZONE_ICE_CAP: 4,
+    consts.ZONE_LAUNCH_BASE: 5,
+    consts.ZONE_MUSHROOM_HILL: 6,
+    consts.ZONE_FLYING_BATTERY: 7,
+    consts.ZONE_SANDOPOLIS: 8,
+    consts.ZONE_LAVA_REEF: 9,
+    consts.ZONE_HIDDEN_PALACE: 10,
+    consts.ZONE_SKY_SANCTUARY: 11,
+    consts.ZONE_KNUCKLES_SKY_SANCTUARY: 11,
+    consts.ZONE_DEATH_EGG: 12,
+    consts.ZONE_DOOMSDAY: 13,
+    consts.ZONE_SPECIAL_STAGE_1: 14,
+    consts.ZONE_SPECIAL_STAGE_2: 15,
+    consts.ZONE_SPECIAL_STAGE_3: 16,
+    consts.ZONE_SPECIAL_STAGE_4: 17,
+    consts.ZONE_SPECIAL_STAGE_5: 18,
+    consts.ZONE_SPECIAL_STAGE_6: 19,
+    consts.ZONE_SPECIAL_STAGE_7: 20,
+    consts.ZONE_SPECIAL_STAGE_8: 21,
+    consts.ZONE_SPECIAL_STAGE_9: 22,
+    consts.ZONE_SPECIAL_STAGE_10: 23,
+    consts.ZONE_SPECIAL_STAGE_11: 24,
+    consts.ZONE_SPECIAL_STAGE_12: 25,
+    consts.ZONE_SPECIAL_STAGE_13: 26,
+    consts.ZONE_SPECIAL_STAGE_14: 27,
+}
+
+
+def level_bitmasks(zones: dict[str, set[str]]) -> tuple[int, ...]:
+    """
+    Given the zones unlocked for each character, convert that into the level
+    unlock bitmask that will be written to the game's memory.
+    """
+    return tuple(
+        sum(1 << ZONE_NAME_TO_LEVEL_BIT[zone] for zone in zones[char])
+        for char in consts.CHARACTERS
+    )
 
 
 class SaveFileCharacter(Enum):

@@ -169,7 +169,7 @@ def filter_items(world: World, item_set: items.ItemSet) -> items.ItemSet:
             world.options.super_emeralds_goal.value != consts.GOAL_NONE
     ):
         matching = item_set.filter_items(
-            lambda item: 'chaos_emerald' in item.groups
+            lambda item: items.ITEM_GROUP_CHAOS_EMERALD in item.groups
         )
         item_code_set.update(item.code for item in matching)
 

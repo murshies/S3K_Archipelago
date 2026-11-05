@@ -65,9 +65,12 @@ def create_regions(
             menu.connect(region)
         # Next, handle access to other zones based on zone unlock logic
         elif world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_ZONES_ONLY:
+            zone_item = (
+                consts.ZONE_SKY_SANCTUARY
+                if zone == consts.ZONE_KNUCKLES_SKY_SANCTUARY else zone)
             menu.connect(
                 region,
-                rule=lambda state, zone=zone: state.has(zone, player))
+                rule=lambda state, zone_item=zone_item: state.has(zone_item, player))
         elif world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_ZONES_AND_CHARACTERS:
             menu.connect(
                 region,

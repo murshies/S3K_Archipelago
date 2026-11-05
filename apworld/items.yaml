@@ -1,568 +1,733 @@
 - name: Chaos Emerald
   groups:
-    - chaos_emerald
+    - ChaosEmerald
   progression: true
 - name: Master Emerald
   groups:
-    - goal
+    - Goal
   progression: true
 - name: Master Emerald Shard
   groups:
-    - goal
-    - multigoal
+    - Goal
+    - Multigoal
   progression: true
 - name: Sonic
   groups:
-    - character
+    - Character
+    - Sonic
   progression: true
 - name: Tails
   groups:
-    - character
+    - Character
+    - Tails
   progression: true
 - name: Knuckles
   groups:
-    - character
+    - Character
+    - Knuckles
   progression: true
 - name: Angel Island
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Hydrocity
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Marble Garden
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Carnival Night
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Ice Cap
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Launch Base
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Mushroom Hill
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Flying Battery
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Sandopolis
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Lava Reef
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Hidden Palace
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Sky Sanctuary
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Death Egg
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
   progression: true
 - name: Doomsday
   groups:
-    - level
+    - Level
+    - Sonic
   progression: true
 - name: Special Stage 1
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Special Stage 2
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Special Stage 3
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Special Stage 4
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Special Stage 5
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Special Stage 6
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Special Stage 7
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Special Stage 8
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Special Stage 9
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Special Stage 10
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Special Stage 11
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Special Stage 12
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Special Stage 13
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Special Stage 14
   groups:
-    - level
+    - Level
+    - Sonic
+    - Tails
+    - Knuckles
   progression: true
 - name: Angel Island - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Hydrocity - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Marble Garden - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Carnival Night - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Ice Cap - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Launch Base - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Mushroom Hill - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Flying Battery - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Sandopolis - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Lava Reef - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Hidden Palace - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Sky Sanctuary - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Death Egg - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Doomsday - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Special Stage 1 - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Special Stage 2 - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Special Stage 3 - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Special Stage 4 - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Special Stage 5 - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Special Stage 6 - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Special Stage 7 - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Special Stage 8 - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Special Stage 9 - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Special Stage 10 - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Special Stage 11 - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Special Stage 12 - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Special Stage 13 - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Special Stage 14 - Sonic
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Sonic
   progression: true
 - name: Angel Island - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Hydrocity - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Marble Garden - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Carnival Night - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Ice Cap - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Launch Base - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Mushroom Hill - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Flying Battery - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Sandopolis - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Lava Reef - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Hidden Palace - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Sky Sanctuary - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Death Egg - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Special Stage 1 - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Special Stage 2 - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Special Stage 3 - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Special Stage 4 - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Special Stage 5 - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Special Stage 6 - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Special Stage 7 - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Special Stage 8 - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Special Stage 9 - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Special Stage 10 - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Special Stage 11 - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Special Stage 12 - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Special Stage 13 - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Special Stage 14 - Tails
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Tails
   progression: true
 - name: Angel Island - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Hydrocity - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Marble Garden - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Carnival Night - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Ice Cap - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Launch Base - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Mushroom Hill - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Flying Battery - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Sandopolis - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Lava Reef - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Hidden Palace - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Knuckles Sky Sanctuary - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Special Stage 1 - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Special Stage 2 - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Special Stage 3 - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Special Stage 4 - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Special Stage 5 - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Special Stage 6 - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Special Stage 7 - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Special Stage 8 - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Special Stage 9 - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Special Stage 10 - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Special Stage 11 - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Special Stage 12 - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Special Stage 13 - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Special Stage 14 - Knuckles
   groups:
-    - level
-    - character
+    - Level
+    - Character
+    - Knuckles
   progression: true
 - name: Lightning Shield
   groups:
-    - item_box
+    - ItemBox
   filler: true
 - name: Flame Shield
   groups:
-    - item_box
+    - ItemBox
   filler: true
 - name: Water Shield
   groups:
-    - item_box
+    - ItemBox
   filler: true
 - name: Invincibility
   groups:
-    - item_box
+    - ItemBox
   filler: true
 - name: Power Sneakers
   groups:
-    - item_box
+    - ItemBox
   filler: true
 - name: Super Ring
   groups:
-    - item_box
+    - ItemBox
   filler: true
 - name: Robotnik Trap
   description: 'Causes the player to lose all of their rings'

@@ -37,7 +37,10 @@ def loc_requirement_to_rule(
         zone_item_name = f"{loc.zone} - {req.character}"
         reqs.append(lambda state: state.has(zone_item_name, player))
     elif world.options.zone_unlocks.value == consts.ZONE_UNLOCKS_ZONES_ONLY:
-        reqs.append(lambda state: state.has(loc.zone, player))
+        zone_item = (
+            consts.ZONE_SKY_SANCTUARY
+            if loc.zone == consts.ZONE_KNUCKLES_SKY_SANCTUARY else loc.zone)
+        reqs.append(lambda state, zone_item=zone_item: state.has(zone_item, player))
 
     if req.super_state is not None:
         if (

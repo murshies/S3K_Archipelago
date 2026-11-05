@@ -6,12 +6,15 @@ import importlib.resources
 import typing
 import yaml
 
-ITEM_GROUP_CHAOS_EMERALD = 'chaos_emerald'
-ITEM_GROUP_CHARACTER = 'character'
-ITEM_GROUP_GOAL = 'goal'
-ITEM_GROUP_ITEM_BOX = 'item_box'
-ITEM_GROUP_LEVEL = 'level'
-ITEM_GROUP_MULTIGOAL = 'multigoal'
+ITEM_GROUP_CHAOS_EMERALD = 'ChaosEmerald'
+ITEM_GROUP_CHARACTER = 'Character'
+ITEM_GROUP_GOAL = 'Goal'
+ITEM_GROUP_ITEM_BOX = 'ItemBox'
+ITEM_GROUP_LEVEL = 'Level'
+ITEM_GROUP_MULTIGOAL = 'Multigoal'
+ITEM_GROUP_SONIC = 'Sonic'
+ITEM_GROUP_TAILS = 'Tails'
+ITEM_GROUP_KNUCKLES = 'Knuckles'
 
 ITEM_GROUPS = (
     ITEM_GROUP_CHAOS_EMERALD,
@@ -20,6 +23,9 @@ ITEM_GROUPS = (
     ITEM_GROUP_ITEM_BOX,
     ITEM_GROUP_LEVEL,
     ITEM_GROUP_MULTIGOAL,
+    ITEM_GROUP_SONIC,
+    ITEM_GROUP_TAILS,
+    ITEM_GROUP_KNUCKLES,
 )
 
 
