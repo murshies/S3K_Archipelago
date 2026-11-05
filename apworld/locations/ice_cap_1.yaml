@@ -16,6 +16,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 951
+    y: 346
 - name: Big Ring 2
   zone: Ice Cap
   act: 1
@@ -25,6 +28,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1240
+    y: 58
 - name: Miniboss
   zone: Ice Cap
   act: 1
@@ -43,6 +49,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1319
+    y: 293
 - name: Item Box 2
   zone: Ice Cap
   act: 1
@@ -52,6 +61,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2045
+    y: 69
 - name: Item Box 3
   zone: Ice Cap
   act: 1
@@ -67,6 +79,9 @@
       # glide into the ice slope below it, and keep jumping and gliding until
       # you reach the ground with this item box.
       difficulty: hard
+  poptracker:
+    x: 3326
+    y: 198
 - name: Item Box 4
   zone: Ice Cap
   act: 1
@@ -74,3 +89,6 @@
   obj_id: 108
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 1747
+    y: 452

@@ -38,6 +38,38 @@ ZONE_ORDER = (
     'Special Stage 14',
 )
 
+ZONE_ABBREVS = {
+    'Angel Island': 'AIZ',
+    'Hydrocity': 'HCZ',
+    'Marble Garden': 'MGZ',
+    'Carnival Night': 'CNZ',
+    'Ice Cap': 'ICZ',
+    'Launch Base': 'LBZ',
+    'Mushroom Hill': 'MHZ',
+    'Flying Battery': 'FBZ',
+    'Sandopolis': 'SZ',
+    'Lava Reef': 'LRZ',
+    'Hidden Palace': 'HPZ',
+    'Sky Sanctuary': 'SSZ',
+    'Knuckles Sky Sanctuary': 'KSSZ',
+    'Death Egg': 'DEZ',
+    'Doomsday': 'DDZ',
+    'Special Stage 1': 'SS1',
+    'Special Stage 2': 'SS2',
+    'Special Stage 3': 'SS3',
+    'Special Stage 4': 'SS4',
+    'Special Stage 5': 'SS5',
+    'Special Stage 6': 'SS6',
+    'Special Stage 7': 'SS7',
+    'Special Stage 8': 'SS8',
+    'Special Stage 9': 'SS9',
+    'Special Stage 10': 'SS10',
+    'Special Stage 11': 'SS11',
+    'Special Stage 12': 'SS12',
+    'Special Stage 13': 'SS13',
+    'Special Stage 14': 'SS14',
+}
+
 ANGEL_ISLAND_1_APPARENT_ACT_2: set[int] = {49, 79, 121, 134, 133, 19}
 
 
@@ -120,6 +152,28 @@ class LocationRequirement:
     super_state: str
     difficulty: str
 
+    @property
+    def lua(self) -> str:
+        """
+        Export this LocationRequirement to a lua structure.
+
+        This is used to build the PopTracker pack.
+        """
+        fields = []
+        if self.character:
+            fields.append(f'char = \"{self.character}\"')
+        if self.super_state:
+            fields.append(f'super_state = \"{self.super_state}\"')
+        if self.difficulty and self.difficulty == 'hard':
+            fields.append('hard = true')
+        return '{' + ', '.join(fields) + '}'
+
+
+@dataclass
+class PopTrackerInfo:
+    x: int
+    y: int
+
 
 @dataclass
 class Location:
@@ -130,10 +184,50 @@ class Location:
     obj_id: int
     requirements: list[LocationRequirement]
     location_id: int
+    poptracker_info: typing.Optional[PopTrackerInfo]
 
     @property
     def display_name(self) -> str:
         return format_display_name(self.zone, self.act, self.name)
+
+    @property
+    def lua(self) -> str:
+        """
+        Export this Location to a lua structure.
+
+        This is used to build the PopTracker pack.
+        """
+        act_str = f'act = {self.act},' if self.act is not None else ''
+        loc_number = ''
+        try:
+            loc_number = int(self.name.split(' ')[-1])
+        except ValueError:
+            # No number for this location - use a blank string
+            pass
+        loc_map = 'special' if 'Special Stage' in self.zone else ZONE_ABBREVS[self.zone]
+        if self.act is not None:
+            loc_map += str(self.act)
+        x_coords = ''
+        y_coords = ''
+        if self.poptracker_info is not None:
+            x_coords = f'x = {self.poptracker_info.x},'
+            y_coords = f'y = {self.poptracker_info.y},'
+        lua_reqs = ', '.join([req.lua for req in self.requirements])
+        return f'''{{
+            id = {self.location_id},
+            name = "{self.display_name}",
+            short_name = "{self.name}",
+            zone = "{self.zone}",
+            {act_str}
+            type = "{self.location_type}",
+            section = "@{self.display_name}/{self.location_type}",
+            icon = "images/locations/{self.location_type}.png",
+            number = \"{loc_number}\",
+            map = \"{loc_map}\",
+            {x_coords}
+            {y_coords}
+            requirements = {{ {lua_reqs} }}
+        }}'''
 
 
 def format_display_name(zone: str, act: typing.Optional[int], name: str) -> str:
@@ -232,6 +326,15 @@ class LocationSet:
                                 },
                                 'additionalProperties': False
                             }
+                        },
+                        'poptracker': {
+                            'type': 'object',
+                            'properties': {
+                                'x': {'type': 'integer'},
+                                'y': {'type': 'integer'},
+                            },
+                            'required': ['x', 'y'],
+                            'additionalProperties': False
                         }
                     },
                     'required': ['name', 'zone', 'type', 'requirements'],
@@ -254,8 +357,12 @@ class LocationSet:
                     )
                     for req in entry['requirements']
                 ],
-                location_id=id_counter
+                location_id=id_counter,
+                poptracker_info=None,
             )
+            if 'poptracker' in entry:
+                loc.poptracker_info = PopTrackerInfo(
+                    entry['poptracker']['x'], entry['poptracker']['y'])
             display_name = loc.display_name
             if display_name in loc_name_cache:
                 raise DuplicateLocation(display_name)

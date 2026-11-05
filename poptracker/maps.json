@@ -1,0 +1,170 @@
+[
+    {
+        "name": "AIZ1",
+        "location_size": 32,
+        "location_border_thickness": 4,
+        "img": "images/maps/angel_island_1.png"
+    },
+    {
+        "name": "AIZ2",
+        "location_size": 41,
+        "location_border_thickness": 5,
+        "img": "images/maps/angel_island_2.png"
+    },
+    {
+        "name": "HCZ1",
+        "location_size": 38,
+        "location_border_thickness": 4,
+        "img": "images/maps/hydrocity_1.png"
+    },
+    {
+        "name": "HCZ2",
+        "location_size": 50,
+        "location_border_thickness": 6,
+        "img": "images/maps/hydrocity_2.png"
+    },
+    {
+        "name": "MGZ1",
+        "location_size": 33,
+        "location_border_thickness": 4,
+        "img": "images/maps/marble_garden_1.png"
+    },
+    {
+        "name": "MGZ2",
+        "location_size": 44,
+        "location_border_thickness": 5,
+        "img": "images/maps/marble_garden_2.png"
+    },
+    {
+        "name": "CNZ1",
+        "location_size": 38,
+        "location_border_thickness": 4,
+        "img": "images/maps/carnival_night_1.png"
+    },
+    {
+        "name": "CNZ2",
+        "location_size": 52,
+        "location_border_thickness": 6,
+        "img": "images/maps/carnival_night_2.png"
+    },
+    {
+        "name": "ICZ1",
+        "location_size": 42,
+        "location_border_thickness": 5,
+        "img": "images/maps/ice_cap_1.png"
+    },
+    {
+        "name": "ICZ2",
+        "location_size": 45,
+        "location_border_thickness": 5,
+        "img": "images/maps/ice_cap_2.png"
+    },
+    {
+        "name": "LBZ1",
+        "location_size": 44,
+        "location_border_thickness": 5,
+        "img": "images/maps/launch_base_1.png"
+    },
+    {
+        "name": "LBZ2",
+        "location_size": 47,
+        "location_border_thickness": 5,
+        "img": "images/maps/launch_base_2.png"
+    },
+    {
+        "name": "MHZ1",
+        "location_size": 48,
+        "location_border_thickness": 6,
+        "img": "images/maps/mushroom_hill_1.png"
+    },
+    {
+        "name": "MHZ2",
+        "location_size": 50,
+        "location_border_thickness": 6,
+        "img": "images/maps/mushroom_hill_2.png"
+    },
+    {
+        "name": "FBZ1",
+        "location_size": 33,
+        "location_border_thickness": 4,
+        "img": "images/maps/flying_battery_1.png"
+    },
+    {
+        "name": "FBZ2",
+        "location_size": 39,
+        "location_border_thickness": 4,
+        "img": "images/maps/flying_battery_2.png"
+    },
+    {
+        "name": "SZ1",
+        "location_size": 47,
+        "location_border_thickness": 5,
+        "img": "images/maps/sandopolis_1.png"
+    },
+    {
+        "name": "SZ2",
+        "location_size": 59,
+        "location_border_thickness": 7,
+        "img": "images/maps/sandopolis_2.png"
+    },
+    {
+        "name": "LRZ1",
+        "location_size": 32,
+        "location_border_thickness": 4,
+        "img": "images/maps/lava_reef_1.png"
+    },
+    {
+        "name": "LRZ2",
+        "location_size": 44,
+        "location_border_thickness": 5,
+        "img": "images/maps/lava_reef_2.png"
+    },
+    {
+        "name": "LRZ3",
+        "location_size": 11,
+        "location_border_thickness": 1,
+        "img": "images/maps/lava_reef_3.png"
+    },
+    {
+        "name": "HPZ",
+        "location_size": 18,
+        "location_border_thickness": 2,
+        "img": "images/maps/hidden_palace.png"
+    },
+    {
+        "name": "SSZ",
+        "location_size": 19,
+        "location_border_thickness": 2,
+        "img": "images/maps/sky_sanctuary.png"
+    },
+    {
+        "name": "DEZ1",
+        "location_size": 39,
+        "location_border_thickness": 4,
+        "img": "images/maps/death_egg_1.png"
+    },
+    {
+        "name": "DEZ2",
+        "location_size": 38,
+        "location_border_thickness": 4,
+        "img": "images/maps/death_egg_2.png"
+    },
+    {
+        "name": "KSSZ",
+        "location_size": 44,
+        "location_border_thickness": 4,
+        "img": "images/maps/knuckles_sky_sanctuary.png"
+    },
+    {
+        "name": "DDZ",
+        "location_size": 44,
+        "location_border_thickness": 4,
+        "img": "images/maps/doomsday.png"
+    },
+    {
+        "name": "special",
+        "location_size": 44,
+        "location_border_thickness": 4,
+        "img": "images/maps/special_stages.png"
+    }
+]

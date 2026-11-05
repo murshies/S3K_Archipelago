@@ -16,6 +16,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1872
+    y: 356
 - name: Big Ring 2
   zone: Flying Battery
   act: 1
@@ -25,6 +28,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2352
+    y: 484
 - name: Miniboss
   zone: Flying Battery
   act: 1
@@ -42,6 +48,9 @@
   requirements:
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 462
+    y: 349
 - name: Item Box 2
   zone: Flying Battery
   act: 1
@@ -50,6 +59,9 @@
   requirements:
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 470
+    y: 348
 - name: Item Box 3
   zone: Flying Battery
   act: 1
@@ -59,6 +71,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 270
+    y: 661
 - name: Item Box 4
   zone: Flying Battery
   act: 1
@@ -68,6 +83,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 262
+    y: 661
 - name: Item Box 5
   zone: Flying Battery
   act: 1
@@ -77,6 +95,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 348
+    y: 652
 - name: Item Box 6
   zone: Flying Battery
   act: 1
@@ -86,6 +107,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1139
+    y: 45
 - name: Item Box 7
   zone: Flying Battery
   act: 1
@@ -95,6 +119,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1147
+    y: 45
 - name: Item Box 8
   zone: Flying Battery
   act: 1
@@ -104,6 +131,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1554
+    y: 549
 - name: Item Box 9
   zone: Flying Battery
   act: 1
@@ -113,6 +143,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1562
+    y: 549
 - name: Item Box 10
   zone: Flying Battery
   act: 1
@@ -122,6 +155,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1978
+    y: 262
 - name: Item Box 11
   zone: Flying Battery
   act: 1
@@ -131,3 +167,6 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1992
+    y: 90

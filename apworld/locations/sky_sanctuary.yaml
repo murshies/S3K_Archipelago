@@ -45,6 +45,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 940
+    y: 870
 - name: Item Box 2
   zone: Sky Sanctuary
   type: super_ring
@@ -54,6 +57,9 @@
     # which will boost Sonic over to this item and item box 3.
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1232
+    y: 743
 - name: Item Box 3
   zone: Sky Sanctuary
   type: 1_up
@@ -61,6 +67,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1240
+    y: 743
 - name: Item Box 4
   zone: Sky Sanctuary
   type: invincibility
@@ -68,6 +77,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 688
+    y: 839
 - name: Item Box 5
   zone: Sky Sanctuary
   type: water_shield
@@ -75,6 +87,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 192
+    y: 597
 - name: Item Box 6
   zone: Sky Sanctuary
   type: super_ring
@@ -82,6 +97,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 548
+    y: 662
 - name: Item Box 7
   zone: Sky Sanctuary
   type: super_ring
@@ -89,6 +107,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 556
+    y: 662
 - name: Item Box 8
   zone: Sky Sanctuary
   type: flame_shield
@@ -96,6 +117,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 857
+    y: 438
 - name: Item Box 9
   zone: Sky Sanctuary
   type: super_ring
@@ -103,6 +127,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 960
+    y: 501
 - name: Item Box 10
   zone: Sky Sanctuary
   type: invincibility
@@ -110,6 +137,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 972
+    y: 646
 - name: Item Box 11
   zone: Sky Sanctuary
   type: super_ring
@@ -117,6 +147,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 980
+    y: 646
 - name: Item Box 12
   zone: Sky Sanctuary
   type: 1_up
@@ -124,6 +157,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1316
+    y: 279
 - name: Item Box 13
   zone: Sky Sanctuary
   type: super_ring
@@ -131,6 +167,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 732
+    y: 278
 - name: Item Box 14
   zone: Sky Sanctuary
   type: super_ring
@@ -138,6 +177,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 724
+    y: 278
 - name: Item Box 15
   zone: Sky Sanctuary
   type: 1_up
@@ -145,6 +187,9 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 648
+    y: 142
 - name: Item Box 16
   zone: Sky Sanctuary
   type: super_ring
@@ -152,3 +197,6 @@
   requirements:
     - character: Sonic
     - character: Tails
+  poptracker:
+    x: 1076
+    y: 134

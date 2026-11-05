@@ -16,6 +16,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 112
+    y: 405
 - name: Big Ring 2
   zone: Mushroom Hill
   act: 1
@@ -25,6 +28,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2192
+    y: 262
 - name: Big Ring 3
   zone: Mushroom Hill
   act: 1
@@ -34,6 +40,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2896
+    y: 422
 - name: Big Ring 4
   zone: Mushroom Hill
   act: 1
@@ -43,6 +52,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 3631
+    y: 454
 - name: Big Ring 5
   zone: Mushroom Hill
   act: 1
@@ -50,6 +62,9 @@
   obj_id: 31
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 304
+    y: 628
 - name: Miniboss
   zone: Mushroom Hill
   act: 1
@@ -68,6 +83,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 396
+    y: 314
 - name: Item Box 2
   zone: Mushroom Hill
   act: 1
@@ -77,6 +95,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 404
+    y: 314
 - name: Item Box 3
   zone: Mushroom Hill
   act: 1
@@ -86,6 +107,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 520
+    y: 291
 - name: Item Box 4
   zone: Mushroom Hill
   act: 1
@@ -95,6 +119,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 792
+    y: 357
 - name: Item Box 5
   zone: Mushroom Hill
   act: 1
@@ -104,6 +131,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1036
+    y: 469
 - name: Item Box 6
   zone: Mushroom Hill
   act: 1
@@ -113,6 +143,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1236
+    y: 213
 - name: Item Box 7
   zone: Mushroom Hill
   act: 1
@@ -122,6 +155,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1244
+    y: 213
 - name: Item Box 8
   zone: Mushroom Hill
   act: 1
@@ -131,6 +167,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 1256
+    y: 277
 - name: Item Box 9
   zone: Mushroom Hill
   act: 1
@@ -140,6 +179,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2008
+    y: 340
 - name: Item Box 10
   zone: Mushroom Hill
   act: 1
@@ -149,6 +191,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2692
+    y: 350
 - name: Item Box 11
   zone: Mushroom Hill
   act: 1
@@ -158,6 +203,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2700
+    y: 349
 - name: Item Box 12
   zone: Mushroom Hill
   act: 1
@@ -167,6 +215,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2893
+    y: 197
 - name: Item Box 13
   zone: Mushroom Hill
   act: 1
@@ -176,6 +227,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2901
+    y: 197
 - name: Item Box 14
   zone: Mushroom Hill
   act: 1
@@ -185,6 +239,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 3120
+    y: 390
 - name: Item Box 15
   zone: Mushroom Hill
   act: 1
@@ -194,6 +251,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 3588
+    y: 286
 - name: Item Box 16
   zone: Mushroom Hill
   act: 1
@@ -203,6 +263,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 3596
+    y: 286
 - name: Item Box 17
   zone: Mushroom Hill
   act: 1
@@ -212,6 +275,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 3632
+    y: 212
 - name: Item Box 18
   zone: Mushroom Hill
   act: 1
@@ -219,6 +285,9 @@
   obj_id: 75
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 614
+    y: 582
 - name: Item Box 19
   zone: Mushroom Hill
   act: 1
@@ -226,6 +295,9 @@
   obj_id: 132
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 972
+    y: 534
 - name: Item Box 20
   zone: Mushroom Hill
   act: 1
@@ -233,3 +305,6 @@
   obj_id: 134
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 980
+    y: 534

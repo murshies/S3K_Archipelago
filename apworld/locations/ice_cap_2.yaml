@@ -16,6 +16,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2728
+    y: 713
 - name: Big Ring 2
   zone: Ice Cap
   act: 2
@@ -25,6 +28,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 3720
+    y: 266
 - name: Big Ring 3
   zone: Ice Cap
   act: 2
@@ -32,6 +38,9 @@
   obj_id: 60
   requirements:
     - character: Knuckles
+  poptracker:
+    x: 840
+    y: 714
 - name: Boss
   zone: Ice Cap
   act: 2
@@ -58,6 +67,9 @@
       # spawn point to get the locations.
       super_state: super
       difficulty: hard
+  poptracker:
+    x: 306
+    y: 277
 - name: Item Box 2
   zone: Ice Cap
   act: 2
@@ -69,6 +81,9 @@
     - character: Knuckles
       super_state: super
       difficulty: hard
+  poptracker:
+    x: 1380
+    y: 208
 - name: Item Box 3
   zone: Ice Cap
   act: 2
@@ -80,6 +95,9 @@
     - character: Knuckles
       super_state: super
       difficulty: hard
+  poptracker:
+    x: 1592
+    y: 246
 - name: Item Box 4
   zone: Ice Cap
   act: 2
@@ -89,6 +107,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2925
+    y: 149
 - name: Item Box 5
   zone: Ice Cap
   act: 2
@@ -98,6 +119,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2902
+    y: 598
 - name: Item Box 6
   zone: Ice Cap
   act: 2
@@ -107,6 +131,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2914
+    y: 598
 - name: Item Box 7
   zone: Ice Cap
   act: 2
@@ -116,6 +143,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2843
+    y: 358
 - name: Item Box 8
   zone: Ice Cap
   act: 2
@@ -125,6 +155,9 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 2854
+    y: 358
 - name: Item Box 9
   zone: Ice Cap
   act: 2
@@ -134,3 +167,6 @@
     - character: Sonic
     - character: Tails
     - character: Knuckles
+  poptracker:
+    x: 3074
+    y: 374
