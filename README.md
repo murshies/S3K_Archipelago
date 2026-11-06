@@ -29,7 +29,29 @@ The game is not limited to one goal at a time - you can enable 1, 2, or 3 at a t
 
 The mapping between goals and zones are configurable as well, so you can pick how you want the game to end.
 
-A sample player YAML file can be found in this repo, at [apworld/example.yaml](apworld/example.yaml)
+A sample player YAML file can be found in this repo, at [apworld/example.yaml](apworld/example.yaml). The options are:
+
+- `big_rings_goal`: The goal zone for collecting a set number of big rings. This can be `none` (disabled), `death_egg`, `knuckles_sky_sanctuary`, or `doomsday`.
+- `big_rings_to_check`: The number of big rings to check to unlock the `big_rings_goal` zone. There are 77 big rings in the game, so this must be between 1 and 77, inclusive.
+- `chaos_emeralds_goal`: The goal zone for collecting 7 chaos emeralds. This can be `none` (disabled), `death_egg`, `knuckles_sky_sanctuary`, or `doomsday`.
+- `super_emeralds_goal`: The goal zone for collecting all 14 emeralds. This can be `none` (disabled), `death_egg`, `knuckles_sky_sanctuary`, or `doomsday`.
+- `death_link`: Turns death link on or off (one player dying with death link enabled kills all other players with death link enabled)
+- `logic_difficulty`: The logic difficult (see the Logic Difficulty section below for more info). This can be `standard` or `hard`
+- `zone_unlocks`: This determines how zones/characters can be unlocked (see the Zone Unlocks section below). This can be `all_unlocked`, `zones_and_characters`, `zones_only`, or `characters_only`.
+- `traps_enabled`: Whether or not trap items are added to the item pool (see the Traps section below for more info).
+- `trap_weight_percentage`: The percentage of junk items (shields, invincibility, etc.) that will be traps.
+- `enable_boss_locations`: Toggles whether or not beating a miniboss or boss grants an item.
+- `enable_big_ring_locations`: Toggles whether or not collecting a big ring grants an item.
+- `enable_special_stage_emerald_locations`: Toggles whether or not beating a special stage grants an item.
+- `enable_special_stage_perfect_locations`: Toggles whether or not collecting all rings in a special stage grants an item.
+- `enable_lightning_shield_locations`: Toggles whether or not breaking a lightning shield monitor grants an item.
+- `enable_flame_shield_locations`: Toggles whether or not breaking a flame shield monitor grants an item.
+- `enable_water_shield_locations`: Toggles whether or not breaking a water shield monitor grants an item.
+- `enable_invincibility_locations`: Toggles whether or not breakng an invincibility monitor grants an item.
+- `enable_power_sneaker_locations` Toggles whether or not breaking a power sneakers (speed shoes) monitor grants an item.
+- `enable_1_up_locations`: Toggles whether or not breaking a 1 up (extra life) monitor grants an item.
+- `enable_super_ring_locations`: Toggles whether or not breaking a super ring (10 ring) monitor grants an item.
+- `enable_robotnik_locations`: Toggles whether or not breaking a Robotnik monitor grants an item.
 
 ## Special Stages
 
