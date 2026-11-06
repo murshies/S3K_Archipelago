@@ -165,14 +165,17 @@ class S3KWorld(World):
         Determines whether or not hyper state is obtainable, given the player's
         settings.
 
-        Without any chaos/super emerald hunt goals, the emeralds will be in
-        their regular locations, i.e. rewarded for beating special stages. With
-        emerald hunt goals enabled, super emeralds will only be available when
-        super emerald hunt is enabled. Therefore, enabling chaos emerald hunt
-        without super emerald hunt makes hyper state unobtainable. There are a
-        few locations which only Hyper Sonic can reach, so the absence of Hyper
-        Sonic removes those locations from the pool.
+        Without any chaos/super emerald hunt goals, the emeralds will be given
+        to the player automatically. With emerald hunt goals enabled, super
+        emeralds will only be available when super emerald hunt is
+        enabled. Therefore, enabling chaos emerald hunt without super emerald
+        hunt makes hyper state unobtainable. There are a few locations which
+        only Hyper Sonic can reach, so the absence of Hyper Sonic removes those
+        locations from the pool.
         """
         chaos_emeralds_goal_enabled = self.options.chaos_emeralds_goal.value != consts.GOAL_NONE
         super_emeralds_goal_enabled = self.options.super_emeralds_goal.value != consts.GOAL_NONE
-        return super_emeralds_goal_enabled or not chaos_emeralds_goal_enabled
+        return (
+            (not chaos_emeralds_goal_enabled and not super_emeralds_goal_enabled) or
+            (super_emeralds_goal_enabled or not chaos_emeralds_goal_enabled)
+        )
