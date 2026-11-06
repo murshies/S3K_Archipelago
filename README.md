@@ -19,7 +19,7 @@ There are three main goals that can be enabled:
 2. Chaos Emerald Hunt: Find 7 chaos emeralds
 3. Super Emerald Hunt: Find all 14 emeralds
 
-To avoid issues with potentially finding a super emerald before the same color chaos emerald, all emeralds are a generic "Chaos Emerald" item. This means that doing the Chaos Emerald Hunt goal will add 7 emerald items to the item pool, and the Super Emerald goal will add 14 emerald items to the item pool.
+To avoid issues with potentially finding a super emerald before the same color chaos emerald, all emeralds are generic "Chaos Emerald" items. This means that doing the Chaos Emerald Hunt goal will add 7 emerald items to the item pool, and the Super Emerald goal will add 14 emerald items to the item pool. If neither emerald hunt goal is enable, no emeralds are added to the item pool. Instead, all super emeralds are given at the start, allowing for the use of super/hyper forms immediately.
 
 The game is not limited to one goal at a time - you can enable 1, 2, or 3 at a time and work towards multiple goals at once. Each goal unlocks a different stage, and beating that stage completes the goal:
 
@@ -29,9 +29,11 @@ The game is not limited to one goal at a time - you can enable 1, 2, or 3 at a t
 
 The mapping between goals and zones are configurable as well, so you can pick how you want the game to end.
 
+A sample player YAML file can be found in this repo, at [apworld/example.yaml](apworld/example.yaml)
+
 ## Special Stages
 
-Since special stages are unlocked like zones, they can no longer be accessed through big rings in the stage. Instead they are accessible through the save select menu.
+Since special stages are unlocked like zones, they can no longer be accessed through big rings in the stage. Instead, they are accessible through the save select menu.
 
 ## Zone Unlocks
 
