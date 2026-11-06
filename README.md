@@ -113,4 +113,4 @@ Death link is implemented for this game.
 
 # Questions?
 
-This game has a thread on the main Archipelago Discord server, 
+This game has a thread on the main Archipelago Discord server. It can be found [here](https://discord.com/channels/731205301247803413/1079542502555668601).
