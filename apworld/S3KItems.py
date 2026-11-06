@@ -107,8 +107,9 @@ def create_items(
             if item.code == starting_zone.code:
                 assert s3k_starting_zone_item is None
                 s3k_starting_zone_item = s3k_item
-            itempool.append(s3k_item)
-        num_filler_items -= len(zone_items)
+            else:
+                itempool.append(s3k_item)
+        num_filler_items -= len(zone_items) - 1  # Starting item is not in the pool
         # Give the player the starting zone/character
         assert s3k_starting_zone_item is not None
 
@@ -129,6 +130,14 @@ def create_items(
     multiworld.itempool += itempool
     if s3k_starting_zone_item is not None:
         world.push_precollected(s3k_starting_zone_item)
+
+    if num_chaos_emeralds == 0:
+        # No emerald hunts enabled, just give the player all the emeralds at
+        # the start.
+        for _ in range(consts.EMERALDS_FOR_SUPER_HUNT):
+            emerald_item = world.create_item(consts.ITEM_CHAOS_EMERALD)
+            world.push_precollected(emerald_item)
+
     return starting_zone
 
 
@@ -163,15 +172,13 @@ def filter_items(world: World, item_set: items.ItemSet) -> items.ItemSet:
     assert len(matching) == 1
     item_code_set.add(matching[0].code)
 
-    # Determine if chaos emeralds should be added to the item pool.
-    if (
-            world.options.chaos_emeralds_goal.value != consts.GOAL_NONE or
-            world.options.super_emeralds_goal.value != consts.GOAL_NONE
-    ):
-        matching = item_set.filter_items(
-            lambda item: items.ITEM_GROUP_CHAOS_EMERALD in item.groups
-        )
-        item_code_set.update(item.code for item in matching)
+    # Always add emeralds to the item pool - either the player will find them
+    # in an emerald hunt, or they will be given automatically at the start when
+    # no hunt is enabled.
+    matching = item_set.filter_items(
+        lambda item: items.ITEM_GROUP_CHAOS_EMERALD in item.groups
+    )
+    item_code_set.update(item.code for item in matching)
 
     # All zones have one "complete" location per act, meaning every zone will
     # have at least one enabled location regardless of what settings the player
