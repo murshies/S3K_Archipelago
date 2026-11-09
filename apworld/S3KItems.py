@@ -116,11 +116,12 @@ def create_items(
     # Only traps and filler items are now left. Determine how many traps should
     # be added based on `trap_weight_percentage` from the player's
     # configuration, and then randomly pick from the set of traps for each one.
-    num_traps = math.floor(num_filler_items * world.options.trap_weight_percentage.value / 100.0)
-    num_filler_items -= num_traps
-    traps = item_set.filter_items(lambda item: item.trap)
-    for _ in range(num_traps):
-        itempool.append(world.create_item(world.random.choice(traps).name))
+    if world.options.traps_enabled:
+        num_traps = math.floor(num_filler_items * world.options.trap_weight_percentage.value / 100.0)
+        num_filler_items -= num_traps
+        traps = item_set.filter_items(lambda item: item.trap)
+        for _ in range(num_traps):
+            itempool.append(world.create_item(world.random.choice(traps).name))
 
     # Finally, randomly select filler items to fill in the rest.
     filler_items = item_set.filter_items(lambda item: item.filler)
