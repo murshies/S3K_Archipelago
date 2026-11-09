@@ -1,6 +1,6 @@
 # Sonic 3 & Knuckles Archipelago
 
-This repo contains the code/assets for playing Sonic 3 & Knuckles in [Archipelago](https://archipelago.gg/). The [releases](https://github.com/murshies/S3K_Archipelago/releases) page has builds for the apworld, as well as releases for a [PopTracker](https://poptracker.github.io/) pack
+This repo contains the code/assets for playing Sonic 3 & Knuckles in [Archipelago](https://archipelago.gg/). The [releases](https://github.com/murshies/S3K_Archipelago/releases) page has builds for the apworld, as well as releases for a [PopTracker](https://poptracker.github.io/) pack.
 
 # Requirements
 
