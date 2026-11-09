@@ -108,7 +108,7 @@ class S3KClient(BizHawkClient):
                                                           S3KMemory.s3_game_name])
         sk_game_name = game_names[0].decode("ascii")
         s3_game_name = game_names[1].decode("ascii")
-        logger.info(f"Found sk_game_name = '{sk_game_name}' and s3_game_name = '{s3_game_name}'")
+        logger.debug(f"Found sk_game_name = '{sk_game_name}' and s3_game_name = '{s3_game_name}'")
         if sk_game_name != SK_GAME_NAME or s3_game_name != S3_GAME_NAME:
             return False
 
@@ -169,7 +169,7 @@ class S3KClient(BizHawkClient):
         try:
             game_mode = S3KMemory.GameMode(game_state[0][0])
         except ValueError:
-            # logger.info(f"Unknown game mode {game_state[0][0]} received")
+            # logger.debug(f"Unknown game mode {game_state[0][0]} received")
             game_mode = S3KMemory.GameMode.UNKNOWN
         try:
             curr_zone = S3KMemory.Zone(game_state[1][0])
@@ -179,9 +179,9 @@ class S3KClient(BizHawkClient):
             curr_zone = None
         act_number = game_state[2][0]
         # if game_mode == S3KMemory.GameMode.SAVE_SELECT:
-        #     logger.info("On save select")
+        #     logger.debug("On save select")
         # elif game_mode == S3KMemory.GameMode.LEVEL_LOADED:
-        #     logger.info(f"In {curr_zone} act {act_number}")
+        #     logger.debug(f"In {curr_zone} act {act_number}")
 
     @staticmethod
     async def handle_goal(ctx: "BizHawkClientContext", rxd_items: typing.Iterable[items.Item]) -> None:
@@ -205,7 +205,7 @@ class S3KClient(BizHawkClient):
         if len(goals_completed) >= num_goals:
             await ctx.send_msgs([{"cmd": "StatusUpdate", "status": ClientStatus.CLIENT_GOAL}])
             ctx.finished_game = True
-            logger.info("All goals complete!")
+            logger.debug("All goals complete!")
 
     async def handle_ending_zones(self, ctx: "BizHawkClientContext") -> None:
         """
@@ -281,7 +281,7 @@ class S3KClient(BizHawkClient):
         if ctx.slot is None or not ctx.server_locations:
             new_keys = current_keys - self.processed_location_keys - self.waiting_location_keys
             if new_keys:
-                logger.info(
+                logger.debug(
                     f"Found {len(new_keys)} location check(s) in the game that this client hasn't "
                     "sent yet. They will be sent once connected to the server.")
                 self.waiting_location_keys |= new_keys
@@ -304,9 +304,9 @@ class S3KClient(BizHawkClient):
             self.processed_location_keys.add(entry.key)
             loc = entry.to_location(self.location_set(ctx))
             if loc is None:
-                logger.info(f"Ignoring location buffer entry {entry}")
+                logger.debug(f"Ignoring location buffer entry {entry}")
             else:
-                logger.info(f"Checked {loc.display_name}")
+                logger.debug(f"Checked {loc.display_name}")
                 new_location_ids.add(loc.location_id)
 
         if new_location_ids:
@@ -515,7 +515,7 @@ class S3KClient(BizHawkClient):
         if integrity != b"\x41\x50":
             # If the game somehow hasn't set the integrity value by this point,
             # defer initialization.
-            logger.info(f"Level bitmask integrity word not set yet (found {integrity})")
+            logger.debug(f"Level bitmask integrity word not set yet (found {integrity})")
             return False
 
         # If any bitmasks have been written with values, we are initialized.
@@ -550,7 +550,7 @@ class S3KClient(BizHawkClient):
              S3KMemory.save_files.location),
             (S3KMemory.save_flag.address, [1, 0], S3KMemory.save_flag.location),
         ]
-        logger.info("Initializing save files")
+        logger.debug("Initializing save files")
         await bizhawk.write(ctx.bizhawk_ctx, payload)
         return True
 
@@ -688,7 +688,7 @@ class S3KClient(BizHawkClient):
 
         writes = []
         if level_data != save_state.level_unlock_bytes:
-            logger.info("Updating level unlocks")
+            logger.debug("Updating level unlocks")
             writes.append((S3KMemory.level_unlocks.address,
                            list(save_state.level_unlock_bytes),
                            S3KMemory.level_unlocks.location))
@@ -711,7 +711,7 @@ class S3KClient(BizHawkClient):
             return
 
         if any(write[0] != S3KMemory.level_unlocks.address for write in writes):
-            logger.info(f"Updating save files to {save_state.emeralds} emeralds")
+            logger.debug(f"Updating save files to {save_state.emeralds} emeralds")
         writes.append((S3KMemory.save_flag.address, [1, 0], S3KMemory.save_flag.location))
         # Only write if nothing changed since the data was read
         await bizhawk.guarded_write(ctx.bizhawk_ctx, writes, [
@@ -758,7 +758,7 @@ class S3KClient(BizHawkClient):
             if last_processed_id == self.death_link_request_id:
                 # The game killed the player. Don't send that death back out,
                 # unless handle_death already saw and skipped it.
-                logger.info("DeathLink: Killed the player")
+                logger.debug("DeathLink: Killed the player")
                 self.death_link_request_id = 0
                 self.killed_by_death_link = not self.player_dead
                 return
@@ -777,7 +777,7 @@ class S3KClient(BizHawkClient):
             if last_processed_id == pending_id:
                 # The game applied the item
                 if index < len(junk):
-                    logger.info(f"Gave {junk[index][0]}")
+                    logger.debug(f"Gave {junk[index][0]}")
                 await self.save_delivery_state(ctx, key, index + 1, 0)
                 return
             if request_id == pending_id:
@@ -805,7 +805,7 @@ class S3KClient(BizHawkClient):
         # whether the game applied it
         await self.save_delivery_state(ctx, key, index, new_id)
         if await self.write_mailbox_request(ctx, data, item_type, new_id):
-            logger.info(f"Sending {name} to the game")
+            logger.debug(f"Sending {name} to the game")
 
     @staticmethod
     async def write_mailbox_request(
