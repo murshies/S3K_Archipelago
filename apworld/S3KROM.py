@@ -11,6 +11,7 @@ from . import consts
 
 BASE_PATCH_FILE_NAME = "base_patch.bsdiff4"
 BASE_ROM_MD5 = "c5b1c655c19f462ade0ac4e17a844d10"
+STEAM_BASE_ROM_MD5 = "cfcc692427348e58682230a27d9e365d"
 
 
 class S3KProcedurePatch(APProcedurePatch, APTokenMixin):
@@ -37,8 +38,8 @@ class S3KSettings(settings.Group):
         """The file name of the Sonic 3 & Knuckles Base ROM"""
         required = True
         description = "Sonic 3 & Knuckles ROM file"
-        copy_to = "Sonic & Knuckles + Sonic The Hedgehog 3 (USA).md"
-        md5s = [BASE_ROM_MD5]
+        copy_to = "S3K.md"
+        md5s = [BASE_ROM_MD5, STEAM_BASE_ROM_MD5]
 
     rom_file: S3KROMFile = S3KROMFile(S3KROMFile.copy_to)
 
