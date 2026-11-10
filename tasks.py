@@ -29,6 +29,8 @@ import locations  # noqa: E402
 
 INVOKE_ROOT = pathlib.Path(__file__).parent
 
+VERSION = "0.0.1"
+
 
 @task
 def all(c: Context):
@@ -246,6 +248,15 @@ def apworld_release(c: Context):
         '__pycache__',
         '.pytest_cache'
     }
+    archipelago_json = {
+        "game": "Sonic 3 & Knuckles",
+        "authors": ["murshies"],
+        "minimum_ap_version": "0.6.7",
+        "world_version": VERSION
+    }
+    archipelago_json_file = INVOKE_ROOT / 'apworld' / 'archipelago.json'
+    with open(archipelago_json_file, 'w') as f:
+        json.dump(archipelago_json, f, indent=4)
     build_rom_base_diff(c)
     with zipfile.ZipFile(out_file, 'w') as zf:
         for root, dirs, files in os.walk(apworld_root):
@@ -273,6 +284,25 @@ def poptracker_release(c: Context):
         base_dir / f for f in sorted(os.listdir(base_dir))
         if f.endswith('.yaml') and f != 'types.yaml'
     ]
+    manifest = {
+        "name": "Sonic 3 & Knuckles Archipelago",
+        "game_name": "Sonic 3 & Knuckles",
+        "package_uid": "s3k_archipelago",
+        "package_version": VERSION,
+        "platform": "genesis",
+        "author": "murshies",
+        "variants": {
+            "maps": {
+                "display_name": "Archipelago Tracker",
+                "flags": ["ap"]
+            }
+        },
+        "min_poptracker_version": "0.34.0",
+        "target_poptracker_version": "0.35.4"
+    }
+    manifest_file = INVOKE_ROOT / 'poptracker' / 'manifest.json'
+    with open(manifest_file, 'w') as f:
+        json.dump(manifest, f, indent=4)
     location_set = locations.LocationSet.from_files(
         location_def_files, types, validator=jsonschema.validate)
     locs_path = INVOKE_ROOT / 'poptracker' / 'locations'

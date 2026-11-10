@@ -10,6 +10,9 @@ build/
 S3K_base.md
 base_patch.bsdiff4
 
+apworld/archipelago.json
+
+poptracker/manifest.json
 poptracker/scripts/structure.lua
 poptracker/locations
 poptracker/tracker.json
