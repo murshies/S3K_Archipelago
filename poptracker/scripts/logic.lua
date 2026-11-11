@@ -119,33 +119,6 @@ local function zone_item_for(zone)
    return zone_item(zone)
 end
 
-local function can_reach_all_special_stages()
-   local mode = zone_unlocks()
-   if mode == ZONE_UNLOCKS_ALL_UNLOCKED or mode == ZONE_UNLOCKS_CHARACTERS_ONLY then
-      return true
-   end
-   for stage = 1, 14 do
-      local zone = "Special Stage " .. stage
-      if mode == ZONE_UNLOCKS_ZONES_ONLY then
-         if not has(zone_item(zone)) then
-            return false
-         end
-      else
-         local any = false
-         for _, char in ipairs({"Sonic", "Tails", "Knuckles"}) do
-            if has(zone_char_item(zone, char)) then
-               any = true
-               break
-            end
-         end
-         if not any then
-            return false
-         end
-      end
-   end
-   return true
-end
-
 local function can_check_required_num_big_rings()
    local mode = zone_unlocks()
    if mode == ZONE_UNLOCKS_ALL_UNLOCKED then
@@ -221,22 +194,16 @@ local function requirement_met(loc, req)
       end
    end
 
-   if req.super_state ~= nil then
-      if chaos_emeralds_goal() == GOAL_NONE and super_emeralds_goal() == GOAL_NONE then
-         if not can_reach_all_special_stages() then
-            return false
-         end
-      else
-         local needed = EMERALDS_FOR_CHAOS_HUNT
-         if req.super_state ~= "super" or req.char == "Tails" then
-            needed = EMERALDS_FOR_SUPER_HUNT
-         end
-         if needed == EMERALDS_FOR_SUPER_HUNT and not hyper_state_available() then
-            return false
-         end
-         if chaos_emeralds() < needed then
-            return false
-         end
+   if req.super_state ~= nil and (chaos_emeralds_goal() ~= GOAL_NONE or super_emeralds_goal() ~= GOAL_NONE) then
+      local needed = EMERALDS_FOR_CHAOS_HUNT
+      if req.super_state ~= "super" or req.char == "Tails" then
+         needed = EMERALDS_FOR_SUPER_HUNT
+      end
+      if needed == EMERALDS_FOR_SUPER_HUNT and not hyper_state_available() then
+         return false
+      end
+      if chaos_emeralds() < needed then
+         return false
       end
    end
    return true
