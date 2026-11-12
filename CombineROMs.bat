@@ -14,7 +14,7 @@ echo Select your Sonic ^& Knuckles ROM...
 for /f "delims=" %%I in ('powershell -NoProfile -Command "Add-Type -AssemblyName System.Windows.Forms; $d = New-Object System.Windows.Forms.OpenFileDialog; $d.Title = 'Select Sonic & Knuckles ROM'; $buttonClicked = $d.ShowDialog(); if ( $buttonClicked -eq 'OK' ) { $d.FileName }"') do set "SKROM=%%I"
 
 if not defined SKROM (
-   echo No Sonic & Knuckles ROM selected
+   echo No Sonic ^& Knuckles ROM selected
    pause
    exit /b 1
 )
