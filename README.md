@@ -10,7 +10,12 @@ In order to play this game in Archipelago, you must have:
 2. A legally obtained Sonic 3 & Knuckles ROM
 3. The [BizHawk emulator](https://bizhawk.org/). This game was tested with version 2.10, but other versions will likely work since this game doesn't require any special emulator settings.
 
-The Sonic 3 & Knuckles ROM is just the Sonic & Knuckles ROM with the Sonic 3 ROM appended to the end (the order **does** matter). If you have the individual ROMs, you can concatenate the files to get the ROM needed for this randomizer.
+Sonic 3 & Knuckles has been re-released several times; any release which contains the game in its original form should work (this does not include Sonic Origins). Two ways to get the ROMs are:
+
+1. Dumping them from the original Genesis cartridges. In addition to the original game cartridges, this method also requires hardware to read and dump them to a PC.
+2. From SEGA Mega Drive & Genesis Classics on Steam. Unfortunately, Sonic 3 & Knuckles has been delisted from Steam, but if you purchased it through this game while it was available, you can still get the ROM from it. To find the ROM, right click on SEGA Mega Drive & Genesis Classics in your library, and under the "Manage" menu, click on "Browse local files". This should open a folder in the file explorer. Go into the "uncompressed ROMs" folder. If you have it, the ROM is called `Sonic_Knuckles_wSonic3.bin`. You can either point the Archipelago client directly to this file when opening your patch file, or copy it somewhere else and use it from there. Note that this method should work even for fresh installs of SEGA Mega Drive & Genesis Classics, so long as you purchased Sonic 3 & Knuckles through it at some point.
+
+The Sonic 3 & Knuckles ROM is just the Sonic & Knuckles ROM with the Sonic 3 ROM appended to the end (the order **does** matter). If you have the individual ROMs, you can concatenate the files to get the ROM needed for this randomizer. For Windows, there is a convenience batch script in this repo, [CombineROMs.bat](./CombineROMs.bat), which will prompt you for the two separate ROMs and combine them in the right order for you. It will output the combined ROM as `S3K.md` in whichever folder you put the batch script. After downloading the script, double click it to run it.
 
 # How This Randomizer Works
 
