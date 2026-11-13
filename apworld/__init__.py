@@ -16,6 +16,14 @@ ALL_LOCATIONS: locations.LocationSet = locations.load_location_set()
 ALL_ITEMS: items.ItemSet = items.load_item_set()
 
 
+class S3KConfigValidationError(Exception):
+    """
+    Exceptions for S3K-specific post-config ingestion config validation.
+
+    There are some settings which need to be checked by the world itself. They
+    will raise this exception type when triggering.
+    """
+
 class S3KWebWorld(WebWorld):
     setup_en = Tutorial(
         'Multiworld Setup Guide',
@@ -55,6 +63,13 @@ class S3KWorld(World):
     def generate_early(self) -> None:
         self.loc_set = S3KLocations.filter_locations(self, ALL_LOCATIONS)
         self.item_set = S3KItems.filter_items(self, ALL_ITEMS)
+
+        if (
+                self.options.big_rings_goal.value != consts.GOAL_NONE and
+                self.options.big_rings_to_check.value == 0
+        ):
+            raise S3KConfigValidationError(
+                "big_rings_to_check must be > 0 when big rings goal is enabled")
 
         # Determine the starting zone/character here, if one is needed. This
         # needs to happen here because region generation happens before item

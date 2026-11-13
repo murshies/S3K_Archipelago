@@ -52,10 +52,11 @@ class SuperEmeraldsGoal(Goal):
 class BigRingsToCheck(Range):
     """
     Class for option that determines how many big rings need to be checked for
-    the "big rings" goal.
+    the "big rings" goal. Zero is only allowed when the big rings goal is not
+    enabled.
     """
     display_name = '# of big rings to check for "big rings" goal'
-    range_start = 1
+    range_start = 0
     range_end = 77  # The total number of big rings in the game
 
 
