@@ -282,6 +282,30 @@
 - name: Item Box 19
   zone: Launch Base
   act: 1
+  type: water_shield
+  obj_id: 384
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+  poptracker:
+    x: 3444
+    y: 136
+- name: Item Box 20
+  zone: Launch Base
+  act: 1
+  type: lightning_shield
+  obj_id: 385
+  requirements:
+    - character: Sonic
+    - character: Tails
+    - character: Knuckles
+  poptracker:
+    x: 3454
+    y: 136
+- name: Item Box 21
+  zone: Launch Base
+  act: 1
   type: super_ring
   obj_id: 287
   requirements:
@@ -291,7 +315,7 @@
   poptracker:
     x: 2816
     y: 277
-- name: Item Box 20
+- name: Item Box 22
   zone: Launch Base
   act: 1
   type: super_ring
@@ -303,7 +327,7 @@
   poptracker:
     x: 2808
     y: 277
-- name: Item Box 21
+- name: Item Box 23
   zone: Launch Base
   act: 1
   type: lightning_shield
@@ -315,7 +339,7 @@
   poptracker:
     x: 2800
     y: 277
-- name: Item Box 22
+- name: Item Box 24
   zone: Launch Base
   act: 1
   type: super_ring

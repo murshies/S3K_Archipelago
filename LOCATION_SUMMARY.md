@@ -6,17 +6,17 @@
 |Boss|27|
 |1 UP|48|
 |Super Ring (10 rings)|247|
-|Lightning Shield|58|
+|Lightning Shield|59|
 |Flame Shield|47|
-|Water Shield|37|
-|All Shields|142|
+|Water Shield|38|
+|All Shields|144|
 |Invincibility|45|
 |Robotnik Item Box|7|
 |Power Sneakers|10|
-|Total Item Boxes|499|
+|Total Item Boxes|501|
 |Special Stage Emerald|14|
 |Special Stage Perfect|14|
-|Total|658|
+|Total|660|
 # Items Per Zone
 | Zone | Location Type | Count |
 |-|-|-|
@@ -87,14 +87,14 @@
 |Launch Base|Boss|2|
 |Launch Base|1 UP|1|
 |Launch Base|Super Ring (10 rings)|29|
-|Launch Base|Lightning Shield|2|
+|Launch Base|Lightning Shield|3|
 |Launch Base|Flame Shield|7|
-|Launch Base|Water Shield|5|
-|Launch Base|All Shields|14|
+|Launch Base|Water Shield|6|
+|Launch Base|All Shields|16|
 |Launch Base|Invincibility|5|
 |Launch Base|Power Sneakers|1|
-|Launch Base|Total Item Boxes|50|
-|Launch Base|Total|62|
+|Launch Base|Total Item Boxes|52|
+|Launch Base|Total|64|
 |Mushroom Hill|Act Complete|2|
 |Mushroom Hill|Big Ring|11|
 |Mushroom Hill|Boss|2|
