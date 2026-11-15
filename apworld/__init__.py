@@ -24,6 +24,7 @@ class S3KConfigValidationError(Exception):
     will raise this exception type when triggering.
     """
 
+
 class S3KWebWorld(WebWorld):
     setup_en = Tutorial(
         'Multiworld Setup Guide',
@@ -60,16 +61,33 @@ class S3KWorld(World):
     item_name_to_id = {item.name: item.code for item in ALL_ITEMS.all_items}
     location_name_to_id = {loc.display_name: loc.location_id for loc in ALL_LOCATIONS.all_locations}
 
-    def generate_early(self) -> None:
-        self.loc_set = S3KLocations.filter_locations(self, ALL_LOCATIONS)
-        self.item_set = S3KItems.filter_items(self, ALL_ITEMS)
-
+    def extra_config_validation(self) -> None:
+        """
+        Do configuration validation that is not handled by the standard options
+        classes.
+        """
         if (
                 self.options.big_rings_goal.value != consts.GOAL_NONE and
                 self.options.big_rings_to_check.value == 0
         ):
             raise S3KConfigValidationError(
                 "big_rings_to_check must be > 0 when big rings goal is enabled")
+
+        if (
+                self.options.big_rings_goal.value == consts.GOAL_NONE and
+                self.options.chaos_emeralds_goal.value == consts.GOAL_NONE and
+                self.options.super_emeralds_goal.value == consts.GOAL_NONE
+        ):
+            raise S3KConfigValidationError(
+                "No goal is selected. Please set at least one of: "
+                "big_rings_goal, chaos_emeralds_goal, or super_emeralds_goal"
+            )
+
+    def generate_early(self) -> None:
+        self.loc_set = S3KLocations.filter_locations(self, ALL_LOCATIONS)
+        self.item_set = S3KItems.filter_items(self, ALL_ITEMS)
+
+        self.extra_config_validation()
 
         # Determine the starting zone/character here, if one is needed. This
         # needs to happen here because region generation happens before item

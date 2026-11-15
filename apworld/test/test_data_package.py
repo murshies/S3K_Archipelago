@@ -37,6 +37,7 @@ class TestDataPackage(unittest.TestCase):
 
 class TestDataPackageAfterGeneration(S3KTestBase):
     options = {
+        'big_rings_goal': 'doomsday',
         'big_rings_to_check': 50,
         'enable_robotnik_locations': False,
         'enable_super_ring_locations': False,
