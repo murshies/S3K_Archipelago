@@ -71,6 +71,7 @@
   obj_id: 18
   requirements:
     - character: Sonic
+      super_state: hyper
     - character: Tails
   poptracker:
     x: 485
