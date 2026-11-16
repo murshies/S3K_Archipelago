@@ -104,10 +104,14 @@ class S3KClient(BizHawkClient):
         self.curr_seed_slot = None
 
     async def validate_rom(self, ctx: "BizHawkClientContext") -> bool:
-        game_names = await bizhawk.read(ctx.bizhawk_ctx, [S3KMemory.sk_game_name,
-                                                          S3KMemory.s3_game_name])
-        sk_game_name = game_names[0].decode("ascii")
-        s3_game_name = game_names[1].decode("ascii")
+        try:
+            game_names = await bizhawk.read(ctx.bizhawk_ctx, [S3KMemory.sk_game_name,
+                                                              S3KMemory.s3_game_name])
+            sk_game_name = game_names[0].decode("ascii")
+            s3_game_name = game_names[1].decode("ascii")
+        except Exception as e:
+            logger.debug(f"Could not read S3K game names, likely playing another game: {e}")
+            return False
         logger.debug(f"Found sk_game_name = '{sk_game_name}' and s3_game_name = '{s3_game_name}'")
         if sk_game_name != SK_GAME_NAME or s3_game_name != S3_GAME_NAME:
             return False
