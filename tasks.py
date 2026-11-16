@@ -29,7 +29,7 @@ import locations  # noqa: E402
 
 INVOKE_ROOT = pathlib.Path(__file__).parent
 
-VERSION = "0.0.1"
+VERSION = "0.0.2"
 
 
 @task
