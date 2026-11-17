@@ -119,6 +119,9 @@ AP_ITEM_CODES = {
 -- Index of the last received item that was applied
 local current_index = -1
 
+-- The number of big ring locations that have been checked by the player
+local big_rings_checked = 0
+
 -- Every tracker item code that Archipelago items map to
 local AP_CODES = {}
 for _, code in pairs(AP_ITEM_CODES) do
@@ -163,13 +166,21 @@ local function set_checked(location_id)
         return
     end
     local section = Tracker:FindObjectForCode(loc.section)
-    if section ~= nil then
+    if section ~= nil and section.AvailableChestCount ~= 0 then
         section.AvailableChestCount = 0
+        if loc.type == "big_ring" then
+            big_rings_checked = big_rings_checked + 1
+            local item = Tracker:FindObjectForCode("big_rings_checked")
+            item.AcquiredCount = big_rings_checked
+        end
     end
 end
 
 local function on_clear(slot_data)
     current_index = -1
+    big_rings_checked = 0
+    local big_rings_item = Tracker:FindObjectForCode("big_rings_checked")
+    big_rings_item.AcquiredCount = 0
     Tracker.BulkUpdate = true
     local ok, err = pcall(function()
         for code in pairs(AP_CODES) do
@@ -182,7 +193,6 @@ local function on_clear(slot_data)
                 section.Highlight = Highlight.None
             end
         end
-        apply_slot_data(slot_data or {})
 
         -- Only the locations the server knows about are part of this seed
         LOCATIONS_IN_SEED = {}
@@ -193,6 +203,8 @@ local function on_clear(slot_data)
             LOCATIONS_IN_SEED[id] = true
             set_checked(id)
         end
+
+        apply_slot_data(slot_data or {})
     end)
     Tracker.BulkUpdate = false
     if not ok then

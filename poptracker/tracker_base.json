@@ -20,7 +20,8 @@
                                 "char_knuckles",
                                 "chaos_emerald",
                                 "master_emerald",
-                                "master_emerald_shard"
+                                "master_emerald_shard",
+                                "big_rings_checked"
                             ]
                         ]
                     },
@@ -74,7 +75,8 @@
                                                     [
                                                         "chaos_emerald",
                                                         "master_emerald",
-                                                        "master_emerald_shard"
+                                                        "master_emerald_shard",
+                                                        "big_rings_checked"
                                                     ]
                                                 ]
                                             }

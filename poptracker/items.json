@@ -38,6 +38,13 @@
         "max_quantity": 3
     },
     {
+        "name": "Big Rings Checked",
+        "type": "consumable",
+        "img": "images/locations/big_ring.png",
+        "codes": "big_rings_checked",
+        "max_quantity": 77
+    },
+    {
         "name": "Angel Island",
         "type": "toggle",
         "img": "images/items/zone_angel_island.png",
